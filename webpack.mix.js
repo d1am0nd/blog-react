@@ -29,5 +29,5 @@ mix
     }
   })
   .copy('src/static', './public')
-  .react('src/js/app.js', 'js')
-  .sass('src/scss/main.scss', 'css');
+  .react('src/js/app.js', 'js');
+  // .sass('src/scss/main.scss', 'css');

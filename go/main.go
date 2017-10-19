@@ -4,9 +4,9 @@ import (
     "fmt"
     "net/http"
 
-    "blog2.0/go/server"
-    "blog2.0/go/config"
-    "blog2.0/go/database"
+    "blog3.0/go/server"
+    "blog3.0/go/config"
+    "blog3.0/go/database"
 )
 
 func main() {

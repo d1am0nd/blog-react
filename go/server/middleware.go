@@ -5,7 +5,7 @@ import (
     "strings"
     "net/http"
 
-    "blog2.0/go/config"
+    "blog3.0/go/config"
 
     "golang.org/x/net/context"
     "github.com/julienschmidt/httprouter"

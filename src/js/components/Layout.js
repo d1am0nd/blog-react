@@ -1,30 +1,29 @@
 import React from 'react';
+import radium from 'radium';
 
-import Header from './Header';
-import Footer from './Footer';
-import Board from './Board';
-import SimpleText from './Input/SimpleText';
+import Title from './Layout/Title';
+import Navigation from './Layout/Navigation';
 
-export default class Layout extends React.Component {
+import LayoutStyle from '../styles/layout';
+
+class Layout extends React.Component {
   constructor() {
     super();
-    this.state = {
-      title: 'Hearths Card Game',
-    };
+    this.styles = new LayoutStyle();
   }
 
-  changeTitle(title) {
-    this.setState({title});
+  getStyles(title) {
+    return this.styles.layoutStyles();
   }
 
   render() {
     return (
-      <div>
-        <Header
-          title={this.state.title} />
-        <Board />
-        <Footer />
+      <div style={this.getStyles()}>
+        <Title text={'My Programming Blog'}/>
+        <Navigation/>
       </div>
     );
   }
 }
+
+export default radium(Layout);

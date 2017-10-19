@@ -4,8 +4,8 @@ import (
     "net/http"
     "encoding/json"
 
-    "blog2.0/go/config"
-    "blog2.0/go/database"
+    "blog3.0/go/config"
+    "blog3.0/go/database"
 
     "github.com/julienschmidt/httprouter"
     "golang.org/x/crypto/bcrypt"
