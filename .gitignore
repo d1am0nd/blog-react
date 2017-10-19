@@ -1,0 +1,7 @@
+/config/database.json
+/config/jwt.json
+/config/page.json
+/config/env.json
+/node_modules
+/public/uploads
+/go/main
