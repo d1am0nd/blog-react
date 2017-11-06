@@ -1,6 +1,8 @@
 import React from 'react';
 import radium from 'radium';
 
+import {Link} from 'react-router-dom';
+
 class Title extends React.Component {
   constructor() {
     super();
@@ -13,7 +15,11 @@ class Title extends React.Component {
   render() {
     return (
       <ul style={this.getStyles()}>
-        <li>test</li>
+        <li>
+          <Link to={`/`}>
+            Home
+          </Link>
+        </li>
       </ul>
     );
   }

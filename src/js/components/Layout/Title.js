@@ -9,6 +9,9 @@ class Title extends React.Component {
   getStyles() {
     return {
       fontSize: '30px',
+      paddingBottom: '4px',
+      color: '#909090',
+      borderBottom: 'solid 2px #E5E5E5',
     };
   }
 
