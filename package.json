@@ -30,6 +30,7 @@
     "axios": "^0.17.0",
     "eslint-config-standard": "^10.2.1",
     "marked": "^0.3.6",
+    "qs": "^6.5.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
