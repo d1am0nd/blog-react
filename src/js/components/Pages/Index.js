@@ -48,9 +48,6 @@ class Index extends React.Component {
     return {
       'transition': '0.2s',
       'border': '1px solid white',
-      ':hover': {
-        border: '1px solid black',
-      },
     };
   }
 

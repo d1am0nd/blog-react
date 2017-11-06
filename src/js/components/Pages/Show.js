@@ -3,6 +3,9 @@ import radium from 'radium';
 
 import postApi from '../../api/posts';
 
+import marked from 'marked';
+import renderer from '../../marked/renderer';
+
 import {Link} from 'react-router-dom';
 
 class Show extends React.Component {
@@ -20,7 +23,19 @@ class Show extends React.Component {
           post: res.data,
         });
       });
-    console.log(this.props);
+  }
+
+  content() {
+    if (!this.state.post.content) {
+      return;
+    }
+    return marked(
+      this
+        .state
+        .post
+        .content,
+      {renderer: renderer, sanitize: true}
+    );
   }
 
   linkStyle() {
@@ -56,9 +71,6 @@ class Show extends React.Component {
     return {
       'transition': '0.2s',
       'border': '1px solid white',
-      ':hover': {
-        border: '1px solid black',
-      },
     };
   }
 
@@ -71,9 +83,10 @@ class Show extends React.Component {
         <p style={this.summaryStyle()}>
           {this.state.post.summary}
         </p>
-        <p style={this.contentStyle()}>
-          {this.state.post.content}
-        </p>
+        <div
+          style={this.contentStyle()}
+          dangerouslySetInnerHTML={{__html: this.content()}}>
+        </div>
       </div>
     );
   }
