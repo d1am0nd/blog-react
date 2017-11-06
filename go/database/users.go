@@ -31,7 +31,6 @@ func (u *User) UpdatedAtTime() time.Time {
     return parseDbTimestamp(&u.UpdatedAt)
 }
 
-
 func NewUser() User {
     return User{}
 }
