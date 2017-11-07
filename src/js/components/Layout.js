@@ -6,6 +6,7 @@ import Title from './Layout/Title';
 import Index from './Pages/Index';
 import Show from './Pages/Show';
 import Login from './Pages/Auth/Login';
+import Edit from './Pages/Auth/Edit';
 
 import AdminHeader from './Partials/AdminHeader';
 
@@ -15,11 +16,16 @@ import postsApi from '../api/posts';
 import authApi from '../api/auth';
 import auth from '../auth/auth';
 
+import meta from '../meta/meta';
 import LayoutStyle from '../styles/layout';
 
 class Layout extends React.Component {
   constructor() {
     super();
+
+    meta.setTitle(null);
+    meta.setDescription(null);
+
     this.styles = new LayoutStyle();
     this.state = {
       posts: [],
@@ -111,6 +117,7 @@ class Layout extends React.Component {
           {this.renderAdminPanel()}
           <Route exact={true} path="/" component={Index}/>
           <Route exact={true} path="/posts/:slug" component={Show}/>
+          <Route exact={true} path="/posts/edit/:slug" component={Edit}/>
           {this.renderLogin()}
         </div>
       </Router>

@@ -1,12 +1,13 @@
 import axios from 'axios';
 import auth from '../auth/auth';
+import qs from 'qs';
 
 const GET_PUBLISHED_URL = '/api/posts/all';
 const GET_BY_SLUG_URL = '/api/posts/single/';
 const GET_MINE_URL = '/api/posts/my/all';
+const POST_EDIT_URL = '/api/posts/edit/';
 /*
 const POST_NEW_URL = '/api/posts/create';
-const POST_EDIT_URL = '/api/posts/edit/';
 */
 
 export default {
@@ -20,17 +21,16 @@ export default {
       emulateHTTP: true,
     });
   },
+  */
 
   update(post) {
-    return axios.post(POST_EDIT_URL + post.id, post, {
+    return axios.post(POST_EDIT_URL + post.id, qs.stringify(post), {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': auth.token,
       },
-      emulateJSON: true,
-      emulateHTTP: true,
     });
   },
-  */
+
   getPublished() {
     return axios.get(GET_PUBLISHED_URL);
   },

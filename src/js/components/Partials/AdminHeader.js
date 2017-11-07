@@ -28,7 +28,7 @@ class AdminHeader extends React.Component {
       .map(i => {
         return (
           <li key={i.id}>
-            <Link to={`/posts/` + i.slug}>
+            <Link to={`/posts/edit/` + i.slug}>
               {i.title}
             </Link>
           </li>
@@ -44,6 +44,8 @@ class AdminHeader extends React.Component {
           <li onClick={e => this.logout(e)}>
             Logout
           </li>
+        </ul>
+        <ul>
           {this.renderMyPosts()}
         </ul>
       </div>

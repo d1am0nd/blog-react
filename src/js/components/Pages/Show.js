@@ -8,6 +8,8 @@ import renderer from '../../marked/renderer';
 
 import {Link} from 'react-router-dom';
 
+import meta from '../../meta/meta';
+
 class Show extends React.Component {
   constructor(props) {
     super(props);
@@ -35,6 +37,8 @@ class Show extends React.Component {
     postApi
       .findBySlug(this.props.match.params.slug)
       .then(res => {
+        meta.setTitle(res.data.title);
+        meta.setDescription(res.data.summary);
         this.setState({
           post: res.data,
         });
