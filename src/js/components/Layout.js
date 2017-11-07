@@ -2,7 +2,6 @@ import React from 'react';
 import radium from 'radium';
 
 import Title from './Layout/Title';
-import Navigation from './Layout/Navigation';
 
 import Index from './Pages/Index';
 import Show from './Pages/Show';
@@ -12,6 +11,7 @@ import AdminHeader from './Partials/AdminHeader';
 
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
+import postsApi from '../api/posts';
 import authApi from '../api/auth';
 import auth from '../auth/auth';
 
@@ -24,8 +24,18 @@ class Layout extends React.Component {
     this.state = {
       posts: [],
       post: {},
+      myPosts: [],
       user: auth.user,
     };
+    if (auth.loggedIn()) {
+      postsApi
+        .getMine()
+        .then(res => {
+          this.setState({
+            myPosts: res.data,
+          });
+        });
+    }
   }
 
   getStyles(title) {
@@ -49,8 +59,16 @@ class Layout extends React.Component {
         this.setState({
           user: auth.user,
         });
+        postsApi
+          .getMine()
+          .then(res => {
+            this.setState({
+              myPosts: res.data,
+            });
+          });
       })
       .catch(err => {
+        console.log(err);
         alert('Wrong credentials');
       });
   }
@@ -62,6 +80,7 @@ class Layout extends React.Component {
     return (
       <AdminHeader
         logout={e => this.logout(e)}
+        posts={this.state.myPosts}
         user={this.state.user}/>
     );
   }
@@ -89,7 +108,6 @@ class Layout extends React.Component {
         <div style={this.getStyles()}>
           <Title text={'My Programming Blog'}/>
           {this.state.posts.map(i => i.title)}
-          <Navigation/>
           {this.renderAdminPanel()}
           <Route exact={true} path="/" component={Index}/>
           <Route exact={true} path="/posts/:slug" component={Show}/>

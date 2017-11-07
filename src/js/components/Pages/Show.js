@@ -15,7 +15,23 @@ class Show extends React.Component {
     this.state = {
       post: {},
     };
+  }
 
+  componentDidMount() {
+    this.fetchPost();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.onRouteChanged();
+    }
+  }
+
+  onRouteChanged() {
+    this.fetchPost();
+  }
+
+  fetchPost() {
     postApi
       .findBySlug(this.props.match.params.slug)
       .then(res => {

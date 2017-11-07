@@ -1,6 +1,8 @@
 import React from 'react';
 import radium from 'radium';
 
+import {Link} from 'react-router-dom';
+
 class AdminHeader extends React.Component {
   constructor() {
     super();
@@ -16,6 +18,24 @@ class AdminHeader extends React.Component {
     }
   }
 
+  renderMyPosts() {
+    if (!this.props.posts) {
+      return [];
+    }
+    return this
+      .props
+      .posts
+      .map(i => {
+        return (
+          <li key={i.id}>
+            <Link to={`/posts/` + i.slug}>
+              {i.title}
+            </Link>
+          </li>
+        );
+      });
+  }
+
   render() {
     return (
       <div style={this.getStyles()}>
@@ -24,6 +44,7 @@ class AdminHeader extends React.Component {
           <li onClick={e => this.logout(e)}>
             Logout
           </li>
+          {this.renderMyPosts()}
         </ul>
       </div>
     );
