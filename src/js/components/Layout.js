@@ -7,6 +7,7 @@ import Index from './Pages/Index';
 import Show from './Pages/Show';
 import Login from './Pages/Auth/Login';
 import Edit from './Pages/Auth/Edit';
+import NewPost from './Pages/Auth/NewPost';
 
 import AdminHeader from './Partials/AdminHeader';
 
@@ -116,6 +117,7 @@ class Layout extends React.Component {
           {this.state.posts.map(i => i.title)}
           {this.renderAdminPanel()}
           <Route exact={true} path="/" component={Index}/>
+          <Route exact={true} path="/posts/write" component={NewPost}/>
           <Route exact={true} path="/posts/:slug" component={Show}/>
           <Route exact={true} path="/posts/edit/:slug" component={Edit}/>
           {this.renderLogin()}

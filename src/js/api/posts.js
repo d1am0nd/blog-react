@@ -6,22 +6,16 @@ const GET_PUBLISHED_URL = '/api/posts/all';
 const GET_BY_SLUG_URL = '/api/posts/single/';
 const GET_MINE_URL = '/api/posts/my/all';
 const POST_EDIT_URL = '/api/posts/edit/';
-/*
 const POST_NEW_URL = '/api/posts/create';
-*/
 
 export default {
-  /*
   new(post) {
-    return axios.post(POST_NEW_URL, post, {
+    return axios.post(POST_NEW_URL, qs.stringify(post), {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': auth.token,
       },
-      emulateJSON: true,
-      emulateHTTP: true,
     });
   },
-  */
 
   update(post) {
     return axios.post(POST_EDIT_URL + post.id, qs.stringify(post), {
