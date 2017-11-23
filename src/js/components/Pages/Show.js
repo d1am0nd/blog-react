@@ -67,7 +67,8 @@ class Show extends React.Component {
 
   titleStyle() {
     return {
-      marginTop: 0,
+      'marginBottom': '10px',
+      'marginTop': 0,
     };
   }
 
@@ -75,7 +76,7 @@ class Show extends React.Component {
     return {
       fontSize: '18px',
       marginTop: 0,
-      marginBottom: 0,
+      marginBottom: '10px',
     };
   }
 

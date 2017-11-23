@@ -32,7 +32,8 @@ class Index extends React.Component {
 
   titleStyle() {
     return {
-      marginTop: 0,
+      'marginBottom': '10px',
+      'marginTop': 0,
     };
   }
 
@@ -40,7 +41,13 @@ class Index extends React.Component {
     return {
       fontSize: '18px',
       marginTop: 0,
-      marginBottom: 0,
+      marginBottom: '10px',
+    };
+  }
+
+  moreStyle() {
+    return {
+      fontSize: '18px',
     };
   }
 
@@ -48,6 +55,7 @@ class Index extends React.Component {
     return {
       'transition': '0.2s',
       'border': '1px solid white',
+      'marginBottom': '15px',
     };
   }
 
@@ -68,6 +76,9 @@ class Index extends React.Component {
               <p style={this.summaryStyle()}>
                 {i.summary}
               </p>
+              <a style={this.moreStyle()} href="#">
+                More
+              </a>
             </div>
           </Link>
         );
