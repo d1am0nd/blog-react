@@ -8,6 +8,7 @@ import Show from './Pages/Show';
 import Login from './Pages/Auth/Login';
 import Edit from './Pages/Auth/Edit';
 import NewPost from './Pages/Auth/NewPost';
+import Images from './Pages/Auth/Images';
 
 import AdminHeader from './Partials/AdminHeader';
 
@@ -120,6 +121,7 @@ class Layout extends React.Component {
           <Route exact={true} path="/posts/write" component={NewPost}/>
           <Route exact={true} path="/posts/:slug" component={Show}/>
           <Route exact={true} path="/posts/edit/:slug" component={Edit}/>
+          <Route exact={true} path="/admin/images" component={Images}/>
           {this.renderLogin()}
         </div>
       </Router>

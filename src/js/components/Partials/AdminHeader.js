@@ -46,6 +46,16 @@ class AdminHeader extends React.Component {
           </li>
         </ul>
         <ul>
+          <li key={0}>
+            <Link to={`/posts/write`}>
+              New post
+            </Link>
+          </li>
+          <li key={-1}>
+            <Link to={`/admin/images`}>
+              Images
+            </Link>
+          </li>
           {this.renderMyPosts()}
         </ul>
       </div>

@@ -10,27 +10,27 @@ const GET_MINE_URL = '/api/images/my/all'
 const GET_PUBLISHED_URL = '/api/images/all'
 */
 export default {
-  new (image) {
+  new(image) {
     return axios.post(POST_NEW_URL, image, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
   },
-  update (image, id) {
+  update(image, id) {
     return axios.post(POST_EDIT_URL + id, image, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
   },
-  deleteById (id) {
+  deleteById(id) {
     return axios.get(GET_DELETE_BY_ID + id);
   },
-  getById (id) {
+  getById(id) {
     return axios.get(GET_BY_ID_URL + id);
   },
-  getImages () {
+  getImages() {
     return axios.get(GET_IMAGES_URL);
-  }
-}
+  },
+};
