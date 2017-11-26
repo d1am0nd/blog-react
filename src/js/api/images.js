@@ -1,4 +1,5 @@
 import axios from 'axios';
+import auth from '../auth/auth';
 
 const POST_NEW_URL = '/api/images/create';
 const POST_EDIT_URL = '/api/images/edit/';
@@ -14,6 +15,7 @@ export default {
     return axios.post(POST_NEW_URL, image, {
       headers: {
         'Content-Type': 'multipart/form-data',
+        'Authorization': auth.token,
       },
     });
   },
@@ -21,6 +23,7 @@ export default {
     return axios.post(POST_EDIT_URL + id, image, {
       headers: {
         'Content-Type': 'multipart/form-data',
+        'Authorization': auth.token,
       },
     });
   },

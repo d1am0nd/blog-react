@@ -56,6 +56,11 @@ class AdminHeader extends React.Component {
               Images
             </Link>
           </li>
+          <li key={-2}>
+            <Link to={`/admin/images/new`}>
+              New Image
+            </Link>
+          </li>
           {this.renderMyPosts()}
         </ul>
       </div>

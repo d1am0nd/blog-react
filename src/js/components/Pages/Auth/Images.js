@@ -22,13 +22,22 @@ class Images extends React.Component {
       });
   }
 
+  imageStyle() {
+    return {
+      maxWidth: '100%',
+    };
+  }
+
   renderImages() {
     return this
       .state
       .images
       .map(i => {
         return (
-          <img key={i.id} src={i.path}/>
+          <div>
+            {i.name} <br/>
+            <img style={this.imageStyle()} key={i.id} src={i.path}/>
+          </div>
         );
       });
   }
