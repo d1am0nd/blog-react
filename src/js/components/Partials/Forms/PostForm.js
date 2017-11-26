@@ -89,18 +89,20 @@ class PostForm extends React.Component {
           style={formStyle.formGroupStyle()}>
           <label>Summary</label>
           <textarea
+            value={this.state.post.summary}
             style={formStyle.inputStyle()}
             onChange={e => this.handleValueChange(e, 'summary')}
-            >{this.state.post.summary}</textarea>
+            ></textarea>
         </div>
         <div
           style={formStyle.formGroupStyle()}>
           <label>Content</label>
           <textarea
             rows="20"
+            value={this.state.post.content}
             style={formStyle.inputStyle()}
             onChange={e => this.handleValueChange(e, 'content')}
-            >{this.state.post.content}</textarea>
+            ></textarea>
         </div>
         <div
           style={formStyle.formGroupStyle()}>

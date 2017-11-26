@@ -7,6 +7,7 @@ const GET_BY_SLUG_URL = '/api/posts/single/';
 const GET_MINE_URL = '/api/posts/my/all';
 const POST_EDIT_URL = '/api/posts/edit/';
 const POST_NEW_URL = '/api/posts/create';
+const DELETE_ID = '/api/posts/delete/';
 
 export default {
   new(post) {
@@ -21,6 +22,14 @@ export default {
     return axios.post(POST_EDIT_URL + post.id, qs.stringify(post), {
       headers: {
         'Authorization': auth.token,
+      },
+    });
+  },
+
+  delete(id) {
+    return axios.post(DELETE_ID + id, {}, {
+      headers: {
+        Authorization: auth.token,
       },
     });
   },

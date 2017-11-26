@@ -1,6 +1,7 @@
 import React from 'react';
 import radium from 'radium';
 
+import postApi from '../../api/posts';
 import {Link} from 'react-router-dom';
 
 class AdminHeader extends React.Component {
@@ -18,6 +19,19 @@ class AdminHeader extends React.Component {
     }
   }
 
+  deletePost(e, id) {
+    postApi
+      .delete(id)
+      .then(res => {
+        if (this.props.onPostDelete) {
+          this.props.onPostDelete(id);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   renderMyPosts() {
     if (!this.props.posts) {
       return [];
@@ -31,6 +45,10 @@ class AdminHeader extends React.Component {
             <Link to={`/posts/edit/` + i.slug}>
               {i.title}
             </Link>
+            &nbsp;-&nbsp;
+            <a href="#" onClick={e => this.deletePost(e, i.id)}>
+              Delete
+            </a>
           </li>
         );
       });

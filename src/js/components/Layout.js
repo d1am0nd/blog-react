@@ -83,12 +83,24 @@ class Layout extends React.Component {
       });
   }
 
+  onPostDelete(postId) {
+    if (!confirm('Really delete post with id ' + postId + '?')) {
+      return;
+    }
+    this.setState({
+      myPosts: this.state.myPosts.filter(i => {
+        return i.id != postId;
+      }),
+    });
+  }
+
   renderAdminPanel() {
     if (!auth.loggedIn()) {
       return;
     }
     return (
       <AdminHeader
+        onPostDelete={(id) => this.onPostDelete(id)}
         logout={e => this.logout(e)}
         posts={this.state.myPosts}
         user={this.state.user}/>
