@@ -23,6 +23,23 @@ class Images extends React.Component {
       });
   }
 
+  deleteById(e, id) {
+    e.preventDefault();
+    imagesApi
+      .deleteById(id)
+      .then(res => {
+        let newimages = this.state.images.filter(i => {
+          return i.id != id;
+        });
+        this.setState({
+          images: newimages,
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   imageStyle() {
     return {
       maxWidth: '100%',
@@ -36,7 +53,9 @@ class Images extends React.Component {
       .map(i => {
         return (
           <div key={i.id}>
-            {i.name} <br/>
+            {i.name} -&nbsp;
+            <a href="#" onClick={e => this.deleteById(e, i.id)}>Delete</a>
+            <br/>
             <Link to={`/admin/images/edit/` + i.id}>
               <img style={this.imageStyle()} key={i.id} src={i.path}/>
             </Link>

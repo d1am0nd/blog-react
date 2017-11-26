@@ -28,7 +28,11 @@ export default {
     });
   },
   deleteById(id) {
-    return axios.get(GET_DELETE_BY_ID + id);
+    return axios.get(GET_DELETE_BY_ID + id, {
+      headers: {
+        'Authorization': auth.token,
+      },
+    });
   },
   getById(id) {
     return axios.get(GET_BY_ID_URL + id);
