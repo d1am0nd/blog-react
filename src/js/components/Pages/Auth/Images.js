@@ -2,6 +2,7 @@ import React from 'react';
 import radium from 'radium';
 
 import imagesApi from '../../../api/images';
+import {Link} from 'react-router-dom';
 
 class Images extends React.Component {
   constructor() {
@@ -34,9 +35,11 @@ class Images extends React.Component {
       .images
       .map(i => {
         return (
-          <div>
+          <div key={i.id}>
             {i.name} <br/>
-            <img style={this.imageStyle()} key={i.id} src={i.path}/>
+            <Link to={`/admin/images/edit/` + i.id}>
+              <img style={this.imageStyle()} key={i.id} src={i.path}/>
+            </Link>
           </div>
         );
       });

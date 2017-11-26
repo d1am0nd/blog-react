@@ -7,18 +7,18 @@ import imagesApi from '../../../api/images';
 import formStyle from '../../../styles/form';
 
 class NewImage extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       image: '',
-      imageName: '',
+      name: '',
       imgSrc: '',
     };
   }
 
   handleNameChange(e) {
     this.setState({
-      imageName: e.target.value,
+      name: e.target.value,
     });
   }
 
@@ -40,7 +40,7 @@ class NewImage extends React.Component {
     e.preventDefault();
     let formData = new FormData();
     formData.set('image', this.state.image);
-    formData.set('name', this.state.imageName);
+    formData.set('name', this.state.name);
     imagesApi
       .new(formData)
       .then(res => {
@@ -77,6 +77,9 @@ class NewImage extends React.Component {
           <button type="submit">
             Submit
           </button>
+        </div>
+        <div style={formStyle.formGroupStyle()}>
+          <img src={this.state.imgSrc}/>
         </div>
       </form>
     );
