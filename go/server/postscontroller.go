@@ -123,6 +123,27 @@ func UpdatePost(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
     w.Write(json)
 }
 
+func DeletePost(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+    var userId = r.Context().Value("claims").(Claims).UserId
+
+    i64, err := strconv.ParseUint(p.ByName("id"), 10, 32)
+    if err != nil {
+        http.Error(w, "Bad request", http.StatusBadRequest)
+        return
+    }
+    id := uint32(i64)
+
+    // Find existing post or 404
+    err = database.DeletePostById(id, userId)
+    if err != nil {
+        http.Error(w, "Resource not found", http.StatusNotFound)
+        return
+    }
+
+    w.Header().Set("Content-Type", "application/json")
+    w.Write([]byte("{success:true}"))
+}
+
 func fillPost(r *http.Request, post *database.Post) {
     // Setting values
     active := r.FormValue("active")

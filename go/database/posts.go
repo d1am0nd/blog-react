@@ -107,6 +107,15 @@ func DeletePostBySlug(slug string, userId uint32) error {
     return err
 }
 
+func DeletePostById(id uint32, userId uint32) error {
+    stmt, err := SQL.Prepare("DELETE FROM posts WHERE id = ? AND user_id = ?")
+    if err != nil {
+        return err
+    }
+    _, err = stmt.Exec(id, userId)
+    return err
+}
+
 func CreatePost(post *Post, userId uint32) error {
     now := time.Now()
 

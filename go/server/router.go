@@ -14,6 +14,7 @@ func NewRouter() *httprouter.Router {
     r.POST("/api/users/login", Login)
     r.GET("/api/posts/all", WithUser(ActivePosts))
     r.POST("/api/posts/edit/:id", AuthOnly(UpdatePost))
+    r.POST("/api/posts/delete/:id", AuthOnly(DeletePost))
     r.POST("/api/posts/create", AuthOnly(CreatePost))
     r.GET("/api/posts/my/all", AuthOnly(MyPosts))
     r.GET("/api/posts/single/:slug", WithUser(PostBySlug))
