@@ -29,6 +29,14 @@ class PostForm extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.post != this.props.post) {
+      this.setState({
+        post: this.props.post,
+      });
+    }
+  }
+
   active() {
     if (helpers.validateYyyyMmDd(this.state.post.published_at.String)) {
       return true;
