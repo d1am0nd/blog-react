@@ -17,14 +17,16 @@ export function fetchPosts() {
 };
 
 export function fetchPostBySlug(slug) {
-  postsApi
-    .fetchBySlug(slug)
-    .then(res => {
-      dispatch({type: SET_POST, payload: res.data});
-    })
-    .catch(err => {
-      console.log('err fetchinig a post', err);
-    });
+  return function(dispatch) {
+    postsApi
+      .findBySlug(slug)
+      .then(res => {
+        dispatch({type: SET_POST, payload: res.data});
+      })
+      .catch(err => {
+        console.log('err fetchinig a post', err);
+      });
+  };
 };
 
 export function fetchMyPosts() {

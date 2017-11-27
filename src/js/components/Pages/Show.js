@@ -1,22 +1,24 @@
 import React from 'react';
 import radium from 'radium';
-
-import postApi from '../../api/posts';
+import {connect} from 'react-redux';
 
 import marked from 'marked';
 import renderer from '../../marked/renderer';
+
+import {fetchPostBySlug} from '../../store/actions/postsActions';
 
 import {Link} from 'react-router-dom';
 
 import meta from '../../meta/meta';
 
+@connect(state => {
+  return {
+    post: state.posts.post,
+  };
+})
 class Show extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      post: {},
-    };
+  constructor() {
+    super();
   }
 
   componentDidMount() {
@@ -34,24 +36,16 @@ class Show extends React.Component {
   }
 
   fetchPost() {
-    postApi
-      .findBySlug(this.props.match.params.slug)
-      .then(res => {
-        meta.setTitle(res.data.title);
-        meta.setDescription(res.data.summary);
-        this.setState({
-          post: res.data,
-        });
-      });
+    this.props.dispatch(fetchPostBySlug(this.props.match.params.slug));
   }
 
   content() {
-    if (!this.state.post.content) {
+    if (!this.props.post.content) {
       return;
     }
     return marked(
       this
-        .state
+        .props
         .post
         .content,
       {renderer: renderer, sanitize: true}
@@ -96,13 +90,15 @@ class Show extends React.Component {
   }
 
   render() {
+    console.log('RENDER');
+    console.log(this.props);
     return (
       <div
-        key={this.state.post.id}
+        key={this.props.post.id}
         style={this.wrapperStyle()}>
-        <h2 style={this.titleStyle()}>{this.state.post.title}</h2>
+        <h2 style={this.titleStyle()}>{this.props.post.title}</h2>
         <p style={this.summaryStyle()}>
-          {this.state.post.summary}
+          {this.props.post.summary}
         </p>
         <div
           style={this.contentStyle()}
