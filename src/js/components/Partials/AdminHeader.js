@@ -20,16 +20,9 @@ class AdminHeader extends React.Component {
   }
 
   deletePost(e, id) {
-    postApi
-      .delete(id)
-      .then(res => {
-        if (this.props.onPostDelete) {
-          this.props.onPostDelete(id);
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    if (this.props.onPostDelete) {
+      this.props.onPostDelete(id);
+    }
   }
 
   renderMyPosts() {

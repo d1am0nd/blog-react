@@ -13,10 +13,6 @@ import {Link} from 'react-router-dom';
   };
 })
 class Index extends React.Component {
-  constructor() {
-    super();
-  }
-
   componentWillMount() {
     this.props.dispatch(fetchPosts());
   }

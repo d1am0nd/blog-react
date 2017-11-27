@@ -17,22 +17,14 @@ import meta from '../../meta/meta';
   };
 })
 class Show extends React.Component {
-  constructor() {
-    super();
-  }
-
-  componentDidMount() {
+  componentWillMount() {
     this.fetchPost();
   }
 
-  componentDidUpdate(prevProps) {
+  componentWillUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
-      this.onRouteChanged();
+      this.fetchPost();
     }
-  }
-
-  onRouteChanged() {
-    this.fetchPost();
   }
 
   fetchPost() {
@@ -90,8 +82,6 @@ class Show extends React.Component {
   }
 
   render() {
-    console.log('RENDER');
-    console.log(this.props);
     return (
       <div
         key={this.props.post.id}

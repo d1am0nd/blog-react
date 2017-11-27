@@ -16,7 +16,8 @@ import AdminHeader from './Partials/AdminHeader';
 
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-import {fetchMyPosts} from '../store/actions/postsActions';
+import {fetchMyPosts, deletePost} from '../store/actions/postsActions';
+import {login, logout} from '../store/actions/userActions';
 import postsApi from '../api/posts';
 import authApi from '../api/auth';
 import auth from '../auth/auth';
@@ -37,9 +38,6 @@ class Layout extends React.Component {
     meta.setDescription(null);
 
     this.styles = new LayoutStyle();
-    this.state = {
-      user: auth.user,
-    };
   }
 
   componentWillMount() {
@@ -53,34 +51,18 @@ class Layout extends React.Component {
   }
 
   logout(e) {
-    auth.logout();
-    this.setState({
-      user: auth.user,
-    });
+    this.props.dispatch(logout());
   }
 
   login(e, creds) {
-    authApi
-      .login(creds)
-      .then(res => {
-        let user = res.data;
-        let token = res.headers.authorization;
-        auth.login(user, token);
-        this.setState({
-          user: auth.user,
-        });
-        this.props.dispatch(fetchMyPosts());
-      })
-      .catch(err => {
-        console.log(err);
-        alert('Wrong credentials');
-      });
+    this.props.dispatch(login(creds));
   }
 
   onPostDelete(postId) {
     if (!confirm('Really delete post with id ' + postId + '?')) {
       return;
     }
+    this.props.dispatch(deletePost(postId));
   }
 
   renderAdminPanel() {
@@ -92,7 +74,7 @@ class Layout extends React.Component {
         onPostDelete={(id) => this.onPostDelete(id)}
         logout={e => this.logout(e)}
         posts={this.props.posts.myPosts}
-        user={this.state.user}/>
+        user={this.props.users.user}/>
     );
   }
 
@@ -118,7 +100,6 @@ class Layout extends React.Component {
       <Router>
         <div style={this.getStyles()}>
           <Title text={'My Programming Blog'}/>
-          {this.props.posts.posts.map(i => i.title)}
           {this.renderAdminPanel()}
           <Route exact={true} path="/" component={Index}/>
           <Route exact={true} path="/posts/write" component={NewPost}/>

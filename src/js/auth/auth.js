@@ -1,3 +1,6 @@
+import store from '../store';
+import {SET_USER} from '../store/const/users';
+
 const USER_SESS = 'user';
 const TOKEN_SESS = 'bearer';
 
@@ -9,6 +12,7 @@ class Auth {
       && sessionStorage.getItem(TOKEN_SESS) !== null) {
       this.user = JSON.parse(sessionStorage.getItem(USER_SESS));
       this.token = sessionStorage.getItem(TOKEN_SESS);
+      store.dispatch({type: SET_USER, payload: this.user});
     }
   }
 

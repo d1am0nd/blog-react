@@ -1,25 +1,27 @@
 import React from 'react';
 import radium from 'radium';
+import {connect} from 'react-redux';
 
 import PostForm from '../../Partials/Forms/PostForm';
 
-import postApi from '../../../api/posts';
+import {
+  fetchPostBySlug,
+  updatePost,
+} from '../../../store/actions/postsActions';
 
 import helpers from '../../../helpers/index';
 
+@connect(state => {
+  return {
+    post: state.posts.post,
+  };
+})
 class Edit extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      post: {},
-    };
-  }
-
-  componentDidMount() {
+  componentWillMount() {
     this.fetchPost();
   }
 
-  componentDidUpdate(prevProps) {
+  componentWillUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       this.fetchPost();
     }
@@ -30,13 +32,7 @@ class Edit extends React.Component {
   }
 
   fetchPost() {
-    postApi
-      .findBySlug(this.props.match.params.slug)
-      .then(res => {
-        this.setState({
-          post: res.data,
-        });
-      });
+    this.props.dispatch(fetchPostBySlug(this.props.match.params.slug));
   }
 
   handleSubmit(e, data) {
@@ -46,20 +42,16 @@ class Edit extends React.Component {
     } else {
       data.published_at.Valid = true;
     }
-    postApi
-      .update(data)
-      .then(res => {
-        alert('Sucessfully updated post');
-      });
+    this.props.dispatch(updatePost(data));
   }
 
   renderForm() {
-    if (!this.state.post.id) {
+    if (!this.props.post.id) {
       return;
     }
     return (
       <PostForm
-        post={this.state.post}
+        post={this.props.post}
         handleSubmit={(e, data) => this.handleSubmit(e, data)}/>
     );
   }
@@ -67,7 +59,7 @@ class Edit extends React.Component {
   render() {
     return (
       <div>
-        <h2>{this.state.post.title}</h2>
+        <h2>{this.props.post.title}</h2>
         {this.renderForm()}
       </div>
     );

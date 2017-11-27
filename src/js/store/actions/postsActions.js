@@ -1,10 +1,18 @@
 import postsApi from '../../api/posts';
 
-import {SET_POSTS, SET_POST, SET_MY_POSTS} from '../const/posts';
+import {
+  SET_POSTS,
+  SET_POST,
+  SET_MY_POSTS,
+  UPDATE_POST,
+  DELETE_POST,
+} from '../const/posts';
 
 export function fetchPosts() {
-  return function(dispatch) {
-    console.log('fetchPosts');
+  return function(dispatch, state) {
+    if (state().posts.posts.length > 0) {
+      return;
+    }
     postsApi
       .getPublished()
       .then(res => {
@@ -18,6 +26,7 @@ export function fetchPosts() {
 
 export function fetchPostBySlug(slug) {
   return function(dispatch) {
+    dispatch({type: SET_POST, payload: {}});
     postsApi
       .findBySlug(slug)
       .then(res => {
@@ -38,6 +47,32 @@ export function fetchMyPosts() {
       })
       .catch(err => {
         console.log('err fetching my posts', err);
+      });
+  };
+};
+
+export function updatePost(post) {
+  return function(dispatch, store) {
+    postsApi
+      .update(post)
+      .then(res => {
+        dispatch({type: UPDATE_POST, payload: post});
+      })
+      .catch(err => {
+        console.log('Err updating the user', err);
+      });
+  };
+};
+
+export function deletePost(id) {
+  return function(dispatch) {
+    postsApi
+      .delete(id)
+      .then(res => {
+        dispatch({type: DELETE_POST, payload: id});
+      })
+      .catch(err => {
+        console.log('Err deleting a post', err);
       });
   };
 };
