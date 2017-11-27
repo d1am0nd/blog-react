@@ -1,8 +1,8 @@
 import React from 'react';
 import radium from 'radium';
+import {connect} from 'react-redux';
 
 import Title from './Layout/Title';
-
 import Index from './Pages/Index';
 import Show from './Pages/Show';
 import Login from './Pages/Auth/Login';
@@ -16,6 +16,7 @@ import AdminHeader from './Partials/AdminHeader';
 
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
+import {fetchMyPosts} from '../store/actions/postsActions';
 import postsApi from '../api/posts';
 import authApi from '../api/auth';
 import auth from '../auth/auth';
@@ -23,6 +24,11 @@ import auth from '../auth/auth';
 import meta from '../meta/meta';
 import LayoutStyle from '../styles/layout';
 
+@connect(store => {
+  return {
+     ...store,
+  };
+})
 class Layout extends React.Component {
   constructor() {
     super();
@@ -32,19 +38,13 @@ class Layout extends React.Component {
 
     this.styles = new LayoutStyle();
     this.state = {
-      posts: [],
-      post: {},
-      myPosts: [],
       user: auth.user,
     };
+  }
+
+  componentWillMount() {
     if (auth.loggedIn()) {
-      postsApi
-        .getMine()
-        .then(res => {
-          this.setState({
-            myPosts: res.data,
-          });
-        });
+      this.props.dispatch(fetchMyPosts());
     }
   }
 
@@ -69,13 +69,7 @@ class Layout extends React.Component {
         this.setState({
           user: auth.user,
         });
-        postsApi
-          .getMine()
-          .then(res => {
-            this.setState({
-              myPosts: res.data,
-            });
-          });
+        this.props.dispatch(fetchMyPosts());
       })
       .catch(err => {
         console.log(err);
@@ -87,11 +81,6 @@ class Layout extends React.Component {
     if (!confirm('Really delete post with id ' + postId + '?')) {
       return;
     }
-    this.setState({
-      myPosts: this.state.myPosts.filter(i => {
-        return i.id != postId;
-      }),
-    });
   }
 
   renderAdminPanel() {
@@ -102,7 +91,7 @@ class Layout extends React.Component {
       <AdminHeader
         onPostDelete={(id) => this.onPostDelete(id)}
         logout={e => this.logout(e)}
-        posts={this.state.myPosts}
+        posts={this.props.posts.myPosts}
         user={this.state.user}/>
     );
   }
@@ -129,7 +118,7 @@ class Layout extends React.Component {
       <Router>
         <div style={this.getStyles()}>
           <Title text={'My Programming Blog'}/>
-          {this.state.posts.map(i => i.title)}
+          {this.props.posts.posts.map(i => i.title)}
           {this.renderAdminPanel()}
           <Route exact={true} path="/" component={Index}/>
           <Route exact={true} path="/posts/write" component={NewPost}/>

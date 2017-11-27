@@ -1,26 +1,24 @@
 import React from 'react';
 import radium from 'radium';
+import {connect} from 'react-redux';
 
 import postApi from '../../api/posts';
+import {fetchPosts} from '../../store/actions/postsActions';
 
 import {Link} from 'react-router-dom';
 
+@connect(store => {
+  return {
+    posts: store.posts.posts,
+  };
+})
 class Index extends React.Component {
   constructor() {
     super();
+  }
 
-    this.state = {
-      posts: [],
-    };
-
-    if (this.state.posts.length === 0) {
-      postApi.getPublished()
-        .then(res => {
-          this.setState({
-            posts: res.data,
-          });
-        });
-    }
+  componentWillMount() {
+    this.props.dispatch(fetchPosts());
   }
 
   linkStyle() {
@@ -61,7 +59,7 @@ class Index extends React.Component {
 
   renderPosts() {
     return this
-      .state
+      .props
       .posts
       .map(i => {
         return (
@@ -76,9 +74,9 @@ class Index extends React.Component {
               <p style={this.summaryStyle()}>
                 {i.summary}
               </p>
-              <a style={this.moreStyle()} href="#">
+              <span style={this.moreStyle()} href="#">
                 More
-              </a>
+              </span>
             </div>
           </Link>
         );
