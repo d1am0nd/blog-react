@@ -1,43 +1,27 @@
 import React from 'react';
 import radium from 'radium';
+import {connect} from 'react-redux';
 
-import imagesApi from '../../../api/images';
+import {fetchImages, deleteImage} from '../../../store/actions/imagesActions';
 import {Link} from 'react-router-dom';
 
+@connect(store => {
+  return {
+    images: store.images.images,
+  };
+})
 class Images extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      images: [],
-    };
+  componentWillMount() {
     this.fetchImages();
   }
 
   fetchImages() {
-    imagesApi
-      .getImages()
-      .then(res => {
-        this.setState({
-          images: res.data,
-        });
-      });
+    this.props.dispatch(fetchImages());
   }
 
   deleteById(e, id) {
     e.preventDefault();
-    imagesApi
-      .deleteById(id)
-      .then(res => {
-        let newimages = this.state.images.filter(i => {
-          return i.id != id;
-        });
-        this.setState({
-          images: newimages,
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.props.dispatch(deleteImage(id));
   }
 
   imageStyle() {
@@ -48,7 +32,7 @@ class Images extends React.Component {
 
   renderImages() {
     return this
-      .state
+      .props
       .images
       .map(i => {
         return (

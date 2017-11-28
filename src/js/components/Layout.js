@@ -33,7 +33,6 @@ import LayoutStyle from '../styles/layout';
 class Layout extends React.Component {
   constructor() {
     super();
-
     meta.setTitle(null);
     meta.setDescription(null);
 

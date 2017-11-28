@@ -44,10 +44,10 @@ export const imagesReducer = (state = initialState, action) => {
       };
     }
     case DELETE_IMAGE: {
-      let filter = i => i.id != action.payload.id;
+      let filter = i => i.id != action.payload;
       let image = state.image;
       let images = state.images.filter(filter);
-      if (action.payload.id == image.id) {
+      if (action.id == image.id) {
         Object.assign(image, action.payload);
       }
       state = {
@@ -55,9 +55,6 @@ export const imagesReducer = (state = initialState, action) => {
         images: images,
         image: image,
       };
-    }
-    case ADD_IMAGE: {
-
     }
   }
   return state;
