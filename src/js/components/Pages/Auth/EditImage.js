@@ -1,39 +1,36 @@
+import React from 'react';
 import NewImage from './NewImage';
 import radium from 'radium';
+import {connect} from 'react-redux';
 
-import imgApi from '../../../api/images';
+import {fetchImage, updateImage} from '../../../store/actions/imagesActions';
+import ImageForm from '../../Partials/Forms/ImageForm';
 
-class EditImage extends NewImage {
-  constructor(props) {
-    super(props);
-
+@connect(store => {
+  return {
+    image: store.images.image,
+  };
+})
+class EditImage extends React.Component {
+  componentWillMount() {
     this.fetchImage();
   }
 
   fetchImage() {
-    imgApi
-      .getById(this.props.match.params.id)
-      .then(res => {
-        this.setState({
-          name: res.data.name,
-          imgSrc: res.data.path,
-        });
-      });
+    this.props.dispatch(fetchImage(this.props.match.params.id));
   }
 
-  handleSubmit(e) {
+  handleSubmit(e, formData) {
     e.preventDefault();
-    let formData = new FormData();
-    formData.set('image', this.state.image);
-    formData.set('name', this.state.name);
-    imgApi
-      .update(formData, this.props.match.params.id)
-      .then(res => {
-        alert('Successfully updated the image');
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.props.dispatch(updateImage(formData, this.props.match.params.id));
+  }
+
+  render() {
+    return (
+      <ImageForm
+        handleSubmit={(e, data) => this.handleSubmit(e, data)}
+        image={this.props.image}/>
+    );
   }
 }
 

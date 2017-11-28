@@ -41,7 +41,7 @@ export function newImage(data) {
     imagesApi
       .new(data)
       .then(res => {
-        dispatch({type: ADD_IMAGE, payload: res.data});
+        console.log('added');
       })
       .catch(err => {
         console.log('Err updating image', id, err);

@@ -1,87 +1,21 @@
 import React from 'react';
 import radium from 'radium';
+import {connect} from 'react-redux';
 
-import ImageUploader from 'react-images-upload';
+import ImageForm from '../../Partials/Forms/ImageForm';
+import {newImage} from '../../../store/actions/imagesActions';
 
-import imagesApi from '../../../api/images';
-import formStyle from '../../../styles/form';
-
+@connect()
 class NewImage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      image: '',
-      name: '',
-      imgSrc: '',
-    };
-  }
-
-  handleNameChange(e) {
-    this.setState({
-      name: e.target.value,
-    });
-  }
-
-  handleImageChange(e) {
-    let image = e.target.files[0];
-    let reader = new FileReader();
-
-    reader.onloadend = () => {
-      this.setState({
-        image: image,
-        imgSrc: reader.result,
-      });
-    };
-
-    reader.readAsDataURL(image);
-  }
-
-  handleSubmit(e) {
+  handleSubmit(e, formData) {
     e.preventDefault();
-    let formData = new FormData();
-    formData.set('image', this.state.image);
-    formData.set('name', this.state.name);
-    imagesApi
-      .new(formData)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    console.log(this.state);
+    this.props.dispatch(newImage(formData));
   }
 
   render() {
     return (
-      <form onSubmit={e => this.handleSubmit(e)}>
-        <div
-          style={formStyle.formGroupStyle()}>
-          <label>Name</label>
-          <input
-            style={formStyle.smallTextStyle()}
-            value={this.state.name}
-            onChange={e => this.handleNameChange(e)}
-            autoFocus="true"
-            type="text"/>
-        </div>
-        <div
-          style={formStyle.formGroupStyle()}>
-          <input
-            accept="image/*"
-            type="file"
-            onChange={e => this.handleImageChange(e)}/>
-        </div>
-        <div
-          style={formStyle.formGroupStyle()}>
-          <button type="submit">
-            Submit
-          </button>
-        </div>
-        <div style={formStyle.formGroupStyle()}>
-          <img src={this.state.imgSrc}/>
-        </div>
-      </form>
+      <ImageForm
+        handleSubmit={(e, data) => this.handleSubmit(e, data)}/>
     );
   }
 }
