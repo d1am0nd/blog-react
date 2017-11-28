@@ -1,6 +1,7 @@
 import postsApi from '../../api/posts';
 
 import {
+  NEW_POST,
   SET_POSTS,
   SET_POST,
   SET_MY_POSTS,
@@ -47,6 +48,19 @@ export function fetchMyPosts() {
       })
       .catch(err => {
         console.log('err fetching my posts', err);
+      });
+  };
+};
+
+export function newPost(post) {
+  return function(dispatch, store) {
+    postsApi
+      .new(post)
+      .then(res => {
+        dispatch({type: NEW_POST, payload: res.data});
+      })
+      .catch(err => {
+        console.log('Err updating the user', err);
       });
   };
 };

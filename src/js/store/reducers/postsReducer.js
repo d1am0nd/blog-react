@@ -1,4 +1,5 @@
 import {
+  NEW_POST,
   SET_POSTS,
   SET_POST,
   SET_MY_POSTS,
@@ -34,20 +35,32 @@ const postsReducer = (state = initialState, action) => {
         myPosts: action.payload,
       };
     }
+    case SET_POST: {
+      state = {
+        ...state,
+        post: action.payload,
+      };
+      break;
+    }
     case UPDATE_POST: {
-        let filter = i => i.id != action.payload.id;
-        let post = state.post;
-        let posts = state.posts.filter(filter);
-        let myPosts = state.myPosts.filter(filter);
-        if (action.payload.id == post.id) {
-          Object.assign(post, action.payload);
+      let filter = i => {
+        if (i.id != action.payload.id) {
+          return i;
         }
-        state = {
-          ...state,
-          posts: posts,
-          post: post,
-          myPosts: myPosts,
-        };
+        return action.payload;
+      };
+      let post = state.post;
+      let posts = state.posts.map(filter);
+      let myPosts = state.myPosts.map(filter);
+      if (action.payload.id == post.id) {
+        Object.assign(post, action.payload);
+      }
+      state = {
+        ...state,
+        posts: posts,
+        post: post,
+        myPosts: myPosts,
+      };
     }
     case DELETE_POST: {
       let filter = i => i.id !== action.payload;

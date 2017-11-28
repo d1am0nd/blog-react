@@ -1,12 +1,18 @@
 import React from 'react';
 import radium from 'radium';
+import {connect} from 'react-redux';
 
 import PostForm from '../../Partials/Forms/PostForm';
 
-import postApi from '../../../api/posts';
+import {newPost} from '../../../store/actions/postsActions';
 
 import helpers from '../../../helpers/index';
 
+@connect(state => {
+  return {
+
+  };
+})
 class NewPost extends React.Component {
   constructor() {
     super();
@@ -19,11 +25,7 @@ class NewPost extends React.Component {
     } else {
       data.published_at.Valid = true;
     }
-    postApi
-      .new(data)
-      .then(res => {
-        alert('Sucessfully updated post');
-      });
+    this.props.dispatch(newPost(data));
   }
 
   render() {
