@@ -11,11 +11,6 @@ import {
 
 import helpers from '../../../helpers/index';
 
-@connect(state => {
-  return {
-    post: state.posts.post,
-  };
-})
 class Edit extends React.Component {
   componentWillMount() {
     this.fetchPost();
@@ -66,4 +61,8 @@ class Edit extends React.Component {
   }
 }
 
-export default radium(Edit);
+export default connect(state => {
+  return {
+    post: state.posts.post,
+  };
+})(radium(Edit));

@@ -18,6 +18,7 @@ class Meta {
       this.meta.title = title + this.separator + this.defaultTitle;
     }
 
+    if (typeof document === 'undefined') return;
     document
       .getElementById('meta-title')
       .innerHTML = this.meta.title;
@@ -33,6 +34,7 @@ class Meta {
       this.meta.desc = desc;
     }
 
+    if (typeof document === 'undefined') return;
     document
       .getElementById('meta-description')
       .setAttribute('content', this.meta.desc);
@@ -48,6 +50,7 @@ class Meta {
       this.meta.img = img;
     }
 
+    if (typeof document === 'undefined') return;
     document
       .getElementById('meta-og-image')
       .setAttribute('content', this.meta.img);

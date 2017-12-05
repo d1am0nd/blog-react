@@ -12,7 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix
-  .setPublicPath('public')
+  .setPublicPath('./')
   .webpackConfig({
     module: {
       rules: [
@@ -29,5 +29,5 @@ mix
     }
   })
   .copy('src/static', './public')
-  .react('src/js/app.js', 'js');
+  .react('src/js/index.js', 'public/js/app.js');
   // .sass('src/scss/main.scss', 'css');

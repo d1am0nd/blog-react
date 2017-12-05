@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import ImageForm from '../../Partials/Forms/ImageForm';
 import {newImage} from '../../../store/actions/imagesActions';
 
-@connect()
 class NewImage extends React.Component {
   handleSubmit(e, formData) {
     e.preventDefault();
@@ -20,4 +19,4 @@ class NewImage extends React.Component {
   }
 }
 
-export default radium(NewImage);
+export default connect(radium(NewImage));

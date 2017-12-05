@@ -4,12 +4,6 @@ import {connect} from 'react-redux';
 
 import formStyle from '../../../styles/form';
 
-@radium()
-@connect(state => {
-  return {
-    image: state.images.image,
-  };
-})
 class ImageForm extends React.Component {
   constructor(props) {
     super(props);
@@ -107,4 +101,8 @@ class ImageForm extends React.Component {
     );
   }
 }
-export default ImageForm;
+export default connect(state => {
+  return {
+    image: state.images.image,
+  };
+})(radium(ImageForm));

@@ -5,11 +5,6 @@ import {connect} from 'react-redux';
 import {fetchImages, deleteImage} from '../../../store/actions/imagesActions';
 import {Link} from 'react-router-dom';
 
-@connect(store => {
-  return {
-    images: store.images.images,
-  };
-})
 class Images extends React.Component {
   componentWillMount() {
     this.fetchImages();
@@ -58,4 +53,8 @@ class Images extends React.Component {
   }
 }
 
-export default radium(Images);
+export default connect(store => {
+  return {
+    images: store.images.images,
+  };
+})(radium(Images));

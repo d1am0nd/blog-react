@@ -6,11 +6,6 @@ import {connect} from 'react-redux';
 import {fetchImage, updateImage} from '../../../store/actions/imagesActions';
 import ImageForm from '../../Partials/Forms/ImageForm';
 
-@connect(store => {
-  return {
-    image: store.images.image,
-  };
-})
 class EditImage extends React.Component {
   componentWillMount() {
     this.fetchImage();
@@ -34,4 +29,8 @@ class EditImage extends React.Component {
   }
 }
 
-export default radium(EditImage);
+export default connect(store => {
+  return {
+    image: store.images.image,
+  };
+})(radium(EditImage));

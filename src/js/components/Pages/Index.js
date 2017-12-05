@@ -7,13 +7,11 @@ import {fetchPosts} from '../../store/actions/postsActions';
 
 import {Link} from 'react-router-dom';
 
-@connect(store => {
-  return {
-    posts: store.posts.posts,
-  };
-})
 class Index extends React.Component {
-  componentWillMount() {
+  static fetchData(store) {
+    return store.dispatch(fetchPosts());
+  }
+  componentDidMount() {
     this.props.dispatch(fetchPosts());
   }
 
@@ -54,6 +52,7 @@ class Index extends React.Component {
   }
 
   renderPosts() {
+    console.log(this.props);
     return this
       .props
       .posts
@@ -88,4 +87,13 @@ class Index extends React.Component {
   }
 }
 
-export default radium(Index);
+export default connect(state => {
+  console.log('state', state);
+  return {
+    posts: state.posts.posts,
+  };
+}, dispatch => {
+  return {
+    fetchPosts: dispatch(fetchPosts()),
+  };
+})(radium(Index));

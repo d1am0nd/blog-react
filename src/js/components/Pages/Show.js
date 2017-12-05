@@ -11,11 +11,6 @@ import {Link} from 'react-router-dom';
 
 import meta from '../../meta/meta';
 
-@connect(state => {
-  return {
-    post: state.posts.post,
-  };
-})
 class Show extends React.Component {
   componentWillMount() {
     this.fetchPost();
@@ -99,4 +94,8 @@ class Show extends React.Component {
   }
 }
 
-export default radium(Show);
+export default connect(state => {
+  return {
+    post: state.posts.post,
+  };
+})(radium(Show));

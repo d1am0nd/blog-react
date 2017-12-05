@@ -8,11 +8,6 @@ import {newPost} from '../../../store/actions/postsActions';
 
 import helpers from '../../../helpers/index';
 
-@connect(state => {
-  return {
-
-  };
-})
 class NewPost extends React.Component {
   constructor() {
     super();
@@ -39,4 +34,8 @@ class NewPost extends React.Component {
   }
 }
 
-export default radium(NewPost);
+export default connect(state => {
+  return {
+
+  };
+})(radium(NewPost));

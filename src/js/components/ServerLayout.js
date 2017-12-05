@@ -14,7 +14,7 @@ import EditImage from './Pages/Auth/EditImage';
 
 import AdminHeader from './Partials/AdminHeader';
 
-import {Route, BrowserRouter as Router} from 'react-router-dom';
+import {Route, StaticRouter as Router} from 'react-router-dom';
 
 import {fetchMyPosts, deletePost} from '../store/actions/postsActions';
 import {login, logout} from '../store/actions/userActions';
@@ -34,7 +34,7 @@ class Layout extends React.Component {
     this.styles = new LayoutStyle();
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (auth.loggedIn()) {
       this.props.dispatch(fetchMyPosts());
     }
@@ -91,7 +91,7 @@ class Layout extends React.Component {
 
   render() {
     return (
-      <Router>
+      <Router context={this.props.context} location={this.props.location}>
         <div style={this.getStyles()}>
           <Title text={'My Programming Blog'}/>
           {this.renderAdminPanel()}

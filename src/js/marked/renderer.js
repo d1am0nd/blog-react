@@ -9,6 +9,7 @@ renderer.link = (href, title, text) => {
     try {
       prot = decodeURIComponent(unescape(href))
         .replace(/[^\w:]/g, '')
+        .toString()
         .toLowerCase();
     } catch (e) {
       return '';
