@@ -1,6 +1,7 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
 import postApi from '../../api/posts';
 import {fetchPosts} from '../../store/actions/postsActions';
@@ -52,7 +53,6 @@ class Index extends React.Component {
   }
 
   renderPosts() {
-    console.log(this.props);
     return this
       .props
       .posts
@@ -87,13 +87,8 @@ class Index extends React.Component {
   }
 }
 
-export default connect(state => {
-  console.log('state', state);
+export default withRouter(connect(state => {
   return {
     posts: state.posts.posts,
   };
-}, dispatch => {
-  return {
-    fetchPosts: dispatch(fetchPosts()),
-  };
-})(radium(Index));
+})(radium(Index)));

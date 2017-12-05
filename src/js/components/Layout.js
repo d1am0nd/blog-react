@@ -2,6 +2,7 @@ import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
 
+import Routes from './Routes';
 import Title from './Layout/Title';
 import Index from './Pages/Index';
 import Show from './Pages/Show';
@@ -14,7 +15,7 @@ import EditImage from './Pages/Auth/EditImage';
 
 import AdminHeader from './Partials/AdminHeader';
 
-import {Route, BrowserRouter as Router} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 import {fetchMyPosts, deletePost} from '../store/actions/postsActions';
 import {login, logout} from '../store/actions/userActions';
@@ -91,23 +92,11 @@ class Layout extends React.Component {
 
   render() {
     return (
-      <Router>
-        <div style={this.getStyles()}>
-          <Title text={'My Programming Blog'}/>
-          {this.renderAdminPanel()}
-          <Route exact={true} path="/" component={Index}/>
-          <Route exact={true} path="/posts/write" component={NewPost}/>
-          <Route exact={true} path="/posts/:slug" component={Show}/>
-          <Route exact={true} path="/posts/edit/:slug" component={Edit}/>
-          <Route exact={true} path="/admin/images" component={Images}/>
-          <Route exact={true} path="/admin/images/new" component={NewImage}/>
-          <Route
-            exact={true}
-            path="/admin/images/edit/:id"
-            component={EditImage}/>
-          {this.renderLogin()}
-        </div>
-      </Router>
+      <div style={this.getStyles()}>
+        <Title text={'My Programming Blog'}/>
+        {this.renderAdminPanel()}
+        <Routes/>
+      </div>
     );
   }
 }
