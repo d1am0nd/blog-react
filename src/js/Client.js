@@ -9,9 +9,9 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <Router>
-          <StyleRoot><Layout/></StyleRoot>
-        </Router>
+        <StyleRoot>
+          <Router><Layout/></Router>
+        </StyleRoot>
       </Provider>
     );
   }

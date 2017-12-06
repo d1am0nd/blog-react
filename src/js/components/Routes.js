@@ -19,31 +19,24 @@ class Routes extends React.Component {
     return (
       <div>
         <Switch>
-          <Route exact={true} path="/" component={Index}/>
-          <Route exact={true} path="/posts/write" component={NewPost}/>
-          <Route exact={true} path="/posts/:slug" component={Show}/>
-          <Route exact={true} path="/posts/edit/:slug" component={Edit}/>
-          <Route exact={true} path="/admin/images" component={Images}/>
-          <Route exact={true} path="/admin/images/new" component={NewImage}/>
+          <Route exact path="/" component={Index}/>
+          <Route exact path="/posts/write" component={NewPost}/>
+          <Route exact path="/posts/:slug" component={Show}/>
+          <Route exact path="/posts/edit/:slug" component={Edit}/>
+          <Route exact path="/admin/images" component={Images}/>
+          <Route exact path="/admin/images/new" component={NewImage}/>
           <Route
-            exact={true}
+            exact
             path="/admin/images/edit/:id"
             component={EditImage}/>
+          <Route
+            exact
+            path="/login"
+            component={Login}/>
         </Switch>
       </div>
     );
   }
-}
-export default Routes;
-/*
-      <Route
-        exact={true}
-        path="/login"
-        render={(props) => {
-            return <Login
-              {...props}
-              handleSubmit={(e, creds) => this.login(e, creds)}/>;
-          }
-        }/>
+};
 
- */
+export default Routes;

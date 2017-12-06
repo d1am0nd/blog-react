@@ -4,18 +4,10 @@ import {connect} from 'react-redux';
 
 import Routes from './Routes';
 import Title from './Layout/Title';
-import Index from './Pages/Index';
-import Show from './Pages/Show';
-import Login from './Pages/Auth/Login';
-import Edit from './Pages/Auth/Edit';
-import NewPost from './Pages/Auth/NewPost';
-import Images from './Pages/Auth/Images';
-import NewImage from './Pages/Auth/NewImage';
-import EditImage from './Pages/Auth/EditImage';
 
 import AdminHeader from './Partials/AdminHeader';
 
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, withRouter} from 'react-router-dom';
 
 import {fetchMyPosts, deletePost} from '../store/actions/postsActions';
 import {login, logout} from '../store/actions/userActions';
@@ -101,8 +93,8 @@ class Layout extends React.Component {
   }
 }
 
-export default connect(store => {
+export default withRouter(connect(store => {
   return {
      ...store,
   };
-})(radium(Layout));
+})(radium(Layout)));

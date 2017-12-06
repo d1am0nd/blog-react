@@ -1,5 +1,8 @@
 import React from 'react';
 import radium from 'radium';
+import {connect} from 'react-redux';
+
+import {login} from '../../../store/actions/userActions';
 
 import LoginForm from '../../Partials/Forms/LoginForm';
 
@@ -9,9 +12,7 @@ class Login extends React.Component {
   }
 
   handleSubmit(e, creds) {
-    if (this.props.handleSubmit) {
-      this.props.handleSubmit(e, creds);
-    }
+    this.props.login(creds);
   }
 
   render() {
@@ -25,4 +26,10 @@ class Login extends React.Component {
   }
 }
 
-export default radium(Login);
+export default connect(store => {
+  return {};
+}, dispatch => {
+  return {
+    login: creds => dispatch(login(creds)),
+  };
+})(radium(Login));

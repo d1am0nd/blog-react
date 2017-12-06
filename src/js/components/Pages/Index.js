@@ -1,7 +1,6 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
 
 import postApi from '../../api/posts';
 import {fetchPosts} from '../../store/actions/postsActions';
@@ -87,8 +86,8 @@ class Index extends React.Component {
   }
 }
 
-export default withRouter(connect(state => {
+export default connect(state => {
   return {
     posts: state.posts.posts,
   };
-})(radium(Index)));
+})(radium(Index));

@@ -8,7 +8,7 @@ import {newImage} from '../../../store/actions/imagesActions';
 class NewImage extends React.Component {
   handleSubmit(e, formData) {
     e.preventDefault();
-    this.props.dispatch(newImage(formData));
+    this.props.postNewImage(formData);
   }
 
   render() {
@@ -19,4 +19,10 @@ class NewImage extends React.Component {
   }
 }
 
-export default connect(radium(NewImage));
+export default connect(store => {
+  return {};
+}, dispatch => {
+  return {
+    postNewImage: (formData) => dispatch(newImage(formData)),
+  };
+})(radium(NewImage));
