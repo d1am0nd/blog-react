@@ -5,21 +5,25 @@ import {fetchMyPosts} from './postsActions';
 
 export function login(creds) {
   return function(dispatch) {
-    authApi
-      .login(creds)
-      .then(res => {
-        let user = res.data;
-        let token = res.headers.authorization;
-        auth.login(user, token);
+    return new Promise((resolve, reject) => {
+      authApi
+        .login(creds)
+        .then(res => {
+          let user = res.data;
+          let token = res.headers.authorization;
+          auth.login(user, token);
 
-        dispatch({type: SET_USER, payload: user});
-        dispatch(fetchMyPosts());
-      })
-      .catch(err => {
-        console.log('Err logging in', err);
-      });
+          dispatch({type: SET_USER, payload: user});
+          dispatch(fetchMyPosts());
+          resolve(user);
+        })
+        .catch(err => {
+          console.log('Err logging in', err);
+          reject(err);
+        });
+    });
   };
-}
+};
 
 export function logout() {
   return function(dispatch) {

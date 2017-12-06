@@ -1,11 +1,12 @@
 import axios from 'axios';
 import auth from '../auth/auth';
+import p from './params';
 
-const POST_NEW_URL = '/api/images/create';
-const POST_EDIT_URL = '/api/images/edit/';
-const GET_IMAGES_URL = '/api/images/all';
-const GET_BY_ID_URL = '/api/images/single/';
-const GET_DELETE_BY_ID = '/api/images/delete/';
+const POST_NEW_URL = p.apiUrl + '/api/images/create';
+const POST_EDIT_URL = p.apiUrl + '/api/images/edit/';
+const GET_IMAGES_URL = p.apiUrl + '/api/images/all';
+const GET_BY_ID_URL = p.apiUrl + '/api/images/single/';
+const GET_DELETE_BY_ID = p.apiUrl + '/api/images/delete/';
 /*
 const GET_MINE_URL = '/api/images/my/all'
 const GET_PUBLISHED_URL = '/api/images/all'

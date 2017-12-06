@@ -11,6 +11,7 @@ class Index extends React.Component {
   static fetchData(store) {
     return store.dispatch(fetchPosts());
   }
+
   componentDidMount() {
     this.props.dispatch(fetchPosts());
   }

@@ -11,82 +11,107 @@ import {
 
 export function fetchPosts() {
   return function(dispatch, state) {
-    if (state().posts.posts.length > 0) {
-      return;
-    }
-    postsApi
-      .getPublished()
-      .then(res => {
-        dispatch({type: SET_POSTS, payload: res.data});
-      })
-      .catch(err => {
-        console.log('err fetching posts', err);
-      });
+    return new Promise((resolve, reject) => {
+      if (state().posts.posts.length > 0) {
+        resolve(state().posts.posts);
+        return;
+      }
+      postsApi
+        .getPublished()
+        .then(res => {
+          dispatch({type: SET_POSTS, payload: res.data});
+          resolve(res.data);
+        })
+        .catch(err => {
+          console.log('err fetching posts', err);
+          reject(err);
+        });
+    });
   };
 };
 
 export function fetchPostBySlug(slug) {
   return function(dispatch) {
-    dispatch({type: SET_POST, payload: {}});
-    postsApi
-      .findBySlug(slug)
-      .then(res => {
-        dispatch({type: SET_POST, payload: res.data});
-      })
-      .catch(err => {
-        console.log('err fetchinig a post', err);
-      });
+    return new Promise((resolve, reject) => {
+      dispatch({type: SET_POST, payload: {}});
+      postsApi
+        .findBySlug(slug)
+        .then(res => {
+          dispatch({type: SET_POST, payload: res.data});
+          resolve(res.data);
+        })
+        .catch(err => {
+          console.log('err fetchinig a post', err);
+          reject(err);
+        });
+    });
   };
 };
 
 export function fetchMyPosts() {
   return function(dispatch) {
-    postsApi
-      .getMine()
-      .then(res => {
-        dispatch({type: SET_MY_POSTS, payload: res.data});
-      })
-      .catch(err => {
-        console.log('err fetching my posts', err);
-      });
+    return new Promise((resolve, reject) => {
+      postsApi
+        .getMine()
+        .then(res => {
+          dispatch({type: SET_MY_POSTS, payload: res.data});
+          resolve(res.data);
+        })
+        .catch(err => {
+          console.log('err fetching my posts', err);
+          reject(err);
+        });
+    });
   };
 };
 
 export function newPost(post) {
   return function(dispatch, store) {
-    postsApi
-      .new(post)
-      .then(res => {
-        dispatch({type: NEW_POST, payload: res.data});
-      })
-      .catch(err => {
-        console.log('Err updating the user', err);
-      });
+    return new Promise((resolve, reject) => {
+      postsApi
+        .new(post)
+        .then(res => {
+          dispatch({type: NEW_POST, payload: res.data});
+          resolve(res.data);
+        })
+        .catch(err => {
+          console.log('Err updating the user', err);
+          reject(err);
+        });
+    });
   };
 };
 
 export function updatePost(post) {
   return function(dispatch, store) {
-    postsApi
-      .update(post)
-      .then(res => {
-        dispatch({type: UPDATE_POST, payload: post});
-      })
-      .catch(err => {
-        console.log('Err updating the user', err);
-      });
+    return new Promise((resolve, reject) => {
+      postsApi
+        .update(post)
+        .then(res => {
+          dispatch({type: UPDATE_POST, payload: post});
+          resolve(res.data);
+        })
+        .catch(err => {
+          console.log('Err updating the user', err);
+          reject(err);
+        });
+    });
   };
 };
 
 export function deletePost(id) {
   return function(dispatch) {
-    postsApi
-      .delete(id)
-      .then(res => {
-        dispatch({type: DELETE_POST, payload: id});
-      })
-      .catch(err => {
-        console.log('Err deleting a post', err);
-      });
+    return new Promise((resolve, reject) => {
+      postsApi
+        .delete(id)
+        .then(res => {
+          dispatch({type: DELETE_POST, payload: id});
+          resolve(res.data);
+        })
+        .catch(err => {
+          console.log('Err deleting a post', err);
+          reject(err);
+        });
+    });
   };
 };

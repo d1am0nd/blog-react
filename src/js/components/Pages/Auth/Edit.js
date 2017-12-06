@@ -16,6 +16,10 @@ class Edit extends React.Component {
     this.fetchPost();
   }
 
+  // static fetchData(store) {
+
+  // }
+
   componentWillUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       this.fetchPost();

@@ -1,6 +1,7 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
+import {renderRoutes} from 'react-router-config';
 
 import Routes from './Routes';
 import Title from './Layout/Title';
@@ -19,12 +20,16 @@ import meta from '../meta/meta';
 import LayoutStyle from '../styles/layout';
 
 class Layout extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     meta.setTitle(null);
     meta.setDescription(null);
 
     this.styles = new LayoutStyle();
+  }
+
+  static fetchData(store) {
+    return store.dispatch(fetchMyPosts());
   }
 
   componentWillMount() {
@@ -65,29 +70,12 @@ class Layout extends React.Component {
     );
   }
 
-  renderLogin() {
-    if (auth.loggedIn()) {
-      return '';
-    }
-    return (
-      <Route
-        exact={true}
-        path="/login"
-        render={(props) => {
-            return <Login
-              {...props}
-              handleSubmit={(e, creds) => this.login(e, creds)}/>;
-          }
-        }/>
-    );
-  }
-
   render() {
     return (
       <div style={this.getStyles()}>
         <Title text={'My Programming Blog'}/>
         {this.renderAdminPanel()}
-        <Routes/>
+        {Routes}
       </div>
     );
   }

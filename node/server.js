@@ -1,16 +1,29 @@
 import express from "express";
 import React from "react";
-import { renderToString } from "react-dom/server";
-import {Provider} from 'react-redux';
+import {renderToString} from "react-dom/server";
 import App from "../src/js/Server";
 import Test from "../src/js/components/Test";
 import store from '../src/js/store';
-console.log(store);
+import { matchRoutes, renderRoutes } from 'react-router-config';
+import routes from '../src/js/components/Routes';
 const app = express();
 
 app.use(express.static("../public"));
 
 app.get("*", (req, res) => {
+  const branch = matchRoutes(routes, req.url);
+  const promises = branch.map(({route}) => {
+    let fetchData = route.props.component.fetchData;
+    return fetchData instanceof Function ? fetchData(store) : Promise.resolve(null)
+  });
+  Promise.all(promises)
+    .then((data) => {
+      console.log('DOOOOOOOOOOOOOOOOOOOOONE');
+    })
+    .catch(err => {
+      console.log('ERRRRRRRRRRRRRRRRRRRRRRRRRR');
+    });
+
   let preloadedState = store.getState();
   let html = `
     <!DOCTYPE html>
@@ -34,11 +47,11 @@ app.get("*", (req, res) => {
     <body class="landing">
         <div id="root">
         ${renderToString(
-          <Provider store={store}>
-            <App
-              radiumConfig={{userAgent: req.headers['user-agent']}}
-              location={req.url}/>
-          </Provider>
+          <App
+            store={store}
+            context={{}}
+            radiumConfig={{userAgent: req.headers['user-agent']}}
+            location={req.url}/>
         )}
         </div>
         <script>
