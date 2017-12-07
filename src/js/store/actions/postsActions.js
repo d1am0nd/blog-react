@@ -12,10 +12,6 @@ import {
 export function fetchPosts() {
   return function(dispatch, state) {
     return new Promise((resolve, reject) => {
-      if (state().posts.posts.length > 0) {
-        resolve(state().posts.posts);
-        return;
-      }
       postsApi
         .getPublished()
         .then(res => {
@@ -23,7 +19,6 @@ export function fetchPosts() {
           resolve(res.data);
         })
         .catch(err => {
-          console.log('err fetching posts', err);
           reject(err);
         });
     });
@@ -31,7 +26,7 @@ export function fetchPosts() {
 };
 
 export function fetchPostBySlug(slug) {
-  return function(dispatch) {
+  return function(dispatch, store) {
     return new Promise((resolve, reject) => {
       dispatch({type: SET_POST, payload: {}});
       postsApi
@@ -41,7 +36,6 @@ export function fetchPostBySlug(slug) {
           resolve(res.data);
         })
         .catch(err => {
-          console.log('err fetchinig a post', err);
           reject(err);
         });
     });
@@ -58,7 +52,6 @@ export function fetchMyPosts() {
           resolve(res.data);
         })
         .catch(err => {
-          console.log('err fetching my posts', err);
           reject(err);
         });
     });
@@ -75,7 +68,6 @@ export function newPost(post) {
           resolve(res.data);
         })
         .catch(err => {
-          console.log('Err updating the user', err);
           reject(err);
         });
     });
@@ -92,7 +84,6 @@ export function updatePost(post) {
           resolve(res.data);
         })
         .catch(err => {
-          console.log('Err updating the user', err);
           reject(err);
         });
     });
@@ -109,7 +100,6 @@ export function deletePost(id) {
           resolve(res.data);
         })
         .catch(err => {
-          console.log('Err deleting a post', err);
           reject(err);
         });
     });

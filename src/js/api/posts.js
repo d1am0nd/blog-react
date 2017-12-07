@@ -1,13 +1,14 @@
 import axios from 'axios';
 import auth from '../auth/auth';
 import qs from 'qs';
+import p from './params';
 
-const GET_PUBLISHED_URL = '/api/posts/all';
-const GET_BY_SLUG_URL = '/api/posts/single/';
-const GET_MINE_URL = '/api/posts/my/all';
-const POST_EDIT_URL = '/api/posts/edit/';
-const POST_NEW_URL = '/api/posts/create';
-const DELETE_ID = '/api/posts/delete/';
+const GET_PUBLISHED_URL = p.apiUrl + '/api/posts/all';
+const GET_BY_SLUG_URL = p.apiUrl + '/api/posts/single/';
+const GET_MINE_URL = p.apiUrl + '/api/posts/my/all';
+const POST_EDIT_URL = p.apiUrl + '/api/posts/edit/';
+const POST_NEW_URL = p.apiUrl + '/api/posts/create';
+const DELETE_ID = p.apiUrl + '/api/posts/delete/';
 
 export default {
   new(post) {

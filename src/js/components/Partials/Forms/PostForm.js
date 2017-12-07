@@ -29,7 +29,7 @@ class PostForm extends React.Component {
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidMount(prevProps) {
     if (prevProps.post != this.props.post) {
       this.setState({
         post: this.props.post,

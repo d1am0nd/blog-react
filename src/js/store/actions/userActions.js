@@ -18,7 +18,6 @@ export function login(creds) {
           resolve(user);
         })
         .catch(err => {
-          console.log('Err logging in', err);
           reject(err);
         });
     });

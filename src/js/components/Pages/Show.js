@@ -12,7 +12,14 @@ import {Link} from 'react-router-dom';
 import meta from '../../meta/meta';
 
 class Show extends React.Component {
-  componentWillMount() {
+  static fetchData(store, url) {
+    let split = url.split('/');
+    let slug = split[split.length - 1];
+    console.log('slug', slug);
+    return store.dispatch(fetchPostBySlug(slug));
+  }
+
+  componentDidMount() {
     this.fetchPost();
   }
 

@@ -32,7 +32,7 @@ class Layout extends React.Component {
     return store.dispatch(fetchMyPosts());
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (auth.loggedIn()) {
       this.props.dispatch(fetchMyPosts());
     }

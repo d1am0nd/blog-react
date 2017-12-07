@@ -7,7 +7,7 @@ import {fetchImage, updateImage} from '../../../store/actions/imagesActions';
 import ImageForm from '../../Partials/Forms/ImageForm';
 
 class EditImage extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     this.fetchImage();
   }
 

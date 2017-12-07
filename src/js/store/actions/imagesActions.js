@@ -10,9 +10,6 @@ import {
 export function fetchImages() {
   return function(dispatch, state) {
     return new Promise((resolve, reject) => {
-      if (state().images.images.length > 0) {
-        return;
-      }
       imagesApi
         .getImages()
         .then(res => {
@@ -20,7 +17,6 @@ export function fetchImages() {
           resolve(res.data);
         })
         .catch(err => {
-          console.log('Err fetching images', err);
           reject(err);
         });
     });
@@ -37,7 +33,6 @@ export function fetchImage(id) {
           resolve(res.data);
         })
         .catch(err => {
-          console.log('Err fetching image', id, err);
           reject(err);
         });
     });
@@ -50,11 +45,9 @@ export function newImage(data) {
       imagesApi
         .new(data)
         .then(res => {
-          console.log('added');
           resolve(res.data);
         })
         .catch(err => {
-          console.log('Err updating image', id, err);
           reject(err);
         });
     });
@@ -71,7 +64,6 @@ export function deleteImage(id) {
           resolve(res.data);
         })
         .catch(err => {
-          console.log('Err deleting image', id, err);
           reject(err);
         });
     });
@@ -88,7 +80,6 @@ export function updateImage(data, id) {
           resolve(res.data);
         })
         .catch(err => {
-          console.log('Err updating image', id, err);
           reject(err);
         });
     });

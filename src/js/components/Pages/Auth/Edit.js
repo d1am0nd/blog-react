@@ -12,7 +12,7 @@ import {
 import helpers from '../../../helpers/index';
 
 class Edit extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     this.fetchPost();
   }
 

@@ -14,7 +14,19 @@ const reducers = combineReducers({
   users: userReducer,
   images: imagesReducer,
 });
-const middleware = applyMiddleware(promise(), thunk, createLogger());
+const middleware = applyMiddleware(thunk);
 const store = createStore(reducers, middleware);
 
 export default store;
+
+let clientStore = {};
+
+if (typeof window !== 'undefined') {
+  const is = window.__INITIAL_STATE__;
+  clientStore = createStore(
+    reducers, is, applyMiddleware(thunk)
+  );
+}
+export {
+  clientStore,
+};

@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './Client';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {connect, Provider} from 'react-redux';
-import store from './store';
+import {clientStore} from './store';
 
 const rootDom = document.getElementById('root');
 
-ReactDOM.render(
+ReactDOM.hydrate(
   (
-    <App store={store}/>
+    <App store={clientStore}/>
   ),
 rootDom);
