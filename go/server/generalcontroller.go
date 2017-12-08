@@ -7,7 +7,7 @@ import (
 )
 
 func Home(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-    http.ServeFile(w, r, "../public/index.html")
+    http.ServeFile(w, r, "../public/index2.html")
 }
 
 func serveFile(path string) httprouter.Handle {
