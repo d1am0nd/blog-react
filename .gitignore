@@ -2,6 +2,7 @@
 /config/jwt.json
 /config/page.json
 /config/env.json
+/config/api.json
 /node_modules
 /public/uploads
 /go/main

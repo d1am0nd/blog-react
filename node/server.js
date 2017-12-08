@@ -2,10 +2,8 @@ import express from "express";
 import React from "react";
 import {renderToString} from "react-dom/server";
 import App from "../src/js/Server";
-import Test from "../src/js/components/Test";
 import store from '../src/js/store';
 import {matchPath} from 'react-router';
-import { matchRoutes, renderRoutes } from 'react-router-config';
 import routes from '../src/js/components/Routes';
 const app = express();
 
