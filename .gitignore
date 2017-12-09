@@ -5,4 +5,7 @@
 /config/api.json
 /node_modules
 /public/uploads
+/public/js/app.js
+/server.js
+/server.js.map
 /go/main
