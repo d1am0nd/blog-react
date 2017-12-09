@@ -61,6 +61,10 @@ app.get("*", (req, res) => {
         </html>
       `;
       res.send(html);
+    })
+    .catch(err => {
+      console.log(err);
+      res.send(err);
     });
 
 });

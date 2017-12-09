@@ -1715,6 +1715,9 @@ app.get("*", function (req, res) {
       __self: _this
     })) + "</div>\n            <script>\n              window.__PRELOADED_STATE__ = " + JSON.stringify(preloadedState).replace(/</g, "\\u003c") + "\n            </script>\n            <script async src=\"/js/app.js\"></script>\n        </body>\n        </html>\n      ";
     res.send(html);
+  }).catch(function (err) {
+    console.log(err);
+    res.send(err);
   });
 });
 
