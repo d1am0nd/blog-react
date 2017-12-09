@@ -14,8 +14,9 @@ app.get("*", (req, res) => {
     if (matchPath(req.url, {path: r.props.path, exact: r.props.exact})) {
       let fetchData = r.props.component.fetchData;
       return fetchData instanceof Function ?
-        fetchData(store, req.url) : Promise.resolve(null);
+        true : false;
     }
+    return false;
   });
   let promises = []
   if (typeof matched !== 'undefined') {
@@ -69,7 +70,7 @@ app.get("*", (req, res) => {
 
 });
 
-let port = process.env.PORT || 3005;
+let port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log("Server is listening on", port);
 });
