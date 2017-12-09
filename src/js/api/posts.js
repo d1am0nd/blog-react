@@ -40,11 +40,11 @@ export default {
   },
 
   findBySlug(slug) {
-    return axios.get(GET_BY_SLUG_URL + slug, {
-      headers: {
-        'Authorization': auth.token,
-      },
-    });
+    let headers = {};
+    if (auth.loggedIn()) {
+      headers.Authorization = auth.token;
+    }
+    return axios.get(GET_BY_SLUG_URL + slug, {headers});
   },
 
   getMine() {
