@@ -1721,8 +1721,9 @@ app.get("*", function (req, res) {
   });
 });
 
-app.listen(__WEBPACK_IMPORTED_MODULE_7__config_env_json___default.a.nodePort || 3005, function () {
-  console.log("Server is listening");
+var port = __WEBPACK_IMPORTED_MODULE_7__config_env_json___default.a.nodePort || 3005;
+app.listen(port, function () {
+  console.log("Server is listening on ", port);
 });
 
 /***/ }),
