@@ -15,7 +15,6 @@ class Show extends React.Component {
   static fetchData(store, url) {
     let split = url.split('/');
     let slug = split[split.length - 1];
-    console.log('slug', slug);
     return store.dispatch(fetchPostBySlug(slug));
   }
 
@@ -30,7 +29,9 @@ class Show extends React.Component {
   }
 
   fetchPost() {
-    this.props.dispatch(fetchPostBySlug(this.props.match.params.slug));
+    if (this.props.dataLoaded) {
+      this.props.dispatch(fetchPostBySlug(this.props.match.params.slug));
+    }
   }
 
   content() {
@@ -104,5 +105,6 @@ class Show extends React.Component {
 export default connect(state => {
   return {
     post: state.posts.post,
+    dataLoaded: state.misc.dataLoaded,
   };
 })(radium(Show));

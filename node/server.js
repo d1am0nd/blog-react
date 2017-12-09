@@ -46,19 +46,17 @@ app.get("*", (req, res) => {
             <!-- <link rel="stylesheet" type="text/css" href="/vendor/bootstrap-3.3.7/css/bootstrap.min.css"/> -->
         </head>
         <body class="landing">
-            <div id="root">
-            ${renderToString(
+            <div id="root">${renderToString(
               <App
                 store={store}
                 context={{}}
                 radiumConfig={{userAgent: req.headers['user-agent']}}
                 location={req.url}/>
-            )}
-            </div>
-            <script async src="/js/app.js"></script>
+            )}</div>
             <script>
               window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
             </script>
+            <script async src="/js/app.js"></script>
         </body>
         </html>
       `;

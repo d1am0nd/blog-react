@@ -1,0 +1,1 @@
+export const SET_DATA_LOADED = 'SET_DATA_LOADED';

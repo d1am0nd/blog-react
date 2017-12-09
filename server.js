@@ -791,6 +791,7 @@ var routesArray2 = [{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reducers_postsReducer__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reducers_userReducer__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reducers_imagesReducer__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reducers_miscReducer__ = __webpack_require__(53);
 
 
 
@@ -802,10 +803,12 @@ var routesArray2 = [{
 
 
 
+
 var reducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["combineReducers"])({
   posts: __WEBPACK_IMPORTED_MODULE_4__reducers_postsReducer__["a" /* postsReducer */],
   users: __WEBPACK_IMPORTED_MODULE_5__reducers_userReducer__["a" /* userReducer */],
-  images: __WEBPACK_IMPORTED_MODULE_6__reducers_imagesReducer__["a" /* imagesReducer */]
+  images: __WEBPACK_IMPORTED_MODULE_6__reducers_imagesReducer__["a" /* imagesReducer */],
+  misc: __WEBPACK_IMPORTED_MODULE_7__reducers_miscReducer__["a" /* miscReducer */]
 });
 var middleware = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["applyMiddleware"])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk___default.a);
 var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["createStore"])(reducers, middleware);
@@ -815,7 +818,7 @@ var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["createStore"])(reducers,
 var clientStore = {};
 
 if (typeof window !== 'undefined') {
-  var is = window.__INITIAL_STATE__;
+  var is = window.__PRELOADED_STATE__;
   clientStore = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["createStore"])(reducers, is, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["applyMiddleware"])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk___default.a));
 }
 
@@ -1701,16 +1704,16 @@ app.get("*", function (req, res) {
 
   Promise.all(promises).then(function (data) {
     var preloadedState = __WEBPACK_IMPORTED_MODULE_4__src_js_store__["a" /* default */].getState();
-    var html = "\n        <!DOCTYPE html>\n        <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\n            <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n            <title id=\"meta-title\"></title>\n            <meta id=\"meta-og-title\" property=\"og:title\" content=\"\" />\n            <meta id=\"meta-description\" name=\"description\" content=\"\"/>\n            <meta id=\"meta-og-description\" property=\"og:description\" content=\"\"/>\n            <meta id=\"meta-og-image\" property=\"og:image\" content=\"\" />\n            <meta property=\"og:type\" content=\"website\" />\n            <!--[if lte IE 8]><script src=\"/css/ie/html5shiv.js\"></script><![endif]-->\n            <!-- <script src=\"/js/all_libs.js\"></script> -->\n            <!-- <link rel=\"stylesheet\" type=\"text/css\" href=\"/vendor/bootstrap-3.3.7/css/bootstrap.min.css\"/> -->\n        </head>\n        <body class=\"landing\">\n            <div id=\"root\">\n            " + Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__src_js_Server__["a" /* default */], {
+    var html = "\n        <!DOCTYPE html>\n        <html lang=\"en\">\n        <head>\n            <meta charset=\"utf-8\">\n            <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\n            <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n            <title id=\"meta-title\"></title>\n            <meta id=\"meta-og-title\" property=\"og:title\" content=\"\" />\n            <meta id=\"meta-description\" name=\"description\" content=\"\"/>\n            <meta id=\"meta-og-description\" property=\"og:description\" content=\"\"/>\n            <meta id=\"meta-og-image\" property=\"og:image\" content=\"\" />\n            <meta property=\"og:type\" content=\"website\" />\n            <!--[if lte IE 8]><script src=\"/css/ie/html5shiv.js\"></script><![endif]-->\n            <!-- <script src=\"/js/all_libs.js\"></script> -->\n            <!-- <link rel=\"stylesheet\" type=\"text/css\" href=\"/vendor/bootstrap-3.3.7/css/bootstrap.min.css\"/> -->\n        </head>\n        <body class=\"landing\">\n            <div id=\"root\">" + Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__src_js_Server__["a" /* default */], {
       store: __WEBPACK_IMPORTED_MODULE_4__src_js_store__["a" /* default */],
       context: {},
       radiumConfig: { userAgent: req.headers['user-agent'] },
       location: req.url, __source: {
         fileName: _jsxFileName,
-        lineNumber: 51
+        lineNumber: 50
       },
       __self: _this
-    })) + "\n            </div>\n            <script async src=\"/js/app.js\"></script>\n            <script>\n              window.__PRELOADED_STATE__ = " + JSON.stringify(preloadedState).replace(/</g, "\\u003c") + "\n            </script>\n        </body>\n        </html>\n      ";
+    })) + "</div>\n            <script>\n              window.__PRELOADED_STATE__ = " + JSON.stringify(preloadedState).replace(/</g, "\\u003c") + "\n            </script>\n            <script async src=\"/js/app.js\"></script>\n        </body>\n        </html>\n      ";
     res.send(html);
   });
 });
@@ -1868,7 +1871,9 @@ var Index = function (_React$Component) {
   _createClass(Index, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.props.dispatch(Object(__WEBPACK_IMPORTED_MODULE_4__store_actions_postsActions__["d" /* fetchPosts */])());
+      if (this.props.dataLoaded) {
+        this.props.dispatch(Object(__WEBPACK_IMPORTED_MODULE_4__store_actions_postsActions__["d" /* fetchPosts */])());
+      }
     }
   }, {
     key: 'linkStyle',
@@ -1924,7 +1929,7 @@ var Index = function (_React$Component) {
             to: '/posts/' + i.slug,
             key: i.id, __source: {
               fileName: _jsxFileName,
-              lineNumber: 61
+              lineNumber: 63
             },
             __self: _this2
           },
@@ -1934,7 +1939,7 @@ var Index = function (_React$Component) {
               key: i.id,
               style: _this2.wrapperStyle(), __source: {
                 fileName: _jsxFileName,
-                lineNumber: 65
+                lineNumber: 67
               },
               __self: _this2
             },
@@ -1942,7 +1947,7 @@ var Index = function (_React$Component) {
               'h2',
               { style: _this2.titleStyle(), __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 68
+                  lineNumber: 70
                 },
                 __self: _this2
               },
@@ -1952,7 +1957,7 @@ var Index = function (_React$Component) {
               'p',
               { style: _this2.summaryStyle(), __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 69
+                  lineNumber: 71
                 },
                 __self: _this2
               },
@@ -1962,7 +1967,7 @@ var Index = function (_React$Component) {
               'span',
               { style: _this2.moreStyle(), href: '#', __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 72
+                  lineNumber: 74
                 },
                 __self: _this2
               },
@@ -1980,7 +1985,7 @@ var Index = function (_React$Component) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 83
+            lineNumber: 85
           },
           __self: this
         },
@@ -1999,7 +2004,8 @@ var Index = function (_React$Component) {
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(function (state) {
   return {
-    posts: state.posts.posts
+    posts: state.posts.posts,
+    dataLoaded: state.misc.dataLoaded
   };
 })(__WEBPACK_IMPORTED_MODULE_1_radium___default()(Index)));
 
@@ -2284,7 +2290,9 @@ var Show = function (_React$Component) {
   }, {
     key: 'fetchPost',
     value: function fetchPost() {
-      this.props.dispatch(Object(__WEBPACK_IMPORTED_MODULE_5__store_actions_postsActions__["c" /* fetchPostBySlug */])(this.props.match.params.slug));
+      if (this.props.dataLoaded) {
+        this.props.dispatch(Object(__WEBPACK_IMPORTED_MODULE_5__store_actions_postsActions__["c" /* fetchPostBySlug */])(this.props.match.params.slug));
+      }
     }
   }, {
     key: 'content',
@@ -2345,7 +2353,7 @@ var Show = function (_React$Component) {
           key: this.props.post.id,
           style: this.wrapperStyle(), __source: {
             fileName: _jsxFileName,
-            lineNumber: 88
+            lineNumber: 89
           },
           __self: this
         },
@@ -2353,7 +2361,7 @@ var Show = function (_React$Component) {
           'h2',
           { style: this.titleStyle(), __source: {
               fileName: _jsxFileName,
-              lineNumber: 91
+              lineNumber: 92
             },
             __self: this
           },
@@ -2363,7 +2371,7 @@ var Show = function (_React$Component) {
           'p',
           { style: this.summaryStyle(), __source: {
               fileName: _jsxFileName,
-              lineNumber: 92
+              lineNumber: 93
             },
             __self: this
           },
@@ -2373,7 +2381,7 @@ var Show = function (_React$Component) {
           style: this.contentStyle(),
           dangerouslySetInnerHTML: { __html: this.content() }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 95
+            lineNumber: 96
           },
           __self: this
         })
@@ -2384,7 +2392,6 @@ var Show = function (_React$Component) {
     value: function fetchData(store, url) {
       var split = url.split('/');
       var slug = split[split.length - 1];
-      console.log('slug', slug);
       return store.dispatch(Object(__WEBPACK_IMPORTED_MODULE_5__store_actions_postsActions__["c" /* fetchPostBySlug */])(slug));
     }
   }]);
@@ -2394,7 +2401,8 @@ var Show = function (_React$Component) {
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(function (state) {
   return {
-    post: state.posts.post
+    post: state.posts.post,
+    dataLoaded: state.misc.dataLoaded
   };
 })(__WEBPACK_IMPORTED_MODULE_1_radium___default()(Show)));
 
@@ -3567,6 +3575,42 @@ var LayoutStyle = function () {
 /***/ (function(module, exports) {
 
 module.exports = require("react-router");
+
+/***/ }),
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return miscReducer; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const_misc__ = __webpack_require__(54);
+
+
+var initialState = {
+  dataLoaded: false
+};
+
+var miscReducer = function miscReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case __WEBPACK_IMPORTED_MODULE_0__const_misc__["a" /* SET_DATA_LOADED */]:
+      {
+        state = Object.assign({}, state, {
+          dataLoaded: action.payload
+        });
+      }
+  }
+  return state;
+};
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SET_DATA_LOADED; });
+var SET_DATA_LOADED = 'SET_DATA_LOADED';
 
 /***/ })
 /******/ ]);

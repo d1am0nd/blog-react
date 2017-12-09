@@ -13,7 +13,9 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchPosts());
+    if (this.props.dataLoaded) {
+      this.props.dispatch(fetchPosts());
+    }
   }
 
   linkStyle() {
@@ -90,5 +92,6 @@ class Index extends React.Component {
 export default connect(state => {
   return {
     posts: state.posts.posts,
+    dataLoaded: state.misc.dataLoaded,
   };
 })(radium(Index));
