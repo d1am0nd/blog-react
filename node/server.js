@@ -66,6 +66,7 @@ app.get("*", (req, res) => {
 
 });
 
-app.listen(env.nodePort || 3005, () => {
-  console.log("Server is listening");
+let port = env.nodePort || 3005;
+app.listen(port, () => {
+  console.log("Server is listening on ", port);
 });
