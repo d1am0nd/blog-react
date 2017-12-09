@@ -486,6 +486,8 @@ function updateImage(data, id) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__auth_auth__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__meta_meta__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__styles_layout__ = __webpack_require__(53);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Layout.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -576,15 +578,30 @@ var Layout = function (_React$Component) {
           return _this2.logout(e);
         },
         posts: this.props.posts.myPosts,
-        user: this.props.users.user });
+        user: this.props.users.user, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 65
+        },
+        __self: this
+      });
     }
   }, {
     key: 'render',
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { style: this.getStyles() },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Layout_Title__["a" /* default */], { text: 'My Programming Blog' }),
+        { style: this.getStyles(), __source: {
+            fileName: _jsxFileName,
+            lineNumber: 75
+          },
+          __self: this
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Layout_Title__["a" /* default */], { text: 'My Programming Blog', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 76
+          },
+          __self: this
+        }),
         this.renderAdminPanel(),
         __WEBPACK_IMPORTED_MODULE_4__Routes__["a" /* default */]
       );
@@ -623,6 +640,8 @@ var Layout = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Pages_Auth_EditImage__ = __webpack_require__(50);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Routes.js';
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -642,15 +661,55 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var routes = [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, key: '0', path: '/', component: __WEBPACK_IMPORTED_MODULE_3__Pages_Index__["a" /* default */] }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, key: '1', path: '/posts/write', component: __WEBPACK_IMPORTED_MODULE_7__Pages_Auth_NewPost__["a" /* default */] }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, key: '2', path: '/posts/:slug', component: __WEBPACK_IMPORTED_MODULE_4__Pages_Show__["a" /* default */] }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, key: '3', path: '/posts/edit/:slug', component: __WEBPACK_IMPORTED_MODULE_6__Pages_Auth_Edit__["a" /* default */] }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, key: '4', path: '/admin/images', component: __WEBPACK_IMPORTED_MODULE_8__Pages_Auth_Images__["a" /* default */] }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, key: '5', path: '/admin/images/new', component: __WEBPACK_IMPORTED_MODULE_9__Pages_Auth_NewImage__["a" /* default */] }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], {
+var routes = [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, key: '0', path: '/', component: __WEBPACK_IMPORTED_MODULE_3__Pages_Index__["a" /* default */], __source: {
+    fileName: _jsxFileName,
+    lineNumber: 15
+  },
+  __self: this
+}), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, key: '1', path: '/posts/write', component: __WEBPACK_IMPORTED_MODULE_7__Pages_Auth_NewPost__["a" /* default */], __source: {
+    fileName: _jsxFileName,
+    lineNumber: 16
+  },
+  __self: this
+}), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, key: '2', path: '/posts/:slug', component: __WEBPACK_IMPORTED_MODULE_4__Pages_Show__["a" /* default */], __source: {
+    fileName: _jsxFileName,
+    lineNumber: 17
+  },
+  __self: this
+}), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, key: '3', path: '/posts/edit/:slug', component: __WEBPACK_IMPORTED_MODULE_6__Pages_Auth_Edit__["a" /* default */], __source: {
+    fileName: _jsxFileName,
+    lineNumber: 18
+  },
+  __self: this
+}), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, key: '4', path: '/admin/images', component: __WEBPACK_IMPORTED_MODULE_8__Pages_Auth_Images__["a" /* default */], __source: {
+    fileName: _jsxFileName,
+    lineNumber: 19
+  },
+  __self: this
+}), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, key: '5', path: '/admin/images/new', component: __WEBPACK_IMPORTED_MODULE_9__Pages_Auth_NewImage__["a" /* default */], __source: {
+    fileName: _jsxFileName,
+    lineNumber: 20
+  },
+  __self: this
+}), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], {
   exact: true,
   key: '6',
   path: '/admin/images/edit/:id',
-  component: __WEBPACK_IMPORTED_MODULE_10__Pages_Auth_EditImage__["a" /* default */] }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], {
+  component: __WEBPACK_IMPORTED_MODULE_10__Pages_Auth_EditImage__["a" /* default */], __source: {
+    fileName: _jsxFileName,
+    lineNumber: 21
+  },
+  __self: this
+}), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], {
   exact: true,
   key: '7',
   path: '/login',
-  component: __WEBPACK_IMPORTED_MODULE_5__Pages_Auth_Login__["a" /* default */] })];
+  component: __WEBPACK_IMPORTED_MODULE_5__Pages_Auth_Login__["a" /* default */], __source: {
+    fileName: _jsxFileName,
+    lineNumber: 26
+  },
+  __self: this
+})];
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
 
@@ -963,6 +1022,8 @@ var REFRESH_URL = __WEBPACK_IMPORTED_MODULE_2__params__["a" /* default */].apiUr
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_radium___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_radium__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_index__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styles_form__ = __webpack_require__(23);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Partials\\Forms\\PostForm.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1061,14 +1122,30 @@ var PostForm = function (_React$Component) {
         {
           onSubmit: function onSubmit(e) {
             return _this2.handleSubmit(e);
-          } },
+          }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 75
+          },
+          __self: this
+        },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           {
-            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle() },
+            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 77
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
-            null,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 79
+              },
+              __self: this
+            },
             'Title'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
@@ -1078,15 +1155,31 @@ var PostForm = function (_React$Component) {
             },
             autoFocus: 'true',
             value: this.state.post.title,
-            type: 'text' })
+            type: 'text', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 80
+            },
+            __self: this
+          })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           {
-            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle() },
+            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 87
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
-            null,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 89
+              },
+              __self: this
+            },
             'Slug'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
@@ -1095,15 +1188,31 @@ var PostForm = function (_React$Component) {
               return _this2.handleValueChange(e, 'slug');
             },
             value: this.state.post.slug,
-            type: 'text' })
+            type: 'text', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 90
+            },
+            __self: this
+          })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           {
-            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle() },
+            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 96
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
-            null,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 98
+              },
+              __self: this
+            },
             'Summary'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', {
@@ -1111,16 +1220,32 @@ var PostForm = function (_React$Component) {
             style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].inputStyle(),
             onChange: function onChange(e) {
               return _this2.handleValueChange(e, 'summary');
-            }
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 99
+            },
+            __self: this
           })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           {
-            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle() },
+            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 105
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
-            null,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 107
+              },
+              __self: this
+            },
             'Content'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', {
@@ -1129,16 +1254,32 @@ var PostForm = function (_React$Component) {
             style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].inputStyle(),
             onChange: function onChange(e) {
               return _this2.handleValueChange(e, 'content');
-            }
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 108
+            },
+            __self: this
           })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           {
-            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle() },
+            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 115
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
-            null,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 117
+              },
+              __self: this
+            },
             'Published at'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
@@ -1148,7 +1289,12 @@ var PostForm = function (_React$Component) {
             value: this.state.post.active,
             onChange: function onChange(e) {
               return _this2.handleValueChange(e, 'active');
-            }
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 118
+            },
+            __self: this
           }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
             style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].smallTextStyle(),
@@ -1157,15 +1303,30 @@ var PostForm = function (_React$Component) {
             value: this.state.post.published_at.String,
             onChange: function onChange(e) {
               return _this2.handleValueChange(e, 'published_at');
-            } })
+            }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 125
+            },
+            __self: this
+          })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           {
-            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle() },
+            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 132
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'button',
-            { type: 'submit' },
+            { type: 'submit', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 134
+              },
+              __self: this
+            },
             'Submit'
           )
         )
@@ -1216,6 +1377,8 @@ var PostForm = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_redux__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Partials_Forms_ImageForm__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions_imagesActions__ = __webpack_require__(11);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Pages\\Auth\\NewImage.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1254,7 +1417,12 @@ var NewImage = function (_React$Component) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Partials_Forms_ImageForm__["a" /* default */], {
         handleSubmit: function handleSubmit(e, data) {
           return _this2.handleSubmit(e, data);
-        } });
+        }, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16
+        },
+        __self: this
+      });
     }
   }]);
 
@@ -1283,6 +1451,8 @@ var NewImage = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_redux__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styles_form__ = __webpack_require__(23);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Partials\\Forms\\ImageForm.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1379,14 +1549,30 @@ var ImageForm = function (_React$Component) {
         'form',
         { onSubmit: function onSubmit(e) {
             return _this3.handleSubmit(e);
-          } },
+          }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 73
+          },
+          __self: this
+        },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           {
-            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle() },
+            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 74
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
-            null,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 76
+              },
+              __self: this
+            },
             'Name'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
@@ -1396,33 +1582,68 @@ var ImageForm = function (_React$Component) {
               return _this3.handleNameChange(e);
             },
             autoFocus: 'true',
-            type: 'text' })
+            type: 'text', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 77
+            },
+            __self: this
+          })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           {
-            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle() },
+            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 84
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
             accept: 'image/*',
             type: 'file',
             onChange: function onChange(e) {
               return _this3.handleImageChange(e);
-            } })
+            }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 86
+            },
+            __self: this
+          })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           {
-            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle() },
+            style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 91
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'button',
-            { type: 'submit' },
+            { type: 'submit', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 93
+              },
+              __self: this
+            },
             'Submit'
           )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          { style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle() },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.state.image.imgSrc })
+          { style: __WEBPACK_IMPORTED_MODULE_3__styles_form__["a" /* default */].formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 97
+            },
+            __self: this
+          },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.state.image.imgSrc, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 98
+            },
+            __self: this
+          })
         )
       );
     }
@@ -1456,6 +1677,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__src_js_components_Routes__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__config_env_json__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__config_env_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__config_env_json__);
+var _jsxFileName = "C:\\go-projects\\src\\blog3.0\\node\\server.js",
+    _this = this;
+
 
 
 
@@ -1487,12 +1711,17 @@ app.get("*", function (req, res) {
       store: __WEBPACK_IMPORTED_MODULE_4__src_js_store__["a" /* default */],
       context: {},
       radiumConfig: { userAgent: req.headers['user-agent'] },
-      location: req.url })) + "</div>\n            <script>\n              window.__PRELOADED_STATE__ = " + JSON.stringify(preloadedState).replace(/</g, "\\u003c") + "\n            </script>\n            <script async src=\"/js/app.js\"></script>\n        </body>\n        </html>\n      ";
+      location: req.url, __source: {
+        fileName: _jsxFileName,
+        lineNumber: 51
+      },
+      __self: _this
+    })) + "</div>\n            <script>\n              window.__PRELOADED_STATE__ = " + JSON.stringify(preloadedState).replace(/</g, "\\u003c") + "\n            </script>\n            <script async src=\"/js/app.js\"></script>\n        </body>\n        </html>\n      ";
     res.send(html);
   });
 });
 
-app.listen(__WEBPACK_IMPORTED_MODULE_7__config_env_json___default.a.nodePort || 3002, function () {
+app.listen(__WEBPACK_IMPORTED_MODULE_7__config_env_json___default.a.nodePort || 3005, function () {
   console.log("Server is listening");
 });
 
@@ -1522,6 +1751,8 @@ module.exports = require("react-dom/server");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_redux__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\Server.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1550,15 +1781,36 @@ var App = function (_React$Component) {
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_3_react_redux__["Provider"],
-        { store: this.props.store },
+        { store: this.props.store, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 10
+          },
+          __self: this
+        },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_2_radium__["StyleRoot"],
           {
-            radiumConfig: this.props.radiumConfig },
+            radiumConfig: this.props.radiumConfig, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 11
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["StaticRouter"],
-            { context: this.props.context, location: this.props.location },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_Layout__["a" /* default */], null)
+            { context: this.props.context, location: this.props.location, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 13
+              },
+              __self: this
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_Layout__["a" /* default */], {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 14
+              },
+              __self: this
+            })
           )
         )
       );
@@ -1591,6 +1843,8 @@ module.exports = require("react-router-config");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions_postsActions__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Pages\\Index.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1676,25 +1930,50 @@ var Index = function (_React$Component) {
           {
             style: _this2.linkStyle(),
             to: '/posts/' + i.slug,
-            key: i.id },
+            key: i.id, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 63
+            },
+            __self: _this2
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             {
               key: i.id,
-              style: _this2.wrapperStyle() },
+              style: _this2.wrapperStyle(), __source: {
+                fileName: _jsxFileName,
+                lineNumber: 67
+              },
+              __self: _this2
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'h2',
-              { style: _this2.titleStyle() },
+              { style: _this2.titleStyle(), __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 70
+                },
+                __self: _this2
+              },
               i.title
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'p',
-              { style: _this2.summaryStyle() },
+              { style: _this2.summaryStyle(), __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 71
+                },
+                __self: _this2
+              },
               i.summary
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'span',
-              { style: _this2.moreStyle(), href: '#' },
+              { style: _this2.moreStyle(), href: '#', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 74
+                },
+                __self: _this2
+              },
               'More'
             )
           )
@@ -1706,7 +1985,13 @@ var Index = function (_React$Component) {
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        null,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 85
+          },
+          __self: this
+        },
         this.renderPosts()
       );
     }
@@ -1997,6 +2282,8 @@ module.exports = {"apiUrl":"http://localhost:3000"}
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_router_dom__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_router_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_router_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__meta_meta__ = __webpack_require__(19);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Pages\\Show.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2103,20 +2390,40 @@ var Show = function (_React$Component) {
         'div',
         {
           key: this.props.post.id,
-          style: this.wrapperStyle() },
+          style: this.wrapperStyle(), __source: {
+            fileName: _jsxFileName,
+            lineNumber: 89
+          },
+          __self: this
+        },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'h2',
-          { style: this.titleStyle() },
+          { style: this.titleStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 92
+            },
+            __self: this
+          },
           this.props.post.title
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'p',
-          { style: this.summaryStyle() },
+          { style: this.summaryStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 93
+            },
+            __self: this
+          },
           this.props.post.summary
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', {
           style: this.contentStyle(),
-          dangerouslySetInnerHTML: { __html: this.content() } })
+          dangerouslySetInnerHTML: { __html: this.content() }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 96
+          },
+          __self: this
+        })
       );
     }
   }], [{
@@ -2186,6 +2493,8 @@ renderer.link = function (href, title, text) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_redux__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_actions_userActions__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Partials_Forms_LoginForm__ = __webpack_require__(45);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Pages\\Auth\\Login.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2223,16 +2532,33 @@ var Login = function (_React$Component) {
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        null,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 20
+          },
+          __self: this
+        },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'h2',
-          null,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 21
+            },
+            __self: this
+          },
           'Login'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Partials_Forms_LoginForm__["a" /* default */], {
           handleSubmit: function handleSubmit(e, creds) {
             return _this2.handleSubmit(e, creds);
-          } })
+          }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 22
+          },
+          __self: this
+        })
       );
     }
   }]);
@@ -2259,6 +2585,8 @@ var Login = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_radium__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_radium___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_radium__);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Partials\\Forms\\LoginForm.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2319,14 +2647,30 @@ var LoginForm = function (_React$Component) {
         {
           onSubmit: function onSubmit(e) {
             return _this2.handleSubmit(e);
-          } },
+          }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 36
+          },
+          __self: this
+        },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           {
-            style: this.formGroupStyle() },
+            style: this.formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 38
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
-            null,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 40
+              },
+              __self: this
+            },
             'Email'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
@@ -2334,30 +2678,61 @@ var LoginForm = function (_React$Component) {
               return _this2.handleCredChange(e, 'email');
             },
             autoFocus: 'true',
-            type: 'text' })
+            type: 'text', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 41
+            },
+            __self: this
+          })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           {
-            style: this.formGroupStyle() },
+            style: this.formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 46
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
-            null,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 48
+              },
+              __self: this
+            },
             'Password'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
             onChange: function onChange(e) {
               return _this2.handleCredChange(e, 'password');
             },
-            type: 'password' })
+            type: 'password', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 49
+            },
+            __self: this
+          })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           {
-            style: this.formGroupStyle() },
+            style: this.formGroupStyle(), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 53
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'button',
-            { type: 'submit' },
+            { type: 'submit', __source: {
+                fileName: _jsxFileName,
+                lineNumber: 55
+              },
+              __self: this
+            },
             'Submit'
           )
         )
@@ -2384,6 +2759,8 @@ var LoginForm = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Partials_Forms_PostForm__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions_postsActions__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__helpers_index__ = __webpack_require__(10);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Pages\\Auth\\Edit.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2461,17 +2838,34 @@ var Edit = function (_React$Component) {
         post: this.props.post,
         handleSubmit: function handleSubmit(e, data) {
           return _this2.handleSubmit(e, data);
-        } });
+        }, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 52
+        },
+        __self: this
+      });
     }
   }, {
     key: 'render',
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        null,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 60
+          },
+          __self: this
+        },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'h2',
-          null,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 61
+            },
+            __self: this
+          },
           this.props.post.title
         ),
         this.renderForm()
@@ -2502,6 +2896,8 @@ var Edit = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Partials_Forms_PostForm__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions_postsActions__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__helpers_index__ = __webpack_require__(10);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Pages\\Auth\\NewPost.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2547,16 +2943,33 @@ var NewPost = function (_React$Component) {
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        null,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 28
+          },
+          __self: this
+        },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'h2',
-          null,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 29
+            },
+            __self: this
+          },
           'New post'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Partials_Forms_PostForm__["a" /* default */], {
           handleSubmit: function handleSubmit(e, data) {
             return _this2.handleSubmit(e, data);
-          } })
+          }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 30
+          },
+          __self: this
+        })
       );
     }
   }]);
@@ -2582,6 +2995,8 @@ var NewPost = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_actions_imagesActions__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Pages\\Auth\\Images.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2637,21 +3052,47 @@ var Images = function (_React$Component) {
       return this.props.images.map(function (i) {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          { key: i.id },
+          { key: i.id, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 34
+            },
+            __self: _this2
+          },
           i.name,
           ' -\xA0',
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'a',
             { href: '#', onClick: function onClick(e) {
                 return _this2.deleteById(e, i.id);
-              } },
+              }, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 36
+              },
+              __self: _this2
+            },
             'Delete'
           ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 37
+            },
+            __self: _this2
+          }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["Link"],
-            { to: '/admin/images/edit/' + i.id },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { style: _this2.imageStyle(), key: i.id, src: i.path })
+            { to: '/admin/images/edit/' + i.id, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 38
+              },
+              __self: _this2
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { style: _this2.imageStyle(), key: i.id, src: i.path, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 39
+              },
+              __self: _this2
+            })
           )
         );
       });
@@ -2661,7 +3102,13 @@ var Images = function (_React$Component) {
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        null,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 48
+          },
+          __self: this
+        },
         'Images',
         this.renderImages()
       );
@@ -2745,6 +3192,8 @@ const GET_PUBLISHED_URL = '/api/images/all'
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_redux__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions_imagesActions__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Partials_Forms_ImageForm__ = __webpack_require__(25);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Pages\\Auth\\EditImage.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2795,7 +3244,12 @@ var EditImage = function (_React$Component) {
         handleSubmit: function handleSubmit(e, data) {
           return _this2.handleSubmit(e, data);
         },
-        image: this.props.image });
+        image: this.props.image, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25
+        },
+        __self: this
+      });
     }
   }]);
 
@@ -2819,6 +3273,8 @@ var EditImage = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_radium___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_radium__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Layout\\Title.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2869,10 +3325,20 @@ var Title = function (_React$Component) {
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { style: this.getStyles() },
+        { style: this.getStyles(), __source: {
+            fileName: _jsxFileName,
+            lineNumber: 34
+          },
+          __self: this
+        },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["Link"],
-          { style: this.getLinkStyles(), to: '/' },
+          { style: this.getLinkStyles(), to: '/', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 35
+            },
+            __self: this
+          },
           this.props.text
         )
       );
@@ -2896,6 +3362,8 @@ var Title = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_posts__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_router_dom__);
+var _jsxFileName = 'C:\\go-projects\\src\\blog3.0\\src\\js\\components\\Partials\\AdminHeader.js';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2949,10 +3417,20 @@ var AdminHeader = function (_React$Component) {
       return this.props.posts.map(function (i) {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'li',
-          { key: i.id },
+          { key: i.id, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 37
+            },
+            __self: _this2
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Link"],
-            { to: '/posts/edit/' + i.slug },
+            { to: '/posts/edit/' + i.slug, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 38
+              },
+              __self: _this2
+            },
             i.title
           ),
           '\xA0-\xA0',
@@ -2960,7 +3438,12 @@ var AdminHeader = function (_React$Component) {
             'a',
             { href: '#', onClick: function onClick(e) {
                 return _this2.deletePost(e, i.id);
-              } },
+              }, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 42
+              },
+              __self: _this2
+            },
             'Delete'
           )
         );
@@ -2973,47 +3456,99 @@ var AdminHeader = function (_React$Component) {
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { style: this.getStyles() },
+        { style: this.getStyles(), __source: {
+            fileName: _jsxFileName,
+            lineNumber: 52
+          },
+          __self: this
+        },
         'Hi ',
         this.props.user.name,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'ul',
-          null,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 54
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'li',
             { onClick: function onClick(e) {
                 return _this3.logout(e);
-              } },
+              }, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 55
+              },
+              __self: this
+            },
             'Logout'
           )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'ul',
-          null,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 59
+            },
+            __self: this
+          },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'li',
-            { key: 0 },
+            { key: 0, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 60
+              },
+              __self: this
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Link"],
-              { to: '/posts/write' },
+              { to: '/posts/write', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 61
+                },
+                __self: this
+              },
               'New post'
             )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'li',
-            { key: -1 },
+            { key: -1, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 65
+              },
+              __self: this
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Link"],
-              { to: '/admin/images' },
+              { to: '/admin/images', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 66
+                },
+                __self: this
+              },
               'Images'
             )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'li',
-            { key: -2 },
+            { key: -2, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 70
+              },
+              __self: this
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_3_react_router_dom__["Link"],
-              { to: '/admin/images/new' },
+              { to: '/admin/images/new', __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 71
+                },
+                __self: this
+              },
               'New Image'
             )
           ),
@@ -3084,7 +3619,7 @@ module.exports = require("react-router");
 /* 55 */
 /***/ (function(module, exports) {
 
-module.exports = {"env":"local","port":":3000","nodePort":"3002","allowOrigin":"http://localhost:3002"}
+module.exports = {"env":"local","port":":3000","nodePort":"3003","allowOrigin":"http://localhost:3002"}
 
 /***/ })
 /******/ ]);
