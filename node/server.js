@@ -5,7 +5,6 @@ import App from "../src/js/Server";
 import store from '../src/js/store';
 import {matchPath} from 'react-router';
 import routes from '../src/js/components/Routes';
-import env from '../config/env.json';
 const app = express();
 
 app.use(express.static('./public'));
@@ -66,7 +65,7 @@ app.get("*", (req, res) => {
 
 });
 
-let port = env.nodePort || 3005;
+let port = process.env.PORT || 3005;
 app.listen(port, () => {
-  console.log("Server is listening on ", port);
+  console.log("Server is listening on", port);
 });

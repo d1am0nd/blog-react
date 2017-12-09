@@ -1675,11 +1675,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_router__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__src_js_components_Routes__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__config_env_json__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__config_env_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__config_env_json__);
 var _jsxFileName = "C:\\go-projects\\src\\blog3.0\\node\\server.js",
     _this = this;
-
 
 
 
@@ -1713,7 +1710,7 @@ app.get("*", function (req, res) {
       radiumConfig: { userAgent: req.headers['user-agent'] },
       location: req.url, __source: {
         fileName: _jsxFileName,
-        lineNumber: 51
+        lineNumber: 50
       },
       __self: _this
     })) + "</div>\n            <script>\n              window.__PRELOADED_STATE__ = " + JSON.stringify(preloadedState).replace(/</g, "\\u003c") + "\n            </script>\n            <script async src=\"/js/app.js\"></script>\n        </body>\n        </html>\n      ";
@@ -1721,9 +1718,9 @@ app.get("*", function (req, res) {
   });
 });
 
-var port = __WEBPACK_IMPORTED_MODULE_7__config_env_json___default.a.nodePort || 3005;
+var port = process.env.PORT || 3005;
 app.listen(port, function () {
-  console.log("Server is listening on ", port);
+  console.log("Server is listening on", port);
 });
 
 /***/ }),
@@ -3615,12 +3612,6 @@ var LayoutStyle = function () {
 /***/ (function(module, exports) {
 
 module.exports = require("react-router");
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports) {
-
-module.exports = {"env":"local","port":":3000","nodePort":"3003","allowOrigin":"http://localhost:3002"}
 
 /***/ })
 /******/ ]);
