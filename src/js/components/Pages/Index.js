@@ -1,11 +1,18 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
+import {
+  title as titleStyle,
+  summary as summaryStyle,
+  content as contentStyle,
+  wrapper as wrapperStyle,
+  wrapperLink as linkStyle,
+  showMore as moreStyle,
+} from '../../styles/post';
 import postApi from '../../api/posts';
 import {fetchPosts} from '../../store/actions/postsActions';
-
-import {Link} from 'react-router-dom';
 
 class Index extends React.Component {
   static fetchData(store) {
@@ -18,42 +25,6 @@ class Index extends React.Component {
     }
   }
 
-  linkStyle() {
-    return {
-      'color': 'black',
-      'textDecoration': 'none',
-    };
-  }
-
-  titleStyle() {
-    return {
-      'marginBottom': '10px',
-      'marginTop': 0,
-    };
-  }
-
-  summaryStyle() {
-    return {
-      fontSize: '18px',
-      marginTop: 0,
-      marginBottom: '10px',
-    };
-  }
-
-  moreStyle() {
-    return {
-      fontSize: '18px',
-    };
-  }
-
-  wrapperStyle() {
-    return {
-      'transition': '0.2s',
-      'border': '1px solid white',
-      'marginBottom': '15px',
-    };
-  }
-
   renderPosts() {
     return this
       .props
@@ -61,17 +32,17 @@ class Index extends React.Component {
       .map(i => {
         return (
           <Link
-            style={this.linkStyle()}
+            style={linkStyle()}
             to={'/posts/' + i.slug}
             key={i.id}>
             <div
               key={i.id}
-              style={this.wrapperStyle()}>
-              <h2 style={this.titleStyle()}>{i.title}</h2>
-              <p style={this.summaryStyle()}>
+              style={wrapperStyle()}>
+              <h2 style={titleStyle()}>{i.title}</h2>
+              <p style={summaryStyle()}>
                 {i.summary}
               </p>
-              <span style={this.moreStyle()} href="#">
+              <span style={moreStyle()} href="#">
                 More
               </span>
             </div>
