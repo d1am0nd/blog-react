@@ -45,7 +45,6 @@ app.get("*", (req, res) => {
             <!--[if lte IE 8]><script src="/css/ie/html5shiv.js"></script><![endif]-->
             <!-- <script src="/js/all_libs.js"></script> -->
             <!-- <link rel="stylesheet" type="text/css" href="/vendor/bootstrap-3.3.7/css/bootstrap.min.css"/> -->
-            <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         </head>
         <body class="landing">
             <div id="root">${renderToString(
@@ -59,6 +58,7 @@ app.get("*", (req, res) => {
               window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
             </script>
             <script async src="/js/app.js"></script>
+            <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         </body>
         </html>
       `;
