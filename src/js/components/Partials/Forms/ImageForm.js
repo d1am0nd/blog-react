@@ -2,7 +2,10 @@ import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
 
-import formStyle from '../../../styles/form';
+import {
+  formGroup as formGroupStyle,
+  smallText as smallTextStyle,
+} from '../../../styles/form';
 
 class ImageForm extends React.Component {
   constructor(props) {
@@ -72,29 +75,29 @@ class ImageForm extends React.Component {
     return (
       <form onSubmit={e => this.handleSubmit(e)}>
         <div
-          style={formStyle.formGroupStyle()}>
+          style={formGroupStyle()}>
           <label>Name</label>
           <input
-            style={formStyle.smallTextStyle()}
+            style={smallTextStyle()}
             value={this.state.image.name}
             onChange={e => this.handleNameChange(e)}
             autoFocus="true"
             type="text"/>
         </div>
         <div
-          style={formStyle.formGroupStyle()}>
+          style={formGroupStyle()}>
           <input
             accept="image/*"
             type="file"
             onChange={e => this.handleImageChange(e)}/>
         </div>
         <div
-          style={formStyle.formGroupStyle()}>
+          style={formGroupStyle()}>
           <button type="submit">
             Submit
           </button>
         </div>
-        <div style={formStyle.formGroupStyle()}>
+        <div style={formGroupStyle()}>
           <img src={this.state.image.imgSrc}/>
         </div>
       </form>

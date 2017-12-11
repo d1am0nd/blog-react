@@ -28,6 +28,7 @@ class NewPost extends React.Component {
       <div>
         <h2>New post</h2>
         <PostForm
+          post={{}}
           handleSubmit={(e, data) => this.handleSubmit(e, data)}/>
       </div>
     );

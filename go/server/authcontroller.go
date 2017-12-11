@@ -43,8 +43,9 @@ func Login(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
     claims := NewClaims(user.Id, config.Jwt)
     token := CreateToken(claims, config.Jwt)
 
+    w.Header().Set("Access-Control-Expose-Headers", "Authorization")
+    w.Header().Set("Access-Control-Allow-Credentials", "true")
     w.Header().Set("Authorization", token)
-
     w.Header().Set("Content-Type", "application/json")
     w.Write(rjson)
 }

@@ -2,7 +2,11 @@ import React from 'react';
 import radium from 'radium';
 
 import helpers from '../../../helpers/index';
-import formStyle from '../../../styles/form';
+import {
+  input as inputStyle,
+  formGroup as formGroupStyle,
+  smallText as smallTextStyle,
+} from '../../../styles/form';
 
 class PostForm extends React.Component {
   constructor(props) {
@@ -30,7 +34,8 @@ class PostForm extends React.Component {
   }
 
   componentDidMount(prevProps) {
-    if (prevProps.post != this.props.post) {
+    if (prevProps && this.props &&
+      prevProps.post != this.props.post) {
       this.setState({
         post: this.props.post,
       });
@@ -75,45 +80,45 @@ class PostForm extends React.Component {
       <form
         onSubmit={e => this.handleSubmit(e)}>
         <div
-          style={formStyle.formGroupStyle()}>
+          style={formGroupStyle()}>
           <label>Title</label>
           <input
-            style={formStyle.smallTextStyle()}
+            style={smallTextStyle()}
             onChange={e => this.handleValueChange(e, 'title')}
             autoFocus="true"
             value={this.state.post.title}
             type="text"/>
         </div>
         <div
-          style={formStyle.formGroupStyle()}>
+          style={formGroupStyle()}>
           <label>Slug</label>
           <input
-            style={formStyle.smallTextStyle()}
+            style={smallTextStyle()}
             onChange={e => this.handleValueChange(e, 'slug')}
             value={this.state.post.slug}
             type="text"/>
         </div>
         <div
-          style={formStyle.formGroupStyle()}>
+          style={formGroupStyle()}>
           <label>Summary</label>
           <textarea
             value={this.state.post.summary}
-            style={formStyle.inputStyle()}
+            style={inputStyle()}
             onChange={e => this.handleValueChange(e, 'summary')}
             ></textarea>
         </div>
         <div
-          style={formStyle.formGroupStyle()}>
+          style={formGroupStyle()}>
           <label>Content</label>
           <textarea
             rows="20"
             value={this.state.post.content}
-            style={formStyle.inputStyle()}
+            style={inputStyle()}
             onChange={e => this.handleValueChange(e, 'content')}
             ></textarea>
         </div>
         <div
-          style={formStyle.formGroupStyle()}>
+          style={formGroupStyle()}>
           <label>Published at</label>
           <input
             disabled="true"
@@ -123,14 +128,14 @@ class PostForm extends React.Component {
             onChange={e => this.handleValueChange(e, 'active')}
             />
           <input
-            style={formStyle.smallTextStyle()}
+            style={smallTextStyle()}
             placeholder="YYYY-MM-DD"
             type="text"
             value={this.state.post.published_at.String}
             onChange={e => this.handleValueChange(e, 'published_at')}/>
         </div>
         <div
-          style={formStyle.formGroupStyle()}>
+          style={formGroupStyle()}>
           <button type="submit">Submit</button>
         </div>
       </form>

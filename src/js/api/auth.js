@@ -9,7 +9,9 @@ const REFRESH_URL = p.apiUrl + '/api/users/current';
 
 export default {
   login(creds) {
-    return axios.post(LOGIN_URL, qs.stringify(creds));
+    return axios.post(LOGIN_URL, qs.stringify(creds), {
+      withCredentials: true,
+    });
   },
 
   refresh(token = null) {
