@@ -11,7 +11,6 @@ export function login(creds) {
         .then(res => {
           let user = res.data;
           let token = res.headers.authorization;
-          console.log(res, token);
           auth.login(user, token);
 
           dispatch({type: SET_USER, payload: user});

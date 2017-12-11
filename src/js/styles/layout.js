@@ -8,5 +8,7 @@ export function layout() {
     marginLeft: 'auto',
     marginRight: 'auto',
     maxWidth: '100%',
+    fontFamily: '"Roboto"',
+    lineHeight: 1.4,
   };
 };

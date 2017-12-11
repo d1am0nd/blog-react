@@ -37,6 +37,6 @@ export function wrapperLink() {
 
 export function showMore() {
   return {
-    'fontSize': '18px',
+    'fontSize': '20px',
   };
 };
