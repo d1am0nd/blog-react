@@ -1,60 +1,79 @@
-class Meta {
+import config from '../../../config/page.json';
+
+class MetaConst {
   constructor() {
-    this.defaultTitle = 'My Programming Blog';
-    this.separator = ' | ';
-    this.meta = {
+    this._defaultTitle = config.meta_title;
+    this._separator = ' | ';
+    this._meta = {
       title: '',
       desc: '',
       img: '',
     };
+  }
 
-    this.setTitle(null);
+  getTitle() {
+    return this._meta.title;
+  }
+
+  getDescription() {
+    return this._meta.desc;
+  }
+
+  getImage() {
+    return this._meta.img;
   }
 
   setTitle(title) {
     if (!title) {
-      this.meta.title = this.defaultTitle;
+      this._meta.title = this._defaultTitle;
     } else {
-      this.meta.title = title + this.separator + this.defaultTitle;
+      this._meta.title = title + this._separator + this._defaultTitle;
     }
 
     if (typeof document === 'undefined') return;
     document
       .getElementById('meta-title')
-      .innerHTML = this.meta.title;
+      .innerHTML = this._meta.title;
     document
       .getElementById('meta-og-title')
-      .setAttribute('content', this.meta.title);
+      .setAttribute('content', this._meta.title);
   }
 
   setDescription(desc) {
     if (!desc) {
-      this.meta.desc = 'My programming blog';
+      this._meta.desc = config.meta_title;
     } else {
-      this.meta.desc = desc;
+      this._meta.desc = desc;
     }
 
     if (typeof document === 'undefined') return;
     document
       .getElementById('meta-description')
-      .setAttribute('content', this.meta.desc);
+      .setAttribute('content', this._meta.desc);
     document
       .getElementById('meta-og-description')
-      .setAttribute('content', this.meta.desc);
+      .setAttribute('content', this._meta.desc);
   }
 
   setImage(img) {
     if (!image) {
-      this.meta.img = '';
+      this._meta.img = '';
     } else {
-      this.meta.img = img;
+      this._meta.img = img;
     }
 
     if (typeof document === 'undefined') return;
     document
       .getElementById('meta-og-image')
-      .setAttribute('content', this.meta.img);
+      .setAttribute('content', this._meta.img);
   }
 };
 
-export default new Meta();
+const defaultTitle = config.meta_title;
+const defaultDescription = config.meta_description;
+const Meta = new MetaConst();
+export {
+  Meta,
+  defaultTitle,
+  defaultDescription,
+};

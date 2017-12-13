@@ -1,10 +1,10 @@
 package server
 
 import (
-    // "net/http"
+    "net/http"
+    "blog3.0/go/config"
     "github.com/julienschmidt/httprouter"
 )
-
 
 func NewRouter() *httprouter.Router {
     r := httprouter.New()
@@ -22,19 +22,19 @@ func NewRouter() *httprouter.Router {
     r.POST("/api/images/create", AuthOnly(CreateImage))
     r.POST("/api/images/edit/:id", AuthOnly(UpdateImage))
     r.GET("/api/images/delete/:id", AuthOnly(DeleteImage))
-    /*
     r.ServeFiles("/uploads/*filepath", http.Dir("../public/uploads"))
     r.ServeFiles("/js/*filepath", http.Dir("../public/js"))
 
-    r.GET("/favicon.ico", serveFile("../public/favicon.ico"))
-    r.GET("/robots.txt", serveFile("../public/robots.txt"))
-    r.GET("/web.config", serveFile("../public/web.config"))
+    if (!config.Env.IsProd()) {
+        r.GET("/favicon.ico", serveFile("../public/favicon.ico"))
+        r.GET("/robots.txt", serveFile("../public/robots.txt"))
+        r.GET("/web.config", serveFile("../public/web.config"))
 
-    // These have to match the ones in vue router and redirect to Home
-    r.GET("/login", Home)
-    r.GET("/admin/*we", Home)
-    r.GET("/posts/*we", Home)
-    r.GET("/", Home)
-    */
+        // These have to match the ones in vue router and redirect to Home
+        r.GET("/login", Home)
+        r.GET("/admin/*we", Home)
+        r.GET("/posts/*we", Home)
+        r.GET("/", Home)
+    }
     return r
 }

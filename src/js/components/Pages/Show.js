@@ -1,14 +1,12 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import marked from 'marked';
 import renderer from '../../marked/renderer';
 
 import {fetchPostBySlug} from '../../store/actions/postsActions';
-
-import {Link} from 'react-router-dom';
-
 import {
   title as titleStyle,
   summary as summaryStyle,
@@ -16,7 +14,7 @@ import {
   wrapper as wrapperStyle,
   showMore as linkStyle,
 } from '../../styles/post';
-import meta from '../../meta/meta';
+import {Meta} from '../../meta/meta';
 
 class Show extends React.Component {
   static fetchData(store, url) {
@@ -37,7 +35,13 @@ class Show extends React.Component {
 
   fetchPost() {
     if (this.props.dataLoaded) {
-      this.props.dispatch(fetchPostBySlug(this.props.match.params.slug));
+      this
+        .props
+        .dispatch(fetchPostBySlug(this.props.match.params.slug))
+        .then(data => {
+          Meta.setTitle(data.title);
+          Meta.setDescription(data.summary);
+        });
     }
   }
 

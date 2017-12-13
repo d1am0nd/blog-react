@@ -5,6 +5,8 @@ import App from "../src/js/Server";
 import store from '../src/js/store';
 import {matchPath} from 'react-router';
 import routes from '../src/js/components/Routes';
+import {Meta, defaultTitle, defaultDescription} from '../src/js/meta/meta';
+
 const app = express();
 
 app.use(express.static('./public'));
@@ -27,6 +29,16 @@ app.get("*", (req, res) => {
   Promise.all(promises)
     .then((data) => {
       let preloadedState = store.getState();
+      if (matched) {
+        const path = matched.props.path;
+        if (path === '/') {
+          Meta.setTitle(defaultTitle);
+          Meta.setDescription(defaultDescription);
+        } else if (path === '/posts/:slug') {
+          Meta.setTitle(preloadedState.posts.post.title);
+          Meta.setDescription(preloadedState.posts.post.summary);
+        }
+      }
       let html = `
         <!DOCTYPE html>
         <html lang="en">
@@ -36,15 +48,12 @@ app.get("*", (req, res) => {
             <meta name="viewport" content="width=device-width, initial-scale=1">
 
             <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-            <title id="meta-title"></title>
-            <meta id="meta-og-title" property="og:title" content="" />
-            <meta id="meta-description" name="description" content=""/>
-            <meta id="meta-og-description" property="og:description" content=""/>
-            <meta id="meta-og-image" property="og:image" content="" />
+            <title id="meta-title">${Meta.getTitle()}</title>
+            <meta id="meta-og-title" property="og:title" content="${Meta.getTitle()}" />
+            <meta id="meta-description" name="description" content="${Meta.getDescription()}"/>
+            <meta id="meta-og-description" property="og:description" content="${Meta.getDescription()}"/>
+            <meta id="meta-og-image" property="og:image" content="${Meta.getImage()}" />
             <meta property="og:type" content="website" />
-            <!--[if lte IE 8]><script src="/css/ie/html5shiv.js"></script><![endif]-->
-            <!-- <script src="/js/all_libs.js"></script> -->
-            <!-- <link rel="stylesheet" type="text/css" href="/vendor/bootstrap-3.3.7/css/bootstrap.min.css"/> -->
         </head>
         <body class="landing">
             <div id="root">${renderToString(

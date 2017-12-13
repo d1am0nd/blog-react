@@ -16,14 +16,11 @@ import postsApi from '../api/posts';
 import authApi from '../api/auth';
 import auth from '../auth/auth';
 
-import meta from '../meta/meta';
 import {layout as layoutStyle} from '../styles/layout';
 
 class Layout extends React.Component {
   constructor(props) {
     super(props);
-    meta.setTitle(null);
-    meta.setDescription(null);
   }
 
   static fetchData(store) {

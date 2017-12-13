@@ -12,6 +12,7 @@ import {
   showMore as moreStyle,
 } from '../../styles/post';
 import postApi from '../../api/posts';
+import {Meta, defaultTitle, defaultDescription} from '../../meta/meta';
 import {fetchPosts} from '../../store/actions/postsActions';
 
 class Index extends React.Component {
@@ -21,7 +22,11 @@ class Index extends React.Component {
 
   componentDidMount() {
     if (this.props.dataLoaded) {
-      this.props.dispatch(fetchPosts());
+      this.props.dispatch(fetchPosts())
+        .then(data => {
+          Meta.setTitle(defaultTitle);
+          Meta.setDescription(defaultDescription);
+        });
     }
   }
 
