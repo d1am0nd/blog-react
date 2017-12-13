@@ -9,7 +9,9 @@ import {
 
 const initialState = {
   posts: [],
-  post: {},
+  post: {
+    published_at: {},
+  },
   myPosts: [],
 };
 

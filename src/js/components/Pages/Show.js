@@ -9,12 +9,14 @@ import renderer from '../../marked/renderer';
 import {fetchPostBySlug} from '../../store/actions/postsActions';
 import {
   title as titleStyle,
+  date as dateStyle,
   summary as summaryStyle,
   content as contentStyle,
   wrapper as wrapperStyle,
   showMore as linkStyle,
 } from '../../styles/post';
 import {Meta} from '../../meta/meta';
+import {pretty as prettyDate} from '../../filters/date';
 
 class Show extends React.Component {
   static fetchData(store, url) {
@@ -45,6 +47,13 @@ class Show extends React.Component {
     }
   }
 
+  prettyDate() {
+    if (this.props.post.published_at) {
+      return prettyDate(this.props.post.published_at.String);
+    }
+    return '';
+  }
+
   content() {
     if (!this.props.post.content) {
       return;
@@ -64,6 +73,9 @@ class Show extends React.Component {
         key={this.props.post.id}
         style={wrapperStyle()}>
         <h2 style={titleStyle()}>{this.props.post.title}</h2>
+        <div style={dateStyle()}>
+          {this.prettyDate()}
+        </div>
         <p style={summaryStyle()}>
           {this.props.post.summary}
         </p>

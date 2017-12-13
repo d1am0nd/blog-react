@@ -5,12 +5,14 @@ import {Link} from 'react-router-dom';
 
 import {
   title as titleStyle,
+  date as dateStyle,
   summary as summaryStyle,
   content as contentStyle,
   wrapper as wrapperStyle,
   wrapperLink as linkStyle,
   showMore as moreStyle,
 } from '../../styles/post';
+import {pretty as prettyDate} from '../../filters/date';
 import postApi from '../../api/posts';
 import {Meta, defaultTitle, defaultDescription} from '../../meta/meta';
 import {fetchPosts} from '../../store/actions/postsActions';
@@ -35,6 +37,7 @@ class Index extends React.Component {
       .props
       .posts
       .map(i => {
+        const date = prettyDate(i.published_at.String);
         return (
           <Link
             style={linkStyle()}
@@ -44,6 +47,7 @@ class Index extends React.Component {
               key={i.id}
               style={wrapperStyle()}>
               <h2 style={titleStyle()}>{i.title}</h2>
+              <div style={dateStyle()}>{date}</div>
               <p style={summaryStyle()}>
                 {i.summary}
               </p>

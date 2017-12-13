@@ -5,6 +5,15 @@ export function title() {
   };
 };
 
+export function date() {
+  return {
+    fontSize: '20px',
+    marginTop: 0,
+    marginBottom: '10px',
+    color: '#909090',
+  };
+};
+
 export function summary() {
   return {
     fontSize: '18px',

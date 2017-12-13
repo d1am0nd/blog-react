@@ -9,6 +9,8 @@ import {postsReducer} from './reducers/postsReducer';
 import {userReducer} from './reducers/userReducer';
 import {imagesReducer} from './reducers/imagesReducer';
 import {miscReducer} from './reducers/miscReducer';
+import {setDataLoaded} from './actions/miscActions';
+import config from '../../../config/env.json';
 
 const reducers = combineReducers({
   posts: postsReducer,
@@ -18,6 +20,10 @@ const reducers = combineReducers({
 });
 const middleware = applyMiddleware(thunk);
 const store = createStore(reducers, middleware);
+
+if (config.env === 'local') {
+  store.dispatch(setDataLoaded(true));
+}
 
 export default store;
 
