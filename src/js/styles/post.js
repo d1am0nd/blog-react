@@ -1,16 +1,23 @@
+import {
+  color1,
+  color2,
+  color3,
+  linkColor,
+} from './vars';
+
 export function title() {
   return {
-    'marginBottom': '10px',
+    'marginBottom': '5px',
     'marginTop': 0,
   };
 };
 
 export function date() {
   return {
-    fontSize: '20px',
+    fontSize: '18px',
     marginTop: 0,
-    marginBottom: '10px',
-    color: '#909090',
+    marginBottom: '5px',
+    color: color2,
   };
 };
 
@@ -18,7 +25,7 @@ export function summary() {
   return {
     fontSize: '18px',
     marginTop: 0,
-    marginBottom: '10px',
+    marginBottom: '5px',
   };
 };
 
@@ -32,10 +39,20 @@ export function content() {
 
 export function wrapper() {
   return {
-    'transition': '0.2s',
-    'border': '1px solid white',
+    'transition': 'all 0.2s ease',
+    'marginBottom': '15px',
+    'borderBottom': `1px solid ${color3}`,
   };
 };
+
+export function indexWrapper() {
+  return {
+    ...wrapper(),
+    ':hover': {
+      'borderBottom': `1px solid ${color1}`,
+    },
+  };
+}
 
 export function wrapperLink() {
   return {
@@ -47,5 +64,13 @@ export function wrapperLink() {
 export function showMore() {
   return {
     'fontSize': '20px',
+    'color': color2,
+    'transition': '0.1s',
+  };
+};
+
+export function hr() {
+  return {
+    'color': color2,
   };
 };

@@ -47,13 +47,13 @@ app.get("*", (req, res) => {
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-            <title id="meta-title">${Meta.getTitle()}</title>
-            <meta id="meta-og-title" property="og:title" content="${Meta.getTitle()}" />
-            <meta id="meta-description" name="description" content="${Meta.getDescription()}"/>
-            <meta id="meta-og-description" property="og:description" content="${Meta.getDescription()}"/>
-            <meta id="meta-og-image" property="og:image" content="${Meta.getImage()}" />
-            <meta property="og:type" content="website" />
+            <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+            <title id='meta-title'>${Meta.getTitle()}</title>
+            <meta id='meta-og-title' property='og:title' content='${Meta.getTitle()}' />
+            <meta id='meta-description' name='description' content='${Meta.getDescription()}'/>
+            <meta id='meta-og-description' property='og:description' content='${Meta.getDescription()}'/>
+            <meta id='meta-og-image' property='og:image' content='${Meta.getImage()}' />
+            <meta property='og:type' content='website' />
         </head>
         <body class="landing">
             <div id="root">${renderToString(

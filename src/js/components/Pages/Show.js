@@ -74,7 +74,7 @@ class Show extends React.Component {
         style={wrapperStyle()}>
         <h2 style={titleStyle()}>{this.props.post.title}</h2>
         <div style={dateStyle()}>
-          {this.prettyDate()}
+          Published on {this.prettyDate()}
         </div>
         <p style={summaryStyle()}>
           {this.props.post.summary}

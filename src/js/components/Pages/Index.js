@@ -8,9 +8,10 @@ import {
   date as dateStyle,
   summary as summaryStyle,
   content as contentStyle,
-  wrapper as wrapperStyle,
+  indexWrapper as wrapperStyle,
   wrapperLink as linkStyle,
   showMore as moreStyle,
+  hr as hrStyle,
 } from '../../styles/post';
 import {pretty as prettyDate} from '../../filters/date';
 import postApi from '../../api/posts';
@@ -44,14 +45,14 @@ class Index extends React.Component {
             to={'/posts/' + i.slug}
             key={i.id}>
             <div
-              key={i.id}
+              key={`wrapper-${i.id}`}
               style={wrapperStyle()}>
               <h2 style={titleStyle()}>{i.title}</h2>
-              <div style={dateStyle()}>{date}</div>
+              <div style={dateStyle()}>Published on {date}</div>
               <p style={summaryStyle()}>
                 {i.summary}
               </p>
-              <span style={moreStyle()} href="#">
+              <span style={moreStyle()} key={`goto-${i.id}}`} href="#">
                 More
               </span>
             </div>

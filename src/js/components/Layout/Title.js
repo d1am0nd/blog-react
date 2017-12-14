@@ -2,6 +2,7 @@ import React from 'react';
 import radium from 'radium';
 
 import {Link} from 'react-router-dom';
+import {color2, color3} from '../../styles/vars';
 
 class Title extends React.Component {
   constructor() {
@@ -12,8 +13,8 @@ class Title extends React.Component {
     return {
       'fontSize': '30px',
       'paddingBottom': '4px',
-      'color': '#909090',
-      'borderBottom': 'solid 2px #E5E5E5',
+      'color': color2,
+      'borderBottom': `solid 2px ${color3}`,
       'marginBottom': '10px',
     };
   }
@@ -23,7 +24,7 @@ class Title extends React.Component {
       'color': 'inherit',
       'textDecoration': 'none',
       ':visited': {
-        color: '#909090',
+        color: color2,
         textDecoration: 'none',
       },
     };
