@@ -3,6 +3,7 @@
 /config/page.json
 /config/env.json
 /config/api.json
+/config/client.json
 /node_modules
 /public/uploads
 /public/js/app.js
