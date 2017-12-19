@@ -22,8 +22,9 @@ app.get("*", (req, res) => {
   });
   let promises = []
   if (typeof matched !== 'undefined') {
-    let fetchData = matched.props.component.fetchData;
-    promises.push(matched.props.component.fetchData(store, req.url));
+    if (typeof matched.props.component.fetchData !== 'undefined') {
+      promises.push(matched.props.component.fetchData(store, req.url));
+    }
   }
 
   Promise.all(promises)
@@ -38,44 +39,45 @@ app.get("*", (req, res) => {
           Meta.setTitle(preloadedState.posts.post.title);
           Meta.setDescription(preloadedState.posts.post.summary);
         }
-      }
-      let html = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
+        let html = `
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="utf-8">
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <meta http-equiv='content-type' content='text/html; charset=utf-8' />
-            <title id='meta-title'>${Meta.getTitle()}</title>
-            <meta id='meta-og-title' property='og:title' content='${Meta.getTitle()}' />
-            <meta id='meta-description' name='description' content='${Meta.getDescription()}'/>
-            <meta id='meta-og-description' property='og:description' content='${Meta.getDescription()}'/>
-            <meta id='meta-og-image' property='og:image' content='${Meta.getImage()}' />
-            <meta property='og:type' content='website' />
-        </head>
-        <body class="landing">
-            <div id="root">${renderToString(
-              <App
-                store={store}
-                context={{}}
-                radiumConfig={{userAgent: req.headers['user-agent']}}
-                location={req.url}/>
-            )}</div>
-            <script>
-              window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
-            </script>
-            <script async src="/js/app.js"></script>
-            <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        </body>
-        </html>
-      `;
-      res.send(html);
+              <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+              <title id='meta-title'>${Meta.getTitle()}</title>
+              <meta id='meta-og-title' property='og:title' content='${Meta.getTitle()}' />
+              <meta id='meta-description' name='description' content='${Meta.getDescription()}'/>
+              <meta id='meta-og-description' property='og:description' content='${Meta.getDescription()}'/>
+              <meta id='meta-og-image' property='og:image' content='${Meta.getImage()}' />
+              <meta property='og:type' content='website' />
+          </head>
+          <body class="landing">
+              <div id="root">${renderToString(
+                <App
+                  store={store}
+                  context={{}}
+                  radiumConfig={{userAgent: req.headers['user-agent']}}
+                  location={req.url}/>
+              )}</div>
+              <script>
+                window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+              </script>
+              <script async src="/js/app.js"></script>
+              <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+          </body>
+          </html>
+        `;
+        res.send(html);
+      } else {
+        res.status(404).send('404');
+      }
     })
     .catch(err => {
-      console.log(err);
-      res.send(err);
+      res.status(404).send('404');
     });
 
 });
