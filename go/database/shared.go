@@ -1,37 +1,36 @@
 package database
 
 import (
-    "log"
-    "time"
+	"log"
+	"time"
 
-    "github.com/jmoiron/sqlx"
-    _ "github.com/go-sql-driver/mysql"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/jmoiron/sqlx"
 )
 
 var SQL *sqlx.DB
 
 func Connect(dsn string) error {
-    var err error
+	var err error
 
-    if SQL, err = sqlx.Connect("mysql", dsn); err != nil {
-        log.Println("SQL Driver Error", err)
-        return err
-    }
+	if SQL, err = sqlx.Connect("mysql", dsn); err != nil {
+		log.Println("SQL Driver Error", err)
+		return err
+	}
 
-    return nil
+	return nil
 }
-
 
 // Timestamp parsing
 
 // Parses
 func parseDbTimestamp(timestamp *string) time.Time {
-    time, _ := time.Parse("2006-01-02 15:04:05", *timestamp)
+	time, _ := time.Parse("2006-01-02 15:04:05", *timestamp)
 
-    return time
+	return time
 }
 
 func timeToDb(timestamp *time.Time) string {
-    time := timestamp.Format("2006-01-02 15:04:05")
-    return time
+	time := timestamp.Format("2006-01-02 15:04:05")
+	return time
 }

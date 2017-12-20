@@ -1,60 +1,61 @@
 package database
 
 import (
-    "fmt"
-    "time"
+	"fmt"
+	"time"
 )
 
 const userT = "users"
 
 type User struct {
-    Id uint32 `db:"id" json:"id"`
-    Name string `db:"name" json:"name"`
-    Email string `db:"email" json:"email"`
-    RememberToken string `db:"remember_token" json:"remember_token"`
-    Password string `db:"password" json:"password"`
-    CreatedAt string `db:"created_at" json:"created_at"`
-    UpdatedAt string `db:"updated_at" json:"updated_at"`
+	Id            uint32 `db:"id" json:"id"`
+	Name          string `db:"name" json:"name"`
+	Email         string `db:"email" json:"email"`
+	RememberToken string `db:"remember_token" json:"remember_token"`
+	Password      string `db:"password" json:"password"`
+	CreatedAt     string `db:"created_at" json:"created_at"`
+	UpdatedAt     string `db:"updated_at" json:"updated_at"`
 }
 
 func (u *User) GetId() string {
-    r := ""
-    r = fmt.Sprintf("%v", u.Id)
-    return r
+	r := ""
+	r = fmt.Sprintf("%v", u.Id)
+	return r
 }
 
 func (u *User) CreatedAtTime() time.Time {
-    return parseDbTimestamp(&u.CreatedAt)
+	return parseDbTimestamp(&u.CreatedAt)
 }
 
 func (u *User) UpdatedAtTime() time.Time {
-    return parseDbTimestamp(&u.UpdatedAt)
+	return parseDbTimestamp(&u.UpdatedAt)
 }
 
 func NewUser() User {
-    return User{}
+	return User{}
 }
 
 func (u *User) IsEmpty() bool {
-    if *u == (User{}) {
-        return true
-    }
-    return false
+	if *u == (User{}) {
+		return true
+	}
+	return false
 }
 
 func FindUserById(id uint32) (User, error) {
-    user := User{}
+	user := User{}
 
-    err := SQL.Get(&user, "SELECT * FROM " + userT + " WHERE id = ? LIMIT 1", id)
-    return user, err
+	err := SQL.Get(&user, "SELECT * FROM "+userT+" WHERE id = ? LIMIT 1", id)
+	return user, err
 }
 
 func FindUserByEmail(email string) (User, error) {
-    user := User{}
+	user := User{}
 
-    err := SQL.Get(&user, "SELECT * FROM " + userT + " WHERE email = ? LIMIT 1", email)
-    return user, err
+	err := SQL.Get(&user, "SELECT * FROM "+userT+" WHERE email = ? LIMIT 1", email)
+	return user, err
 }
+
 /*
 func GetActivePosts() ([]Post, error) {
     posts := []Post{}
