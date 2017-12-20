@@ -15,9 +15,7 @@ app.get("*", (req, res) => {
   const store = newServerStore();
   const matched = routes.find(r => {
     if (matchPath(req.url, {path: r.props.path, exact: r.props.exact})) {
-      let fetchData = r.props.component.fetchData;
-      return fetchData instanceof Function ?
-        true : false;
+      return true;
     }
     return false;
   });
