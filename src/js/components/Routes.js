@@ -4,6 +4,7 @@ import {Route, Switch} from 'react-router-dom';
 import Layout from './Layout';
 import Index from './Pages/Index';
 import Show from './Pages/Show';
+import About from './Pages/About';
 import Login from './Pages/Auth/Login';
 import Edit from './Pages/Auth/Edit';
 import NewPost from './Pages/Auth/NewPost';
@@ -28,67 +29,7 @@ const routes = [
     key="7"
     path="/login"
     component={Login}/>,
+  <Route exact={true} key="8" path="/about-me" component={About}/>,
 ];
 
 export default routes;
-
-class Routes extends React.Component {
-  constructor() {
-    super();
-  }
-
-  render() {
-    return routes;
-  }
-};
-
-const routesArray2 = [
-  {
-    component: Layout,
-    routes: [
-      {
-        path: '/',
-        exact: true,
-        component: Index,
-      },
-      {
-        path: '/posts/write',
-        exact: true,
-        component: NewPost,
-      },
-      {
-        path: '/posts/:slug',
-        exact: true,
-        component: Show,
-      },
-      {
-        path: '/posts/edit/:slug',
-        exact: true,
-        component: Edit,
-      },
-      {
-        path: '/admin/images',
-        exact: true,
-        component: Images,
-      },
-      {
-        path: '/admin/images/new',
-        exact: true,
-        component: NewImage,
-      },
-      {
-        path: '/admin/images/edit/:id',
-        exact: true,
-        component: EditImage,
-      },
-      {
-        path: '/login',
-        exact: true,
-        component: Login,
-      },
-    ],
-  },
-];
-// export default routesArray;
-
-// export default Routes;

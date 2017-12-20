@@ -6,6 +6,7 @@ import {renderRoutes} from 'react-router-config';
 import Routes from './Routes';
 import Title from './Layout/Title';
 
+import Header from './Partials/Header';
 import AdminHeader from './Partials/AdminHeader';
 
 import {Route, Switch, withRouter} from 'react-router-dom';
@@ -25,6 +26,16 @@ class Layout extends React.Component {
 
   static fetchData(store) {
     return store.dispatch(fetchMyPosts());
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.onRouteChanged();
+    }
+  }
+
+  onRouteChanged() {
+
   }
 
   componentDidMount() {
@@ -65,6 +76,7 @@ class Layout extends React.Component {
     return (
       <div style={layoutStyle()}>
         <Title text={'My Programming Blog'}/>
+        <Header test={`test`} url={this.props.location.pathname}/>
         {this.renderAdminPanel()}
         {Routes}
       </div>

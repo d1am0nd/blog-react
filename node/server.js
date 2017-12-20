@@ -19,7 +19,7 @@ app.get("*", (req, res) => {
     }
     return false;
   });
-  let promises = []
+  let promises = [];
   if (typeof matched !== 'undefined') {
     if (typeof matched.props.component.fetchData !== 'undefined') {
       promises.push(matched.props.component.fetchData(store, req.url));
@@ -75,6 +75,7 @@ app.get("*", (req, res) => {
       res.send(html);
     })
     .catch(err => {
+      console.log(err);
       res.status(404).send('404');
     });
 
