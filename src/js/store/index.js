@@ -19,13 +19,13 @@ const reducers = combineReducers({
   misc: miscReducer,
 });
 const middleware = applyMiddleware(thunk);
-const store = createStore(reducers, middleware);
+const serverStore = createStore(reducers, middleware);
 
 if (config.env === 'local') {
-  store.dispatch(setDataLoaded(true));
+  serverStore.dispatch(setDataLoaded(true));
 }
 
-export default store;
+export default serverStore;
 
 let clientStore = {};
 
@@ -37,4 +37,9 @@ if (typeof window !== 'undefined') {
 }
 export {
   clientStore,
+  serverStore,
+};
+
+export const newServerStore = () => {
+  return createStore(reducers, middleware);
 };
