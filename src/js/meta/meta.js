@@ -1,8 +1,8 @@
-import config from '../../../config/page.json';
+import {meta} from '../../../config/page';
 
 class MetaConst {
   constructor() {
-    this._defaultTitle = config.meta_title;
+    this._defaultTitle = meta.title;
     this._separator = ' | ';
     this._meta = {
       title: '',
@@ -41,7 +41,7 @@ class MetaConst {
 
   setDescription(desc) {
     if (!desc) {
-      this._meta.desc = config.meta_title;
+      this._meta.desc = meta.title;
     } else {
       this._meta.desc = desc;
     }
@@ -69,8 +69,8 @@ class MetaConst {
   }
 };
 
-const defaultTitle = config.meta_title;
-const defaultDescription = config.meta_description;
+const defaultTitle = meta.defaultTitle;
+const defaultDescription = meta.defaultDescription;
 const Meta = new MetaConst();
 export {
   Meta,
