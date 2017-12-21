@@ -47,7 +47,7 @@ app.get("*", (req, res) => {
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-
+            <meta name="author" content="Dev Kordeš">
             <meta http-equiv='content-type' content='text/html; charset=utf-8' />
             <title id='meta-title'>${Meta.getTitle()}</title>
             <meta id='meta-og-title' property='og:title' content='${Meta.getTitle()}' />

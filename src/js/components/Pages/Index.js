@@ -4,9 +4,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import {
-  title as titleStyle,
   date as dateStyle,
-  summary as summaryStyle,
   content as contentStyle,
   indexWrapper as wrapperStyle,
   wrapperLink as linkStyle,
@@ -17,6 +15,8 @@ import {pretty as prettyDate} from '../../filters/date';
 import postApi from '../../api/posts';
 import {Meta, defaultTitle, defaultDescription} from '../../meta/meta';
 import {fetchPosts} from '../../store/actions/postsActions';
+import Title from '../Partials/Simple/Title';
+import Summary from '../Partials/Simple/Summary';
 
 class Index extends React.Component {
   static fetchData(store) {
@@ -47,11 +47,9 @@ class Index extends React.Component {
             <div
               key={`wrapper-${i.id}`}
               style={wrapperStyle()}>
-              <h2 style={titleStyle()}>{i.title}</h2>
+              <Title text={i.title}/>
               <div style={dateStyle()}>Published on {date}</div>
-              <p style={summaryStyle()}>
-                {i.summary}
-              </p>
+              <Summary text={i.summary}/>
               <span style={moreStyle()} key={`goto-${i.id}}`} href="#">
                 More
               </span>

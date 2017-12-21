@@ -2,13 +2,11 @@ import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-
 import marked from 'marked';
 import renderer from '../../marked/renderer';
 
 import {fetchPostBySlug} from '../../store/actions/postsActions';
 import {
-  title as titleStyle,
   date as dateStyle,
   summary as summaryStyle,
   content as contentStyle,
@@ -17,6 +15,8 @@ import {
 } from '../../styles/post';
 import {Meta} from '../../meta/meta';
 import {pretty as prettyDate} from '../../filters/date';
+import Title from '../Partials/Simple/Title';
+import Summary from '../Partials/Simple/Summary';
 
 class Show extends React.Component {
   static fetchData(store, url) {
@@ -72,13 +72,11 @@ class Show extends React.Component {
       <div
         key={this.props.post.id}
         style={wrapperStyle()}>
-        <h2 style={titleStyle()}>{this.props.post.title}</h2>
+        <Title text={this.props.post.title}/>
         <div style={dateStyle()}>
           Published on {this.prettyDate()}
         </div>
-        <p style={summaryStyle()}>
-          {this.props.post.summary}
-        </p>
+        <Summary text={this.props.post.summary}/>
         <div
           style={contentStyle()}
           dangerouslySetInnerHTML={{__html: this.content()}}>
