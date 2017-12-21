@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: https://myprogramming.blog/sitemap.xml
