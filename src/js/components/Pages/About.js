@@ -4,30 +4,41 @@ import radium from 'radium';
 import {
   subTitle as nameStyle,
 } from '../../styles/general';
+import {Meta} from '../../meta/meta';
 
 import Title from '../Partials/Simple/Title';
 import Summary from '../Partials/Simple/Summary';
 import Social from '../Partials/Simple/Social';
+
+import {about as content} from '../../../../config/page';
 
 class About extends React.Component {
   constructor() {
     super();
   }
 
+  componentDidMount() {
+    Meta.setTitle(About.title());
+    Meta.setDescription(About.summary());
+  }
+
+  static title() {
+    return content.title;
+  }
+
   static summary() {
-    return `
-      Full stack developer with huge preference for backend
-      and modern SPA frameworks over CSS and jQuery.
-    `;
+    return content.summary;
   }
 
   p1() {
-    return `
-      I've been developing in PHP and JS professionally for years,
-      mostly with Laravel, Vue js and jQuery. But with my side
-      projects I try to, explore new tech, Go and React lately.
-      I write about some of those in this blog.
-    `;
+    return content.p1;
+  }
+  paragraphs() {
+    return content.paragraphs.map((content, index) => {
+      return (
+        <p key={`paragraph-${index}`}>{content}</p>
+      );
+    });
   }
 
   render() {
@@ -36,7 +47,7 @@ class About extends React.Component {
         <Title text={`About me`}/>
         <div style={nameStyle}>Dev Kordeš</div>
         <Summary text={About.summary()}/>
-        <p>{this.p1()}</p>
+        {this.paragraphs()}
         <div style={{marginBottom: '25px', width: '100%'}}/>
         <Social/>
       </div>

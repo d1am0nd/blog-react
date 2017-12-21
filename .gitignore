@@ -1,5 +1,6 @@
 /config/database.json
 /config/jwt.json
+/config/page.js
 /config/page.json
 /config/env.json
 /config/api.json

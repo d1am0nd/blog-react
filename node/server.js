@@ -39,6 +39,9 @@ app.get("*", (req, res) => {
       } else if (path === '/posts/:slug') {
         Meta.setTitle(preloadedState.posts.post.title);
         Meta.setDescription(preloadedState.posts.post.summary);
+      } else if (path === '/about-me') {
+        Meta.setTitle(matched.props.component.title());
+        Meta.setDescription(matched.props.component.summary());
       }
       let html = `
         <!DOCTYPE html>
