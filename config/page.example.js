@@ -1,3 +1,11 @@
+export const meta = {
+  title: 'My Programming Blog',
+  defaultTitle: 'Home',
+  defaultDescription: `
+    Some description
+  `,
+};
+
 export const about = {
   title: 'About me',
   author: 'Your name',
