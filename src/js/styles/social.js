@@ -12,7 +12,6 @@ export const title = function() {
     'padding': 0,
   };
 };
-
 export const ul = function() {
   return {
     'fontSize': '20px',

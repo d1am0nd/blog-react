@@ -7,23 +7,40 @@ import {matchPath} from 'react-router';
 import routes from '../src/js/components/Routes';
 import {Meta, defaultTitle, defaultDescription} from '../src/js/meta/meta';
 
+import {createSitemap} from './sitemap';
+
 const app = express();
 
 app.use(express.static('./public'));
 
 app.get("*", (req, res) => {
-  const store = newServerStore();
+  if (req.url === '/sitemap.xml') {
+    createSitemap()
+      .then(xml => {
+        res.header('Content-Type', 'application/xml');
+        res.send(xml);
+      })
+      .catch(err => {
+        console.log('ERRRRRR', err);
+        fourOhFour(res);
+      });
+    return;
+  }
   const matched = routes.find(r => {
     if (matchPath(req.url, {path: r.props.path, exact: r.props.exact})) {
       return true;
     }
     return false;
   });
+  if (!matched) {
+    fourOhFour(res);
+    return;
+  }
+
+  const store = newServerStore();
   let promises = [];
-  if (typeof matched !== 'undefined') {
-    if (typeof matched.props.component.fetchData !== 'undefined') {
-      promises.push(matched.props.component.fetchData(store, req.url));
-    }
+  if (typeof matched.props.component.fetchData !== 'undefined') {
+    promises.push(matched.props.component.fetchData(store, req.url));
   }
 
   Promise.all(promises)
@@ -34,57 +51,67 @@ app.get("*", (req, res) => {
       }
       const path = matched.props.path;
       if (path === '/') {
+        // Home
         Meta.setTitle(defaultTitle);
         Meta.setDescription(defaultDescription);
       } else if (path === '/posts/:slug') {
+        // Single post
         Meta.setTitle(preloadedState.posts.post.title);
         Meta.setDescription(preloadedState.posts.post.summary);
       } else if (path === '/about-me') {
+        // About me
         Meta.setTitle(matched.props.component.title());
         Meta.setDescription(matched.props.component.summary());
       }
-      let html = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="author" content="Dev Kordeš">
-            <meta http-equiv='content-type' content='text/html; charset=utf-8' />
-            <title id='meta-title'>${Meta.getTitle()}</title>
-            <meta id='meta-og-title' property='og:title' content='${Meta.getTitle()}' />
-            <meta id='meta-description' name='description' content='${Meta.getDescription()}'/>
-            <meta id='meta-og-description' property='og:description' content='${Meta.getDescription()}'/>
-            <meta id='meta-og-image' property='og:image' content='${Meta.getImage()}' />
-            <meta property='og:type' content='website' />
-        </head>
-        <body class="landing">
-            <div id="root">${renderToString(
-              <App
-                store={store}
-                context={{}}
-                radiumConfig={{userAgent: req.headers['user-agent']}}
-                location={req.url}/>
-            )}</div>
-            <script>
-              window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
-            </script>
-            <script async src="/js/app.js"></script>
-            <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        </body>
-        </html>
-      `;
+      let html = renderHtml(store, preloadedState, req, Meta);
       res.send(html);
     })
     .catch(err => {
       console.log(err);
-      res.status(404).send('404');
+      fourOhFour(res);
     });
-
 });
 
 let port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log("Server is listening on", port);
 });
+
+function fourOhFour(res) {
+  res.status(404).send('404');
+}
+
+function renderHtml(store, preloadedState, req, Meta) {
+  return `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Dev Kordeš">
+        <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+        <title id='meta-title'>${Meta.getTitle()}</title>
+        <meta id='meta-og-title' property='og:title' content='${Meta.getTitle()}' />
+        <meta id='meta-description' name='description' content='${Meta.getDescription()}'/>
+        <meta id='meta-og-description' property='og:description' content='${Meta.getDescription()}'/>
+        <meta id='meta-og-image' property='og:image' content='${Meta.getImage()}' />
+        <meta property='og:type' content='website' />
+    </head>
+    <body class="landing">
+        <div id="root">${renderToString(
+          <App
+            store={store}
+            context={{}}
+            radiumConfig={{userAgent: req.headers['user-agent']}}
+            location={req.url}/>
+        )}</div>
+        <script>
+          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+        </script>
+        <script async src="/js/app.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    </body>
+    </html>
+  `;
+}
