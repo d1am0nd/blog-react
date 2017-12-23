@@ -1,9 +1,11 @@
 import {
   SET_DATA_LOADED,
+  SET_COOKIES_DISMISSED,
 } from '../const/misc';
 
 const initialState = {
   dataLoaded: false,
+  cookiesDismissed: true,
 };
 
 export const miscReducer = (state = initialState, action) => {
@@ -13,6 +15,14 @@ export const miscReducer = (state = initialState, action) => {
         ...state,
         dataLoaded: action.payload,
       };
+      break;
+    }
+    case SET_COOKIES_DISMISSED: {
+      state = {
+        ...state,
+        cookiesDismissed: action.payload,
+      };
+      break;
     }
   }
   return state;

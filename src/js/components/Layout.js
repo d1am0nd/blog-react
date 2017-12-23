@@ -8,14 +8,20 @@ import Title from './Layout/Title';
 
 import Header from './Partials/Header';
 import AdminHeader from './Partials/AdminHeader';
+import Cookies from './Partials/Cookies';
 
 import {Route, Switch, withRouter} from 'react-router-dom';
 
+import {setCookiesDismissed} from '../store/actions/miscActions';
 import {fetchMyPosts, deletePost} from '../store/actions/postsActions';
 import {login, logout} from '../store/actions/userActions';
 import postsApi from '../api/posts';
 import authApi from '../api/auth';
 import auth from '../auth/auth';
+import {
+  dismiss as dismissCookies,
+  alreadyDismissed as cookiesDismissed,
+} from '../cookies';
 
 import {layout as layoutStyle} from '../styles/layout';
 
@@ -39,9 +45,17 @@ class Layout extends React.Component {
   }
 
   componentDidMount() {
+    if (!cookiesDismissed()) {
+      this.props.dispatch(setCookiesDismissed(false));
+    }
     if (auth.loggedIn()) {
       this.props.dispatch(fetchMyPosts());
     }
+  }
+
+  handleCookieDismiss(e) {
+    this.props.dispatch(setCookiesDismissed(true));
+    dismissCookies();
   }
 
   logout(e) {
@@ -74,11 +88,14 @@ class Layout extends React.Component {
 
   render() {
     return (
-      <div style={layoutStyle()}>
+      <div style={layoutStyle(this.props.misc.cookiesDismissed)}>
         <Title text={'My Programming Blog'}/>
         <Header test={`test`} url={this.props.location.pathname}/>
         {this.renderAdminPanel()}
         {Routes}
+        <Cookies
+          show={!this.props.misc.cookiesDismissed}
+          handleDismiss={e => this.handleCookieDismiss(e)}/>
       </div>
     );
   }

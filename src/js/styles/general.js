@@ -21,3 +21,7 @@ export const subTitle = {
   marginBottom: '5px',
   color: color2,
 };
+export const baseWidth = {
+  width: '600px',
+  maxWidth: '100%',
+};

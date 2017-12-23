@@ -1,14 +1,14 @@
-const base = {
-  w: 600,
-};
+import {baseWidth} from './general';
+import {transition} from './vars';
 
-export function layout() {
+export function layout(cookiesDismissed) {
   return {
-    width: base.w + 'px',
+    ...transition,
+    ...baseWidth,
     marginLeft: 'auto',
     marginRight: 'auto',
-    maxWidth: '100%',
     fontFamily: '"Roboto"',
     lineHeight: 1.4,
+    paddingBottom: cookiesDismissed ? '0px' : '30px',
   };
 };
