@@ -24,18 +24,6 @@ function getCookie(cname) {
   return '';
 }
 
-if (typeof window !== 'undefined') {
-  window.dc = function() {
-    document.cookie =
-      `${REMEMBER_COOKIE}=;expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
-  };
-  window.gc = function() {
-    return getCookie(REMEMBER_COOKIE);
-  };
-  window.sc = function() {
-    return dismiss();
-  };
-}
 export const alreadyDismissed = function() {
   return typeof document === 'undefined' ||
     getCookie(REMEMBER_COOKIE) !== '';

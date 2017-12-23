@@ -7,6 +7,7 @@ import promise from 'redux-promise-middleware';
 // import {imagesReducer} from './reducers/imagesReducer';
 import {postsReducer} from './reducers/postsReducer';
 import {userReducer} from './reducers/userReducer';
+import {projectsReducer} from './reducers/projectsReducer';
 import {imagesReducer} from './reducers/imagesReducer';
 import {miscReducer} from './reducers/miscReducer';
 import {setDataLoaded} from './actions/miscActions';
@@ -17,6 +18,7 @@ const reducers = combineReducers({
   users: userReducer,
   images: imagesReducer,
   misc: miscReducer,
+  projects: projectsReducer,
 });
 const middleware = applyMiddleware(thunk);
 const serverStore = createStore(reducers, middleware);

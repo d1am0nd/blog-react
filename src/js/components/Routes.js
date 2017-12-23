@@ -4,6 +4,7 @@ import {Route, Switch} from 'react-router-dom';
 import Layout from './Layout';
 import Index from './Pages/Index';
 import Show from './Pages/Show';
+import Projects from './Pages/Projects';
 import About from './Pages/About';
 import Login from './Pages/Auth/Login';
 import Edit from './Pages/Auth/Edit';
@@ -30,6 +31,7 @@ const routes = [
     path="/login"
     component={Login}/>,
   <Route exact={true} key="8" path="/about-me" component={About}/>,
+  <Route exact={true} key="9" path="/my-projects" component={Projects}/>,
 ];
 
 export default routes;

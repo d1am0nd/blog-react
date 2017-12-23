@@ -27,6 +27,11 @@ class Header extends React.Component {
           About me
           </Link>
         </li>
+        <li key={`projects`} style={liStyle(this.props.url === '/my-projects')}>
+          <Link style={linkStyle()} to={`/my-projects`}>
+          Projects
+          </Link>
+        </li>
       </ul>
     );
   }
