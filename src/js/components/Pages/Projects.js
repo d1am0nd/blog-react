@@ -7,6 +7,14 @@ import {fetchProjects} from '../../store/actions/projectsActions';
 import Project from '../Partials/Simple/Project';
 
 class Projects extends React.Component {
+  static title() {
+    return 'My projects';
+  }
+
+  static summary() {
+    return 'My side projects.';
+  }
+
   componentDidMount() {
     this.props.dispatch(fetchProjects());
   }

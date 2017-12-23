@@ -34,6 +34,7 @@ export const createSitemap = function() {
           urls: [
             {url: '/', changfreq: 'weekly', priority: 0.8},
             {url: '/about-me', changfreq: 'monthly', priority: 0.3},
+            {url: '/my-projects', changfreq: 'monthly', priority: 0.5},
             ...posts.map(post => {
               return {url: `/posts/${post.slug}`, changfreq: 'monthly', priority: 0.6};
             }),

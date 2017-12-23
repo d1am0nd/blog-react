@@ -21,7 +21,6 @@ app.get("*", (req, res) => {
         res.send(xml);
       })
       .catch(err => {
-        console.log('ERRRRRR', err);
         fourOhFour(res);
       });
     return;
@@ -60,6 +59,10 @@ app.get("*", (req, res) => {
         Meta.setDescription(preloadedState.posts.post.summary);
       } else if (path === '/about-me') {
         // About me
+        Meta.setTitle(matched.props.component.title());
+        Meta.setDescription(matched.props.component.summary());
+      } else if (path === '/my-projects') {
+        // Projects
         Meta.setTitle(matched.props.component.title());
         Meta.setDescription(matched.props.component.summary());
       }
