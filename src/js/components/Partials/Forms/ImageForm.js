@@ -24,8 +24,8 @@ class ImageForm extends React.Component {
       image: image,
     };
   }
-  componentDidMount(prevProps) {
-    if (prevProps.image != this.props.image) {
+  componentDidUpdate(prevProps) {
+    if (prevProps && prevProps.image != this.props.image) {
       this.setState({
         image: {
           ...this.state.image,
