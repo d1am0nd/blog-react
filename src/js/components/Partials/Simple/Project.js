@@ -18,7 +18,7 @@ class Project extends React.Component {
         <a target="_blank" href={this.props.project.url} style={linkStyle()}>
           <Title text={this.props.project.title}/>
           <div style={imgWrapperStyle()}>
-            <img style={imgStyle()} src={this.props.project.imgSrc}/>
+            <img style={imgStyle()} src={this.props.project.img_src}/>
           </div>
           <Summary text={this.props.project.description}/>
         </a>
