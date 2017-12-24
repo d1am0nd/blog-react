@@ -7,6 +7,10 @@ import PostForm from '../../Forms/PostForm';
 import Render from '../../Renders/Post';
 
 import {fetchPostBySlug, updatePost} from '../../../store/actions/postsActions';
+import {
+  left as leftStyle,
+  right as rightStyle,
+} from '../../../styles/show/show';
 
 class Edit extends React.Component {
   constructor() {
@@ -59,10 +63,10 @@ class Edit extends React.Component {
     return (
       <div>
         <Title text={this.props.post.title}/>
-        <div style={{'float': 'left', 'width': '45%'}}>
+        <div style={leftStyle()}>
           {this.renderForm()}
         </div>
-        <div style={{'float': 'right', 'width': '50%'}}>
+        <div style={rightStyle()}>
           <Render post={this.state.post}/>
         </div>
         <div style={{'clear': 'both'}}></div>
