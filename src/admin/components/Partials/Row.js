@@ -1,5 +1,6 @@
 import React from 'react';
 import radium from 'radium';
+import {Link} from 'react-router-dom';
 
 import {
   left as leftStyle,
@@ -20,9 +21,9 @@ class Row extends React.Component {
         <div style={leftStyle()}>
           <ul style={ulStyle()}>
             <li style={liStyle()}>
-              <a href={this.props.editUrl}>
+              <Link to={this.props.editUrl}>
                 Edit
-              </a>
+              </Link>
             </li>
             <li style={liStyle()}>
               <a href="javascript:;" onClick={(e) => this.handleDelete(e)}>

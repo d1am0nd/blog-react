@@ -23,7 +23,6 @@ class PostForm extends React.Component {
       },
     };
 
-
     if (props.post) {
       Object.assign(post, props.post);
     }

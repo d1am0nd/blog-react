@@ -32,7 +32,7 @@ const postsReducer = (state = initialState, action) => {
       state = {
         ...state,
         post: action.payload,
-        posts: state.map(p => {
+        posts: state.posts.map(p => {
           if (p.id === action.payload.id) {
             Object.assign(p, action.payload.id);
           }

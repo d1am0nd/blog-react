@@ -3,7 +3,6 @@ import {token} from '../auth';
 import qs from 'qs';
 import p from './params';
 
-const GET_PUBLISHED_URL = p.apiUrl + '/api/posts/all';
 const GET_BY_SLUG_URL = p.apiUrl + '/api/posts/single/';
 const GET_MINE_URL = p.apiUrl + '/api/posts/my/all';
 const POST_EDIT_URL = p.apiUrl + '/api/posts/edit/';
@@ -34,16 +33,12 @@ export const deletePost = function(id) {
   });
 };
 
-export const getPublished = function() {
-  return axios.get(GET_PUBLISHED_URL);
-};
-
 export const findBySlug = function(slug) {
-  let headers = {};
-  if (auth.loggedIn()) {
-    headers.Authorization = token();
-  }
-  return axios.get(GET_BY_SLUG_URL + slug, {headers});
+  return axios.get(GET_BY_SLUG_URL + slug, {
+    headers: {
+      Authorization: token(),
+    },
+  });
 };
 
 export const getMine = function() {

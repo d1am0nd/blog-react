@@ -4,3 +4,17 @@ export const smallWrapper = function() {
     'maxWidth': '100%',
   };
 };
+
+export const wrapper = function() {
+  return {
+    'width': '100%',
+    'maxWidth': '100%',
+  };
+};
+
+export const textarea = function() {
+  return {
+    'width': '100%',
+    'maxWidth': '100%',
+  };
+};
