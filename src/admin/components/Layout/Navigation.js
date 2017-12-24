@@ -21,6 +21,11 @@ class Navigation extends React.Component {
             Posts
           </Link>
         </li>
+        <li key={'images'} style={liStyle()}>
+          <Link to={`/admin/images`}>
+            Images
+          </Link>
+        </li>
       </ul>
     );
   }
