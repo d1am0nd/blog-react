@@ -22,6 +22,11 @@ func NewRouter() *httprouter.Router {
 	r.POST("/api/images/create", AuthOnly(CreateImage))
 	r.POST("/api/images/edit/:id", AuthOnly(UpdateImage))
 	r.GET("/api/images/delete/:id", AuthOnly(DeleteImage))
+	r.GET("/api/projects/all", AllProjects)
+	r.GET("/api/projects/single/:id", ProjectById)
+	r.POST("/api/projects/create", AuthOnly(CreateProject))
+	r.POST("/api/projects/edit/:id", AuthOnly(UpdateProject))
+	r.POST("/api/projects/delete/:id", AuthOnly(DeleteProject))
 	r.ServeFiles("/uploads/*filepath", http.Dir("../public/uploads"))
 	r.ServeFiles("/js/*filepath", http.Dir("../public/js"))
 
