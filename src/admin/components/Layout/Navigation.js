@@ -11,6 +11,11 @@ class Navigation extends React.Component {
   render() {
     return (
       <ul style={ulStyle()}>
+        <li key={'posts'} style={liStyle()}>
+          <Link to={`/admin/posts`}>
+            Posts
+          </Link>
+        </li>
         <li key={'images'} style={liStyle()}>
           <Link to={`/admin/images`}>
             Images
@@ -19,11 +24,6 @@ class Navigation extends React.Component {
         <li key={'login'} style={liStyle()}>
           <Link to={`/admin/login`}>
             Login
-          </Link>
-        </li>
-        <li key={'posts'} style={liStyle()}>
-          <Link to={`/admin/posts`}>
-            Posts
           </Link>
         </li>
       </ul>
