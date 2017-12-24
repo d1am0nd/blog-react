@@ -5,13 +5,22 @@ import SmallText from '../Partials/Form/SmallText';
 import TextArea from '../Partials/Form/TextArea';
 import Submit from '../Partials/Form/Submit';
 
-import {slugify} from '../../helpers';
+import {slugify, validateYyyyMmDd} from '../../helpers';
 
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
-    const post = {
-      'published_at': {},
+
+    let post = {
+      'title': '',
+      'slug': '',
+      'description': '',
+      'content': '',
+      'published_at': {
+        'String': '',
+        'Valid': false,
+      },
+      'active': false,
     };
     if (props.post) {
       Object.assign(post, props.post);
@@ -25,6 +34,14 @@ class PostForm extends React.Component {
   handleTitleChange(e) {
     this.handleChange('title', e.target.value);
     this.handleChange('slug', slugify(e.target.value));
+  }
+
+  handlePublishedAtChanged(e) {
+    this.handleChange('published_at', {
+      Valid: validateYyyyMmDd(e.target.value),
+      String: e.target.value,
+    });
+    this.handleChange('active', validateYyyyMmDd(e.target.value));
   }
 
   handleChange(key, val) {
@@ -56,6 +73,21 @@ class PostForm extends React.Component {
           rows={20}
           handleChange={e => this.handleChange('content', e.target.value)}
           title={`Content`}/>
+        <div>
+          <label>Published at</label>
+          <input
+            disabled="true"
+            type="checkbox"
+            checked={this.state.post.active}
+            value={this.state.post.active}
+            onChange={e => this.handleChange(e, 'active')}
+            />
+          <input
+            placeholder="YYYY-MM-DD"
+            type="text"
+            value={this.state.post.published_at.String}
+            onChange={e => this.handlePublishedAtChanged(e, 'published_at')}/>
+        </div>
         <Submit text={`Submit`}/>
       </form>
     );

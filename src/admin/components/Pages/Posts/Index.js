@@ -22,9 +22,10 @@ class Index extends React.Component {
     return (
       <div>
         <Title text={`Posts`}/>
-        <Link to={`/admin/posts/new`}>New</Link>
-        {this.props.posts.map(post => {
+        <Link to={`/admin/post/new`}>New</Link>
+        {this.props.posts.map((post, i) => {
           return <Row
+            key={`row-${i}`}
             editUrl={`/admin/posts/${post.slug}`}
             handleDelete={e => this.handleDelete(post)}
             text={post.title}/>;

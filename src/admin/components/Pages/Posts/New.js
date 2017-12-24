@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import Title from '../../Partials/Title';
 import PostForm from '../../Forms/PostForm';
 
-import {fetchPostBySlug, updatePost} from '../../../store/actions/postsActions';
+import {newPost} from '../../../store/actions/postsActions';
 
 class Edit extends React.Component {
   constructor() {
@@ -17,39 +17,13 @@ class Edit extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this
-      .props
-      .dispatch(fetchPostBySlug(this.props.match.params.slug))
-      .then(res => {
-        this.setState({
-          post: res,
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-
   postChanged(post) {
     // TODO show on right
   }
 
   handleSubmit(e, post) {
     e.preventDefault();
-    this.props.dispatch(updatePost(post));
-  }
-
-  renderForm() {
-    if (typeof this.state.post.id !== 'undefined') {
-      return (
-        <PostForm
-          postChanged={post => this.postChanged(post)}
-          handleSubmit={(e, post) => this.handleSubmit(e, post)}
-          post={this.props.post}/>
-      );
-    }
-    return '';
+    this.props.dispatch(newPost(post));
   }
 
   fifty() {
@@ -62,9 +36,11 @@ class Edit extends React.Component {
   render() {
     return (
       <div>
-        <Title text={this.props.post.title}/>
+        <Title text={`New post`}/>
         <div style={this.fifty()}>
-          {this.renderForm()}
+          <PostForm
+            postChanged={post => this.postChanged(post)}
+            handleSubmit={(e, post) => this.handleSubmit(e, post)}/>
         </div>
         <div style={this.fifty()}>
           2
