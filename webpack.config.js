@@ -10,6 +10,9 @@ const serverConfig = {
     filename: "server.js",
     libraryTarget: "commonjs2"
   },
+  node: {
+    __dirname: false
+  },
   devtool: "cheap-module-source-map",
   module: {
     rules: [

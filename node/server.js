@@ -14,6 +14,10 @@ const app = express();
 app.use(express.static('./public'));
 
 app.get("*", (req, res) => {
+  if (req.url.startsWith('/admin')) {
+    res.sendFile(`${__dirname}/public/admin.html`);
+    return;
+  }
   if (req.url === '/sitemap.xml') {
     createSitemap()
       .then(xml => {

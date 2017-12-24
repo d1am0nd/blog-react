@@ -1,7 +1,6 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
-import Layout from './Layout';
 import Index from './Pages/Index';
 import Show from './Pages/Show';
 import Projects from './Pages/Projects';
