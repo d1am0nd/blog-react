@@ -18,8 +18,15 @@ class ImageRow extends React.Component {
   render() {
     return (
       <div>
-        {this.props.text}
-        <img src={this.props.src}/>
+        <Link to={this.props.editUrl}>
+          <div>
+            {this.props.text}
+          </div>
+          <img src={this.props.src}/>
+        </Link>
+        <div onClick={e => this.props.handleDelete(e)}>
+          <a href="javascript:;">Delete</a>
+        </div>
       </div>
     );
   }

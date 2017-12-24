@@ -15,7 +15,7 @@ export const newImage = function(image) {
   return axios.post(POST_NEW_URL, image, {
     headers: {
       'Content-Type': 'multipart/form-data',
-      'Authorization': auth.token,
+      'Authorization': token(),
     },
   });
 };
@@ -23,14 +23,14 @@ export const update = function(image, id) {
   return axios.post(POST_EDIT_URL + id, image, {
     headers: {
       'Content-Type': 'multipart/form-data',
-      'Authorization': auth.token,
+      'Authorization': token(),
     },
   });
 };
 export const deleteById = function(id) {
   return axios.get(GET_DELETE_BY_ID + id, {
     headers: {
-      'Authorization': auth.token,
+      'Authorization': token(),
     },
   });
 };

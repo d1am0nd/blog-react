@@ -31,6 +31,12 @@ export const imagesReducer = (state = initialState, action) => {
       break;
     }
     case DELETE_IMAGE: {
+      state = {
+        ...state,
+        images: state.images.filter(image => {
+          return image.id !== action.payload;
+        }),
+      };
       break;
     }
   }

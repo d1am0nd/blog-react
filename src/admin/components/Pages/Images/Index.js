@@ -5,17 +5,52 @@ import {Link} from 'react-router-dom';
 
 import ImageRow from '../../Partials/ImageRow';
 import Title from '../../Partials/Title';
+import Search from '../../Partials/Search';
 
 import {fetchImages, deleteImage} from '../../../store/actions/imagesActions';
 
 class Index extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      search: '',
+    };
+  }
+
   componentDidMount() {
     this.props.dispatch(fetchImages());
   }
 
-  handleDelete(image) {
+  handleSearchChange(e) {
+    this.setState({
+      search: e.target.value.toLowerCase(),
+    });
+  }
+
+  handleDelete(e, image) {
     this.props.dispatch(deleteImage(image.id));
-    alert(image.title);
+  }
+
+  renderImages() {
+    return this
+      .props
+      .images
+      .filter(image => {
+        return image
+          .name
+          .toLowerCase()
+          .indexOf(this.state.search) !== -1;
+      })
+      .map((image, i) => {
+        return (
+          <ImageRow
+            key={`row-${i}`}
+            src={image.path}
+            editUrl={`/admin/images/${image.id}`}
+            handleDelete={e => this.handleDelete(e, image)}
+            text={image.name}/>
+        );
+      });
   }
 
   render() {
@@ -23,14 +58,8 @@ class Index extends React.Component {
       <div>
         <Title text={`Images`}/>
         <Link to={`/admin/image/new`}>New</Link>
-        {this.props.images.map((image, i) => {
-          return <ImageRow
-            key={`row-${i}`}
-            src={image.path}
-            editUrl={`/admin/images/${image.slug}`}
-            handleDelete={e => this.handleDelete(image)}
-            text={image.title}/>;
-        })}
+        <Search handleChange={e => this.handleSearchChange(e)}/>
+        {this.renderImages()}
       </div>
     );
   }

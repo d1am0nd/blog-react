@@ -7,6 +7,8 @@ import Posts from './Pages/Posts/Index';
 import Post from './Pages/Posts/Edit';
 import NewPost from './Pages/Posts/New';
 import Images from './Pages/Images/Index';
+import Image from './Pages/Images/Edit';
+import NewImage from './Pages/Images/New';
 
 const routes = [
   <Route exact={true} key="0" path="/admin" component={Home}/>,
@@ -15,6 +17,8 @@ const routes = [
   <Route exact={true} key="2" path="/admin/posts" component={Posts}/>,
   <Route exact={true} key="4" path="/admin/posts/:slug" component={Post}/>,
   <Route exact={true} key="5" path="/admin/images/" component={Images}/>,
+  <Route exact={true} key="6" path="/admin/images/:id" component={Image}/>,
+  <Route exact={true} key="7" path="/admin/image/new" component={NewImage}/>,
 ];
 
 export default routes;
