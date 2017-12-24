@@ -7,6 +7,10 @@ import {fetchProjects} from '../../store/actions/projectsActions';
 import Project from '../Partials/Simple/Project';
 
 class Projects extends React.Component {
+  static fetchData(store) {
+    return store.dispatch(fetchProjects());
+  }
+
   static title() {
     return 'My projects';
   }
