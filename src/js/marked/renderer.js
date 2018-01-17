@@ -20,6 +20,7 @@ renderer.link = (href, title, text) => {
   }
   let out = '<a href="' + href + '"';
   out += ' target="_blank"';
+  out += ' rel="noopener"';
   if (title) {
     out += ' title="' + title + '"';
   }
