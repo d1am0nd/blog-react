@@ -93,17 +93,38 @@ function renderHtml(store, preloadedState, req, Meta) {
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="Dev Kordeš">
-        <meta http-equiv='content-type' content='text/html; charset=utf-8' />
-        <title id='meta-title'>${Meta.getTitle()}</title>
-        <meta id='meta-og-title' property='og:title' content='${Meta.getTitle()}' />
-        <meta id='meta-description' name='description' content='${Meta.getDescription()}'/>
-        <meta id='meta-og-description' property='og:description' content='${Meta.getDescription()}'/>
-        <meta id='meta-og-image' property='og:image' content='${Meta.getImage()}' />
-        <meta property='og:type' content='website' />
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="author" content="Dev Kordeš">
+
+      <!-- Disable tap highlight on IE -->
+      <meta name="msapplication-tap-highlight" content="no">
+
+      <!-- Web Application Manifest -->
+      <link rel="manifest" href="manifest.json">
+
+      <!-- Add to homescreen for Chrome on Android -->
+      <meta name="mobile-web-app-capable" content="yes">
+      <meta name="application-name" content='${Meta.getTitle()}'>
+      <link rel="icon" sizes="192x192" href="img/icons/mpb-icon192.png">
+
+      <!-- Add to homescreen for Safari on iOS -->
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="apple-mobile-web-app-title" content='${Meta.getTitle()}'>
+      <link rel="apple-touch-icon" href="img/icons/mpb-icon152.png">
+
+      <!-- Tile icon for Win8 (144x144 + tile color) -->
+      <meta name="msapplication-TileImage" content="img/icons/mpb-icon144.png">
+      <meta name="msapplication-TileColor" content="#333333">
+      <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+      <title id='meta-title'>${Meta.getTitle()}</title>
+      <meta id='meta-og-title' property='og:title' content='${Meta.getTitle()}' />
+      <meta id='meta-description' name='description' content='${Meta.getDescription()}'/>
+      <meta id='meta-og-description' property='og:description' content='${Meta.getDescription()}'/>
+      <meta id='meta-og-image' property='og:image' content='${Meta.getImage()}' />
+      <meta property='og:type' content='website' />
     </head>
     <body class="landing">
         <div id="root">${renderToString(

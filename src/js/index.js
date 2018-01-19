@@ -6,6 +6,7 @@ import {connect, Provider} from 'react-redux';
 import {clientStore} from './store';
 import client from '../../config/client.json';
 import ReactGA from 'react-ga';
+import './service-worker.js';
 
 if ((client.env === 'prod' || client.env === 'production') &&
   navigator.userAgent.indexOf('Speed Insights') == -1) {
