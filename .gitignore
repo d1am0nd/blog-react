@@ -9,6 +9,7 @@
 /node_modules
 /public/uploads
 /public/js/app.js
+/public
 /server.js
 /server.js.map
 /go/main

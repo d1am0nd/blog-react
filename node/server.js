@@ -125,6 +125,7 @@ function renderHtml(store, preloadedState, req, Meta) {
       <meta id='meta-og-description' property='og:description' content='${Meta.getDescription()}'/>
       <meta id='meta-og-image' property='og:image' content='${Meta.getImage()}' />
       <meta property='og:type' content='website' />
+      <meta name="theme-color" content="#E5E5E5"/>
     </head>
     <body class="landing">
         <div id="root">${renderToString(
