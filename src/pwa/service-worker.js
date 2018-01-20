@@ -1,10 +1,11 @@
 import './cache.js';
 
-const cacheName = 'v1.0';
+const cacheName = 'v1.0.1';
 const cacheFiles = [
   '/img/icons/mpb-icon152.png',
   '/img/icons/mpb-icon144.png',
   '/img/icons/mpb-icon192.png',
+  'https://fonts.googleapis.com/css?family=Roboto',
 ];
 
 self.addEventListener('beforeinstallprompt', function(e) {
