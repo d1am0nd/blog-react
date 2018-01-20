@@ -6,6 +6,7 @@ import {newServerStore} from '../src/js/store';
 import {matchPath} from 'react-router';
 import routes from '../src/js/components/Routes';
 import {Meta, defaultTitle, defaultDescription} from '../src/js/meta/meta';
+import client from '../config/client';
 
 import {createSitemap} from './sitemap';
 
@@ -89,6 +90,8 @@ function fourOhFour(res) {
 }
 
 function renderHtml(store, preloadedState, req, Meta) {
+  const sv = client.google_site_verification ?
+      `<meta name="google-site-verification" content="${client.google_site_verification}"/>` : ``;
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -97,7 +100,7 @@ function renderHtml(store, preloadedState, req, Meta) {
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="author" content="Dev Kordeš">
-
+      ${sv}
       <!-- Disable tap highlight on IE -->
       <meta name="msapplication-tap-highlight" content="no">
 
