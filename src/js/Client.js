@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from './components/Layout';
+import ReactGA from 'react-ga';
 import {StyleRoot} from 'radium';
 import {Provider, connect} from 'react-redux';
 import {Router} from 'react-router-dom';
@@ -13,7 +14,6 @@ if ((client.env === 'prod' || client.env === 'production') &&
   ReactGA.pageview(window.location.pathname + window.location.search);
 
   history.listen((location, action) => {
-    console.log('here we are', location, action);
     ReactGA.set({page: location.pathname});
     ReactGA.pageview(location.pathname);
   });
