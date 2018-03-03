@@ -12,7 +12,7 @@ import {
 } from '../../../js/styles/post';
 import {pretty as prettyDate} from '../../../js/filters/date';
 import Title from '../../../js/components/Partials/Simple/Title';
-import Summary from '../../../js/components/Partials/Simple/Summary';
+import Summary from '../../../js/components/Simple/Summary';
 
 class Post extends React.Component {
   prettyDate() {
@@ -47,7 +47,7 @@ class Post extends React.Component {
         <div style={dateStyle()}>
           Published on {this.prettyDate()}
         </div>
-        <Summary text={this.props.post.summary}/>
+        <Summary>{this.props.post.summary}</Summary>
         <div
           style={contentStyle()}
           dangerouslySetInnerHTML={{__html: this.content()}}>

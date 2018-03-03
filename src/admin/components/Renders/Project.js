@@ -4,7 +4,7 @@ import marked from 'marked';
 import renderer from '../../../js/marked/renderer';
 
 import Title from '../../../js/components/Partials/Simple/Title';
-import Summary from '../../../js/components/Partials/Simple/Summary';
+import Summary from '../../../js/components/Simple/Summary';
 
 import {
   projectWrapper as wrapperStyle,
@@ -23,7 +23,7 @@ class Project extends React.Component {
           <div style={imgWrapperStyle()}>
             <img style={imgStyle()} src={this.props.project.img_src}/>
           </div>
-          <Summary text={this.props.project.description}/>
+          <Summary>{this.props.project.description}</Summary>
         </a>
       </div>
     );

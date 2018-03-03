@@ -2,7 +2,7 @@ import React from 'react';
 import radium from 'radium';
 
 import Title from './Title';
-import Summary from './Summary';
+import Summary from '../../Simple/Summary';
 
 import {
   projectWrapper as wrapperStyle,
@@ -20,7 +20,7 @@ class Project extends React.Component {
           <div style={imgWrapperStyle()}>
             <img style={imgStyle()} src={this.props.project.img_src}/>
           </div>
-          <Summary text={this.props.project.description}/>
+          <Summary>{this.props.project.description}</Summary>
         </a>
       </div>
     );

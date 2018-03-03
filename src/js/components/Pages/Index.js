@@ -16,7 +16,7 @@ import postApi from '../../api/posts';
 import {Meta, defaultTitle, defaultDescription} from '../../meta/meta';
 import {fetchPosts} from '../../store/actions/postsActions';
 import Title from '../Partials/Simple/Title';
-import Summary from '../Partials/Simple/Summary';
+import Summary from '../Simple/Summary';
 
 class Index extends React.Component {
   static fetchData(store) {
@@ -49,7 +49,7 @@ class Index extends React.Component {
               style={wrapperStyle()}>
               <Title text={i.title}/>
               <div style={dateStyle()}>Published on {date}</div>
-              <Summary text={i.summary}/>
+              <Summary>{i.summary}</Summary>
               <span style={moreStyle()} key={`goto-${i.id}}`} href="#">
                 More
               </span>

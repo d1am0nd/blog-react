@@ -16,7 +16,7 @@ import {
 import {Meta} from '../../meta/meta';
 import {pretty as prettyDate} from '../../filters/date';
 import Title from '../Partials/Simple/Title';
-import Summary from '../Partials/Simple/Summary';
+import Summary from '../Simple/Summary';
 
 class Show extends React.Component {
   static fetchData(store, url) {
@@ -76,7 +76,7 @@ class Show extends React.Component {
         <div style={dateStyle()}>
           Published on {this.prettyDate()}
         </div>
-        <Summary text={this.props.post.summary}/>
+        <Summary>{this.props.post.summary}</Summary>
         <div
           style={contentStyle()}
           dangerouslySetInnerHTML={{__html: this.content()}}>

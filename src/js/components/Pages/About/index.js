@@ -1,22 +1,16 @@
 import React from 'react';
 import radium from 'radium';
 
-import {
-  subTitle as nameStyle,
-} from '../../styles/general';
-import {Meta} from '../../meta/meta';
+import {Meta} from '../../../meta/meta';
 
-import Title from '../Partials/Simple/Title';
-import Summary from '../Partials/Simple/Summary';
-import Social from '../Partials/Simple/Social';
+import H1 from '../../Simple/H1';
+import SubH1 from '../../Simple/SubH1';
+import Summary from '../../Simple/Summary';
+import Social from '../../Partials/Simple/Social';
 
-import {about as content} from '../../../../config/page';
+import {about as content} from '../../../../../config/page';
 
 class About extends React.Component {
-  constructor() {
-    super();
-  }
-
   componentDidMount() {
     Meta.setTitle(About.title());
     Meta.setDescription(About.summary());
@@ -33,6 +27,7 @@ class About extends React.Component {
   p1() {
     return content.p1;
   }
+
   paragraphs() {
     return content.paragraphs.map((content, index) => {
       return (
@@ -44,11 +39,10 @@ class About extends React.Component {
   render() {
     return (
       <div>
-        <Title text={`About me`}/>
-        <div style={nameStyle}>Dev Kordeš</div>
-        <Summary text={About.summary()}/>
+        <H1>About me</H1>
+        <SubH1>Dev Kordeš</SubH1>
+        <Summary>{About.summary()}</Summary>
         {this.paragraphs()}
-        <div style={{marginBottom: '25px', width: '100%'}}/>
         <Social/>
       </div>
     );

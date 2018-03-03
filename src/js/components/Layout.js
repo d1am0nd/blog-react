@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {renderRoutes} from 'react-router-config';
 
 import Routes from './Routes';
-import Title from './Simple/Title';
+import MainTitle from './Simple/MainTitle';
 
 import Header from './Containers/Header';
 import Cookies from './Partials/Cookies';
@@ -39,7 +39,7 @@ class Layout extends React.Component {
   render() {
     return (
       <div style={layoutStyle(this.props.misc.cookiesDismissed)}>
-        <Title>My Programming Blog</Title>
+        <MainTitle>My Programming Blog</MainTitle>
         <Header url={this.props.location.pathname}/>
         {Routes}
         <Cookies
@@ -52,6 +52,6 @@ class Layout extends React.Component {
 
 export default withRouter(connect(store => {
   return {
-     ...store,
+    ...store,
   };
 })(radium(Layout)));
