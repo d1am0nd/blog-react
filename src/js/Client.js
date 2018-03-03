@@ -28,7 +28,9 @@ class App extends React.Component {
     return (
       <Provider store={this.props.store}>
         <StyleRoot>
-          <Router history={history}><Layout/></Router>
+          <Router history={history}>
+            <Layout/>
+          </Router>
         </StyleRoot>
       </Provider>
     );

@@ -4,15 +4,14 @@ import {connect} from 'react-redux';
 import {renderRoutes} from 'react-router-config';
 
 import Routes from './Routes';
-import Title from './Layout/Title';
+import Title from './Simple/Title';
 
-import Header from './Partials/Header';
+import Header from './Containers/Header';
 import Cookies from './Partials/Cookies';
 
 import {Route, Switch, withRouter} from 'react-router-dom';
 
 import {setCookiesDismissed} from '../store/actions/miscActions';
-import postsApi from '../api/posts';
 import {
   dismiss as dismissCookies,
   alreadyDismissed as cookiesDismissed,
@@ -21,22 +20,9 @@ import {
 import {layout as layoutStyle} from '../styles/layout';
 
 class Layout extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+  // Used for SSR
   static fetchData(store) {
     return store.dispatch(fetchMyPosts());
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
-      this.onRouteChanged();
-    }
-  }
-
-  onRouteChanged() {
-
   }
 
   componentDidMount() {
@@ -50,18 +36,11 @@ class Layout extends React.Component {
     dismissCookies();
   }
 
-  onPostDelete(postId) {
-    if (!confirm('Really delete post with id ' + postId + '?')) {
-      return;
-    }
-    this.props.dispatch(deletePost(postId));
-  }
-
   render() {
     return (
       <div style={layoutStyle(this.props.misc.cookiesDismissed)}>
-        <Title text={'My Programming Blog'}/>
-        <Header test={`test`} url={this.props.location.pathname}/>
+        <Title>My Programming Blog</Title>
+        <Header url={this.props.location.pathname}/>
         {Routes}
         <Cookies
           show={!this.props.misc.cookiesDismissed}
