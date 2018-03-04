@@ -2,14 +2,14 @@ import React from 'react';
 import radium from 'radium';
 
 import Title from './Title';
-import Summary from '../../Simple/Summary';
+import Summary from 'components/Simple/Summary';
 
 import {
   projectWrapper as wrapperStyle,
   projectWrapperLink as linkStyle,
   imgWrapper as imgWrapperStyle,
   img as imgStyle,
-} from '../../../styles/projects';
+} from 'styles/projects';
 
 class Project extends React.Component {
   render() {

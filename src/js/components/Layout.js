@@ -11,13 +11,13 @@ import Cookies from './Partials/Cookies';
 
 import {Route, Switch, withRouter} from 'react-router-dom';
 
-import {setCookiesDismissed} from '../store/actions/miscActions';
+import {setCookiesDismissed} from 'store/actions/miscActions';
 import {
   dismiss as dismissCookies,
   alreadyDismissed as cookiesDismissed,
-} from '../cookies';
+} from 'cookies';
 
-import {layout as layoutStyle} from '../styles/layout';
+import {layout as layoutStyle} from 'styles/layout';
 
 class Layout extends React.Component {
   // Used for SSR

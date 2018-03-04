@@ -12,11 +12,11 @@ import {
   content as contentStyle,
   wrapper as wrapperStyle,
   showMore as linkStyle,
-} from '../../styles/post';
-import {Meta} from '../../meta/meta';
-import {pretty as prettyDate} from '../../filters/date';
-import Title from '../Partials/Simple/Title';
-import Summary from '../Simple/Summary';
+} from 'styles/post';
+import {Meta} from 'meta/meta';
+import {pretty as prettyDate} from 'filters/date';
+import Title from 'components/Partials/Simple/Title';
+import Summary from 'components/Simple/Summary';
 
 class Show extends React.Component {
   static fetchData(store, url) {

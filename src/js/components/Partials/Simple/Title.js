@@ -3,7 +3,7 @@ import radium from 'radium';
 
 import {
   h2 as h2style,
-} from '../../../styles/general';
+} from 'styles/general';
 
 class Title extends React.Component {
   render() {

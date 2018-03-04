@@ -22,11 +22,16 @@ mix
           enforce: 'pre',
           exclude: /(node_modules|bower_components)/,
           options: {
-              formatter: require('eslint-friendly-formatter')
+            formatter: require('eslint-friendly-formatter')
           }
         }
       ]
-    }
+    },
+    resolve: {
+      modules: ['node_modules', path.join(__dirname, 'src', 'js')],
+    },
+    /*
+    */
   })
   .copy('src/static', './public')
   .react('src/js/index.js', 'public/js/app.js')

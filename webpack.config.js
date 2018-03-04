@@ -37,7 +37,7 @@ const serverConfig = {
         test: /js$/,
         exclude: /(node_modules)/,
         loader: "babel-loader",
-        query: { presets: ["react-app"] }
+        query: { p`res`ets: ["react-app"] }
       }
     ]
   }

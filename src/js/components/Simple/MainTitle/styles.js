@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import {color2, color3} from '../../../styles/vars';
+import {color2, color3} from 'styles/vars';
 
 export const containerStyle = () => {
   return {

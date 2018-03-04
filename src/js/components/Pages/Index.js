@@ -10,13 +10,13 @@ import {
   wrapperLink as linkStyle,
   showMore as moreStyle,
   hr as hrStyle,
-} from '../../styles/post';
-import {pretty as prettyDate} from '../../filters/date';
-import postApi from '../../api/posts';
-import {Meta, defaultTitle, defaultDescription} from '../../meta/meta';
-import {fetchPosts} from '../../store/actions/postsActions';
-import Title from '../Partials/Simple/Title';
-import Summary from '../Simple/Summary';
+} from 'styles/post';
+import {pretty as prettyDate} from 'filters/date';
+import postApi from 'api/posts';
+import {Meta, defaultTitle, defaultDescription} from 'meta/meta';
+import {fetchPosts} from 'store/actions/postsActions';
+import Title from 'components/Partials/Simple/Title';
+import Summary from 'components/Simple/Summary';
 
 class Index extends React.Component {
   static fetchData(store) {

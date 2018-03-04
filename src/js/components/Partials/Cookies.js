@@ -7,7 +7,7 @@ import {
   left as leftStyle,
   right as rightStyle,
   button as buttonStyle,
-} from '../../styles/cookies';
+} from 'styles/cookies';
 
 const rememberCookie = 'REMEMBER_COOKIE';
 
