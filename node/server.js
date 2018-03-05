@@ -142,7 +142,7 @@ function renderHtml(store, preloadedState, req, Meta) {
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
         <script async src="/js/app.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </body>
     </html>
   `;

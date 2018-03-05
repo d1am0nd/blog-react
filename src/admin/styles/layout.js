@@ -11,13 +11,13 @@ export const wrapper = function() {
 
 export const mainTitle = function() {
   return {
-    'fontSize': '30px',
+    'fontSize': '28px',
   };
 };
 
 export const navigationUl = function() {
   return {
-    'fontSize': '20px',
+    'fontSize': '18px',
     'listStyleType': 'none',
     'marginTop': 0,
     'marginBottom': '10px',
@@ -27,7 +27,7 @@ export const navigationUl = function() {
 
 export const navigationLi = function() {
   return {
-    'fontSize': '20px',
+    'fontSize': '18px',
     'marginRight': '20px',
     'display': 'inline-block',
   };

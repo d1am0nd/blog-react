@@ -12,7 +12,7 @@ const serverConfig = {
     libraryTarget: "commonjs2"
   },
   resolve: {
-    modules: ['node_modules', 'src/js'],
+    modules: ['node_modules', path.join('src', 'js')],
     alias: {
       config: path.join(__dirname, 'config'),
     },

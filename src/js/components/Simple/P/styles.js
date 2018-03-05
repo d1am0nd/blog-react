@@ -1,5 +1,5 @@
 export const pStyle = () => {
   return {
-    'fontSize': '18px',
+    'fontSize': '16px',
   };
 };

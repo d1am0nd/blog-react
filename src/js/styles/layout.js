@@ -7,7 +7,7 @@ export const layout = cookiesDismissed => {
     ...baseWidth,
     marginLeft: 'auto',
     marginRight: 'auto',
-    fontFamily: '\'Lato\', sans-serifs',
+    fontFamily: 'Roboto',
     fontWeight: '300',
     lineHeight: 1.4,
     paddingBottom: cookiesDismissed ? '0px' : '30px',
