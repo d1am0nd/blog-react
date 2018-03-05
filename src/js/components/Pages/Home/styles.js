@@ -2,16 +2,8 @@ import {
   color1,
   color2,
   color3,
-  linkColor,
 } from 'styles/vars';
-
-export const wrapper = () => {
-  return {
-    'transition': 'all 0.2s ease',
-    'marginBottom': '15px',
-    'borderBottom': `1px solid ${color3}`,
-  };
-};
+import {wrapper} from 'styles/post';
 
 export const wrapperStyle = () => {
   return {

@@ -1,18 +1,14 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import marked from 'marked';
-import renderer from '../../marked/renderer';
+import renderer from '../../../marked/renderer';
 
-import {fetchPostBySlug} from '../../store/actions/postsActions';
+import {fetchPostBySlug} from 'store/actions/postsActions';
 import {
-  date as dateStyle,
-  summary as summaryStyle,
-  content as contentStyle,
-  wrapper as wrapperStyle,
-  showMore as linkStyle,
-} from 'styles/post';
+  wrapperStyle,
+  contentStyle,
+} from './styles';
 import {Meta} from 'meta/meta';
 import {pretty as prettyDate} from 'filters/date';
 import H1 from 'components/Simple/H1';
