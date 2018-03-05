@@ -1,19 +1,14 @@
-import {
-  baseWidth,
-} from './general';
-import {
-  transition,
-} from './vars';
+import {baseWidth} from 'styles/general';
+import {transition} from 'styles/vars';
 import {
   light as lightBackground,
   dark as darkBackground,
-} from './backgrounds';
+} from 'styles/backgrounds';
 
-export const fixedWrapper = function(show) {
+export const fixedWrapper = show => {
   return {
     ...transition,
     ...lightBackground,
-    // 'display': show ? 'block' : 'none',
     'opacity': show ? 1 : 0,
     'position': 'fixed',
     'paddingTop': '5px',
@@ -24,7 +19,7 @@ export const fixedWrapper = function(show) {
   };
 };
 
-export const relativeWrapper = function() {
+export const relativeWrapper = () => {
   return {
     ...baseWidth,
     'position': 'relative',
@@ -32,18 +27,18 @@ export const relativeWrapper = function() {
   };
 };
 
-export const left = function() {
+export const left = () => {
   return {
     'float': 'left',
   };
 };
-export const right = function() {
+export const right = () => {
   return {
     'float': 'right',
   };
 };
 
-export const button = function() {
+export const button = () => {
   return {
     ...darkBackground,
     'border': 'none',

@@ -10,6 +10,9 @@ const serverConfig = {
     filename: "server.js",
     libraryTarget: "commonjs2"
   },
+  resolve: {
+    modules: ['node_modules', 'src/js'],
+  },
   node: {
     __dirname: false
   },
@@ -37,7 +40,7 @@ const serverConfig = {
         test: /js$/,
         exclude: /(node_modules)/,
         loader: "babel-loader",
-        query: { p`res`ets: ["react-app"] }
+        query: { presets: ["react-app"] }
       }
     ]
   }

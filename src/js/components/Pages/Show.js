@@ -20,8 +20,8 @@ import Summary from 'components/Simple/Summary';
 
 class Show extends React.Component {
   static fetchData(store, url) {
-    let split = url.split('/');
-    let slug = split[split.length - 1];
+    const split = url.split('/');
+    const slug = split[split.length - 1];
     return store.dispatch(fetchPostBySlug(slug));
   }
 

@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import {color2, color3} from 'styles/vars';
 
-export const containerStyle = () => {
+export const linkStyle = () => {
   return {
     'color': 'inherit',
     'textDecoration': 'none',
@@ -12,7 +12,7 @@ export const containerStyle = () => {
   };
 };
 
-export const linkStyle = () => {
+export const containerStyle = () => {
   return {
     'fontSize': '30px',
     'paddingBottom': '4px',

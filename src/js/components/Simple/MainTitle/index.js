@@ -4,11 +4,11 @@ import radium from 'radium';
 import {Link} from 'react-router-dom';
 import {containerStyle, linkStyle} from './styles';
 
-class Title extends React.Component {
+class MainTitle extends React.Component {
   render() {
     return (
       <div style={containerStyle()}>
-        <Link style={linkStyle()} to={`/`}>
+        <Link to={'/'} style={linkStyle()}>
           {this.props.children}
         </Link>
       </div>
@@ -16,4 +16,4 @@ class Title extends React.Component {
   }
 }
 
-export default radium(Title);
+export default radium(MainTitle);

@@ -7,7 +7,7 @@ import Routes from './Routes';
 import MainTitle from './Simple/MainTitle';
 
 import Header from './Containers/Header';
-import Cookies from './Partials/Cookies';
+import Cookies from './Containers/Cookies';
 
 import {Route, Switch, withRouter} from 'react-router-dom';
 
