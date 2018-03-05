@@ -1,14 +1,15 @@
 import React from 'react';
 import radium from 'radium';
 
-import {Meta} from '../../../meta/meta';
+import {Meta} from 'meta/meta';
 
-import H1 from '../../Simple/H1';
-import SubH1 from '../../Simple/SubH1';
-import Summary from '../../Simple/Summary';
-import Social from '../../Partials/Simple/Social';
+import H1 from 'components/Simple/H1';
+import SubH1 from 'components/Simple/SubH1';
+import Summary from 'components/Simple/Summary';
+import P from 'components/Simple/P';
+import Social from 'components/Partials/Simple/Social';
 
-import {about as content} from '../../../../../config/page';
+import {about as content} from 'config/page';
 
 class About extends React.Component {
   componentDidMount() {
@@ -31,7 +32,7 @@ class About extends React.Component {
   paragraphs() {
     return content.paragraphs.map((content, index) => {
       return (
-        <p key={`paragraph-${index}`}>{content}</p>
+        <P key={`paragraph-${index}`}>{content}</P>
       );
     });
   }

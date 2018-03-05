@@ -8,7 +8,7 @@ export const liStyle = (selected = false) => {
   const borderColor = selected ? color2 : color3;
   return {
     ...transition,
-    'fontSize': '20px',
+    'fontSize': '22px',
     'marginRight': '20px',
     'display': 'inline-block',
     'borderBottom': `1px solid ${borderColor}`,

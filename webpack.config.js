@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const nodeExternals = require('webpack-node-externals');
+const path = require('path');
 
 const serverConfig = {
   entry: "./node/server.js",
@@ -12,6 +13,9 @@ const serverConfig = {
   },
   resolve: {
     modules: ['node_modules', 'src/js'],
+    alias: {
+      config: path.join(__dirname, 'config'),
+    },
   },
   node: {
     __dirname: false

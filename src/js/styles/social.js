@@ -6,7 +6,7 @@ import {
 
 export const title = function() {
   return {
-    'fontSize': '22px',
+    'fontSize': '24px',
     'marginTop': 0,
     'marginBottom': '5px',
     'padding': 0,
@@ -14,7 +14,7 @@ export const title = function() {
 };
 export const ul = function() {
   return {
-    'fontSize': '20px',
+    'fontSize': '22px',
     'listStyleType': 'none',
     'marginTop': 0,
     'marginBottom': '20px',
@@ -24,7 +24,7 @@ export const ul = function() {
 export const li = function() {
   return {
     ...transition,
-    'fontSize': '20px',
+    'fontSize': '22px',
     'marginRight': '20px',
     'display': 'inline-block',
   };

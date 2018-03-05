@@ -29,6 +29,9 @@ mix
     },
     resolve: {
       modules: ['node_modules', path.join(__dirname, 'src', 'js')],
+      alias: {
+        config: path.join(__dirname, 'config'),
+      },
     },
     /*
     */

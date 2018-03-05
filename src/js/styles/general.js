@@ -11,12 +11,12 @@ export const h2 = {
   'marginTop': 0,
 };
 export const summary = {
-  fontSize: '18px',
+  fontSize: '20px',
   marginTop: 0,
   marginBottom: '5px',
 };
 export const subTitle = {
-  fontSize: '18px',
+  fontSize: '20px',
   marginTop: 0,
   marginBottom: '5px',
   color: color2,

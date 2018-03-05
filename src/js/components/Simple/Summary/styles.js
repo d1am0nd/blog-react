@@ -1,6 +1,6 @@
 export const summaryStyle = () => {
   return {
-    fontSize: '18px',
+    fontSize: '20px',
     marginTop: 0,
     marginBottom: '5px',
   };

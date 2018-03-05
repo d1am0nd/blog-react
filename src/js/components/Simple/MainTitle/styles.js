@@ -14,7 +14,7 @@ export const linkStyle = () => {
 
 export const containerStyle = () => {
   return {
-    'fontSize': '30px',
+    'fontSize': '32px',
     'paddingBottom': '4px',
     'color': color2,
     'borderBottom': `solid 2px ${color3}`,

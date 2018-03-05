@@ -14,7 +14,7 @@ export function title() {
 
 export function date() {
   return {
-    fontSize: '18px',
+    fontSize: '20px',
     marginTop: 0,
     marginBottom: '5px',
     color: color2,
@@ -23,7 +23,7 @@ export function date() {
 
 export function summary() {
   return {
-    fontSize: '18px',
+    fontSize: '20px',
     marginTop: 0,
     marginBottom: '5px',
   };
@@ -31,7 +31,7 @@ export function summary() {
 
 export function content() {
   return {
-    fontSize: '16px',
+    fontSize: '18px',
     marginTop: 0,
     marginBottom: 0,
   };
@@ -63,7 +63,7 @@ export function wrapperLink() {
 
 export function showMore() {
   return {
-    'fontSize': '20px',
+    'fontSize': '22px',
     'color': color2,
     'transition': '0.1s',
   };
