@@ -4,17 +4,15 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import {
-  content as contentStyle,
-  indexWrapper as wrapperStyle,
-  wrapperLink as linkStyle,
-  showMore as moreStyle,
-  hr as hrStyle,
-} from 'styles/post';
+  wrapperStyle,
+  linkStyle,
+  moreStyle,
+} from './styles';
 import {pretty as prettyDate} from 'filters/date';
-import postApi from 'api/posts';
 import {Meta, defaultTitle, defaultDescription} from 'meta/meta';
 import {fetchPosts} from 'store/actions/postsActions';
 import H1 from 'components/Simple/H1';
+import H2 from 'components/Simple/H2';
 import Subtle from 'components/Simple/Subtle';
 import Title from 'components/Partials/Simple/Title';
 import Summary from 'components/Simple/Summary';
@@ -46,12 +44,11 @@ class Index extends React.Component {
             to={'/posts/' + i.slug}
             key={i.id}>
             <div
-              key={`wrapper-${i.id}`}
               style={wrapperStyle()}>
-              <Title text={i.title}/>
-              <Subtle>Published on {date}</Subtle>
+              <H2>{i.title}</H2>
+              <Subtle>Published by Dev Kordeš on {date}</Subtle>
               <Summary>{i.summary}</Summary>
-              <span style={moreStyle()} key={`goto-${i.id}}`} href="#">
+              <span style={moreStyle()} href="#">
                 More
               </span>
             </div>

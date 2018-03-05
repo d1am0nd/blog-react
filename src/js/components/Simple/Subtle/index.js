@@ -3,7 +3,7 @@ import radium from 'radium';
 
 import {subStyle} from './styles';
 
-class SubH1 extends React.Component {
+class Subtle extends React.Component {
   render() {
     return (
       <div style={subStyle()}>
@@ -13,4 +13,4 @@ class SubH1 extends React.Component {
   }
 }
 
-export default radium(SubH1);
+export default radium(Subtle);
