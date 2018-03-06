@@ -2,9 +2,9 @@ import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
 
-import Title from '../../Partials/Title';
+import H1 from 'components/Simple/H1';
 import ProjectForm from '../../Forms/ProjectForm';
-import Render from '../../Renders/Project';
+import Project from 'components/Containers/Project';
 
 import {newProject} from '../../../store/actions/projectsActions';
 import {
@@ -34,14 +34,14 @@ class New extends React.Component {
   render() {
     return (
       <div>
-        <Title text={`New project`}/>
+        <H1>{`New project`}</H1>
         <div style={leftStyle()}>
           <ProjectForm
             projectChanged={project => this.projectChanged(project)}
             handleSubmit={(e, project) => this.handleSubmit(e, project)}/>
         </div>
         <div style={rightStyle()}>
-          <Render project={this.state.project}/>
+          <Project project={this.state.project}/>
         </div>
         <div style={{'clear': 'both'}}></div>
       </div>

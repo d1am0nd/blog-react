@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import Title from '../../Partials/Title';
 import ProjectForm from '../../Forms/ProjectForm';
-import Render from '../../Renders/Project';
+import Project from 'components/Containers/Project';
 
 import {
   fetchProjectById,
@@ -70,7 +70,7 @@ class Edit extends React.Component {
           {this.renderForm()}
         </div>
         <div style={rightStyle()}>
-          <Render project={this.state.project}/>
+          <Project project={this.state.project}/>
         </div>
         <div style={{'clear': 'both'}}></div>
       </div>
