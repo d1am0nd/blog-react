@@ -6,8 +6,6 @@ import {connect, Provider} from 'react-redux';
 import {clientStore} from './store';
 import './service-worker.js';
 
-console.log(Router);
-
 const rootDom = document.getElementById('root');
 
 ReactDOM.hydrate(

@@ -7,9 +7,9 @@ import H1 from 'components/Simple/H1';
 import Subtle from 'components/Simple/Subtle';
 import Summary from 'components/Simple/Summary';
 import P from 'components/Simple/P';
-import Social from 'components/Partials/Simple/Social';
+import Social from 'components/Containers/Social';
 
-import {about as content} from 'config/page';
+import {about, social} from 'config/page';
 
 class About extends React.Component {
   componentDidMount() {
@@ -18,19 +18,19 @@ class About extends React.Component {
   }
 
   static title() {
-    return content.title;
+    return about.title;
   }
 
   static summary() {
-    return content.summary;
+    return about.summary;
   }
 
   p1() {
-    return content.p1;
+    return about.p1;
   }
 
   paragraphs() {
-    return content.paragraphs.map((content, index) => {
+    return about.paragraphs.map((content, index) => {
       return (
         <P key={`paragraph-${index}`}>{content}</P>
       );
@@ -44,7 +44,7 @@ class About extends React.Component {
         <Subtle>Dev Kordeš</Subtle>
         <Summary>{About.summary()}</Summary>
         {this.paragraphs()}
-        <Social/>
+        <Social links={social.links}/>
       </div>
     );
   }

@@ -7,12 +7,11 @@ import {
   ul as ulStyle,
   li as liStyle,
   link as linkStyle,
-} from 'styles/social';
-import {social as content} from 'config/page';
+} from './styles';
 
 class Social extends React.Component {
   renderUrls() {
-    return content.links.map(item => {
+    return this.props.links.map(item => {
       return (
         <li key={item.name} style={liStyle()}>
           <a style={linkStyle()} target="_blank" href={item.url}>
