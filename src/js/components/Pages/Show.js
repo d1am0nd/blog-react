@@ -3,9 +3,9 @@ import radium from 'radium';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import marked from 'marked';
-import renderer from '../../marked/renderer';
+import renderer from 'markdown/renderer';
 
-import {fetchPostBySlug} from '../../store/actions/postsActions';
+import {fetchPostBySlug} from 'store/actions/postsActions';
 import {
   date as dateStyle,
   summary as summaryStyle,

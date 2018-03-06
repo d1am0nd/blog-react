@@ -1,7 +1,7 @@
 import React from 'react';
 import radium from 'radium';
 import marked from 'marked';
-import renderer from '../../../js/marked/renderer';
+import renderer from 'markdown/renderer';
 
 import {
   date as dateStyle,

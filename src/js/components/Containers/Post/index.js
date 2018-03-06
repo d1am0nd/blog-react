@@ -2,7 +2,6 @@ import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
 import marked from 'marked';
-
 import renderer from 'markdown/renderer';
 
 import {fetchPostBySlug} from 'store/actions/postsActions';
@@ -17,12 +16,6 @@ import Subtle from 'components/Simple/Subtle';
 import Summary from 'components/Simple/Summary';
 
 class Show extends React.Component {
-  static fetchData(store, url) {
-    const split = url.split('/');
-    const slug = split[split.length - 1];
-    return store.dispatch(fetchPostBySlug(slug));
-  }
-
   componentDidMount() {
     this.fetchPost();
   }

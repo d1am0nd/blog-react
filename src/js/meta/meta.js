@@ -1,4 +1,4 @@
-import {meta} from '../../../config/page';
+import {meta} from 'config/page';
 
 class MetaConst {
   constructor() {

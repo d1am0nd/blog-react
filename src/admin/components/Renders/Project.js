@@ -1,7 +1,7 @@
 import React from 'react';
 import radium from 'radium';
 import marked from 'marked';
-import renderer from '../../../js/marked/renderer';
+import renderer from 'markdown/renderer';
 
 import Title from '../../../js/components/Partials/Simple/Title';
 import Summary from '../../../js/components/Simple/Summary';

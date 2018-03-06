@@ -5,7 +5,7 @@ import {StyleRoot} from 'radium';
 import {Provider, connect} from 'react-redux';
 import {Router} from 'react-router-dom';
 import {setDataLoaded} from './store/actions/miscActions';
-import client from '../../config/client.json';
+import client from 'config/client.json';
 import history from './history';
 
 if ((client.env === 'prod' || client.env === 'production') &&

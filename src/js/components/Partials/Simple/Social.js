@@ -8,7 +8,7 @@ import {
   li as liStyle,
   link as linkStyle,
 } from 'styles/social';
-import {social as content} from '../../../../../config/page';
+import {social as content} from 'config/page';
 
 class Social extends React.Component {
   renderUrls() {

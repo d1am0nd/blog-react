@@ -9,7 +9,7 @@ import {postsReducer} from './reducers/postsReducer';
 import {projectsReducer} from './reducers/projectsReducer';
 import {miscReducer} from './reducers/miscReducer';
 import {setDataLoaded} from './actions/miscActions';
-import config from '../../../config/env.json';
+import config from 'config/env.json';
 
 const reducers = combineReducers({
   posts: postsReducer,

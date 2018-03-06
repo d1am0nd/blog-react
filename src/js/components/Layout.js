@@ -6,8 +6,8 @@ import {renderRoutes} from 'react-router-config';
 import Routes from './Routes';
 import MainTitle from './Simple/MainTitle';
 
-import Header from './Containers/Header';
-import Cookies from './Containers/Cookies';
+import Header from './Static/Header';
+import Cookies from './Static/Cookies';
 
 import {Route, Switch, withRouter} from 'react-router-dom';
 

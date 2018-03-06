@@ -1,4 +1,4 @@
-import env from '../../../config/api.json';
+import env from 'config/api.json';
 
 export default {
   apiUrl: env.apiUrl,
