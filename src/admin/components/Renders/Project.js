@@ -3,8 +3,8 @@ import radium from 'radium';
 import marked from 'marked';
 import renderer from 'markdown/renderer';
 
-import Title from '../../../js/components/Partials/Simple/Title';
-import Summary from '../../../js/components/Simple/Summary';
+import H1 from 'components/Simple/H1';
+import Summary from 'components/Simple/Summary';
 
 import {
   projectWrapper as wrapperStyle,
@@ -15,7 +15,6 @@ import {
 
 class Project extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div style={wrapperStyle()}>
         <a target="_blank" href={this.props.project.url} style={linkStyle()}>

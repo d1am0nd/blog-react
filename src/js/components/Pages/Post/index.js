@@ -6,15 +6,12 @@ import marked from 'marked';
 import renderer from 'markdown/renderer';
 
 import {fetchPostBySlug} from 'store/actions/postsActions';
-import {
-  wrapperStyle,
-  contentStyle,
-} from './styles';
 import {Meta} from 'meta/meta';
 import {pretty as prettyDate} from 'filters/date';
 import H1 from 'components/Simple/H1';
 import Subtle from 'components/Simple/Subtle';
 import Summary from 'components/Simple/Summary';
+import Post from 'components/Containers/Post/Full';
 
 class Show extends React.Component {
   static fetchData(store, url) {
@@ -67,17 +64,7 @@ class Show extends React.Component {
 
   render() {
     return (
-      <div
-        key={this.props.post.id}
-        style={wrapperStyle()}>
-        <H1>{this.props.post.title}</H1>
-        <Subtle>Published by Dev Kordeš on {this.prettyDate()}</Subtle>
-        <Summary>{this.props.post.summary}</Summary>
-        <div
-          style={contentStyle()}
-          dangerouslySetInnerHTML={{__html: this.content()}}>
-        </div>
-      </div>
+      <Post post={this.props.post}/>
     );
   }
 }

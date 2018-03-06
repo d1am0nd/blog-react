@@ -2,9 +2,9 @@ import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
 
-import Title from '../../Partials/Title';
+import H1 from 'components/Simple/H1';
 import PostForm from '../../Forms/PostForm';
-import Render from '../../Renders/Post';
+import Post from 'components/Containers/Post/Full';
 
 import {fetchPostBySlug, updatePost} from '../../../store/actions/postsActions';
 import {
@@ -62,12 +62,12 @@ class Edit extends React.Component {
   render() {
     return (
       <div>
-        <Title text={this.props.post.title}/>
+        <H1>{this.props.post.title}</H1>
         <div style={leftStyle()}>
           {this.renderForm()}
         </div>
         <div style={rightStyle()}>
-          <Render post={this.state.post}/>
+          <Post post={this.state.post}/>
         </div>
         <div style={{'clear': 'both'}}></div>
       </div>

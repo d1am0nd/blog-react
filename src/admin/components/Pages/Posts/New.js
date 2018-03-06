@@ -2,9 +2,9 @@ import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
 
-import Title from '../../Partials/Title';
+import H1 from 'components/Simple/H1';
+import Post from 'components/Containers/Post/Full';
 import PostForm from '../../Forms/PostForm';
-import Render from '../../Renders/Post';
 
 import {newPost} from '../../../store/actions/postsActions';
 import {
@@ -36,7 +36,7 @@ class Edit extends React.Component {
   render() {
     return (
       <div>
-        <Title text={`New post`}/>
+        <H1>{`New post`}</H1>
         <div style={leftStyle()}>
           <PostForm
             postChanged={post => this.postChanged(post)}

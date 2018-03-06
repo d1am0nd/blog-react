@@ -1,7 +1,7 @@
 import React from 'react';
 import radium from 'radium';
 
-import Title from './Title';
+import H2 from 'components/Simple/H2';
 import Summary from 'components/Simple/Summary';
 
 import {
@@ -16,7 +16,7 @@ class Project extends React.Component {
     return (
       <div style={wrapperStyle()}>
         <a target="_blank" href={this.props.project.url} style={linkStyle()}>
-          <Title text={this.props.project.title}/>
+          <H2>{this.props.project.title}</H2>
           <div style={imgWrapperStyle()}>
             <img style={imgStyle()} src={this.props.project.img_src}/>
           </div>

@@ -4,40 +4,16 @@ import {connect} from 'react-redux';
 import marked from 'marked';
 import renderer from 'markdown/renderer';
 
-import {fetchPostBySlug} from 'store/actions/postsActions';
 import {
   wrapperStyle,
   contentStyle,
 } from './styles';
-import {Meta} from 'meta/meta';
 import {pretty as prettyDate} from 'filters/date';
 import H1 from 'components/Simple/H1';
 import Subtle from 'components/Simple/Subtle';
 import Summary from 'components/Simple/Summary';
 
 class Show extends React.Component {
-  componentDidMount() {
-    this.fetchPost();
-  }
-
-  componentWillUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
-      this.fetchPost();
-    }
-  }
-
-  fetchPost() {
-    if (this.props.dataLoaded) {
-      this
-        .props
-        .dispatch(fetchPostBySlug(this.props.match.params.slug))
-        .then(data => {
-          Meta.setTitle(data.title);
-          Meta.setDescription(data.summary);
-        });
-    }
-  }
-
   prettyDate() {
     if (this.props.post.published_at) {
       return prettyDate(this.props.post.published_at.String);
@@ -78,6 +54,5 @@ class Show extends React.Component {
 export default connect(state => {
   return {
     post: state.posts.post,
-    dataLoaded: state.misc.dataLoaded,
   };
 })(radium(Show));
