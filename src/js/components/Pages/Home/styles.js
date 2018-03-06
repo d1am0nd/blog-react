@@ -1,9 +1,7 @@
 import {
   color1,
   color2,
-  color3,
 } from 'styles/vars';
-import {wrapper} from 'styles/post';
 
 export const wrapperStyle = () => {
   return {

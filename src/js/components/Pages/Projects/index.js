@@ -5,7 +5,8 @@ import {connect} from 'react-redux';
 import {fetchProjects} from 'store/actions/projectsActions';
 import {Meta} from 'meta/meta';
 
-import Project from 'components/Partials/Simple/Project';
+import H1 from 'components/Simple/H1';
+import Project from 'components/Containers/Project';
 
 class Projects extends React.Component {
   static fetchData(store) {
@@ -32,6 +33,7 @@ class Projects extends React.Component {
   render() {
     return (
       <div>
+        <H1>Projects</H1>
         {this.props.projects.map((p, i) => {
           return (
             <Project key={`${p.title}-${i}`} project={p}/>
