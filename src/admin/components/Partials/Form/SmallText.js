@@ -36,6 +36,7 @@ class SmallText extends React.Component {
         {this.renderTitle()}
         {this.renderLabel()}
         <SmallTextInput
+          type={this.props.type}
           value={this.props.value}
           handleChange={e => this.handleChange(e)}/>
       </div>
