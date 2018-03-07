@@ -7,7 +7,7 @@
     "production": "cross-env NODE_ENV=production & webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "server": "cross-env NODE_ENV=development webpack -w & NODE_ENV=development node ./server.js",
     "prod-server": "cross-env NODE_ENV=production webpack -w & NODE_ENV=production node ./server.js",
-    "all": "cross-env NODE_ENV=production webpack -w & NODE_ENV=production node ./server.js & cross-env NODE_ENV=development & webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "all": "webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js & cross-env NODE_ENV=production webpack -w & NODE_ENV=production node ./server.js & cross-env NODE_ENV=development"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

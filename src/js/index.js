@@ -4,7 +4,7 @@ import App from './Client';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {connect, Provider} from 'react-redux';
 import {clientStore} from './store';
-import './service-worker.js';
+// import './service-worker.js';
 
 const rootDom = document.getElementById('root');
 
