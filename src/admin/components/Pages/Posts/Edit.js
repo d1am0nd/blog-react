@@ -37,6 +37,7 @@ class Edit extends React.Component {
   }
 
   postChanged(post) {
+    console.log(post);
     this.setState({
       post: post,
     });

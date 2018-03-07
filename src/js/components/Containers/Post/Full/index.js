@@ -51,8 +51,4 @@ class Show extends React.Component {
   }
 }
 
-export default connect(state => {
-  return {
-    post: state.posts.post,
-  };
-})(radium(Show));
+export default radium(Show);
