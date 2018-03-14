@@ -15,7 +15,7 @@ class H1 extends React.Component {
 }
 
 H1.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default radium(H1);

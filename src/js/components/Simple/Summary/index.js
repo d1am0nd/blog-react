@@ -13,7 +13,7 @@ class Summary extends React.Component {
 }
 
 Summary.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default radium(Summary);
