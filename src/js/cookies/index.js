@@ -1,11 +1,11 @@
 const REMEMBER_COOKIE = 'REMEMBER_COOKIE';
 
 function setCookie(name, val, nDays) {
- const today = new Date();
- const expire = new Date();
- if (nDays == null || nDays == 0) nDays = 1;
- expire.setTime(today.getTime() + 3600000 * 24 * nDays);
- document.cookie = `${name}=${escape(val)};expires=${expire.toGMTString()}`;
+  const today = new Date();
+  const expire = new Date();
+  if (nDays == null || nDays == 0) nDays = 1;
+  expire.setTime(today.getTime() + 3600000 * 24 * nDays);
+  document.cookie = `${name}=${escape(val)};expires=${expire.toGMTString()}`;
 }
 
 function getCookie(cname) {

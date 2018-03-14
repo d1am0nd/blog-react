@@ -2,11 +2,12 @@ import React from 'react';
 import Layout from './components/Layout';
 import ReactGA from 'react-ga';
 import {StyleRoot} from 'radium';
-import {Provider, connect} from 'react-redux';
+import {Provider} from 'react-redux';
 import {Router} from 'react-router-dom';
 import {setDataLoaded} from './store/actions/miscActions';
 import client from 'config/client.json';
 import history from './history';
+import PropTypes from 'prop-types';
 
 if ((client.env === 'prod' || client.env === 'production') &&
   navigator.userAgent.indexOf('Speed Insights') == -1) {
@@ -36,5 +37,9 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  store: PropTypes.object.isRequired,
+};
 
 export default App;

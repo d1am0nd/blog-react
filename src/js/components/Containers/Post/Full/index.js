@@ -1,8 +1,8 @@
 import React from 'react';
 import radium from 'radium';
-import {connect} from 'react-redux';
 import marked from 'marked';
 import renderer from 'markdown/renderer';
+import PropTypes from 'prop-types';
 
 import {
   wrapperStyle,
@@ -35,13 +35,14 @@ class Show extends React.Component {
   }
 
   render() {
+    const {post} = this.props;
     return (
       <div
-        key={this.props.post.id}
+        key={post.id}
         style={wrapperStyle()}>
-        <H1>{this.props.post.title}</H1>
+        <H1>{post.title}</H1>
         <Subtle>Published by Dev Kordeš on {this.prettyDate()}</Subtle>
-        <Summary>{this.props.post.summary}</Summary>
+        <Summary>{post.summary}</Summary>
         <div
           style={contentStyle()}
           dangerouslySetInnerHTML={{__html: this.content()}}>
@@ -50,5 +51,9 @@ class Show extends React.Component {
     );
   }
 }
+
+Show.propTypes = {
+  post: PropTypes.object.isRequired,
+};
 
 export default radium(Show);

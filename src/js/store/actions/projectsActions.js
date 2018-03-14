@@ -6,14 +6,14 @@ import {getAll} from 'api/projects';
 
 export function fetchProjects() {
   return (dispatch, state) => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       getAll()
-        .then(res => {
+        .then((res) => {
           dispatch({type: SET_PROJECTS, payload: res.data});
           resolve(projects);
         })
-        .catch(err => {
-          console.log(err);
+        .catch((err) => {
+          reject(err);
         });
     });
   };

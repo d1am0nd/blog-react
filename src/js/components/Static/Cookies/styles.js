@@ -5,7 +5,7 @@ import {
   dark as darkBackground,
 } from 'styles/backgrounds';
 
-export const fixedWrapper = show => {
+export const fixedWrapper = (show) => {
   return {
     ...transition,
     ...lightBackground,

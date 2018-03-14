@@ -1,15 +1,14 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
-import {renderRoutes} from 'react-router-config';
+import PropTypes from 'prop-types';
 
 import Routes from './Routes';
 import MainTitle from './Simple/MainTitle';
-
 import Header from './Static/Header';
 import Cookies from './Static/Cookies';
 
-import {Route, Switch, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 import {setCookiesDismissed} from 'store/actions/miscActions';
 import {
@@ -27,12 +26,12 @@ class Layout extends React.Component {
 
   componentDidMount() {
     if (!cookiesDismissed()) {
-      this.props.dispatch(setCookiesDismissed(false));
+      this.props.setCookiesDismissed(false);
     }
   }
 
   handleCookieDismiss(e) {
-    this.props.dispatch(setCookiesDismissed(true));
+    this.props.setCookiesDismissed(true);
     dismissCookies();
   }
 
@@ -44,14 +43,33 @@ class Layout extends React.Component {
         {Routes}
         <Cookies
           show={!this.props.misc.cookiesDismissed}
-          handleDismiss={e => this.handleCookieDismiss(e)}/>
+          handleDismiss={(e) => this.handleCookieDismiss(e)}/>
       </div>
     );
   }
 }
 
-export default withRouter(connect(store => {
+Layout.propTypes = {
+  location: PropTypes.object.isRequired,
+  misc: PropTypes.object,
+  fetchMyPosts: PropTypes.func,
+  setCookiesDismissed: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
   return {
-    ...store,
+    misc: state.misc,
   };
-})(radium(Layout)));
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchMyPosts: () => dispatch(fetchMyPosts()),
+    setCookiesDismissed: (bool) => dispatch(setCookiesDismissed(bool)),
+  };
+};
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(radium(Layout)));

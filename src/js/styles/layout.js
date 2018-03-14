@@ -1,7 +1,7 @@
 import {baseWidth} from './general';
 import {transition} from './vars';
 
-export const layout = cookiesDismissed => {
+export const layout = (cookiesDismissed) => {
   return {
     ...transition,
     ...baseWidth,

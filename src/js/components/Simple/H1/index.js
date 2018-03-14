@@ -1,5 +1,6 @@
 import React from 'react';
 import radium from 'radium';
+import PropTypes from 'prop-types';
 
 import {
   h1style,
@@ -12,5 +13,9 @@ class H1 extends React.Component {
     );
   }
 }
+
+H1.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default radium(H1);

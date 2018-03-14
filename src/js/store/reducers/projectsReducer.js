@@ -8,13 +8,13 @@ const initialState = {
 
 export const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_PROJECTS: {
-      state = {
-        ...state,
-        projects: action.payload,
-      };
-      break;
-    }
+  case SET_PROJECTS: {
+    state = {
+      ...state,
+      projects: action.payload,
+    };
+    break;
+  }
   }
   return state;
 };

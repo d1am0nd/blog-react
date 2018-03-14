@@ -1,6 +1,6 @@
 import React from 'react';
 import radium from 'radium';
-import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import {
   title as titleStyle,
@@ -11,11 +11,11 @@ import {
 
 class Social extends React.Component {
   renderUrls() {
-    return this.props.links.map(item => {
+    return this.props.links.map((item) => {
       return (
         <li key={item.name} style={liStyle()}>
           <a style={linkStyle()} target="_blank" href={item.url}>
-          {item.name}
+            {item.name}
           </a>
         </li>
       );
@@ -32,5 +32,9 @@ class Social extends React.Component {
     );
   }
 }
+
+Social.propTypes = {
+  links: PropTypes.array.isRequired,
+};
 
 export default radium(Social);

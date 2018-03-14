@@ -1,6 +1,6 @@
 import React from 'react';
 import radium from 'radium';
-import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Item from './Item';
 import {tabs} from './content';
@@ -12,7 +12,7 @@ class Header extends React.Component {
   render() {
     return (
       <ul style={ulStyle()}>
-        {tabs.map(i => (
+        {tabs.map((i) => (
           <Item
             key={i.url}
             active={this.props.url === i.url}
@@ -24,5 +24,9 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  url: PropTypes.string.isRequired,
+};
 
 export default radium(Header);

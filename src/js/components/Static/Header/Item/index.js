@@ -1,6 +1,7 @@
 import React from 'react';
 import radium from 'radium';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import {
   liStyle,
@@ -23,5 +24,11 @@ class Item extends React.Component {
     );
   }
 }
+
+Item.propTypes = {
+  active: PropTypes.bool.isRequired,
+  to: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export default radium(Item);

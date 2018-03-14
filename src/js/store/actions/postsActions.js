@@ -10,11 +10,11 @@ export function fetchPosts() {
     return new Promise((resolve, reject) => {
       postsApi
         .getPublished()
-        .then(res => {
+        .then((res) => {
           dispatch({type: SET_POSTS, payload: res.data});
           resolve(res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -27,11 +27,11 @@ export function fetchPostBySlug(slug) {
       dispatch({type: SET_POST, payload: {}});
       postsApi
         .findBySlug(slug)
-        .then(res => {
+        .then((res) => {
           dispatch({type: SET_POST, payload: res.data});
           resolve(res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });

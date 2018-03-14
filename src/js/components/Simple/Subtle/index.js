@@ -1,5 +1,6 @@
 import React from 'react';
 import radium from 'radium';
+import PropTypes from 'prop-types';
 
 import {subStyle} from './styles';
 
@@ -12,5 +13,9 @@ class Subtle extends React.Component {
     );
   }
 }
+
+Subtle.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default radium(Subtle);

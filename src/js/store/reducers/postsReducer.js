@@ -13,20 +13,20 @@ const initialState = {
 
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_POSTS: {
-      state = {
-        ...state,
-        posts: action.payload,
-      };
-      break;
-    }
-    case SET_POST: {
-      state = {
-        ...state,
-        post: action.payload,
-      };
-      break;
-    }
+  case SET_POSTS: {
+    state = {
+      ...state,
+      posts: action.payload,
+    };
+    break;
+  }
+  case SET_POST: {
+    state = {
+      ...state,
+      post: action.payload,
+    };
+    break;
+  }
   }
   return state;
 };

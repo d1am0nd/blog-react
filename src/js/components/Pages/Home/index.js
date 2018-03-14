@@ -1,9 +1,8 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import {pretty as prettyDate} from 'filters/date';
 import {Meta, defaultTitle, defaultDescription} from 'meta/meta';
 import {fetchPosts} from 'store/actions/postsActions';
 import H1 from 'components/Simple/H1';
@@ -16,8 +15,8 @@ class Index extends React.Component {
 
   componentDidMount() {
     if (this.props.dataLoaded) {
-      this.props.dispatch(fetchPosts())
-        .then(data => {
+      this.props.fetchPosts()
+        .then((data) => {
           Meta.setTitle(defaultTitle);
           Meta.setDescription(defaultDescription);
         });
@@ -28,7 +27,7 @@ class Index extends React.Component {
     return this
       .props
       .posts
-      .map(i => {
+      .map((i) => {
         return (
           <Preview post={i} key={i.id}/>
         );
@@ -45,9 +44,26 @@ class Index extends React.Component {
   }
 }
 
-export default connect(state => {
+Index.propTypes = {
+  posts: PropTypes.array.isRequired,
+  dataLoaded: PropTypes.bool.isRequired,
+  fetchPosts: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
   return {
     posts: state.posts.posts,
     dataLoaded: state.misc.dataLoaded,
   };
-})(radium(Index));
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPosts: () => dispatch(fetchPosts()),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(radium(Index));

@@ -1,8 +1,6 @@
 import {combineReducers, applyMiddleware, createStore} from 'redux';
 
-import {createLogger} from 'redux-logger';
 import thunk from 'redux-thunk';
-import promise from 'redux-promise-middleware';
 
 // import {imagesReducer} from './reducers/imagesReducer';
 import {postsReducer} from './reducers/postsReducer';

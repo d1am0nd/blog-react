@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom';
 import {color2, color3} from 'styles/vars';
 
 export const linkStyle = () => {

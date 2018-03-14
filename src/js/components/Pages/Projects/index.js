@@ -1,6 +1,7 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 import {fetchProjects} from 'store/actions/projectsActions';
 import {Meta} from 'meta/meta';
@@ -23,7 +24,7 @@ class Projects extends React.Component {
 
   componentDidMount() {
     if (this.props.dataLoaded) {
-      this.props.dispatch(fetchProjects());
+      this.props.fetchProjects();
 
       Meta.setTitle(Projects.title());
       Meta.setDescription(Projects.summary());
@@ -43,9 +44,27 @@ class Projects extends React.Component {
     );
   }
 }
-export default connect(store => {
+
+Projects.propTypes = {
+  projects: PropTypes.array.isRequired,
+  dataLoaded: PropTypes.bool.isRequired,
+  fetchProjects: PropTypes.func.isRequired,
+};
+
+const mapStoreToProps = (store) => {
   return {
     projects: store.projects.projects,
     dataLoaded: store.misc.dataLoaded,
   };
-})(radium(Projects));
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchProjects: () => dispatch(fetchProjects()),
+  };
+};
+
+export default connect(
+  mapStoreToProps,
+  mapDispatchToProps
+)(radium(Projects));

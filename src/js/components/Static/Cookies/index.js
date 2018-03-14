@@ -1,5 +1,6 @@
 import React from 'react';
 import radium from 'radium';
+import PropTypes from 'prop-types';
 
 import {
   fixedWrapper as fixedStyle,
@@ -8,8 +9,6 @@ import {
   right as rightStyle,
   button as buttonStyle,
 } from './styles';
-
-const rememberCookie = 'REMEMBER_COOKIE';
 
 class Cookies extends React.Component {
   handleDismiss(e) {
@@ -30,7 +29,9 @@ class Cookies extends React.Component {
             &nbsp; cookies. Beware.
           </div>
           <div style={rightStyle()}>
-            <button onClick={e => this.handleDismiss(e)} style={buttonStyle()}>
+            <button
+              onClick={(e) => this.handleDismiss(e)}
+              style={buttonStyle()}>
               Dismiss
             </button>
           </div>
@@ -39,5 +40,10 @@ class Cookies extends React.Component {
     );
   }
 }
+
+Cookies.propTypes = {
+  handleDismiss: PropTypes.func,
+  show: PropTypes.bool.isRequired,
+};
 
 export default radium(Cookies);

@@ -8,27 +8,34 @@ module.exports = {
   },
   env: {
     browser: true,
+    'es6': true,
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  extends: 'google',
+  'extends': [
+    // 'eslint:recommended',
+    'plugin:react/recommended',
+    'google',
+  ],
   // required to lint *.vue files
   plugins: [
     'html'
   ],
   // add your custom rules here
   'rules': {
-    // allow paren-less arrow functions
-    'arrow-parens': 0,
-    // allow async-await
-    'generator-star-spacing': 0,
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
 
-    'linebreak-style': 0,
-
+    // Doesn't work with jsx
     'no-unused-vars': 0,
 
     'require-jsdoc': 0,
-    // 'react/jsx-uses-vars': 1,
+
+    'indent': ["error", 2],
+
+    'no-unused-vars': 1,
+
+    'react/jsx-uses-vars': 1,
+
+    'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
   }
 }

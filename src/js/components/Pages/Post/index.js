@@ -2,15 +2,13 @@ import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
 import marked from 'marked';
+import PropTypes from 'prop-types';
 
 import renderer from 'markdown/renderer';
 
 import {fetchPostBySlug} from 'store/actions/postsActions';
 import {Meta} from 'meta/meta';
 import {pretty as prettyDate} from 'filters/date';
-import H1 from 'components/Simple/H1';
-import Subtle from 'components/Simple/Subtle';
-import Summary from 'components/Simple/Summary';
 import Post from 'components/Containers/Post/Full';
 
 class Show extends React.Component {
@@ -34,8 +32,8 @@ class Show extends React.Component {
     if (this.props.dataLoaded) {
       this
         .props
-        .dispatch(fetchPostBySlug(this.props.match.params.slug))
-        .then(data => {
+        .fetchPostBySlug(this.props.match.params.slug)
+        .then((data) => {
           Meta.setTitle(data.title);
           Meta.setDescription(data.summary);
         });
@@ -69,9 +67,28 @@ class Show extends React.Component {
   }
 }
 
-export default connect(state => {
+Show.propTypes = {
+  match: PropTypes.object,
+  post: PropTypes.object,
+  dataLoaded: PropTypes.bool.isRequired,
+  fetchPostBySlug: PropTypes.func.isRequired,
+  location: PropTypes.object,
+};
+
+const mapStateToProps = (state) => {
   return {
     post: state.posts.post,
     dataLoaded: state.misc.dataLoaded,
   };
-})(radium(Show));
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPostBySlug: (slug) => dispatch(fetchPostBySlug(slug)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(radium(Show));

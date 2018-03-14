@@ -1,7 +1,7 @@
 import React from 'react';
 import radium from 'radium';
-import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import {
   wrapperStyle,
@@ -15,19 +15,20 @@ import Summary from 'components/Simple/Summary';
 
 class Preview extends React.Component {
   render() {
+    const {post} = this.props;
     return (
       <Link
         style={linkStyle()}
-        to={'/posts/' + this.props.post.slug}
-        key={this.props.post.id}>
+        to={'/posts/' + post.slug}
+        key={post.id}>
         <div
           style={wrapperStyle()}>
-          <H2>{this.props.post.title}</H2>
+          <H2>{post.title}</H2>
           <Subtle>
             Published by Dev Kordeš on &nbsp;
-            {prettyDate(this.props.post.published_at.String)}
+            {prettyDate(post.published_at.String)}
           </Subtle>
-          <Summary>{this.props.post.summary}</Summary>
+          <Summary>{post.summary}</Summary>
           <span style={moreStyle()} href="#">
             More
           </span>
@@ -36,5 +37,9 @@ class Preview extends React.Component {
     );
   }
 }
+
+Preview.propTypes = {
+  post: PropTypes.object.isRequired,
+};
 
 export default radium(Preview);

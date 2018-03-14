@@ -1,5 +1,6 @@
 import React from 'react';
 import radium from 'radium';
+import PropTypes from 'prop-types';
 
 import {Link} from 'react-router-dom';
 import {containerStyle, linkStyle} from './styles';
@@ -15,5 +16,9 @@ class MainTitle extends React.Component {
     );
   }
 }
+
+MainTitle.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default radium(MainTitle);
