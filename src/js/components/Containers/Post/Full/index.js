@@ -13,7 +13,7 @@ import H1 from 'components/Simple/H1';
 import Subtle from 'components/Simple/Subtle';
 import Summary from 'components/Simple/Summary';
 
-class Show extends React.Component {
+class Full extends React.Component {
   prettyDate() {
     if (this.props.post.published_at) {
       return prettyDate(this.props.post.published_at.String);
@@ -52,8 +52,8 @@ class Show extends React.Component {
   }
 }
 
-Show.propTypes = {
+Full.propTypes = {
   post: PropTypes.object.isRequired,
 };
 
-export default radium(Show);
+export default radium(Full);
