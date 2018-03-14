@@ -11,7 +11,7 @@ import {Meta} from 'meta/meta';
 import {pretty as prettyDate} from 'filters/date';
 import Post from 'components/Containers/Post/Full';
 
-class Show extends React.Component {
+class Project extends React.Component {
   static fetchData(store, url) {
     const split = url.split('/');
     const slug = split[split.length - 1];
@@ -67,7 +67,7 @@ class Show extends React.Component {
   }
 }
 
-Show.propTypes = {
+Project.propTypes = {
   match: PropTypes.object,
   post: PropTypes.object,
   dataLoaded: PropTypes.bool.isRequired,
@@ -91,4 +91,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(radium(Show));
+)(radium(Project));
