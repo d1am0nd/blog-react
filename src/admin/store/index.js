@@ -1,7 +1,7 @@
 import {combineReducers, applyMiddleware, createStore} from 'redux';
 
 import thunk from 'redux-thunk';
-import promise from 'redux-promise-middleware';
+// import promise from 'redux-promise-middleware';
 
 import {imagesReducer} from './reducers/imagesReducer';
 import {postsReducer} from './reducers/postsReducer';
@@ -16,6 +16,6 @@ const reducers = combineReducers({
   images: imagesReducer,
   projects: projectsReducer,
 });
-const middleware = applyMiddleware(promise(), thunk);
+const middleware = applyMiddleware(/* promise(), */thunk);
 
 export const store = createStore(reducers, middleware);
