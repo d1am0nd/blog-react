@@ -28,7 +28,7 @@ class New extends React.Component {
 
   handleSubmit(e, image) {
     e.preventDefault();
-    this.newImage(image);
+    this.props.newImage(image);
   }
 
   render() {
@@ -52,6 +52,7 @@ class New extends React.Component {
 
 New.propTypes = {
   image: PropTypes.object,
+  newImage: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => {

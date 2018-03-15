@@ -21,7 +21,10 @@ class SmallTextInput extends React.Component {
 
 SmallTextInput.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   type: PropTypes.string,
 };
 

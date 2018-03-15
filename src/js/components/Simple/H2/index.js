@@ -13,7 +13,7 @@ class H2 extends React.Component {
 }
 
 H2.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default radium(H2);

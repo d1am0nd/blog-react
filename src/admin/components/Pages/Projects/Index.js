@@ -69,7 +69,7 @@ class Index extends React.Component {
 Index.propTypes = {
   projects: PropTypes.array.isRequired,
   fetchProjects: PropTypes.func.isRequired,
-  deleteProject: Projects.func.isRequired,
+  deleteProject: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {

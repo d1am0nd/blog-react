@@ -44,7 +44,10 @@ class SmallText extends React.Component {
 SmallText.propTypes = {
   title: PropTypes.string,
   label: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   type: PropTypes.string,
   handleChange: PropTypes.func,
 };

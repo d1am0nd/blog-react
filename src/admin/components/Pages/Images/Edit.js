@@ -42,7 +42,7 @@ class Edit extends React.Component {
 
   handleSubmit(e, image) {
     e.preventDefault();
-    this.props.updateImage(image, this.props.image.id);
+    this.props.updateImage(image, this.props.match.params.id);
   }
 
   renderForm() {
@@ -85,7 +85,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchImage: (id) => dispatch(fetchImage(id)),
-    updateImage: (image) => dispatch(updateImage(image)),
+    updateImage: (image, id) => dispatch(updateImage(image, id)),
   };
 };
 

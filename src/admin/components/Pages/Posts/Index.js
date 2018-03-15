@@ -72,7 +72,7 @@ Index.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    posts: store.posts.posts,
+    posts: state.posts.posts,
   };
 };
 

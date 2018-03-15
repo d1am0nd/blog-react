@@ -74,7 +74,7 @@ Index.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    images: store.images.images,
+    images: state.images.images,
   };
 };
 

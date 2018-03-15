@@ -81,7 +81,7 @@ Edit.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    post: store.posts.post,
+    post: state.posts.post,
   };
 };
 
