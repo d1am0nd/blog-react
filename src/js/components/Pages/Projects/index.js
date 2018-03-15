@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import {fetchProjects} from 'store/actions/projectsActions';
+import {getProjects} from 'store/selectors/projects';
+import {dataLoaded} from 'store/selectors/misc';
 import {Meta} from 'meta/meta';
 
 import H1 from 'components/Simple/H1';
@@ -53,8 +55,8 @@ Projects.propTypes = {
 
 const mapStoreToProps = (store) => {
   return {
-    projects: store.projects.projects,
-    dataLoaded: store.misc.dataLoaded,
+    projects: getProjects(store),
+    dataLoaded: dataLoaded(store),
   };
 };
 

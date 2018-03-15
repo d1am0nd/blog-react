@@ -11,9 +11,10 @@ import Cookies from './Static/Cookies';
 import {withRouter} from 'react-router-dom';
 
 import {setCookiesDismissed} from 'store/actions/miscActions';
+import {cookiesDismissed} from 'store/selectors/misc';
 import {
   dismiss as dismissCookies,
-  alreadyDismissed as cookiesDismissed,
+  alreadyDismissed as alreadyDismissed,
 } from 'cookies';
 
 import {layout as layoutStyle} from 'styles/layout';
@@ -25,7 +26,7 @@ class Layout extends React.Component {
   }
 
   componentDidMount() {
-    if (!cookiesDismissed()) {
+    if (!alreadyDismissed()) {
       this.props.setCookiesDismissed(false);
     }
   }
@@ -37,12 +38,12 @@ class Layout extends React.Component {
 
   render() {
     return (
-      <div style={layoutStyle(this.props.misc.cookiesDismissed)}>
+      <div style={layoutStyle(this.props.cookiesDismissed)}>
         <MainTitle>My Programming Blog</MainTitle>
         <Header url={this.props.location.pathname}/>
         {Routes}
         <Cookies
-          show={!this.props.misc.cookiesDismissed}
+          show={!this.props.cookiesDismissed}
           handleDismiss={(e) => this.handleCookieDismiss(e)}/>
       </div>
     );
@@ -51,14 +52,14 @@ class Layout extends React.Component {
 
 Layout.propTypes = {
   location: PropTypes.object.isRequired,
-  misc: PropTypes.object,
+  cookiesDismissed: PropTypes.bool,
   fetchMyPosts: PropTypes.func,
   setCookiesDismissed: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
-    misc: state.misc,
+    cookiesDismissed: cookiesDismissed(state),
   };
 };
 

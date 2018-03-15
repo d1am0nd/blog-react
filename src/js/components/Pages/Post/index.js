@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 
 import renderer from 'markdown/renderer';
 
+import {getPost} from 'store/selectors/posts';
+import {dataLoaded} from 'store/selectors/misc';
 import {fetchPostBySlug} from 'store/actions/postsActions';
 import {Meta} from 'meta/meta';
 import {pretty as prettyDate} from 'filters/date';
@@ -77,8 +79,8 @@ Project.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    post: state.posts.post,
-    dataLoaded: state.misc.dataLoaded,
+    post: getPost(state),
+    dataLoaded: dataLoaded(state),
   };
 };
 

@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import {Meta, defaultTitle, defaultDescription} from 'meta/meta';
+import {getPosts} from 'store/selectors/posts';
+import {dataLoaded} from 'store/selectors/misc';
 import {fetchPosts} from 'store/actions/postsActions';
 import H1 from 'components/Simple/H1';
 import Preview from 'components/Containers/Post/Preview';
@@ -52,8 +54,8 @@ Index.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts.posts,
-    dataLoaded: state.misc.dataLoaded,
+    posts: getPosts(state),
+    dataLoaded: dataLoaded(state),
   };
 };
 
