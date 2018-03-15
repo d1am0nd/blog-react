@@ -1,24 +1,20 @@
-const code = (renderer) => (code, lang, escaped) {
-  if (this.options.highlight) {
-    var out = this.options.highlight(code, lang);
-    if (out != null && out !== code) {
-      escaped = true;
-      code = out;
-    }
-  }
+import React from 'react';
+import Code from 'components/Simple/Code';
+import {renderToString} from 'react-dom/server';
+import highlightjs from 'highlight.js';
 
-  if (!lang) {
-    return '<pre><code>'
-      + (escaped ? code : escape(code, true))
-      + '\n</code></pre>';
-  }
+const code = (renderer) => (inputcode, lang, escaped) => {
+  // Check whether the given language is valid for highlight.js.
+  const validLang = !!(lang && highlightjs.getLanguage(lang));
+  // Highlight only if the language is valid.
+  const out = validLang ?
+    highlightjs.highlight(lang, inputcode).value : inputcode;
 
-  return '<pre><code class="'
-    + this.options.langPrefix
-    + escape(lang, true)
-    + '">'
-    + (escaped ? code : escape(code, true))
-    + '\n</code></pre>\n';
+  return renderToString(
+    <Code renderHtml={validLang} lang={lang}>
+      {out}
+    </Code>
+  );
 };
 
-export
+export default code;
