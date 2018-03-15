@@ -1,5 +1,6 @@
 import React from 'react';
 import radium from 'radium';
+import PropTypes from 'prop-types';
 
 class Label extends React.Component {
   render() {
@@ -8,5 +9,9 @@ class Label extends React.Component {
     );
   }
 }
+
+Label.propTypes = {
+  text: PropTypes.string,
+};
 
 export default radium(Label);

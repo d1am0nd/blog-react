@@ -1,5 +1,6 @@
 import React from 'react';
 import radium from 'radium';
+import PropTypes from 'prop-types';
 
 class SmallTextInput extends React.Component {
   constructor(props) {
@@ -13,9 +14,15 @@ class SmallTextInput extends React.Component {
       <input
         type={this.state.type}
         value={this.props.value}
-        onChange={e => this.props.handleChange(e)}/>
+        onChange={(e) => this.props.handleChange(e)}/>
     );
   }
 }
+
+SmallTextInput.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  type: PropTypes.string,
+};
 
 export default radium(SmallTextInput);

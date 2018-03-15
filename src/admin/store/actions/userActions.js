@@ -9,13 +9,12 @@ export const login = function(creds) {
   return (dispatch, state) => {
     return new Promise((resolve, reject) => {
       apiLogin(creds)
-        .then(res => {
+        .then((res) => {
           dispatch({type: SET_USER, payload: res.data});
           sessLogin(res.data, res.headers.authorization);
           resolve(res.data);
         })
-        .catch(err => {
-          console.log(err);
+        .catch((err) => {
           reject(err);
         });
     });

@@ -16,11 +16,11 @@ export function fetchProjects() {
   return (dispatch, state) => {
     return new Promise((resolve, reject) => {
       getAll()
-        .then(res => {
+        .then((res) => {
           dispatch({type: SET_PROJECTS, payload: res.data});
           resolve(res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -31,11 +31,11 @@ export function fetchProjectById(id) {
   return (dispatch, state) => {
     return new Promise((resolve, reject) => {
       findById(id)
-        .then(res => {
+        .then((res) => {
           dispatch({type: SET_PROJECT, payload: res.data});
           resolve(res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -46,11 +46,11 @@ export function newProject(project) {
   return (dispatch, state) => {
     return new Promise((resolve, reject) => {
       newProjectApi(project)
-        .then(res => {
+        .then((res) => {
           dispatch({type: SET_PROJECT, payload: project});
           resolve(res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -61,11 +61,11 @@ export function updateProject(project) {
   return (dispatch, state) => {
     return new Promise((resolve, reject) => {
       update(project)
-        .then(res => {
+        .then((res) => {
           dispatch({type: UPDATE_PROJECT, payload: res.project});
           resolve(res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -76,11 +76,11 @@ export function deleteProject(id) {
   return function(dispatch) {
     return new Promise((resolve, reject) => {
       deleteProjectApi(id)
-        .then(res => {
+        .then((res) => {
           dispatch({type: DELETE_PROJECT, payload: id});
           resolve(res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });

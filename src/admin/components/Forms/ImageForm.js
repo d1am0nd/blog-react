@@ -1,5 +1,6 @@
 import React from 'react';
 import radium from 'radium';
+import PropTypes from 'prop-types';
 
 import SmallText from '../Partials/Form/SmallText';
 import File from '../Partials/Form/File';
@@ -63,17 +64,23 @@ class ImageForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={e => this.handleSubmit(e)}>
+      <form onSubmit={(e) => this.handleSubmit(e)}>
         <SmallText
           value={this.state.image.name}
-          handleChange={e => this.handleNameChange(e)}
+          handleChange={(e) => this.handleNameChange(e)}
           title={`Name`}/>
         <File
-          handleChange={e => this.handleImageChange(e)}/>
+          handleChange={(e) => this.handleImageChange(e)}/>
         <Submit text={`Submit`}/>
       </form>
     );
   }
 }
+
+ImageForm.propTypes = {
+  image: PropTypes.object,
+  imageChanged: PropTypes.func,
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 export default radium(ImageForm);

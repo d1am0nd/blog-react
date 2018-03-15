@@ -4,7 +4,6 @@ import p from './params';
 
 const LOGIN_URL = p.apiUrl + '/api/users/login';
 // const REGISTER_URL = p.apiUrl + '/api/users/register'
-const LOGOUT_URL = p.apiUrl + '/api/users/logout';
 const REFRESH_URL = p.apiUrl + '/api/users/current';
 
 export const login = function(creds) {

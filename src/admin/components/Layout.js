@@ -1,7 +1,7 @@
 import React from 'react';
 import radium from 'radium';
-import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Title from './Layout/Title';
 import Navigation from './Layout/Navigation';
@@ -12,13 +12,12 @@ import {setUser} from '../store/actions/userActions';
 
 import {
   wrapper as wrapperStyle,
-  mainTitle as mainTitleStyle,
 } from '../styles/layout';
 
 class Layout extends React.Component {
   componentWillMount() {
     if (loggedIn()) {
-      this.props.dispatch(setUser(user()));
+      this.setUser(user());
     }
   }
 
@@ -34,8 +33,23 @@ class Layout extends React.Component {
   }
 }
 
-export default withRouter(connect(store => {
+Layout.propTypes = {
+  user: PropTypes.object,
+  setUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (store) => {
   return {
     user: store.users.user,
   };
-})(radium(Layout)));
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: (user) => dispatch(setUser(user)),
+  };
+};
+
+export default withRouter(
+  mapStateToProps,
+  mapDispatchToProps
+)(radium(Layout));

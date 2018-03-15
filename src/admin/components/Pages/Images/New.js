@@ -1,11 +1,12 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Title from '../../Partials/Title';
 import ImageForm from '../../Forms/ImageForm';
 
-import {fetchImage, newImage} from '../../../store/actions/imagesActions';
+import {newImage} from '../../../store/actions/imagesActions';
 import {
   left as leftStyle,
   right as rightStyle,
@@ -27,7 +28,7 @@ class New extends React.Component {
 
   handleSubmit(e, image) {
     e.preventDefault();
-    this.props.dispatch(newImage(image));
+    this.newImage(image);
   }
 
   render() {
@@ -38,7 +39,7 @@ class New extends React.Component {
           <ImageForm
             image={this.props.image}
             handleSubmit={(e, image) => this.handleSubmit(e, image)}
-            imageChanged={e => this.handleImageChange(e)}/>
+            imageChanged={(e) => this.handleImageChange(e)}/>
         </div>
         <div style={rightStyle()}>
           <img src={this.state.src}/>
@@ -49,4 +50,14 @@ class New extends React.Component {
   }
 }
 
-export default connect()(radium(New));
+New.propTypes = {
+  image: PropTypes.object,
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    newImage: (image) => dispatch(newImage(image)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(radium(New));

@@ -2,6 +2,7 @@ import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Row from '../../Partials/Row';
 import Title from '../../Partials/Title';
@@ -18,7 +19,7 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchPosts());
+    this.props.fetchPosts();
   }
 
   handleSearchChange(e) {
@@ -28,7 +29,7 @@ class Index extends React.Component {
   }
 
   handleDelete(post) {
-    this.props.dispatch(deletePost(post.id));
+    this.props.deletePost(post.id);
     alert(post.title);
   }
 
@@ -36,7 +37,7 @@ class Index extends React.Component {
     return this
       .props
       .posts
-      .filter(post => {
+      .filter((post) => {
         return post
           .title
           .toLowerCase()
@@ -46,7 +47,7 @@ class Index extends React.Component {
         return <Row
           key={`row-${i}`}
           editUrl={`/admin/posts/${post.slug}`}
-          handleDelete={e => this.handleDelete(post)}
+          handleDelete={(e) => this.handleDelete(post)}
           text={post.title}/>;
       });
   }
@@ -56,15 +57,33 @@ class Index extends React.Component {
       <div>
         <Title text={`Posts`}/>
         <Link to={`/admin/post/new`}>New</Link>
-        <Search handleChange={e => this.handleSearchChange(e)}/>
+        <Search handleChange={(e) => this.handleSearchChange(e)}/>
         {this.renderPosts()}
       </div>
     );
   }
 }
 
-export default connect(store => {
+Index.propTypes = {
+  posts: PropTypes.array,
+  fetchPosts: PropTypes.func.isRequired,
+  deletePost: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
   return {
     posts: store.posts.posts,
   };
-})(radium(Index));
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPosts: () => dispatch(fetchPosts()),
+    deletePost: (id) => dispatch(deletePost(id)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(radium(Index));

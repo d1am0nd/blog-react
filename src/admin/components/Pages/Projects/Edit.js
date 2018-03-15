@@ -1,6 +1,7 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Title from '../../Partials/Title';
 import ProjectForm from '../../Forms/ProjectForm';
@@ -28,13 +29,13 @@ class Edit extends React.Component {
   componentDidMount() {
     this
       .props
-      .dispatch(fetchProjectById(this.props.match.params.id))
-      .then(res => {
+      .fetchProjectById(this.props.match.params.id)
+      .then((res) => {
         this.setState({
           project: res,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
@@ -47,14 +48,14 @@ class Edit extends React.Component {
 
   handleSubmit(e, project) {
     e.preventDefault();
-    this.props.dispatch(updateProject(project));
+    this.props.updateProject(project);
   }
 
   renderForm() {
     if (typeof this.state.project.id !== 'undefined') {
       return (
         <ProjectForm
-          projectChanged={project => this.projectChanged(project)}
+          projectChanged={(project) => this.projectChanged(project)}
           handleSubmit={(e, project) => this.handleSubmit(e, project)}
           project={this.props.project}/>
       );
@@ -78,8 +79,27 @@ class Edit extends React.Component {
   }
 }
 
-export default connect(store => {
+Edit.propTypes = {
+  project: PropTypes.object,
+  match: PropTypes.object.isRequired,
+  fetchProjectById: PropTypes.func.isRequired,
+  updateProject: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
   return {
-    project: store.projects.project,
+    project: state.projects.project,
   };
-})(radium(Edit));
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchProjectById: (id) => dispatch(fetchProjectById(id)),
+    updateProject: (project) => dispatch(updateProject(project)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(radium(Edit));

@@ -1,6 +1,7 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 import H1 from 'components/Simple/H1';
 import Post from 'components/Containers/Post/Full';
@@ -12,7 +13,7 @@ import {
   right as rightStyle,
 } from '../../../styles/show/show';
 
-class Edit extends React.Component {
+class New extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -30,7 +31,7 @@ class Edit extends React.Component {
 
   handleSubmit(e, post) {
     e.preventDefault();
-    this.props.dispatch(newPost(post));
+    this.props.newPost(post);
   }
 
   render() {
@@ -39,11 +40,11 @@ class Edit extends React.Component {
         <H1>{`New post`}</H1>
         <div style={leftStyle()}>
           <PostForm
-            postChanged={post => this.postChanged(post)}
+            postChanged={(post) => this.postChanged(post)}
             handleSubmit={(e, post) => this.handleSubmit(e, post)}/>
         </div>
         <div style={rightStyle()}>
-          <Render post={this.state.post}/>
+          <Post post={this.state.post}/>
         </div>
         <div style={{'clear': 'both'}}></div>
       </div>
@@ -51,8 +52,24 @@ class Edit extends React.Component {
   }
 }
 
-export default connect(store => {
+New.propTypes = {
+  post: PropTypes.object,
+  newPost: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
   return {
-    post: store.posts.post,
+    post: state.posts.post,
   };
-})(radium(Edit));
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    newPost: (post) => dispatch(newPost(post)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(radium(New));

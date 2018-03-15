@@ -1,5 +1,6 @@
 import React from 'react';
 import radium from 'radium';
+import PropTypes from 'prop-types';
 
 import SmallText from './Form/SmallText';
 
@@ -21,11 +22,16 @@ class Search extends React.Component {
           <SmallText
             text={`Search`}
             value={this.props.value}
-            handleChange={e => this.props.handleChange(e)}/>
+            handleChange={(e) => this.props.handleChange(e)}/>
         </div>
       </div>
     );
   }
 }
+
+Search.propTypes = {
+  value: PropTypes.string,
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default radium(Search);

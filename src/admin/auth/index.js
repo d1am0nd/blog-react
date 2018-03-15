@@ -1,6 +1,3 @@
-import store from '../store';
-import {SET_USER} from '../store/const/user';
-
 const USER_SESS = 'user';
 const TOKEN_SESS = 'bearer';
 

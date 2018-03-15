@@ -17,11 +17,11 @@ export function fetchImages() {
   return function(dispatch, state) {
     return new Promise((resolve, reject) => {
       getImages()
-        .then(res => {
+        .then((res) => {
           dispatch({type: SET_IMAGES, payload: res.data});
           resolve(res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -32,11 +32,11 @@ export function fetchImage(id) {
   return function(dispatch, state) {
     return new Promise((resolve, reject) => {
       getById(id)
-        .then(res => {
+        .then((res) => {
           dispatch({type: SET_IMAGE, payload: res.data});
           resolve(res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -47,10 +47,10 @@ export function newImage(data) {
   return function(dispatch, state) {
     return new Promise((resolve, reject) => {
       newImageApi(data)
-        .then(res => {
+        .then((res) => {
           resolve(res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -61,11 +61,11 @@ export function deleteImage(id) {
   return function(dispatch, state) {
     return new Promise((resolve, reject) => {
       deleteById(id)
-        .then(res => {
+        .then((res) => {
           dispatch({type: DELETE_IMAGE, payload: id});
           resolve(res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
@@ -76,11 +76,11 @@ export function updateImage(data, id) {
   return function(dispatch, state) {
     return new Promise((resolve, reject) => {
       update(data, id)
-        .then(res => {
+        .then((res) => {
           dispatch({type: UPDATE_IMAGE, payload: data});
           resolve(res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });

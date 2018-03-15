@@ -2,6 +2,7 @@ import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Row from '../../Partials/Row';
 import Title from '../../Partials/Title';
@@ -21,7 +22,7 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchProjects());
+    this.props.fetchProjects();
   }
 
   handleSearchChange(e) {
@@ -31,14 +32,14 @@ class Index extends React.Component {
   }
 
   handleDelete(project) {
-    this.props.dispatch(deleteProject(project.id));
+    this.props.deleteProject(project.id);
   }
 
   renderProjects() {
     return this
       .props
       .projects
-      .filter(project => {
+      .filter((project) => {
         return project
           .title
           .toLowerCase()
@@ -48,7 +49,7 @@ class Index extends React.Component {
         return <Row
           key={`row-${i}`}
           editUrl={`/admin/projects/${project.id}`}
-          handleDelete={e => this.handleDelete(project)}
+          handleDelete={(e) => this.handleDelete(project)}
           text={project.title}/>;
       });
   }
@@ -58,15 +59,33 @@ class Index extends React.Component {
       <div>
         <Title text={`Projects`}/>
         <Link to={`/admin/project/new`}>New</Link>
-        <Search handleChange={e => this.handleSearchChange(e)}/>
+        <Search handleChange={(e) => this.handleSearchChange(e)}/>
         {this.renderProjects()}
       </div>
     );
   }
 }
 
-export default connect(store => {
+Index.propTypes = {
+  projects: PropTypes.array.isRequired,
+  fetchProjects: PropTypes.func.isRequired,
+  deleteProject: Projects.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
   return {
-    projects: store.projects.projects,
+    projects: state.projects.projects,
   };
-})(radium(Index));
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteProject: (id) => dispatch(deleteProject(id)),
+    fetchProjects: () => dispatch(fetchProjects()),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(radium(Index));

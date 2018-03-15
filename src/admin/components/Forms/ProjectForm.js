@@ -1,5 +1,6 @@
 import React from 'react';
 import radium from 'radium';
+import PropTypes from 'prop-types';
 
 import SmallText from '../Partials/Form/SmallText';
 import TextArea from '../Partials/Form/TextArea';
@@ -32,36 +33,42 @@ class ProjectForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={e => this.props.handleSubmit(e, this.state.project)}>
+      <form onSubmit={(e) => this.props.handleSubmit(e, this.state.project)}>
         <SmallText
           value={this.state.project.position}
-          handleChange={e => this.handleChange('position', e.target.value)}
+          handleChange={(e) => this.handleChange('position', e.target.value)}
           title={`Position`}/>
         <SmallText
           value={this.state.project.title}
-          handleChange={e => this.handleChange('title', e.target.value)}
+          handleChange={(e) => this.handleChange('title', e.target.value)}
           title={`Title`}/>
         <SmallText
           value={this.state.project.url}
-          handleChange={e => this.handleChange('url', e.target.value)}
+          handleChange={(e) => this.handleChange('url', e.target.value)}
           title={`Url`}/>
         <SmallText
           value={this.state.project.source}
-          handleChange={e => this.handleChange('source', e.target.value)}
+          handleChange={(e) => this.handleChange('source', e.target.value)}
           title={`Source code`}/>
         <SmallText
           value={this.state.project.img_src}
-          handleChange={e => this.handleChange('img_src', e.target.value)}
+          handleChange={(e) => this.handleChange('img_src', e.target.value)}
           title={`Image source`}/>
         <TextArea
           value={this.state.project.description}
           rows={5}
-          handleChange={e => this.handleChange('description', e.target.value)}
+          handleChange={(e) => this.handleChange('description', e.target.value)}
           title={`Description`}/>
         <Submit text={`Submit`}/>
       </form>
     );
   }
 }
+
+ProjectForm.propTypes = {
+  project: PropTypes.object,
+  projectChanged: PropTypes.func,
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 export default radium(ProjectForm);

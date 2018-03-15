@@ -1,6 +1,7 @@
 import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 import SmallText from '../Partials/Form/SmallText';
 import Submit from '../Partials/Form/Submit';
@@ -21,7 +22,7 @@ class Login extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.dispatch(login(this.state.creds));
+    this.props.login(this.state.creds);
   }
 
   handleChange(e, attribute) {
@@ -35,15 +36,15 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={e => this.handleSubmit(e)}>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
           <SmallText
             key={`email-input`}
-            handleChange={e => this.handleChange(e, 'email')}
+            handleChange={(e) => this.handleChange(e, 'email')}
             label={`Email label`}/>
           <SmallText
             key={`password-input`}
             type={`password`}
-            handleChange={e => this.handleChange(e, 'password')}
+            handleChange={(e) => this.handleChange(e, 'password')}
             label={`Password`}/>
           <Submit text={`Submit`}/>
         </form>
@@ -51,4 +52,15 @@ class Login extends React.Component {
     );
   }
 }
-export default connect()(radium(Login));
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (creds) => dispatch(login(creds)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(radium(Login));

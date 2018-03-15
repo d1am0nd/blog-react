@@ -20,7 +20,7 @@ mix
           test: /\.(jsx|js|vue)$/,
           loader: 'eslint-loader',
           enforce: 'pre',
-          exclude: /(node_modules|bower_components|src\/admin)/,
+          exclude: /(node_modules|bower_components)/,
           options: {
             formatter: require('eslint-friendly-formatter')
           }

@@ -1,5 +1,6 @@
 import React from 'react';
 import radium from 'radium';
+import PropTypes from 'prop-types';
 
 import Label from './Parts/Label';
 import Title from './Parts/Title';
@@ -17,17 +18,14 @@ class TextArea extends React.Component {
   }
 
   rows() {
-    if (!this.props.rows) {
-      return 20;
-    }
-    return this.props.rows;
+    return this.props.rows ?
+      this.props.rows : 20;
   }
 
   renderTitle() {
-    if (!this.props.title) {
-      return '';
-    }
-    return <Title text={this.props.title}/>;
+    return this.props.title ?
+      <Title text={this.props.title}/> :
+      null;
   }
 
   renderLabel() {
@@ -46,11 +44,18 @@ class TextArea extends React.Component {
           rows={this.rows()}
           value={this.props.value}
           style={inputStyle()}
-          onChange={e => this.handleChange(e)}
-          ></textarea>
+          onChange={(e) => this.handleChange(e)}></textarea>
       </div>
     );
   }
 }
+
+TextArea.propTypes = {
+  title: PropTypes.string,
+  label: PropTypes.string,
+  value: PropTypes.string,
+  rows: PropTypes.number,
+  handleChange: PropTypes.func,
+};
 
 export default radium(TextArea);

@@ -1,35 +1,37 @@
 import React from 'react';
 import radium from 'radium';
 import {Link} from 'react-router-dom';
-
-import {
-  left as leftStyle,
-  right as rightStyle,
-  li as liStyle,
-  ul as ulStyle,
-} from '../../styles/index/row';
+import PropTypes from 'prop-types';
 
 class ImageRow extends React.Component {
-  handleDelete(e) {
-    if (this.props.handleDelete) {
-      this.props.handleDelete(e);
-    }
-  }
   render() {
+    const {
+      handleDelete,
+      editUrl,
+      text,
+      src,
+    } = this.props;
     return (
       <div>
-        <Link to={this.props.editUrl}>
+        <Link to={editUrl}>
           <div>
-            {this.props.text}
+            {text}
           </div>
-          <img src={this.props.src}/>
+          <img src={src}/>
         </Link>
-        <div onClick={e => this.props.handleDelete(e)}>
+        <div onClick={(e) => handleDelete(e)}>
           <a href="javascript:;">Delete</a>
         </div>
       </div>
     );
   }
 }
+
+ImageRow.propTypes = {
+  editUrl: PropTypes.string,
+  text: PropTypes.string,
+  src: PropTypes.string,
+  handleDelete: PropTypes.func.isRequired,
+};
 
 export default radium(ImageRow);

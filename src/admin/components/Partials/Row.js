@@ -1,6 +1,7 @@
 import React from 'react';
 import radium from 'radium';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import {
   left as leftStyle,
@@ -39,5 +40,11 @@ class Row extends React.Component {
     );
   }
 }
+
+Row.propTypes = {
+  handleDelete: PropTypes.func,
+  editUrl: PropTypes.string,
+  text: PropTypes.string,
+};
 
 export default radium(Row);

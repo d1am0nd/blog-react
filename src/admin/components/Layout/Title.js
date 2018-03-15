@@ -1,5 +1,6 @@
 import React from 'react';
 import radium from 'radium';
+import PropTypes from 'prop-types';
 
 import {
   mainTitle as titleStyle,
@@ -12,5 +13,9 @@ class Title extends React.Component {
     );
   }
 }
+
+Title.propTypes = {
+  text: PropTypes.string,
+};
 
 export default radium(Title);

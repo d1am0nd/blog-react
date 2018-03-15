@@ -1,9 +1,9 @@
 import React from 'react';
 import radium from 'radium';
+import PropTypes from 'prop-types';
 
 import Label from './Parts/Label';
 import Title from './Parts/Title';
-import SmallTextInput from './Parts/SmallTextInput';
 
 import {
   smallWrapper as wrapperStyle,
@@ -17,17 +17,15 @@ class File extends React.Component {
   }
 
   renderTitle() {
-    if (!this.props.title) {
-      return '';
-    }
-    return <Title text={this.props.title}/>;
+    return this.props.title ?
+      <Title text={this.props.title}/> :
+      null;
   }
 
   renderLabel() {
-    if (!this.props.label) {
-      return '';
-    }
-    return <Label text={this.props.label}/>;
+    return this.props.label ?
+      <Label text={this.props.label}/> :
+      null;
   }
 
   render() {
@@ -38,10 +36,16 @@ class File extends React.Component {
         <input
           accept="image/*"
           type="file"
-          onChange={e => this.handleChange(e)}/>
+          onChange={(e) => this.handleChange(e)}/>
       </div>
     );
   }
 }
+
+File.propTypes = {
+  title: PropTypes.string,
+  label: PropTypes.string,
+  handleChange: PropTypes.func,
+};
 
 export default radium(File);

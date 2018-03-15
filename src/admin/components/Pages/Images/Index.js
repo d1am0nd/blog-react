@@ -2,6 +2,7 @@ import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import ImageRow from '../../Partials/ImageRow';
 import Title from '../../Partials/Title';
@@ -18,7 +19,7 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchImages());
+    this.props.fetchImages();
   }
 
   handleSearchChange(e) {
@@ -28,14 +29,14 @@ class Index extends React.Component {
   }
 
   handleDelete(e, image) {
-    this.props.dispatch(deleteImage(image.id));
+    this.props.deleteImage(image.id);
   }
 
   renderImages() {
     return this
       .props
       .images
-      .filter(image => {
+      .filter((image) => {
         return image
           .name
           .toLowerCase()
@@ -47,7 +48,7 @@ class Index extends React.Component {
             key={`row-${i}`}
             src={image.path}
             editUrl={`/admin/images/${image.id}`}
-            handleDelete={e => this.handleDelete(e, image)}
+            handleDelete={(e) => this.handleDelete(e, image)}
             text={image.name}/>
         );
       });
@@ -58,15 +59,33 @@ class Index extends React.Component {
       <div>
         <Title text={`Images`}/>
         <Link to={`/admin/image/new`}>New</Link>
-        <Search handleChange={e => this.handleSearchChange(e)}/>
+        <Search handleChange={(e) => this.handleSearchChange(e)}/>
         {this.renderImages()}
       </div>
     );
   }
 }
 
-export default connect(store => {
+Index.propTypes = {
+  images: PropTypes.array,
+  fetchImages: PropTypes.func.isRequired,
+  deleteImage: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
   return {
     images: store.images.images,
   };
-})(radium(Index));
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchImages: () => dispatch(fetchImages()),
+    deleteImage: (id) => dispatch(deleteImage(id)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(radium(Index));
