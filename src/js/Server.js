@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Layout from './components/Layout';
 import {StyleRoot} from 'radium';
-import {Provider, connect} from 'react-redux';
+import {Provider} from 'react-redux';
 import {StaticRouter as Router} from 'react-router-dom';
 
 class App extends React.Component {
@@ -18,5 +19,12 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  store: PropTypes.object.isRequired,
+  radiumConfig: PropTypes.object.isRequired,
+  context: PropTypes.object.isRequired,
+  location: PropTypes.string.isRequired,
+};
 
 export default App;

@@ -1,12 +1,12 @@
 import express from "express";
 import React from "react";
 import {renderToString} from "react-dom/server";
-import App from "../src/js/Server";
-import {newServerStore} from '../src/js/store';
+import App from "./../src/js/Server";
+import {newServerStore} from './../src/js/store';
 import {matchPath} from 'react-router';
-import routes from '../src/js/components/Routes';
-import {Meta, defaultTitle, defaultDescription} from '../src/js/meta/meta';
-import client from '../config/client';
+import routes from './../src/js/components/Routes';
+import {Meta, defaultTitle, defaultDescription} from './../src/js/meta/meta';
+import client from './../config/client.json';
 
 import {createSitemap} from './sitemap';
 

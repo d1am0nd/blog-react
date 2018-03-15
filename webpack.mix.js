@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+let nodeExternals = require('webpack-node-externals');
 
 /*
  |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ mix
           test: /\.(jsx|js|vue)$/,
           loader: 'eslint-loader',
           enforce: 'pre',
-          exclude: /(node_modules|bower_components)/,
+          exclude: /(node_modules|bower_components|node)/,
           options: {
             formatter: require('eslint-friendly-formatter')
           }
@@ -38,6 +39,6 @@ mix
   })
   .copy('src/static', './public')
   .react('src/js/index.js', 'public/js/app.js')
-  .react('src/admin/index.js', 'public/js/admin.js')
+  .react('src/admin/index.js', 'public/js/admin.js');
   // .js('src/pwa/service-worker.js', 'public/service-worker.js');
   // .sass('src/scss/main.scss', 'css');
