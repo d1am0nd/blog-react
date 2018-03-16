@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
 import radium from 'radium';
 import PropTypes from 'prop-types';
-import 'highlight.js/styles/monokai.css';
 
 import {codeStyle} from './styles';
+
+// Node serverside has problems with .css
+if (typeof window !== 'undefined') {
+  require('highlight.js/styles/monokai.css');
+}
 
 class Code extends Component {
   render() {
