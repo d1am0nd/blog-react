@@ -1,5 +1,5 @@
-import dbConfig from '../config/database.json';
-import env from '../config/env.json';
+import dbConfig from '../../../config/database.json';
+import env from '../../../config/env.json';
 import mysql from 'mysql';
 import sm from 'sitemap';
 
