@@ -8,8 +8,6 @@ const setsMeta = (WrappedComponent, getTitle, getDesc) => {
   class SetsMeta extends React.Component {
     componentDidMount() {
       const {title, description} = this.props;
-      console.log(Meta);
-      console.log(title, description);
       Meta.setTitle(title);
       Meta.setDescription(description);
     }

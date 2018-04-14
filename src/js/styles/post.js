@@ -5,14 +5,14 @@ import {
   linkColor,
 } from './vars';
 
-export function title() {
+const title = () => {
   return {
     'marginBottom': '5px',
     'marginTop': 0,
   };
 };
 
-export function date() {
+const date = () => {
   return {
     fontSize: '18px',
     marginTop: 0,
@@ -21,7 +21,7 @@ export function date() {
   };
 };
 
-export function summary() {
+const summary = () => {
   return {
     fontSize: '18px',
     marginTop: 0,
@@ -29,7 +29,7 @@ export function summary() {
   };
 };
 
-export function content() {
+const content = () => {
   return {
     fontSize: '16px',
     marginTop: 0,
@@ -37,7 +37,7 @@ export function content() {
   };
 };
 
-export function wrapper() {
+const wrapper = () => {
   return {
     'transition': 'all 0.2s ease',
     'marginBottom': '15px',
@@ -45,7 +45,7 @@ export function wrapper() {
   };
 };
 
-export function indexWrapper() {
+const indexWrapper = () => {
   return {
     ...wrapper(),
     ':hover': {
@@ -54,14 +54,14 @@ export function indexWrapper() {
   };
 }
 
-export function wrapperLink() {
+const wrapperLink = () => {
   return {
     'color': 'black',
     'textDecoration': 'none',
   };
 }
 
-export function showMore() {
+const showMore = () => {
   return {
     'fontSize': '20px',
     'color': color2,
@@ -69,8 +69,20 @@ export function showMore() {
   };
 };
 
-export function hr() {
+const hr = () => {
   return {
     'color': color2,
   };
 };
+
+export {
+  title,
+  date,
+  summary,
+  content,
+  wrapper,
+  indexWrapper,
+  wrapperLink,
+  showMore,
+  hr,
+}

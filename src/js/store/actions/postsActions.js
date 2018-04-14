@@ -5,8 +5,8 @@ import {
   SET_POST,
 } from '../const/posts';
 
-export function fetchPosts() {
-  return function(dispatch, state) {
+const fetchPosts = () => {
+  return (dispatch, state) => {
     return new Promise((resolve, reject) => {
       postsApi
         .getPublished()
@@ -21,8 +21,8 @@ export function fetchPosts() {
   };
 };
 
-export function fetchPostBySlug(slug) {
-  return function(dispatch, store) {
+const fetchPostBySlug = (slug) => {
+  return (dispatch, store) => {
     return new Promise((resolve, reject) => {
       dispatch({type: SET_POST, payload: {}});
       postsApi
@@ -36,4 +36,9 @@ export function fetchPostBySlug(slug) {
         });
     });
   };
+};
+
+export {
+  fetchPosts,
+  fetchPostBySlug,
 };

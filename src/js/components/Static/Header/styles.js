@@ -1,4 +1,4 @@
-export const ul = function() {
+const ul = () => {
   return {
     'fontSize': '20px',
     'listStyleType': 'none',
@@ -6,4 +6,8 @@ export const ul = function() {
     'marginBottom': '10px',
     'padding': 0,
   };
+};
+
+export {
+  ul,
 };

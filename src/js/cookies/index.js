@@ -1,16 +1,16 @@
 const REMEMBER_COOKIE = 'REMEMBER_COOKIE';
 
-function setCookie(name, val, nDays) {
+const setCookie = (name, val, nDays) => {
   const today = new Date();
   const expire = new Date();
   if (nDays == null || nDays == 0) nDays = 1;
   expire.setTime(today.getTime() + 3600000 * 24 * nDays);
   document.cookie = `${name}=${escape(val)};expires=${expire.toGMTString()}`;
-}
+};
 
-function getCookie(cname) {
+const getCookie = (cname) => {
   let name = cname + '=';
-  let decodedCookie = decodeURIComponent(document.cookie);
+  const decodedCookie = decodeURIComponent(document.cookie);
   const ca = decodedCookie.split(';');
   for (let i = 0; i <ca.length; i++) {
     let c = ca[i];
@@ -22,12 +22,17 @@ function getCookie(cname) {
     }
   }
   return '';
-}
+};
 
-export const alreadyDismissed = function() {
+const alreadyDismissed = () => {
   return typeof document === 'undefined' ||
     getCookie(REMEMBER_COOKIE) !== '';
 };
-export const dismiss = function() {
+const dismiss = () => {
   setCookie(REMEMBER_COOKIE, REMEMBER_COOKIE, 365 * 10);
+};
+
+export {
+  alreadyDismissed,
+  dismiss,
 };

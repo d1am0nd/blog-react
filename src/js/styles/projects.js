@@ -1,6 +1,6 @@
 import {color1, color3, transition} from './vars';
 
-export const projectWrapper = function() {
+const projectWrapper = () => {
   return {
     ...transition,
     'width': '100%',
@@ -11,19 +11,26 @@ export const projectWrapper = function() {
     },
   };
 };
-export const projectWrapperLink = function() {
+const projectWrapperLink = () => {
   return {
     'color': 'black',
     'textDecoration': 'none',
   };
 };
-export const imgWrapper = function() {
+const imgWrapper = () => {
   return {
     'width': '100%',
   };
 };
-export const img = function() {
+const img = () => {
   return {
     'width': '100%',
   };
+};
+
+export {
+  projectWrapper,
+  projectWrapperLink,
+  imgWrapper,
+  img,
 };

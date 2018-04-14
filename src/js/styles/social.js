@@ -4,7 +4,7 @@ import {
   transition,
 } from './vars';
 
-export const title = function() {
+const title = () => {
   return {
     'fontSize': '22px',
     'marginTop': 0,
@@ -12,7 +12,7 @@ export const title = function() {
     'padding': 0,
   };
 };
-export const ul = function() {
+const ul = () => {
   return {
     'fontSize': '20px',
     'listStyleType': 'none',
@@ -21,7 +21,7 @@ export const ul = function() {
     'padding': 0,
   };
 };
-export const li = function() {
+const li = () => {
   return {
     ...transition,
     'fontSize': '20px',
@@ -29,8 +29,15 @@ export const li = function() {
     'display': 'inline-block',
   };
 };
-export const link = function() {
+const link = () => {
   return {
     'textDecoration': 'none',
   };
+};
+
+export {
+  title,
+  ul,
+  li,
+  link,
 };
