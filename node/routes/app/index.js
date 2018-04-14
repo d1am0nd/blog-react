@@ -17,13 +17,19 @@ const findRoute = (url) => routes.find((r) => matchPath(
 
 const renderWithFetch = (req, res) => {
   const route = findRoute(req.url);
+  const {title, description} = route.meta;
 
+  // Fetch data
   store.dispatch(
     route.fetchMethod(req.params)
   )
     .then((data) => {
-      Meta.setTitle(route.meta.title(store));
-      Meta.setDescription(route.meta.description(store));
+      // Get preloaded state
+      const preloadedState = store.getState();
+      // Set meta tags
+      Meta.setTitle(title(preloadedState));
+      Meta.setDescription(description(preloadedState));
+      // Render html
       res.send(renderHtml(
         store, store.getState(), req, Meta
       ));
@@ -36,9 +42,10 @@ const renderWithFetch = (req, res) => {
 const renderStatic = (req, res) => {
   const route = findRoute(req.url);
   const preloadedState = store.getState();
+  const {title, description} = route.meta;
 
-  Meta.setTitle(route.meta.title(store));
-  Meta.setDescription(route.meta.description(store));
+  Meta.setTitle(title(preloadedState));
+  Meta.setDescription(description(preloadedState));
 
   res.send(renderHtml(
     store, preloadedState, req, Meta

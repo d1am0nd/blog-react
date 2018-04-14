@@ -1,8 +1,3 @@
-import {
-  defaultTitle,
-  defaultDescription,
-} from '@/meta/meta';
-
 import Home from '@/components/Pages/Home';
 import Post from '@/components/Pages/Post';
 import Projects from '@/components/Pages/Projects';
@@ -12,48 +7,85 @@ import {
   mapToFetchPosts,
   mapToFetchPostBySlug,
   mapToFetchProjects,
-} from './map';
-import fetchesData from '@/components/hoc/fetchesData';
-import {about} from 'config/page';
+} from './mapFetch';
+import {
+  getHomeTitle,
+  getHomeDesc,
 
-const FetchedHome = fetchesData(Home, mapToFetchPosts);
-const FetchedPost = fetchesData(Post, mapToFetchPostBySlug);
-const FetchedProjects = fetchesData(Projects, mapToFetchProjects);
+  getPostTitle,
+  getPostDesc,
+
+  getProjectsTitle,
+  getProjectsDesc,
+
+  getAboutTitle,
+  getAboutDesc,
+} from './mapMeta';
+
+import fetchesData from '@/components/hoc/fetchesData';
+import setsMeta from '@/components/hoc/setsMeta';
+
+const HomeComp = fetchesData(
+  setsMeta(
+    Home,
+    getHomeTitle,
+    getHomeDesc
+  ),
+  mapToFetchPosts
+);
+const PostComp = fetchesData(
+  setsMeta(
+    Post,
+    getPostTitle,
+    getProjectsDesc
+  ),
+  mapToFetchPostBySlug
+);
+const ProjectsComp = fetchesData(
+  setsMeta(
+    Projects,
+    getProjectsTitle,
+    getProjectsDesc
+  ),
+  mapToFetchProjects
+);
+
+const AboutComp = setsMeta(About, getAboutTitle, getAboutDesc);
 
 const routes = [
   {
-    component: FetchedHome,
+    component: HomeComp,
     path: '/',
     fetchMethod: mapToFetchPosts,
     meta: {
-      title: () => defaultTitle,
-      description: () => defaultDescription,
+      title: getHomeTitle,
+      description: getHomeDesc,
     },
   },
   {
-    component: FetchedPost,
+    component: PostComp,
     path: '/posts/:slug',
     fetchMethod: mapToFetchPostBySlug,
     meta: {
-      title: (store) => 'todo',
-      description: (store) => 'todo',
+      title: getPostTitle,
+      description: getPostDesc,
     },
   },
   {
-    component: FetchedProjects,
+    component: ProjectsComp,
     path: '/my-projects',
     fetchMethod: mapToFetchProjects,
     meta: {
-      title: () => 'My projects',
-      description: () => 'My side projects.',
+      title: getProjectsTitle,
+      description: getProjectsDesc,
     },
   },
   {
-    component: About,
+    component: AboutComp,
     path: '/about-me',
     meta: {
-      title: () => about.title,
-      description: () => about.summary,
+      title: getAboutTitle,
+      description: getAboutDesc,
     },
   },
 ];

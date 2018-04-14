@@ -7,7 +7,7 @@ import Summary from '@/components/Simple/Summary';
 import P from '@/components/Simple/P';
 import Social from '@/components/Containers/Social';
 
-import {about, social} from 'config/page';
+import content from './content.json';
 
 class About extends React.Component {
   render() {
@@ -15,11 +15,11 @@ class About extends React.Component {
       <div>
         <H1>About me</H1>
         <Subtle>Dev Kordeš</Subtle>
-        <Summary>{about.summary}</Summary>
-        {about.paragraphs.map((content, i) => (
-          <P key={i}>content</P>
+        <Summary>{content.summary}</Summary>
+        {content.paragraphs.map((content, i) => (
+          <P key={i}>{content}</P>
         ))}
-        <Social links={social.links}/>
+        <Social links={content.social}/>
       </div>
     );
   }

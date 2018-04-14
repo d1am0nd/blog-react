@@ -1,8 +1,6 @@
-import {meta} from 'config/page';
-
 class MetaConst {
   constructor() {
-    this._defaultTitle = meta.title;
+    this._defaultTitle = 'My Programming Blog';
     this._separator = ' | ';
     this._meta = {
       title: '',
@@ -69,11 +67,7 @@ class MetaConst {
   }
 };
 
-const defaultTitle = meta.defaultTitle;
-const defaultDescription = meta.defaultDescription;
 const Meta = new MetaConst();
 export {
   Meta,
-  defaultTitle,
-  defaultDescription,
 };
