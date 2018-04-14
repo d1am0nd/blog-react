@@ -15,6 +15,7 @@ const serverConfig = {
     modules: ['node_modules', path.join('src', 'js')],
     alias: {
       config: path.join(__dirname, 'config'),
+      '@': path.join(__dirname, 'src', 'js'),
     },
   },
   node: {

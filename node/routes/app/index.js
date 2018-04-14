@@ -1,24 +1,24 @@
 import {Router} from 'express';
 import {renderHtml} from './html';
-import routes from './../../../src/js/components/Routes';
 import {matchPath} from 'react-router';
 import {
   Meta,
   defaultTitle,
   defaultDescription,
-} from './../../../src/js/meta/meta';
-import {newServerStore} from './../../../src/js/store';
+} from '@/meta/meta';
+import {routes} from '@/routes';
+import {newServerStore} from '@/store';
 
 const router = Router();
 const store = newServerStore();
 const findComp = (url) => routes.find((r) => matchPath(
-  url, {path: r.props.path, exact: r.props.exact}
+  url, {path: r.path, exact: true}
 ));
 
 const renderWithFetch = (req, res) => {
-  const Comp = findComp(req.url);
+  const Comp = findComp(req.url).component;
 
-  Comp.props.component.fetchData(store, req.url)
+  Comp.fetchData(store, req.url)
     .then((data) => {
       Meta.setTitle(defaultTitle);
       Meta.setDescription(defaultDescription);
@@ -32,11 +32,11 @@ const renderWithFetch = (req, res) => {
 };
 
 const renderStatic = (req, res) => {
-  const Comp = findComp(req.url);
+  const Comp = findComp(req.url).component;
   const preloadedState = store.getState();
 
-  Meta.setTitle(Comp.props.component.title());
-  Meta.setDescription(Comp.props.component.summary());
+  Meta.setTitle(Comp.title());
+  Meta.setDescription(Comp.summary());
 
   res.send(renderHtml(
     store, preloadedState, req, Meta

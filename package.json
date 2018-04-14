@@ -7,7 +7,7 @@
     "production": "cross-env NODE_ENV=production & webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "build-server": "cross-env NODE_ENV=production webpack",
     "server": "nodemon server & cross-env NODE_ENV=development webpack -w",
-    "all": "npm run watch & npm run prod-server"
+    "all": "npm run server & npm run watch"
   },
   "devDependencies": {
     "axios": "^0.18.0",

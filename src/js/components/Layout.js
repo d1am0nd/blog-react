@@ -2,13 +2,11 @@ import React from 'react';
 import radium from 'radium';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {withRouter, Route} from 'react-router-dom';
 
-import Routes from './Routes';
 import MainTitle from './Simple/MainTitle';
 import Header from './Static/Header';
 import Cookies from './Static/Cookies';
-
-import {withRouter} from 'react-router-dom';
 
 import {setCookiesDismissed} from 'store/actions/miscActions';
 import {cookiesDismissed} from 'store/selectors/misc';
@@ -16,6 +14,7 @@ import {
   dismiss as dismissCookies,
   alreadyDismissed as alreadyDismissed,
 } from 'cookies';
+import {routes} from '@/routes';
 
 import {layout as layoutStyle} from 'styles/layout';
 
@@ -41,7 +40,9 @@ class Layout extends React.Component {
       <div style={layoutStyle(this.props.cookiesDismissed)}>
         <MainTitle>My Programming Blog</MainTitle>
         <Header url={this.props.location.pathname}/>
-        {Routes}
+        {routes.map((route, i) => (
+          <Route exact key={i} path={route.path} component={route.component}/>
+        ))}
         <Cookies
           show={!this.props.cookiesDismissed}
           handleDismiss={(e) => this.handleCookieDismiss(e)}/>
