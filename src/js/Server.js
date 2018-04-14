@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Layout from './components/Layout';
 import {StyleRoot} from 'radium';
 import {Provider} from 'react-redux';
 import {StaticRouter as Router} from 'react-router-dom';
+
+import Layout from '@/components/Layout';
 
 class App extends React.Component {
   render() {

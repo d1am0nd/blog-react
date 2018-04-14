@@ -1,6 +1,6 @@
 import {
   transition,
-} from 'styles/vars';
+} from '@/styles/vars';
 
 export const title = () => {
   return {

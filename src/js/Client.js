@@ -1,13 +1,14 @@
 import React from 'react';
-import Layout from './components/Layout';
 import ReactGA from 'react-ga';
 import {StyleRoot} from 'radium';
 import {Provider} from 'react-redux';
 import {Router} from 'react-router-dom';
-import {setDataLoaded} from './store/actions/miscActions';
-import client from 'config/client.json';
-import history from './history';
 import PropTypes from 'prop-types';
+
+import client from 'config/client.json';
+import history from '@/history';
+import {setDataLoaded} from '@/store/actions/miscActions';
+import Layout from '@/components/Layout';
 
 if ((client.env === 'prod' || client.env === 'production') &&
   navigator.userAgent.indexOf('Speed Insights') == -1) {

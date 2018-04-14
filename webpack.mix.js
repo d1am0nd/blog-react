@@ -29,7 +29,7 @@ mix
       ]
     },
     resolve: {
-      modules: ['node_modules', path.join(__dirname, 'src', 'js')],
+      modules: ['node_modules'],
       alias: {
         config: path.join(__dirname, 'config'),
         '@': path.join(__dirname, 'src', 'js'),

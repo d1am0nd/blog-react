@@ -4,14 +4,14 @@ import {connect} from 'react-redux';
 import marked from 'marked';
 import PropTypes from 'prop-types';
 
-import renderer from 'markdown/renderer';
+import renderer from '@/markdown/renderer';
 
-import {getPost} from 'store/selectors/posts';
-import {dataLoaded} from 'store/selectors/misc';
-import {fetchPostBySlug} from 'store/actions/postsActions';
-import {Meta} from 'meta/meta';
-import {pretty as prettyDate} from 'filters/date';
-import Post from 'components/Containers/Post/Full';
+import {getPost} from '@/store/selectors/posts';
+import {dataLoaded} from '@/store/selectors/misc';
+import {fetchPostBySlug} from '@/store/actions/postsActions';
+import {Meta} from '@/meta/meta';
+import {pretty as prettyDate} from '@/filters/date';
+import Post from '@/components/Containers/Post/Full';
 
 class Project extends React.Component {
   static fetchData(store, url) {

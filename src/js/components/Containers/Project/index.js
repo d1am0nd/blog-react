@@ -2,8 +2,8 @@ import React from 'react';
 import radium from 'radium';
 import PropTypes from 'prop-types';
 
-import H2 from 'components/Simple/H2';
-import Summary from 'components/Simple/Summary';
+import H2 from '@/components/Simple/H2';
+import Summary from '@/components/Simple/Summary';
 
 import {
   wrapperStyle,

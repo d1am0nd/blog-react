@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'components/Simple/Img';
+import Img from '@/components/Simple/Img';
 import {renderToString} from 'react-dom/server';
 
 const image = (renderer) => (src, title, text) => {

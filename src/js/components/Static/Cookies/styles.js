@@ -1,9 +1,9 @@
-import {baseWidth} from 'styles/general';
-import {transition} from 'styles/vars';
+import {baseWidth} from '@/styles/general';
+import {transition} from '@/styles/vars';
 import {
   light as lightBackground,
   dark as darkBackground,
-} from 'styles/backgrounds';
+} from '@/styles/backgrounds';
 
 export const fixedWrapper = (show) => {
   return {

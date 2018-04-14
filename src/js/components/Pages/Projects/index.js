@@ -3,13 +3,13 @@ import radium from 'radium';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {fetchProjects} from 'store/actions/projectsActions';
-import {getProjects} from 'store/selectors/projects';
-import {dataLoaded} from 'store/selectors/misc';
-import {Meta} from 'meta/meta';
+import {fetchProjects} from '@/store/actions/projectsActions';
+import {getProjects} from '@/store/selectors/projects';
+import {dataLoaded} from '@/store/selectors/misc';
+import {Meta} from '@/meta/meta';
 
-import H1 from 'components/Simple/H1';
-import Project from 'components/Containers/Project';
+import H1 from '@/components/Simple/H1';
+import Project from '@/components/Containers/Project';
 
 class Projects extends React.Component {
   static fetchData(store) {

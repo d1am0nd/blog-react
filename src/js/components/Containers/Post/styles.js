@@ -1,4 +1,4 @@
-import {color3} from 'styles/vars';
+import {color3} from '@/styles/vars';
 
 export const wrapperStyle = () => {
   return {

@@ -1,4 +1,4 @@
-import {color2} from 'styles/vars';
+import {color2} from '@/styles/vars';
 
 export const subStyle = () => {
   return {

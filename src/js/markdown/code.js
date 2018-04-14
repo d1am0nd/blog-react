@@ -1,5 +1,5 @@
 import React from 'react';
-import Code from 'components/Simple/Code';
+import Code from '@/components/Simple/Code';
 import {renderToString} from 'react-dom/server';
 import highlightjs from 'highlight.js';
 

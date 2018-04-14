@@ -1,17 +1,17 @@
 import React from 'react';
 import radium from 'radium';
 import marked from 'marked';
-import renderer from 'markdown/renderer';
+import renderer from '@/markdown/renderer';
 import PropTypes from 'prop-types';
 
 import {
   wrapperStyle,
   contentStyle,
 } from './styles';
-import {pretty as prettyDate} from 'filters/date';
-import H1 from 'components/Simple/H1';
-import Subtle from 'components/Simple/Subtle';
-import Summary from 'components/Simple/Summary';
+import {pretty as prettyDate} from '@/filters/date';
+import H1 from '@/components/Simple/H1';
+import Subtle from '@/components/Simple/Subtle';
+import Summary from '@/components/Simple/Summary';
 
 class Full extends React.Component {
   prettyDate() {

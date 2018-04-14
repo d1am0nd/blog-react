@@ -2,7 +2,7 @@ import {
   color2,
   color3,
   transition,
-} from 'styles/vars';
+} from '@/styles/vars';
 
 export const liStyle = (selected = false) => {
   const borderColor = selected ? color2 : color3;

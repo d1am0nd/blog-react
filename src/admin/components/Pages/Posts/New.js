@@ -3,8 +3,8 @@ import radium from 'radium';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import H1 from 'components/Simple/H1';
-import Post from 'components/Containers/Post/Full';
+import H1 from '@/components/Simple/H1';
+import Post from '@/components/Containers/Post/Full';
 import PostForm from '../../Forms/PostForm';
 
 import {newPost} from '../../../store/actions/postsActions';

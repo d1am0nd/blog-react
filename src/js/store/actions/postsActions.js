@@ -1,4 +1,4 @@
-import postsApi from 'api/posts';
+import postsApi from '@/api/posts';
 
 import {
   SET_POSTS,

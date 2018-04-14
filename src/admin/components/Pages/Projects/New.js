@@ -3,9 +3,9 @@ import radium from 'radium';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import H1 from 'components/Simple/H1';
+import H1 from '@/components/Simple/H1';
 import ProjectForm from '../../Forms/ProjectForm';
-import Project from 'components/Containers/Project';
+import Project from '@/components/Containers/Project';
 
 import {newProject} from '../../../store/actions/projectsActions';
 import {

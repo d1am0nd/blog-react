@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import Title from '../../Partials/Title';
 import ProjectForm from '../../Forms/ProjectForm';
-import Project from 'components/Containers/Project';
+import Project from '@/components/Containers/Project';
 
 import {
   fetchProjectById,

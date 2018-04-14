@@ -1,4 +1,4 @@
-import {color2, color3} from 'styles/vars';
+import {color2, color3} from '@/styles/vars';
 
 export const linkStyle = () => {
   return {

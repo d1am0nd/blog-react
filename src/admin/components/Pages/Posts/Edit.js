@@ -3,9 +3,9 @@ import radium from 'radium';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import H1 from 'components/Simple/H1';
+import H1 from '@/components/Simple/H1';
 import PostForm from '../../Forms/PostForm';
-import Post from 'components/Containers/Post/Full';
+import Post from '@/components/Containers/Post/Full';
 
 import {fetchPostBySlug, updatePost} from '../../../store/actions/postsActions';
 import {

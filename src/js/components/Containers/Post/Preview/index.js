@@ -8,10 +8,10 @@ import {
   linkStyle,
   moreStyle,
 } from './styles';
-import {pretty as prettyDate} from 'filters/date';
-import H2 from 'components/Simple/H2';
-import Subtle from 'components/Simple/Subtle';
-import Summary from 'components/Simple/Summary';
+import {pretty as prettyDate} from '@/filters/date';
+import H2 from '@/components/Simple/H2';
+import Subtle from '@/components/Simple/Subtle';
+import Summary from '@/components/Simple/Summary';
 
 class Preview extends React.Component {
   render() {

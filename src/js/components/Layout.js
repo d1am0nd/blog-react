@@ -8,15 +8,15 @@ import MainTitle from './Simple/MainTitle';
 import Header from './Static/Header';
 import Cookies from './Static/Cookies';
 
-import {setCookiesDismissed} from 'store/actions/miscActions';
-import {cookiesDismissed} from 'store/selectors/misc';
+import {setCookiesDismissed} from '@/store/actions/miscActions';
+import {cookiesDismissed} from '@/store/selectors/misc';
 import {
   dismiss as dismissCookies,
   alreadyDismissed as alreadyDismissed,
-} from 'cookies';
+} from '@/cookies';
 import {routes} from '@/routes';
 
-import {layout as layoutStyle} from 'styles/layout';
+import {layout as layoutStyle} from '@/styles/layout';
 
 class Layout extends React.Component {
   // Used for SSR
