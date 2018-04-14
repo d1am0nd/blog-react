@@ -1,15 +1,15 @@
 import React from 'react';
 import radium from 'radium';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Title from './Layout/Title';
 import Navigation from './Layout/Navigation';
-import Routes from './Routes';
 
 import {loggedIn, user} from '../auth';
 import {setUser} from '../store/actions/userActions';
+import {routes} from 'admin/routes';
 
 import {
   wrapper as wrapperStyle,
@@ -28,7 +28,9 @@ class Layout extends React.Component {
         <Title text={`Admin`}/>
         {this.props.user.email}
         <Navigation/>
-        {Routes}
+        {routes.map((route, i) => (
+          <Route exact key={i} path={route.path} component={route.component}/>
+        ))}
       </div>
     );
   }

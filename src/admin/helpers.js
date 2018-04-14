@@ -1,4 +1,4 @@
-export const validateYyyyMmDd = function(string) {
+export const validateYyyyMmDd = (string) => {
   let r = string.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (r === null) {
     return false;
@@ -12,7 +12,7 @@ export const validateYyyyMmDd = function(string) {
   }
   return false;
 };
-export const slugify = function(text) {
+export const slugify = (text) => {
   return text.toString().toLowerCase()
     .replace(/\s+/g, '-') // Replace spaces with -
     .replace(/[^\w-]+/g, '') // Remove all non-word chars

@@ -32,6 +32,7 @@ mix
       modules: ['node_modules'],
       alias: {
         config: path.join(__dirname, 'config'),
+        admin: path.join(__dirname, 'src', 'admin'),
         '@': path.join(__dirname, 'src', 'js'),
       },
     },
