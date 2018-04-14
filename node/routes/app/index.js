@@ -11,17 +11,19 @@ import {newServerStore} from '@/store';
 
 const router = Router();
 const store = newServerStore();
-const findComp = (url) => routes.find((r) => matchPath(
+const findRoute = (url) => routes.find((r) => matchPath(
   url, {path: r.path, exact: true}
 ));
 
 const renderWithFetch = (req, res) => {
-  const Comp = findComp(req.url).component;
+  const route = findRoute(req.url);
 
-  Comp.fetchData(store, req.url)
+  store.dispatch(
+    route.fetchMethod(req.params)
+  )
     .then((data) => {
-      Meta.setTitle(defaultTitle);
-      Meta.setDescription(defaultDescription);
+      Meta.setTitle(route.meta.title(store));
+      Meta.setDescription(route.meta.description(store));
       res.send(renderHtml(
         store, store.getState(), req, Meta
       ));
@@ -32,11 +34,11 @@ const renderWithFetch = (req, res) => {
 };
 
 const renderStatic = (req, res) => {
-  const Comp = findComp(req.url).component;
+  const route = findRoute(req.url);
   const preloadedState = store.getState();
 
-  Meta.setTitle(Comp.title());
-  Meta.setDescription(Comp.summary());
+  Meta.setTitle(route.meta.title(store));
+  Meta.setDescription(route.meta.description(store));
 
   res.send(renderHtml(
     store, preloadedState, req, Meta
