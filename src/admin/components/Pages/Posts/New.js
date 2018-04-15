@@ -16,12 +16,13 @@ class New extends React.Component {
     super();
     this.state = {
       post: {
-        active: 0,
+        active: false,
         title: '',
         summary: '',
         content: '',
         published_at: {
           String: '',
+          valid: false,
         },
       },
     };
