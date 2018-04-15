@@ -1,13 +1,11 @@
 import React from 'react';
 import radium from 'radium';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 
 import H1 from '@/components/Simple/H1';
-import ProjectForm from 'admin/components/Forms/ProjectForm';
 import Project from '@/components/Containers/Project';
+import ProjectForm from 'admin/components/Forms/ProjectForm';
 
-import {newProject} from 'admin/store/actions/projectsActions';
+import {newProject} from 'admin/api/projects';
 import {
   left as leftStyle,
   right as rightStyle,
@@ -36,7 +34,13 @@ class New extends React.Component {
 
   handleSubmit(e, project) {
     e.preventDefault();
-    this.props.newProject(project);
+    newProject(project)
+      .then((res) => {
+        alert('Success');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -58,24 +62,4 @@ class New extends React.Component {
   }
 }
 
-New.propTypes = {
-  project: PropTypes.object,
-  newProject: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    project: state.projects.project,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    newProject: (proj) => dispatch(newProject(proj)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(radium(New));
+export default radium(New);

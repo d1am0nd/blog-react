@@ -1,25 +1,32 @@
 import React from 'react';
 import radium from 'radium';
-import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-import ImageRow from '../../Partials/ImageRow';
-import Title from '../../Partials/Title';
-import Search from '../../Partials/Search';
+import ImageRow from 'admin/components/Partials/ImageRow';
+import Title from 'admin/components/Partials/Title';
+import Search from 'admin/components/Partials/Search';
 
-import {fetchImages, deleteImage} from '../../../store/actions/imagesActions';
+import {getImages, deleteById} from 'admin/api/images';
 
 class Index extends React.Component {
   constructor() {
     super();
     this.state = {
       search: '',
+      images: [],
     };
   }
 
   componentDidMount() {
-    this.props.fetchImages();
+    getImages()
+      .then((res) => {
+        this.setState({
+          images: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   handleSearchChange(e) {
@@ -29,63 +36,42 @@ class Index extends React.Component {
   }
 
   handleDelete(e, image) {
-    this.props.deleteImage(image.id);
-  }
-
-  renderImages() {
-    return this
-      .props
-      .images
-      .filter((image) => {
-        return image
-          .name
-          .toLowerCase()
-          .indexOf(this.state.search) !== -1;
-      })
-      .map((image, i) => {
-        return (
-          <ImageRow
-            key={`row-${i}`}
-            src={image.path}
-            editUrl={`/admin/images/${image.id}`}
-            handleDelete={(e) => this.handleDelete(e, image)}
-            text={image.name}/>
-        );
-      });
+    if (confirm('Delete?')) {
+      deleteById(image.id)
+        .then((res) => {
+          this.setState({
+            images: this
+              .state
+              .images
+              .filter((i) => i.id !== image.id),
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   render() {
+    const {images, search} = this.state;
     return (
       <div>
         <Title text={`Images`}/>
         <Link to={`/admin/image/new`}>New</Link>
         <Search handleChange={(e) => this.handleSearchChange(e)}/>
-        {this.renderImages()}
+        {images
+          .filter((img) => img.name.toLowerCase().includes(search))
+          .map((img) => (
+            <ImageRow
+              key={img.id}
+              src={img.path}
+              editUrl={`/admin/images/${img.id}`}
+              handleDelete={(e) => this.handleDelete(e, img)}
+              text={img.name}/>
+          ))}
       </div>
     );
   }
 }
 
-Index.propTypes = {
-  images: PropTypes.array,
-  fetchImages: PropTypes.func.isRequired,
-  deleteImage: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    images: state.images.images,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchImages: () => dispatch(fetchImages()),
-    deleteImage: (id) => dispatch(deleteImage(id)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(radium(Index));
+export default radium(Index);

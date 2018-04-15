@@ -1,13 +1,11 @@
 import React from 'react';
 import radium from 'radium';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 
 import H1 from '@/components/Simple/H1';
 import Post from '@/components/Containers/Post/Full';
 import PostForm from 'admin/components/Forms/PostForm';
 
-import {newPost} from 'admin/store/actions/postsActions';
+import {newPost} from 'admin/api/posts';
 import {
   left as leftStyle,
   right as rightStyle,
@@ -37,7 +35,13 @@ class New extends React.Component {
 
   handleSubmit(e, post) {
     e.preventDefault();
-    this.props.newPost(post);
+    newPost(post)
+      .then((res) => {
+        alert('Success');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -60,24 +64,4 @@ class New extends React.Component {
   }
 }
 
-New.propTypes = {
-  post: PropTypes.object,
-  newPost: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    post: state.posts.post,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    newPost: (post) => dispatch(newPost(post)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(radium(New));
+export default radium(New);

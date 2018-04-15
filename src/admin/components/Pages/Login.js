@@ -3,10 +3,10 @@ import radium from 'radium';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import SmallText from '../Partials/Form/SmallText';
-import Submit from '../Partials/Form/Submit';
+import SmallText from 'admin/components/Partials/Form/SmallText';
+import Submit from 'admin/components/Partials/Form/Submit';
 
-import {login} from '../../store/actions/userActions';
+import {login} from 'admin/store/actions/userActions';
 
 class Login extends React.Component {
   constructor() {

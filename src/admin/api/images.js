@@ -14,7 +14,7 @@ export const newImage = (image) => {
     },
   });
 };
-export const update = (image, id) => {
+export const update = (id, image) => {
   return post(POST_EDIT_URL + id, image, {
     headers: {
       'Content-Type': 'multipart/form-data',

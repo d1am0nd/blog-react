@@ -1,17 +1,16 @@
 import React from 'react';
 import radium from 'radium';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import H1 from '@/components/Simple/H1';
-import PostForm from '../../Forms/PostForm';
 import Post from '@/components/Containers/Post/Full';
+import PostForm from 'admin/components/Forms/PostForm';
 
-import {fetchPostBySlug, updatePost} from '../../../store/actions/postsActions';
+import {findBySlug, update} from 'admin/api/posts';
 import {
   left as leftStyle,
   right as rightStyle,
-} from '../../../styles/show/show';
+} from 'admin/styles/show/show';
 
 class Edit extends React.Component {
   constructor() {
@@ -23,13 +22,11 @@ class Edit extends React.Component {
   }
 
   componentDidMount() {
-    this
-      .props
-      .fetchPostBySlug(this.props.match.params.slug)
+    findBySlug(this.props.match.params.slug)
       .then((res) => {
         this.setState({
           loaded: true,
-          post: res,
+          post: res.data,
         });
       })
       .catch((err) => {
@@ -45,7 +42,7 @@ class Edit extends React.Component {
 
   handleSubmit(e, post) {
     e.preventDefault();
-    this.props.updatePost(post);
+    update(post);
   }
 
   render() {
@@ -70,26 +67,7 @@ class Edit extends React.Component {
 }
 
 Edit.propTypes = {
-  post: PropTypes.object,
   match: PropTypes.object.isRequired,
-  fetchPostBySlug: PropTypes.func.isRequired,
-  updatePost: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    post: state.posts.post,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchPostBySlug: (slug) => dispatch(fetchPostBySlug(slug)),
-    updatePost: (post) => dispatch(updatePost(post)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(radium(Edit));
+export default radium(Edit);

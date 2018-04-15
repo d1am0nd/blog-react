@@ -1,28 +1,32 @@
 import React from 'react';
 import radium from 'radium';
-import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-import Row from '../../Partials/Row';
-import Title from '../../Partials/Title';
-import Search from '../../Partials/Search';
+import Row from 'admin/components/Partials/Row';
+import Title from 'admin/components/Partials/Title';
+import Search from 'admin/components/Partials/Search';
 
-import {
-  fetchProjects,
-  deleteProject,
-} from '../../../store/actions/projectsActions';
+import {getAll, deleteProject} from 'admin/api/projects';
 
 class Index extends React.Component {
   constructor() {
     super();
     this.state = {
       search: '',
+      projects: [],
     };
   }
 
   componentDidMount() {
-    this.props.fetchProjects();
+    getAll()
+      .then((res) => {
+        this.setState({
+          projects: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   handleSearchChange(e) {
@@ -32,60 +36,41 @@ class Index extends React.Component {
   }
 
   handleDelete(project) {
-    this.props.deleteProject(project.id);
-  }
-
-  renderProjects() {
-    return this
-      .props
-      .projects
-      .filter((project) => {
-        return project
-          .title
-          .toLowerCase()
-          .indexOf(this.state.search) !== -1;
-      })
-      .map((project, i) => {
-        return <Row
-          key={`row-${i}`}
-          editUrl={`/admin/projects/${project.id}`}
-          handleDelete={(e) => this.handleDelete(project)}
-          text={project.title}/>;
-      });
+    if (confirm(`Delete ${project.title}?`)) {
+      deleteProject(project.id)
+        .then((res) => {
+          this.setState({
+            projects: this
+              .state
+              .projects
+              .filter((p) => p.id !== project.id),
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   render() {
+    const {search, projects} = this.state;
     return (
       <div>
         <Title text={`Projects`}/>
         <Link to={`/admin/project/new`}>New</Link>
         <Search handleChange={(e) => this.handleSearchChange(e)}/>
-        {this.renderProjects()}
+        {projects
+          .filter((p) => p.title.toLowerCase().includes(search))
+          .map((p) => (
+            <Row
+              key={p.id}
+              editUrl={`/admin/projects/${p.id}`}
+              handleDelete={(e) => this.handleDelete(p)}
+              text={p.title}/>
+          ))}
       </div>
     );
   }
 }
 
-Index.propTypes = {
-  projects: PropTypes.array.isRequired,
-  fetchProjects: PropTypes.func.isRequired,
-  deleteProject: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    projects: state.projects.projects,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteProject: (id) => dispatch(deleteProject(id)),
-    fetchProjects: () => dispatch(fetchProjects()),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(radium(Index));
+export default radium(Index);

@@ -1,25 +1,30 @@
 import React from 'react';
 import radium from 'radium';
-import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-import Row from '../../Partials/Row';
-import Title from '../../Partials/Title';
-import Search from '../../Partials/Search';
+import Row from 'admin/components/Partials/Row';
+import Title from 'admin/components/Partials/Title';
+import Search from 'admin/components/Partials/Search';
 
-import {fetchPosts, deletePost} from '../../../store/actions/postsActions';
+import {getMine, deletePost} from 'admin/api/posts';
 
 class Index extends React.Component {
   constructor() {
     super();
     this.state = {
+      posts: [],
       search: '',
     };
   }
 
   componentDidMount() {
-    this.props.fetchPosts();
+    getMine()
+      .then((res) => {
+        this.setState({posts: res.data});
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   handleSearchChange(e) {
@@ -29,61 +34,41 @@ class Index extends React.Component {
   }
 
   handleDelete(post) {
-    this.props.deletePost(post.id);
-    alert(post.title);
-  }
-
-  renderPosts() {
-    return this
-      .props
-      .posts
-      .filter((post) => {
-        return post
-          .title
-          .toLowerCase()
-          .indexOf(this.state.search) !== -1;
-      })
-      .map((post, i) => {
-        return <Row
-          key={`row-${i}`}
-          editUrl={`/admin/posts/${post.slug}`}
-          handleDelete={(e) => this.handleDelete(post)}
-          text={post.title}/>;
-      });
+    if (confirm(`Delete ${post.title}?`)) {
+      deletePost(post.id)
+        .then((res) => {
+          this.setState({
+            posts: this
+              .state
+              .posts
+              .filter((p) => p.id !== post.id),
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   render() {
+    const {posts, search} = this.state;
     return (
       <div>
         <Title text={`Posts`}/>
         <Link to={`/admin/post/new`}>New</Link>
         <Search handleChange={(e) => this.handleSearchChange(e)}/>
-        {this.renderPosts()}
+        {posts
+          .filter((p) => p.title.toLowerCase().includes(search))
+          .map((p) => (
+            <Row
+              key={p.id}
+              editUrl={`/admin/posts/${p.slug}`}
+              handleDelete={(e) => this.handleDelete(p)}
+              text={p.title}/>
+          ))}
       </div>
     );
   }
 }
 
-Index.propTypes = {
-  posts: PropTypes.array,
-  fetchPosts: PropTypes.func.isRequired,
-  deletePost: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    posts: state.posts.posts,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchPosts: () => dispatch(fetchPosts()),
-    deletePost: (id) => dispatch(deletePost(id)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(radium(Index));
+export default radium(Index);
