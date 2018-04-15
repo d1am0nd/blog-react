@@ -8,34 +8,18 @@ import SmallTextInput from './Parts/SmallTextInput';
 
 import {
   smallWrapper as wrapperStyle,
-} from '../../../styles/form/form';
+} from 'admin/styles/form/form';
 
 class SmallText extends React.Component {
-  handleChange(e) {
-    if (this.props.handleChange) {
-      this.props.handleChange(e);
-    }
-  }
-
-  renderTitle() {
-    return this.props.title ?
-      <Title text={this.props.title}/> : null;
-  }
-
-  renderLabel() {
-    return this.props.label ?
-      <Label text={this.props.label}/> : null;
-  }
-
   render() {
+    const {title, label, handleChange, inputProps} = this.props;
     return (
       <div style={wrapperStyle()}>
-        {this.renderTitle()}
-        {this.renderLabel()}
+        {title ? <Title text={title}/> : null}
+        {label ? <Label text={label}/> : null}
         <SmallTextInput
-          type={this.props.type}
-          value={this.props.value}
-          handleChange={(e) => this.handleChange(e)}/>
+          inputProps={inputProps}
+          handleChange={(e) => handleChange(e)}/>
       </div>
     );
   }
@@ -44,12 +28,8 @@ class SmallText extends React.Component {
 SmallText.propTypes = {
   title: PropTypes.string,
   label: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-  type: PropTypes.string,
-  handleChange: PropTypes.func,
+  inputProps: PropTypes.object,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default radium(SmallText);

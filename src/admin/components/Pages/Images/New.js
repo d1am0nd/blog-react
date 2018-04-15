@@ -3,14 +3,14 @@ import radium from 'radium';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Title from '../../Partials/Title';
-import ImageForm from '../../Forms/ImageForm';
+import Title from 'admin/components/Partials/Title';
+import ImageForm from 'admin/components/Forms/ImageForm';
 
-import {newImage} from '../../../store/actions/imagesActions';
+import {newImage} from 'admin/store/actions/imagesActions';
 import {
   left as leftStyle,
   right as rightStyle,
-} from '../../../styles/show/show';
+} from 'admin/styles/show/show';
 
 class New extends React.Component {
   constructor() {
@@ -34,10 +34,13 @@ class New extends React.Component {
   render() {
     return (
       <div>
-        <Title text={`New image`}/>
+        <Title text="New image"/>
         <div style={leftStyle()}>
           <ImageForm
-            image={this.props.image}
+            image={{
+              path: '',
+              name: '',
+            }}
             handleSubmit={(e, image) => this.handleSubmit(e, image)}
             imageChanged={(e) => this.handleImageChange(e)}/>
         </div>

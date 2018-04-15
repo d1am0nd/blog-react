@@ -5,7 +5,7 @@ import {
 import {login as apiLogin} from '../../api/user';
 import {login as sessLogin} from '../../auth';
 
-export const login = function(creds) {
+export const login = (creds) => {
   return (dispatch, state) => {
     return new Promise((resolve, reject) => {
       apiLogin(creds)
@@ -20,7 +20,7 @@ export const login = function(creds) {
     });
   };
 };
-export const setUser = function(user) {
+export const setUser = (user) => {
   return (dispatch, state) => {
     dispatch({type: SET_USER, payload: user});
   };

@@ -4,15 +4,15 @@ import {
   deleteProject as deleteProjectApi,
   findById,
   getAll,
-} from '../../api/projects';
+} from 'admin/api/projects';
 import {
   SET_PROJECTS,
   SET_PROJECT,
   UPDATE_PROJECT,
   DELETE_PROJECT,
-} from '../const/projects';
+} from 'admin/store/const/projects';
 
-export function fetchProjects() {
+export const fetchProjects = () => {
   return (dispatch, state) => {
     return new Promise((resolve, reject) => {
       getAll()
@@ -27,7 +27,7 @@ export function fetchProjects() {
   };
 };
 
-export function fetchProjectById(id) {
+export const fetchProjectById = (id) => {
   return (dispatch, state) => {
     return new Promise((resolve, reject) => {
       findById(id)
@@ -42,7 +42,7 @@ export function fetchProjectById(id) {
   };
 };
 
-export function newProject(project) {
+export const newProject = (project) => {
   return (dispatch, state) => {
     return new Promise((resolve, reject) => {
       newProjectApi(project)
@@ -57,7 +57,7 @@ export function newProject(project) {
   };
 };
 
-export function updateProject(project) {
+export const updateProject = (project) => {
   return (dispatch, state) => {
     return new Promise((resolve, reject) => {
       update(project)
@@ -72,8 +72,8 @@ export function updateProject(project) {
   };
 };
 
-export function deleteProject(id) {
-  return function(dispatch) {
+export const deleteProject = (id) => {
+  return (dispatch) => {
     return new Promise((resolve, reject) => {
       deleteProjectApi(id)
         .then((res) => {

@@ -64,7 +64,7 @@ export function newPost(post) {
     return new Promise((resolve, reject) => {
       newPostApi(post)
         .then((res) => {
-          dispatch({type: SET_POST, payload: res.data});
+          dispatch({type: SET_POST, payload: post});
           resolve(res.data);
         })
         .catch((err) => {

@@ -7,32 +7,19 @@ import Title from './Parts/Title';
 
 import {
   smallWrapper as wrapperStyle,
-} from '../../../styles/form/form';
+} from 'admin/styles/form/form';
 
 class File extends React.Component {
   handleChange(e) {
-    if (this.props.handleChange) {
-      this.props.handleChange(e);
-    }
-  }
-
-  renderTitle() {
-    return this.props.title ?
-      <Title text={this.props.title}/> :
-      null;
-  }
-
-  renderLabel() {
-    return this.props.label ?
-      <Label text={this.props.label}/> :
-      null;
+    this.props.handleChange(e);
   }
 
   render() {
+    const {title, label} = this.props;
     return (
       <div style={wrapperStyle()}>
-        {this.renderTitle()}
-        {this.renderLabel()}
+        {title ? <Title text={title}/> : null}
+        {label ? <Label text={label}/> : null}
         <input
           accept="image/*"
           type="file"
@@ -45,7 +32,7 @@ class File extends React.Component {
 File.propTypes = {
   title: PropTypes.string,
   label: PropTypes.string,
-  handleChange: PropTypes.func,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default radium(File);

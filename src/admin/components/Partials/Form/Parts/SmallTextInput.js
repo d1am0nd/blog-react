@@ -3,29 +3,19 @@ import radium from 'radium';
 import PropTypes from 'prop-types';
 
 class SmallTextInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: props.type ? props.type : 'text',
-    };
-  }
   render() {
+    const {inputProps, handleChange} = this.props;
     return (
       <input
-        type={this.state.type}
-        value={this.props.value}
-        onChange={(e) => this.props.handleChange(e)}/>
+        {...inputProps}
+        onChange={(e) => handleChange(e)}/>
     );
   }
 }
 
 SmallTextInput.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-  type: PropTypes.string,
+  inputProps: PropTypes.object,
 };
 
 export default radium(SmallTextInput);

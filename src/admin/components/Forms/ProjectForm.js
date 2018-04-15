@@ -9,14 +9,8 @@ import Submit from '../Partials/Form/Submit';
 class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-
-    let project = {};
-    if (props.project) {
-      Object.assign(project, props.project);
-    }
-
     this.state = {
-      project: project,
+      project: props.project,
     };
   }
 
@@ -26,48 +20,62 @@ class ProjectForm extends React.Component {
     this.setState({
       project: project,
     });
-    if (this.props.projectChanged) {
-      this.props.projectChanged(project);
-    }
+    this.props.projectChanged(project);
   }
 
   render() {
+    const {project} = this.state;
     return (
-      <form onSubmit={(e) => this.props.handleSubmit(e, this.state.project)}>
+      <form onSubmit={(e) => this.props.handleSubmit(e, project)}>
         <SmallText
-          value={this.state.project.position}
-          handleChange={(e) => this.handleChange('position', e.target.value)}
-          title={`Position`}/>
+          inputProps={{
+            value: project.position,
+            type: 'number',
+          }}
+          handleChange={
+            (e) => this.handleChange('position', parseInt(e.target.value))
+          }
+          title="Position"/>
         <SmallText
-          value={this.state.project.title}
+          inputProps={{
+            value: project.title,
+          }}
           handleChange={(e) => this.handleChange('title', e.target.value)}
-          title={`Title`}/>
+          title="Title"/>
         <SmallText
-          value={this.state.project.url}
+          inputProps={{
+            value: project.url,
+          }}
           handleChange={(e) => this.handleChange('url', e.target.value)}
-          title={`Url`}/>
+          title="Url"/>
         <SmallText
-          value={this.state.project.source}
+          inputProps={{
+            value: project.source,
+          }}
           handleChange={(e) => this.handleChange('source', e.target.value)}
-          title={`Source code`}/>
+          title="Source code"/>
         <SmallText
-          value={this.state.project.img_src}
+          inputProps={{
+            value: project.img_src,
+          }}
           handleChange={(e) => this.handleChange('img_src', e.target.value)}
-          title={`Image source`}/>
+          title="Image source"/>
         <TextArea
-          value={this.state.project.description}
-          rows={5}
+          inputProps={{
+            value: project.description,
+            rows: 5,
+          }}
           handleChange={(e) => this.handleChange('description', e.target.value)}
-          title={`Description`}/>
-        <Submit text={`Submit`}/>
+          title="Description"/>
+        <Submit text="Submit"/>
       </form>
     );
   }
 }
 
 ProjectForm.propTypes = {
-  project: PropTypes.object,
-  projectChanged: PropTypes.func,
+  project: PropTypes.object.isRequired,
+  projectChanged: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };
 

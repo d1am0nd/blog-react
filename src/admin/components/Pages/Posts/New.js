@@ -5,20 +5,26 @@ import PropTypes from 'prop-types';
 
 import H1 from '@/components/Simple/H1';
 import Post from '@/components/Containers/Post/Full';
-import PostForm from '../../Forms/PostForm';
+import PostForm from 'admin/components/Forms/PostForm';
 
-import {newPost} from '../../../store/actions/postsActions';
+import {newPost} from 'admin/store/actions/postsActions';
 import {
   left as leftStyle,
   right as rightStyle,
-} from '../../../styles/show/show';
+} from 'admin/styles/show/show';
 
 class New extends React.Component {
   constructor() {
     super();
     this.state = {
       post: {
-        published_at: {},
+        active: 0,
+        title: '',
+        summary: '',
+        content: '',
+        published_at: {
+          String: '',
+        },
       },
     };
   }
@@ -35,16 +41,18 @@ class New extends React.Component {
   }
 
   render() {
+    const {post} = this.state;
     return (
       <div>
-        <H1>{`New post`}</H1>
+        <H1>New post</H1>
         <div style={leftStyle()}>
           <PostForm
+            post={post}
             postChanged={(post) => this.postChanged(post)}
             handleSubmit={(e, post) => this.handleSubmit(e, post)}/>
         </div>
         <div style={rightStyle()}>
-          <Post post={this.state.post}/>
+          <Post post={post}/>
         </div>
         <div style={{'clear': 'both'}}></div>
       </div>

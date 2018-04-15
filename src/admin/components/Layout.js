@@ -4,24 +4,16 @@ import {withRouter, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Title from './Layout/Title';
-import Navigation from './Layout/Navigation';
+import Title from 'admin/components/Layout/Title';
+import Navigation from 'admin/components/Layout/Navigation';
 
-import {loggedIn, user} from '../auth';
-import {setUser} from '../store/actions/userActions';
 import {routes} from 'admin/routes';
 
 import {
   wrapper as wrapperStyle,
-} from '../styles/layout';
+} from 'admin/styles/layout';
 
 class Layout extends React.Component {
-  componentWillMount() {
-    if (loggedIn()) {
-      this.props.setUser(user());
-    }
-  }
-
   render() {
     return (
       <div style={wrapperStyle()}>
@@ -38,7 +30,6 @@ class Layout extends React.Component {
 
 Layout.propTypes = {
   user: PropTypes.object,
-  setUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -46,13 +37,7 @@ const mapStateToProps = (state) => {
     user: state.users.user,
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setUser: (user) => dispatch(setUser(user)),
-  };
-};
 
 export default withRouter(connect(
   mapStateToProps,
-  mapDispatchToProps
 )(radium(Layout)));

@@ -12,37 +12,26 @@ class PostForm extends React.Component {
   constructor(props) {
     super(props);
 
-    let post = {
-      'title': '',
-      'slug': '',
-      'description': '',
-      'content': '',
-      'published_at': {
-        'String': '',
-        'Valid': false,
-      },
-      'active': false,
-    };
-    if (props.post) {
-      Object.assign(post, props.post);
-    }
-
     this.state = {
-      post: post,
+      post: props.post,
     };
   }
 
   handleTitleChange(e) {
-    this.handleChange('title', e.target.value);
-    this.handleChange('slug', slugify(e.target.value));
+    const {value} = e.target;
+    const slug = slugify(value);
+    this.handleChange('title', value);
+    this.handleChange('slug', slug);
   }
 
   handlePublishedAtChanged(e) {
+    const {value} = e.target;
+    const valid = validateYyyyMmDd(value);
+    this.handleChange('active', valid);
     this.handleChange('published_at', {
-      Valid: validateYyyyMmDd(e.target.value),
-      String: e.target.value,
+      Valid: valid,
+      String: value,
     });
-    this.handleChange('active', validateYyyyMmDd(e.target.value));
   }
 
   handleChange(key, val) {
@@ -51,51 +40,60 @@ class PostForm extends React.Component {
     this.setState({
       post: post,
     });
-    if (this.props.postChanged) {
-      this.props.postChanged(post);
-    }
+    this.props.postChanged(post);
   }
 
   render() {
+    const {post} = this.state;
     return (
-      <form onSubmit={(e) => this.props.handleSubmit(e, this.state.post)}>
+      <form onSubmit={(e) => this.props.handleSubmit(e, post)}>
         <SmallText
-          value={this.state.post.title}
+          inputProps={{
+            value: post.title,
+            name: 'title',
+          }}
           handleChange={(e) => this.handleTitleChange(e)}
-          title={`Title`}/>
-        {this.state.post.slug}
+          title="Title"/>
+        {post.slug}
         <TextArea
-          value={this.state.post.summary}
-          rows={5}
+          inputProps={{
+            value: post.summary,
+            rows: 5,
+            name: 'summary',
+          }}
           handleChange={(e) => this.handleChange('summary', e.target.value)}
-          title={`Summary`}/>
+          title="Summary"/>
         <TextArea
-          value={this.state.post.content}
-          rows={20}
+          inputProps={{
+            value: post.content,
+            rows: 20,
+            name: 'content',
+          }}
           handleChange={(e) => this.handleChange('content', e.target.value)}
-          title={`Content`}/>
+          title="Content"/>
         <div>
           <label>Published at</label>
           <input
             disabled="true"
+            name="active"
             type="checkbox"
-            checked={this.state.post.active}
-            value={this.state.post.active}
-            onChange={(e) => this.handleChange(e, 'active')}/>
+            checked={post.active}
+            value={post.active}
+            onChange={(e) => this.handleChange('active', e.target.value)}/>
           <input
             placeholder="YYYY-MM-DD"
             type="text"
-            value={this.state.post.published_at.String}
-            onChange={(e) => this.handlePublishedAtChanged(e, 'published_at')}/>
+            value={post.published_at.String}
+            onChange={(e) => this.handlePublishedAtChanged(e)}/>
         </div>
-        <Submit text={`Submit`}/>
+        <Submit text="Submit"/>
       </form>
     );
   }
 }
 
 PostForm.propTypes = {
-  post: PropTypes.object,
+  post: PropTypes.object.isRequired,
   postChanged: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };

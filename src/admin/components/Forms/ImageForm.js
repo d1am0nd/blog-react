@@ -9,13 +9,12 @@ import Submit from '../Partials/Form/Submit';
 class ImageForm extends React.Component {
   constructor(props) {
     super(props);
+    const {path, name} = props.image;
     this.state = {
       image: {
         'image': {},
-        'imgSrc': typeof props.image === 'undefined' ?
-          '' : props.image.path,
-        'name': typeof props.image === 'undefined' ?
-          '' : props.image.name,
+        'imgSrc': path ? path : '',
+        'name': name ? name : '',
       },
     };
   }
@@ -28,9 +27,7 @@ class ImageForm extends React.Component {
     this.setState({
       image: image,
     });
-    if (this.props.imageChanged) {
-      this.props.imageChanged(image);
-    }
+    this.props.imageChanged(image);
   }
 
   handleImageChange(e) {
@@ -47,9 +44,7 @@ class ImageForm extends React.Component {
         image: newImage,
       });
 
-      if (this.props.imageChanged) {
-        this.props.imageChanged(newImage);
-      }
+      this.props.imageChanged(newImage);
     };
 
     reader.readAsDataURL(image);
@@ -66,7 +61,9 @@ class ImageForm extends React.Component {
     return (
       <form onSubmit={(e) => this.handleSubmit(e)}>
         <SmallText
-          value={this.state.image.name}
+          inputProps={{
+            value: this.state.image.name,
+          }}
           handleChange={(e) => this.handleNameChange(e)}
           title={`Name`}/>
         <File
@@ -78,8 +75,8 @@ class ImageForm extends React.Component {
 }
 
 ImageForm.propTypes = {
-  image: PropTypes.object,
-  imageChanged: PropTypes.func,
+  image: PropTypes.object.isRequired,
+  imageChanged: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };
 

@@ -37,7 +37,7 @@ const routes = [
   },
   {
     component: Image,
-    path: '/admin/images:id',
+    path: '/admin/images/:id',
   },
   {
     component: NewImage,
@@ -53,7 +53,7 @@ const routes = [
   },
   {
     component: Project,
-    path: '/admin/project/:id',
+    path: '/admin/projects/:id',
   },
 ];
 

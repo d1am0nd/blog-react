@@ -8,43 +8,24 @@ import Title from './Parts/Title';
 import {
   wrapper as wrapperStyle,
   textarea as inputStyle,
-} from '../../../styles/form/form';
+} from 'admin/styles/form/form';
 
 class TextArea extends React.Component {
-  handleChange(e) {
-    if (this.props.handleChange) {
-      this.props.handleChange(e);
-    }
-  }
-
-  rows() {
-    return this.props.rows ?
-      this.props.rows : 20;
-  }
-
-  renderTitle() {
-    return this.props.title ?
-      <Title text={this.props.title}/> :
-      null;
-  }
-
-  renderLabel() {
-    if (!this.props.label) {
-      return '';
-    }
-    return <Label text={this.props.label}/>;
-  }
-
   render() {
+    const {
+      title,
+      label,
+      inputProps,
+      handleChange,
+    } = this.props;
     return (
       <div style={wrapperStyle()}>
-        {this.renderTitle()}
-        {this.renderLabel()}
+        {title ? <Title text={title}/> : null}
+        {label ? <Label text={label}/> : null}
         <textarea
-          rows={this.rows()}
-          value={this.props.value}
+          {...inputProps}
           style={inputStyle()}
-          onChange={(e) => this.handleChange(e)}></textarea>
+          onChange={(e) => handleChange(e)}></textarea>
       </div>
     );
   }
@@ -53,9 +34,8 @@ class TextArea extends React.Component {
 TextArea.propTypes = {
   title: PropTypes.string,
   label: PropTypes.string,
-  value: PropTypes.string,
-  rows: PropTypes.number,
-  handleChange: PropTypes.func,
+  inputProps: PropTypes.object,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default radium(TextArea);

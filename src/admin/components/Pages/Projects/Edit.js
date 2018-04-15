@@ -3,26 +3,25 @@ import radium from 'radium';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Title from '../../Partials/Title';
-import ProjectForm from '../../Forms/ProjectForm';
+import Title from 'admin/components/Partials/Title';
+import ProjectForm from 'admin/components/Forms/ProjectForm';
 import Project from '@/components/Containers/Project';
 
 import {
   fetchProjectById,
   updateProject,
-} from '../../../store/actions/projectsActions';
+} from 'admin/store/actions/projectsActions';
 import {
   left as leftStyle,
   right as rightStyle,
-} from '../../../styles/show/show';
+} from 'admin/styles/show/show';
 
 class Edit extends React.Component {
   constructor() {
     super();
     this.state = {
-      project: {
-        published_at: {},
-      },
+      loaded: false,
+      project: {},
     };
   }
 
@@ -32,6 +31,7 @@ class Edit extends React.Component {
       .fetchProjectById(this.props.match.params.id)
       .then((res) => {
         this.setState({
+          loaded: true,
           project: res,
         });
       })
@@ -51,27 +51,20 @@ class Edit extends React.Component {
     this.props.updateProject(project);
   }
 
-  renderForm() {
-    if (typeof this.state.project.id !== 'undefined') {
-      return (
-        <ProjectForm
-          projectChanged={(project) => this.projectChanged(project)}
-          handleSubmit={(e, project) => this.handleSubmit(e, project)}
-          project={this.props.project}/>
-      );
-    }
-    return '';
-  }
-
   render() {
+    const {project, loaded} = this.state;
     return (
       <div>
-        <Title text={this.props.project.title}/>
+        <Title text={project.title}/>
         <div style={leftStyle()}>
-          {this.renderForm()}
+          {loaded ?
+            <ProjectForm
+              projectChanged={(project) => this.projectChanged(project)}
+              handleSubmit={(e, project) => this.handleSubmit(e, project)}
+              project={project}/> : null}
         </div>
         <div style={rightStyle()}>
-          <Project project={this.state.project}/>
+          <Project project={project}/>
         </div>
         <div style={{'clear': 'both'}}></div>
       </div>

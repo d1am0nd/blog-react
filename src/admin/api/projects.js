@@ -1,6 +1,4 @@
-import axios from 'axios';
-import {token} from '../auth';
-import qs from 'qs';
+import {get, post} from './defaults';
 import p from './params';
 
 const GET_BY_ID_URL = p.apiUrl + '/api/projects/single/';
@@ -9,42 +7,12 @@ const POST_EDIT_URL = p.apiUrl + '/api/projects/edit/';
 const POST_NEW_URL = p.apiUrl + '/api/projects/create';
 const DELETE_ID = p.apiUrl + '/api/projects/delete/';
 
-export const newProject = function(project) {
-  return axios.post(POST_NEW_URL, qs.stringify(project), {
-    headers: {
-      'Authorization': token(),
-    },
-  });
-};
+export const newProject = (project) => post(POST_NEW_URL, project);
 
-export const update = function(project) {
-  return axios.post(POST_EDIT_URL + project.id, qs.stringify(project), {
-    headers: {
-      'Authorization': token(),
-    },
-  });
-};
+export const update = (project) => post(POST_EDIT_URL + project.id, project);
 
-export const deleteProject = function(id) {
-  return axios.post(DELETE_ID + id, {}, {
-    headers: {
-      Authorization: token(),
-    },
-  });
-};
+export const deleteProject = (id) => post(DELETE_ID + id);
 
-export const findById = function(id) {
-  return axios.get(GET_BY_ID_URL + id, {
-    headers: {
-      Authorization: token(),
-    },
-  });
-};
+export const findById = (id) => get(GET_BY_ID_URL + id);
 
-export const getAll = function() {
-  return axios.get(GET_ALL_URL, {
-    headers: {
-      'Authorization': token(),
-    },
-  });
-};
+export const getAll = () => get(GET_ALL_URL);

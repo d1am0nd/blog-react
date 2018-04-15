@@ -17,9 +17,8 @@ class Edit extends React.Component {
   constructor() {
     super();
     this.state = {
-      post: {
-        published_at: {},
-      },
+      loaded: false,
+      post: {},
     };
   }
 
@@ -29,6 +28,7 @@ class Edit extends React.Component {
       .fetchPostBySlug(this.props.match.params.slug)
       .then((res) => {
         this.setState({
+          loaded: true,
           post: res,
         });
       })
@@ -48,20 +48,17 @@ class Edit extends React.Component {
     this.props.updatePost(post);
   }
 
-  renderForm() {
-    return typeof this.state.post.id !== 'undefined' ?
-      <PostForm
-        postChanged={(post) => this.postChanged(post)}
-        handleSubmit={(e, post) => this.handleSubmit(e, post)}
-        post={this.props.post}/> : null;
-  }
-
   render() {
+    const {post, loaded} = this.state;
     return (
       <div>
-        <H1>{this.props.post.title}</H1>
+        <H1>{post.title}</H1>
         <div style={leftStyle()}>
-          {this.renderForm()}
+          {loaded ?
+            <PostForm
+              postChanged={(post) => this.postChanged(post)}
+              handleSubmit={(e, post) => this.handleSubmit(e, post)}
+              post={post}/> : null}
         </div>
         <div style={rightStyle()}>
           <Post post={this.state.post}/>

@@ -3,19 +3,20 @@ import radium from 'radium';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Title from '../../Partials/Title';
-import ImageForm from '../../Forms/ImageForm';
+import Title from 'admin/components/Partials/Title';
+import ImageForm from 'admin/components/Forms/ImageForm';
 
-import {fetchImage, updateImage} from '../../../store/actions/imagesActions';
+import {fetchImage, updateImage} from 'admin/store/actions/imagesActions';
 import {
   left as leftStyle,
   right as rightStyle,
-} from '../../../styles/show/show';
+} from 'admin/styles/show/show';
 
 class Edit extends React.Component {
   constructor() {
     super();
     this.state = {
+      loaded: false,
       src: '',
     };
   }
@@ -26,6 +27,7 @@ class Edit extends React.Component {
       .fetchImage(this.props.match.params.id)
       .then((res) => {
         this.setState({
+          loaded: true,
           src: res.path,
         });
       })
@@ -36,6 +38,7 @@ class Edit extends React.Component {
 
   handleImageChange(image) {
     this.setState({
+      loaded: true,
       src: image.imgSrc,
     });
   }
@@ -45,23 +48,19 @@ class Edit extends React.Component {
     this.props.updateImage(image, this.props.match.params.id);
   }
 
-  renderForm() {
-    return typeof this.props.image.id !== 'undefined' ?
-      <ImageForm
-        image={this.props.image}
-        handleSubmit={(e, image) => this.handleSubmit(e, image)}
-        imageChanged={(e) => this.handleImageChange(e)}/> : null;
-  }
-
   render() {
+    const {loaded, src} = this.state;
     return (
       <div>
         <Title text={this.props.image.name}/>
         <div style={leftStyle()}>
-          {this.renderForm()}
+          {loaded ? <ImageForm
+            image={this.props.image}
+            handleSubmit={(e, image) => this.handleSubmit(e, image)}
+            imageChanged={(e) => this.handleImageChange(e)}/> : null}
         </div>
         <div style={rightStyle()}>
-          <img src={this.state.src}/>
+          <img src={src}/>
         </div>
         <div style={{'clear': 'both'}}></div>
       </div>
