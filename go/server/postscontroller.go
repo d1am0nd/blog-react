@@ -1,6 +1,7 @@
 package server
 
 import (
+	"fmt"
 	"encoding/json"
 	"net/http"
 	"strconv"
@@ -74,7 +75,6 @@ func CreatePost(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	var userId = r.Context().Value("claims").(Claims).UserId
 	post := database.NewPost()
 
-	// Setting values
 	fillPost(r, &post)
 
 	err := database.CreatePost(&post, userId)
@@ -146,22 +146,13 @@ func DeletePost(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 
 func fillPost(r *http.Request, post *database.Post) {
 	// Setting values
-	active := r.FormValue("active")
-	if active == "1" || active == "true" {
-		post.Active = true
-	} else {
-		post.Active = false
-	}
-	publishedAtValid := r.FormValue("published_at[Valid]")
-	if publishedAtValid == "true" || publishedAtValid == "1" {
-		post.PublishedAt.Valid = true
-		post.PublishedAt.String = r.FormValue("published_at[String]")
-	} else {
-		post.PublishedAt.Valid = false
-		post.PublishedAt.String = ""
-	}
-	post.Title = r.FormValue("title")
-	post.Slug = r.FormValue("slug")
-	post.Summary = r.FormValue("summary")
-	post.Content = r.FormValue("content")
+    decoder := json.NewDecoder(r.Body)
+    defer r.Body.Close()
+
+    decoder.Decode(&post)
+
+	fmt.Println(post.Title)
+	fmt.Println(post.Slug)
+	fmt.Println(post.Summary)
+	fmt.Println(post.Content)
 }
