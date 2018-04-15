@@ -1,7 +1,6 @@
 package server
 
 import (
-	"fmt"
 	"encoding/json"
 	"net/http"
 	"strconv"
@@ -150,9 +149,4 @@ func fillPost(r *http.Request, post *database.Post) {
     defer r.Body.Close()
 
     decoder.Decode(&post)
-
-	fmt.Println(post.Title)
-	fmt.Println(post.Slug)
-	fmt.Println(post.Summary)
-	fmt.Println(post.Content)
 }

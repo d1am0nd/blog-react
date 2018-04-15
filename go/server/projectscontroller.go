@@ -1,7 +1,6 @@
 package server
 
 import (
-    "fmt"
     "encoding/json"
     "net/http"
     "strconv"
@@ -126,13 +125,8 @@ func DeleteProject(w http.ResponseWriter, r *http.Request, p httprouter.Params) 
 
 func fillProject(r *http.Request, project *database.Project) {
     // Setting values
-    fmt.Println(r.FormValue("title"))
-    i, _ := strconv.Atoi(r.FormValue("position"))
-    project.Position = i
-    project.Title = r.FormValue("title")
-    project.Url = r.FormValue("url")
-    project.Source = r.FormValue("source")
-    project.Description = r.FormValue("description")
-    project.ImgSrc = r.FormValue("img_src")
-    fmt.Println(project.Position, project.Title, project.Url)
+    decoder := json.NewDecoder(r.Body)
+    defer r.Body.Close()
+
+    decoder.Decode(&project)
 }
