@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {
   navigationUl as ulStyle,
   navigationLi as liStyle,
-} from '../../styles/layout';
+} from 'admin/styles/layout';
 
 class Navigation extends React.Component {
   render() {
