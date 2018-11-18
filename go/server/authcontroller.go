@@ -11,22 +11,32 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+type credentialsReq struct {
+	Email    string
+	Password string
+}
+
+func LoginHeaders(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
+}
+
 /**
  * 1. Grabs user by param's email from db
- * 2. Compares Hases
- * 3. Returns user json (todo: jwt)
+ * 2. Compares Hashes
+ * 3. Returns user json
  */
 func Login(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	email := r.FormValue("email")
-	pass := r.FormValue("password")
+	var creds credentialsReq
+	decoder := json.NewDecoder(r.Body)
+	err := decoder.Decode(&creds)
 
-	user, err := database.FindUserByEmail(email)
+	user, err := database.FindUserByEmail(creds.Email)
 	if err != nil {
 		http.Error(w, "Authorization failed", http.StatusUnauthorized)
 		return
 	}
 
-	err = compareHashAndPassword(pass, user.Password)
+	err = compareHashAndPassword(creds.Password, user.Password)
 	if err != nil {
 		http.Error(w, "Authorization failed", http.StatusUnauthorized)
 		return
@@ -42,8 +52,8 @@ func Login(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	claims := NewClaims(user.Id, config.Jwt)
 	token := CreateToken(claims, config.Jwt)
 
-	w.Header().Set("Access-Control-Expose-Headers", "Authorization")
 	w.Header().Set("Access-Control-Allow-Credentials", "true")
+	w.Header().Set("Access-Control-Expose-Headers", "Authorization")
 	w.Header().Set("Authorization", token)
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(rjson)

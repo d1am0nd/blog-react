@@ -56,6 +56,17 @@ func FindUserByEmail(email string) (User, error) {
 	return user, err
 }
 
+func UpdatePasswordByUserId(pass string, id uint32) error {
+	now := time.Now()
+
+	stmt, err := SQL.Prepare("UPDATE " + userT + " SET password = ?, created_at = ? WHERE id = ?")
+	if err != nil {
+		return err
+	}
+	_, err = stmt.Exec(pass, timeToDb(&now), id)
+	return err
+}
+
 /*
 func GetActivePosts() ([]Post, error) {
     posts := []Post{}

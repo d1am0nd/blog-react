@@ -10,6 +10,7 @@ func NewRouter() *httprouter.Router {
 	r := httprouter.New()
 
 	r.GET("/api/users/current", AuthOnly(CurrentUser))
+	r.OPTIONS("/api/users/login", LoginHeaders)
 	r.POST("/api/users/login", Login)
 	r.GET("/api/posts/all", WithUser(ActivePosts))
 	r.POST("/api/posts/edit/:id", AuthOnly(UpdatePost))
