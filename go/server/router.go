@@ -28,6 +28,7 @@ func NewRouter() *httprouter.Router {
 	r.POST("/api/projects/create", AuthOnly(CreateProject))
 	r.POST("/api/projects/edit/:id", AuthOnly(UpdateProject))
 	r.POST("/api/projects/delete/:id", AuthOnly(DeleteProject))
+	r.GET("/json/about.json", AboutJson)
 	r.ServeFiles("/uploads/*filepath", http.Dir("../public/uploads"))
 	r.ServeFiles("/js/*filepath", http.Dir("../public/js"))
 
