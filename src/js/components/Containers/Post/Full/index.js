@@ -16,8 +16,9 @@ import Summary from '@/components/Simple/Summary';
 class Full extends React.Component {
   prettyDate() {
     if (this.props.post.published_at) {
-      return prettyDate(this.props.post.published_at.String);
+      return prettyDate(this.props.post.published_at);
     }
+
     return '';
   }
 
@@ -25,6 +26,7 @@ class Full extends React.Component {
     if (!this.props.post.content) {
       return;
     }
+
     return marked(
       this
         .props

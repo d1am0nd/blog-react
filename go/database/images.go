@@ -8,12 +8,12 @@ import (
 const imageT = "images"
 
 type Image struct {
-	Id        uint32 `db:"id" json:"id"`
-	UserId    uint32 `db:"user_id" json:"user_id"`
-	Path      string `db:"path" json:"path"`
-	Name      string `db:"name" json:"name"`
-	CreatedAt string `db:"created_at" json:"created_at"`
-	UpdatedAt string `db:"updated_at" json:"updated_at"`
+	Id        uint32 `db:"id" json:"id,omitempty"`
+	UserId    uint32 `db:"user_id" json:"user_id,omitempty"`
+	Path      string `db:"path" json:"path,omitempty"`
+	Name      string `db:"name" json:"name,omitempty"`
+	CreatedAt string `db:"created_at" json:"created_at,omitempty"`
+	UpdatedAt string `db:"updated_at" json:"updated_at,omitempty"`
 }
 
 func (i *Image) GetId() string {

@@ -3,23 +3,49 @@ package database
 import (
 	"fmt"
 	"time"
+	"regexp"
 
 	"database/sql"
 )
 
 const postT = "posts"
 
+type NullDate struct {
+    sql.NullString
+}
+
+func (nd NullDate) MarshalJSON() ([]byte, error) {
+	if !nd.Valid {
+		return []byte("null"), nil
+	}
+
+	return []byte("\""+nd.String+"\""), nil
+}
+
+func (nd *NullDate) UnmarshalJSON(data []byte) error {
+	// http://www.golangprograms.com/regular-expression-to-validate-the-date-format-in-dd-mm-yyyy.html
+	re := regexp.MustCompile("((19|20)\\d\\d)-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])")
+	nd.Valid = false
+	nd.String = "0000-00-00"
+	if date := re.FindString(string(data)); len(date) == 10 {
+		nd.Valid = true
+		nd.String = date
+	}
+
+	return nil
+}
+
 type Post struct {
-	Id          uint32         `db:"id" json:"id"`
-	Active      bool           `db:"active" json:"active"`
-	UserId      uint32         `db:"user_id" json:"user_id"`
-	Title       string         `db:"title" json:"title"`
-	Slug        string         `db:"slug" json:"slug"`
-	Content     string         `db:"content" json:"content"`
-	Summary     string         `db:"summary" json:"summary"`
-	PublishedAt sql.NullString `db:"published_at" json:"published_at"`
-	CreatedAt   string         `db:"created_at" json:"created_at"`
-	UpdatedAt   string         `db:"updated_at" json:"updated_at"`
+	Id          uint32         `db:"id" json:"id,omitempty"`
+	Active      bool           `db:"active" json:"active,omitempty"`
+	UserId      uint32         `db:"user_id" json:"user_id,omitempty"`
+	Title       string         `db:"title" json:"title,omitempty"`
+	Slug        string         `db:"slug" json:"slug,omitempty"`
+	Content     string         `db:"content" json:"content,omitempty"`
+	Summary     string         `db:"summary" json:"summary,omitempty"`
+	PublishedAt *NullDate `db:"published_at" json:"published_at"`
+	CreatedAt   string         `db:"created_at" json:"created_at,omitempty"`
+	UpdatedAt   string         `db:"updated_at" json:"updated_at,omitempty"`
 }
 
 func (p *Post) GetId() string {
