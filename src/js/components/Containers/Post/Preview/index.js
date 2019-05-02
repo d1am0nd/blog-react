@@ -25,8 +25,8 @@ class Preview extends React.Component {
           style={wrapperStyle()}>
           <H2>{post.title}</H2>
           <Subtle>
-            Published by Dev Kordeš on &nbsp;
-            {prettyDate(post.published_at.String)}
+            Published by Dev Kordeš on&nbsp;
+            {prettyDate(post.published_at)}
           </Subtle>
           <Summary>{post.summary}</Summary>
           <span style={moreStyle()} href="#">

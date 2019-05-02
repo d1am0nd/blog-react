@@ -10,9 +10,9 @@ const fetchPosts = () => {
     return new Promise((resolve, reject) => {
       postsApi
         .getPublished()
-        .then((res) => {
-          dispatch({type: SET_POSTS, payload: res.data});
-          resolve(res.data);
+        .then(({data}) => {
+          dispatch({type: SET_POSTS, payload: data});
+          resolve(data);
         })
         .catch((err) => {
           reject(err);
@@ -27,9 +27,9 @@ const fetchPostBySlug = (slug) => {
       dispatch({type: SET_POST, payload: {}});
       postsApi
         .findBySlug(slug)
-        .then((res) => {
-          dispatch({type: SET_POST, payload: res.data});
-          resolve(res.data);
+        .then(({data}) => {
+          dispatch({type: SET_POST, payload: data});
+          resolve(data);
         })
         .catch((err) => {
           reject(err);

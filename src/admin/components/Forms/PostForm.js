@@ -17,21 +17,18 @@ class PostForm extends React.Component {
     };
   }
 
-  handleTitleChange(e) {
-    const {value} = e.target;
+  handleTitleChange({target}) {
+    const {value} = target;
     const slug = slugify(value);
     this.handleChange('title', value);
     this.handleChange('slug', slug);
   }
 
-  handlePublishedAtChanged(e) {
-    const {value} = e.target;
+  handlePublishedAtChanged({target}) {
+    const {value} = target;
     const valid = validateYyyyMmDd(value);
     this.handleChange('active', valid);
-    this.handleChange('published_at', {
-      Valid: valid,
-      String: value,
-    });
+    this.handleChange('published_at', value);
   }
 
   handleChange(key, val) {
@@ -83,7 +80,7 @@ class PostForm extends React.Component {
           <input
             placeholder="YYYY-MM-DD"
             type="text"
-            value={post.published_at.String}
+            value={post.published_at}
             onChange={(e) => this.handlePublishedAtChanged(e)}/>
         </div>
         <Submit text="Submit"/>

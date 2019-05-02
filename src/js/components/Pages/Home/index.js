@@ -25,11 +25,9 @@ Home.propTypes = {
   posts: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    posts: getPosts(state),
-  };
-};
+const mapStateToProps = (state) => ({
+  posts: getPosts(state),
+});
 
 export default connect(
   mapStateToProps,

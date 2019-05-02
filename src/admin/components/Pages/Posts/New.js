@@ -20,10 +20,7 @@ class New extends React.Component {
         title: '',
         summary: '',
         content: '',
-        published_at: {
-          String: '',
-          valid: false,
-        },
+        published_at: '',
       },
     };
   }

@@ -8,16 +8,16 @@ import (
 const table = "projects"
 
 type Project struct {
-    Id          uint32         `db:"id" json:"id"`
-    UserId      uint32         `db:"user_id" json:"user_id"`
-    Position int `db:"position" json:"position"`
-    Title       string         `db:"title" json:"title"`
-    Url        string         `db:"url" json:"url"`
-    Source     string         `db:"source" json:"source"`
-    Description     string         `db:"description" json:"description"`
-    ImgSrc string `db:"img_src" json:"img_src"`
-    CreatedAt   string         `db:"created_at" json:"created_at"`
-    UpdatedAt   string         `db:"updated_at" json:"updated_at"`
+    Id          uint32         `db:"id" json:"id,omitempty"`
+    UserId      uint32         `db:"user_id" json:"user_id,omitempty"`
+    Position int `db:"position" json:"position,omitempty"`
+    Title       string         `db:"title" json:"title,omitempty"`
+    Url        string         `db:"url" json:"url,omitempty"`
+    Source     string         `db:"source" json:"source,omitempty"`
+    Description     string         `db:"description" json:"description,omitempty"`
+    ImgSrc string `db:"img_src" json:"img_src,omitempty"`
+    CreatedAt   string         `db:"created_at" json:"created_at,omitempty"`
+    UpdatedAt   string         `db:"updated_at" json:"updated_at,omitempty"`
 }
 
 func (p *Project) GetId() string {

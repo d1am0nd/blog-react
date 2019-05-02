@@ -4,12 +4,6 @@ import {
 } from '@/store/actions/postsActions';
 import {fetchProjects} from '@/store/actions/projectsActions';
 
-const mapToFetchPosts = () => fetchPosts();
-const mapToFetchPostBySlug = ({slug}) => fetchPostBySlug(slug);
-const mapToFetchProjects = () => fetchProjects();
-
-export {
-  mapToFetchPosts,
-  mapToFetchPostBySlug,
-  mapToFetchProjects,
-};
+export const mapToFetchPosts = () => fetchPosts();
+export const mapToFetchPostBySlug = ({slug}) => fetchPostBySlug(slug);
+export const mapToFetchProjects = () => fetchProjects();
