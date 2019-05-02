@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {withRouter, Route} from 'react-router-dom';
 
 import MainTitle from './Simple/MainTitle';
+import SubMainTitle from './Simple/SubMainTitle';
 import Header from './Static/Header';
 import Cookies from './Static/Cookies';
 
@@ -39,6 +40,7 @@ class Layout extends React.Component {
     return (
       <div style={layoutStyle(this.props.cookiesDismissed)}>
         <MainTitle>My Programming Blog</MainTitle>
+        <SubMainTitle>Dev Kordeš</SubMainTitle>
         <Header url={this.props.location.pathname}/>
         {routes.map((route, i) => (
           <Route exact key={i} path={route.path} component={route.component}/>
