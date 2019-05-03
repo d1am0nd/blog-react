@@ -16,7 +16,11 @@ const findRoute = (url) => routes.find((r) => matchPath(
 ));
 
 const renderWithFetch = (req, res) => {
-  const route = findRoute(req.url);
+  const route = findRoute(req.path);
+  if (!route) {
+      res.status(404).send('404');
+  }
+
   const {title, description} = route.meta;
 
   // Fetch data
@@ -40,7 +44,7 @@ const renderWithFetch = (req, res) => {
 };
 
 const renderStatic = (req, res) => {
-  const route = findRoute(req.url);
+  const route = findRoute(req.path);
   const preloadedState = store.getState();
   const {title, description} = route.meta;
 
