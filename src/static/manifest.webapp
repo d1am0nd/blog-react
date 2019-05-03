@@ -8,7 +8,7 @@
   },
   "developer": {
     "name": "Dev Kordeš",
-    "url": "https://myprogramming.blog"
+    "url": "https://kordes.dev"
   },
   "installs_allowed_from": [
     "*"
@@ -18,7 +18,7 @@
   },
   "locales": {
     "en": {
-      "name": "Kevin Gates in Prison",
+      "name": "Dev Kordeš",
       "description": "My journey to becoming a better web developer. And many unimpressive side projects in between."
     }
   }
