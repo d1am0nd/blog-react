@@ -19,4 +19,3 @@ app.listen(port, () => {
 function fourOhFour(res) {
   res.status(404).send('404');
 }
-

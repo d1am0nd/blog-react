@@ -13,6 +13,8 @@ let nodeExternals = require('webpack-node-externals');
  */
 
 mix
+    /*
+    */
   .setPublicPath('./')
   .webpackConfig({
     module: {
@@ -36,8 +38,6 @@ mix
         '@': path.join(__dirname, 'src', 'js'),
       },
     },
-    /*
-    */
   })
   .copy('src/static', './public')
   .react('src/js/index.js', 'public/js/app.js')

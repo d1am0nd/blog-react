@@ -14,7 +14,11 @@ class Social extends React.Component {
     return this.props.links.map((item) => {
       return (
         <li key={item.name} style={liStyle()}>
-          <a style={linkStyle()} target="_blank" href={item.url}>
+          <a
+            style={linkStyle()}
+            target="_blank"
+            rel="noopener noreferrer"
+            href={item.url}>
             {item.name}
           </a>
         </li>

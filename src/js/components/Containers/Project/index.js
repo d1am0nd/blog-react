@@ -17,7 +17,11 @@ class Project extends React.Component {
     const {project} = this.props;
     return (
       <div style={wrapperStyle()}>
-        <a target="_blank" href={project.url} style={linkStyle()}>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={project.url}
+          style={linkStyle()}>
           <H2>{project.title}</H2>
           <div style={imgWrapperStyle()}>
             <img style={imgStyle()} src={project.img_src}/>
