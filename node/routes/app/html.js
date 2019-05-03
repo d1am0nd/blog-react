@@ -15,6 +15,7 @@ const renderHtml = (store, preloadedState, req, Meta) => {
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="author" content="Dev Kordeš">
+      <link id='link-canonical' rel="canonical" href="https://kordes.dev${req.url}" />
       ${sv}
       <!-- Disable tap highlight on IE -->
       <meta name="msapplication-tap-highlight" content="no">

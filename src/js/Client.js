@@ -15,9 +15,18 @@ if ((client.env === 'prod' || client.env === 'production') &&
   ReactGA.initialize(client.analytics);
   ReactGA.pageview(window.location.pathname + window.location.search);
 
-  history.listen((location, action) => {
+  history.listen(({pathname}) => {
     ReactGA.set({page: location.pathname});
     ReactGA.pageview(location.pathname);
+    document
+      .getElementById('link-canonical')
+      .setAttribute('href', `https://kordes.dev${pathname}`);
+  });
+} else {
+  history.listen(({pathname}) => {
+    document
+      .getElementById('link-canonical')
+      .setAttribute('href', `https://kordes.dev${pathname}`);
   });
 }
 
