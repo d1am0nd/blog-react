@@ -31,7 +31,7 @@ const ImageCreate: React.FunctionComponent = () => {
           handleSubmit={async (e) => {
             e.preventDefault();
             await create(image);
-            console.log('Created');
+            alert('Created');
           }} />
       </div>
       <div style={rightStyle()}>

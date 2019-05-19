@@ -45,7 +45,8 @@ const ImageEdit: React.FunctionComponent<RouteComponentProps<IParams>> = ({
           handleChange={setImage}
           handleSubmit={async (e) => {
             e.preventDefault();
-            console.log(await update(parseInt(id), image));
+            await update(parseInt(id), image);
+            alert('Updated');
           }}
           image={image} />
       </div>

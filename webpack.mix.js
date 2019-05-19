@@ -53,5 +53,6 @@ if (argv.isserver) {
 } else {
   mix
     .copy('src/static', './public')
+    .ts('src/admints/index.tsx', 'public/js/admin.js')
     .ts('src/ts/index.tsx', 'public/js/app.js');
 }

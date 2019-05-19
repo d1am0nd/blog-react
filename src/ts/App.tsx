@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
+import {createBrowserHistory} from 'history';
 import {Helmet} from 'react-helmet';
 import * as ReactGA from 'react-ga';
 import Layout from './components/Layout';
