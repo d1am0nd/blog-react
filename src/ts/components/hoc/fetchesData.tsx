@@ -47,7 +47,7 @@ const fetchesData = (
         .catch((err) => console.log(err));
     }, [match.params]);
 
-    return loading ? null : <Component {...props} />;
+    return loading ? <div>Loading...</div> : <Component {...props} />;
   };
 
   return withRouter(FetchesData);
