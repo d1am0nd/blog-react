@@ -39,7 +39,7 @@ func NewRouter() *httprouter.Router {
 
 		// These have to match the ones in vue router and redirect to Home
 		r.GET("/login", Home)
-		r.GET("/admin/*we", Home)
+		r.GET("/admin/*we", Admin)
 		r.GET("/posts/*we", Home)
 		r.GET("/", Home)
 	}

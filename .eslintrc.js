@@ -2,7 +2,7 @@
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module'
   },
@@ -18,24 +18,26 @@ module.exports = {
   ],
   // required to lint *.vue files
   plugins: [
-    'html'
+    'html',
+    'react',
+    '@typescript-eslint',
   ],
   // add your custom rules here
   'rules': {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-
-    // Doesn't work with jsx
-    'no-unused-vars': 0,
-
-    'require-jsdoc': 0,
-
-    'indent': ["error", 2],
-
+    // Default no-unused-vars
     'no-unused-vars': 1,
-
+    'react/prop-types': 0,
+    // jsx version of no-unused-vars
+    'camelcase': 0,
     'react/jsx-uses-vars': 1,
-
-    'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
+    'indent': ['error', 2],
+    'max-len': 0,
+    'require-jsdoc': 0,
+    'no-invalid-this': 0,
+    'func-call-spacing': 0,
+    'no-unused-vars': 0,
+    '@typescript-eslint/no-unused-vars': 1,
   }
 }

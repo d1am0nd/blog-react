@@ -1,12 +1,15 @@
 /config/database.json
 /config/jwt.json
 /config/about.json
+/config/about.tsx
 /config/page.js
 /config/projects.js
 /config/page.json
 /config/env.json
+/config/env.tsx
 /config/api.json
-/config/client.json
+/config/api.tsx
+/config/client.tsx
 /node_modules
 /public/uploads
 /public/js/app.js
