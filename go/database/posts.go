@@ -23,10 +23,11 @@ func (nd NullDate) MarshalJSON() ([]byte, error) {
 }
 
 func (nd *NullDate) UnmarshalJSON(data []byte) error {
-	// http://www.golangprograms.com/regular-expression-to-validate-the-date-format-in-dd-mm-yyyy.html
-	re := regexp.MustCompile("((19|20)\\d\\d)-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])")
+	// http://www.golangprograms.com/regular-expression-to-extract-date-yyyy-mm-dd-from-string.html
+	re := regexp.MustCompile(`\d{4}-\d{2}-\d{2}`)
 	nd.Valid = false
 	nd.String = "0000-00-00"
+	fmt.Println(re.FindString(string(data)))
 	if date := re.FindString(string(data)); len(date) == 10 {
 		nd.Valid = true
 		nd.String = date
