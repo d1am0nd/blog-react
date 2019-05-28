@@ -13,7 +13,7 @@ const renderWithFetch = async (
   req: express.Request,
   res: express.Response
 ) => {
-  const {requests, setMeta<any>} = findRoute(req.url);
+  const {requests, setMeta} = findRoute(req.url);
 
   const state = (await Promise.all(
     (requests || []).map(({request}) => request(req.params))
