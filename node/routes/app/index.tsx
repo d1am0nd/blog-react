@@ -13,7 +13,7 @@ const renderWithFetch = async (
   req: express.Request,
   res: express.Response
 ) => {
-  const {requests, setMeta} = findRoute(req.url);
+  const {requests, setMeta<any>} = findRoute(req.url);
 
   const state = (await Promise.all(
     (requests || []).map(({request}) => request(req.params))
@@ -24,7 +24,7 @@ const renderWithFetch = async (
     }), {});
 
   const meta = {
-    title: setMeta.title(state),
+    title: `${setMeta.title(state)} - Dev Kordes`,
     description: setMeta.description(state),
     url: req.url,
   };

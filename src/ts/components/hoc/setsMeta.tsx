@@ -18,7 +18,7 @@ const setsMeta = ({
     if (typeof document !== 'undefined') {
       document
         .getElementById('meta-title')
-        .setAttribute('content', title(props));
+        .setAttribute('content', `${title} - Dev Kordes`);
       document
         .getElementById('meta-description')
         .setAttribute('content', description(props));
