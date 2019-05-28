@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
-import {Helmet} from 'react-helmet';
 import * as ReactGA from 'react-ga';
 import Layout from './components/Layout';
 import {SSRContext} from './misc/context';
@@ -26,10 +25,6 @@ if ((client.env === 'prod' || client.env === 'production') &&
 
 const App: React.FunctionComponent = () => (
   <>
-    <Helmet>
-      <meta charSet='utf-8' />
-      <title>Dev Kordes</title>
-    </Helmet>
     <SSRContext.Provider value={state}>
       <BrowserRouter>
         <Route path='/' component={Layout} />

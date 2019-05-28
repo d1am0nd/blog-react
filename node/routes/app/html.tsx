@@ -2,7 +2,14 @@ import * as React from 'react';
 import {renderToString} from "react-dom/server";
 import App from '../../../src/ts/Server';
 
-export const renderHtml = (url: string, preloadedState = {}) => {
+export const renderHtml = (
+  meta: {
+    title: string,
+    description: string,
+    url: string,
+  },
+  preloadedState = {}
+) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -11,7 +18,10 @@ export const renderHtml = (url: string, preloadedState = {}) => {
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="author" content="Dev Kordeš">
-      <link id='link-canonical' rel="canonical" href="https://kordes.dev${url}" />
+
+      <meta id="meta-description" name="description" content="${meta.description}">
+      <title id='meta-title'>${meta.title}</title>
+      <link id='meta-canonical' rel="canonical" href="https://kordes.dev${meta.url}" />
       <!-- Disable tap highlight on IE -->
       <meta name="msapplication-tap-highlight" content="no">
 
@@ -36,7 +46,7 @@ export const renderHtml = (url: string, preloadedState = {}) => {
     </head>
     <body class="landing">
         <div id="root">${renderToString(
-          <App location={url} context={{...preloadedState}} />
+          <App location={meta.url} context={{...preloadedState}} />
         )}</div>
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}

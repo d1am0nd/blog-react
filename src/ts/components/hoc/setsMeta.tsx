@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {Helmet} from 'react-helmet';
 
-export interface IMeta<P = undefined> {
+export interface IMeta<P = any> {
   title: (props?: P) => string;
   description: (props?: P) => string;
   url: (props?: P) => string;
@@ -10,26 +9,23 @@ export interface IMeta<P = undefined> {
 const setsMeta = ({
   title,
   description,
-  url,
 }: IMeta) => (
   Component: React.ComponentType
 ) => {
   const SetsMeta: React.FunctionComponent<any> = (
     props
   ) => {
+    if (typeof document !== 'undefined') {
+      document
+        .getElementById('meta-title')
+        .setAttribute('content', title(props));
+      document
+        .getElementById('meta-description')
+        .setAttribute('content', description(props));
+    }
+
     return (
-      <>
-        <Helmet>
-          <title>{title(props)}</title>
-          <meta
-            name="description"
-            content={description(props)} />
-          <link
-            rel="canonical"
-            href={`https://kordes.dev${url(props)}`} />
-        </Helmet>
-        <Component {...props} />
-      </>
+      <Component {...props} />
     );
   };
 

@@ -27,8 +27,7 @@ const postsRequest: IRequest<undefined, Array<IPost>> = {
 
 export const setMeta: IMeta = {
   title: () => 'Home',
-  description: () => 'My journey to becoming a better web developer.' +
-  'And many cool side projects and opinionated stories in between.',
+  description: () => 'Dev Kordes personal website and blog',
   url: () => '/',
 };
 
