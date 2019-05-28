@@ -8,7 +8,6 @@ export interface IMeta<P = any> {
 
 const setsMeta = ({
   title,
-  description,
 }: IMeta) => (
   Component: React.ComponentType
 ) => {
@@ -16,12 +15,7 @@ const setsMeta = ({
     props
   ) => {
     if (typeof document !== 'undefined') {
-      document
-        .getElementById('meta-title')
-        .setAttribute('content', `${title} - Dev Kordes`);
-      document
-        .getElementById('meta-description')
-        .setAttribute('content', description(props));
+      document.title = `${title(props)} - Dev Kordes`;
     }
 
     return (
