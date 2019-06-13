@@ -51,7 +51,7 @@ const link = ({options}: any) => (href: string, title?: string, text?: string) =
     <a href="${href}"
       target="_blank"
       rel="noopener noreferrer"
-      title="${title ? title : ''}">
+      title="${title || ''}">
       ${text}
     </a>
   `;
@@ -82,10 +82,16 @@ const code = () => (code: string, lang?: string): string => {
 
   return `
     <pre>
-      <code style="overflow: auto; display: block">${out}</code>
+      <code style="overflow: auto; display: block; background-color: rgba(0,0,0,.05); padding: .3rem .5rem; border-radius: 3px">${out}</code>
     </pre>
   `;
 };
+
+/*
+background-color: rgba(0,0,0,.05);
+    padding: .3rem .5rem;
+    border-radius: 3px;
+*/
 
 const renderer = new Renderer();
 

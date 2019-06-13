@@ -43,6 +43,13 @@ export const renderHtml = (
       <meta http-equiv='content-type' content='text/html; charset=utf-8' />
       <meta property='og:type' content='website' />
       <meta name="theme-color" content="#E5E5E5"/>
+      <style>
+        code {
+          background-color: rgba(0,0,0,.05);
+          padding: .3rem .5rem;
+          border-radius: 3px
+        }
+      </style>
     </head>
     <body class="landing">
         <div id="root">${renderToString(
@@ -53,7 +60,7 @@ export const renderHtml = (
         </script>
         <script async src="/js/app.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/monokai.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" rel="stylesheet">
     </body>
     </html>
   `;
