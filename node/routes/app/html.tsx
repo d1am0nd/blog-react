@@ -25,22 +25,6 @@ export const renderHtml = (
       <!-- Disable tap highlight on IE -->
       <meta name="msapplication-tap-highlight" content="no">
 
-      <!-- Web Application Manifest -->
-      <link rel="manifest" href="manifest.json">
-
-      <!-- Add to homescreen for Chrome on Android -->
-      <meta name="mobile-web-app-capable" content="yes">
-      <link rel="icon" sizes="192x192" href="img/icons/mpb-icon192.png">
-
-      <!-- Add to homescreen for Safari on iOS -->
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-status-bar-style" content="black">
-      <link rel="apple-touch-icon" href="img/icons/mpb-icon152.png">
-
-      <!-- Tile icon for Win8 (144x144 + tile color) -->
-      <meta name="msapplication-TileImage" content="img/icons/mpb-icon144.png">
-      <meta name="msapplication-TileColor" content="#333333">
-      <meta http-equiv='content-type' content='text/html; charset=utf-8' />
       <meta property='og:type' content='website' />
       <meta name="theme-color" content="#E5E5E5"/>
       <style>
