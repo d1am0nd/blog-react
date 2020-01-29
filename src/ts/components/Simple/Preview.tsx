@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  color: {$color1};
+  color: ${color1};
   text-decoration: none;
 `;
 
