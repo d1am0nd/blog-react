@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {renderToString} from "react-dom/server";
+import {ServerStyleSheet} from 'styled-components'
 import App from '../../../src/ts/Server';
 
 export const renderHtml = (
@@ -10,7 +11,13 @@ export const renderHtml = (
   },
   preloadedState = {}
 ) => {
-  return `
+  const sheet = new ServerStyleSheet();
+  const rendered = renderToString(sheet.collectStyles(<App location={meta.url} context={{...preloadedState}} />));
+  const styleTags = sheet.getStyleTags();
+
+  sheet.seal();
+
+  const html = `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -34,18 +41,18 @@ export const renderHtml = (
           border-radius: 3px
         }
       </style>
+      ${styleTags}
     </head>
     <body class="landing">
-        <div id="root">${renderToString(
-          <App location={meta.url} context={{...preloadedState}} />
-        )}</div>
+        <div id="root">${rendered}</div>
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
         <script async src="/js/app.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" rel="stylesheet">
     </body>
     </html>
   `;
+
+  return html;
 };

@@ -1,15 +1,9 @@
-import * as React from 'react';
+import styled from 'styled-components';
 
-const styles = () => ({
-  fontSize: '18px',
-  marginTop: 0,
-  marginBottom: '5px',
-});
-
-const Summary: React.FunctionComponent = ({
-  children,
-}) => (
-  <p style={styles()}>{children}</p>
-);
+const Summary = styled.p`
+  font-size: 18px;
+  margin-top: 0
+  margin-bottom: 5px;
+`;
 
 export default Summary;

@@ -1,18 +1,25 @@
 import * as React from 'react';
 import * as marked from 'marked';
+import styled from 'styled-components';
 import H1 from './H1';
 import Subtle from './Subtle';
 import Summary from './Summary';
 import {IPost} from '../../api/posts';
-import {wrapperStyle} from '../../misc/styles';
+import {transition, color3} from '../../misc/styles';
 import {prettyDate} from '../../misc/misc';
 import renderer from '../../misc/renderer';
 
-const contentStyle = () => ({
-  fontSize: '16px',
-  marginTop: 0,
-  marginBottom: 0,
-});
+const Wrapper = styled.article`
+  transition: ${transition};
+  margin-bottom: 15px;
+  border-bottom: 1px solid ${color3};
+`;
+
+const Content = styled.div`
+  font-size: 16px;
+  margint-top: 0;
+  margin-bottom: 0;
+`;
 
 interface IProps {
   post: IPost;
@@ -23,21 +30,19 @@ const render = (html: string) => marked(
   {renderer, sanitize: true}
 );
 
-const Post: React.FunctionComponent<IProps> = ({
+const Post: React.FC<IProps> = ({
   post,
 }) => (
-  <div
-    style={wrapperStyle}>
+  <Wrapper>
     <H1>{post.title}</H1>
     <Subtle>Published by Dev Kordeš on {prettyDate(post.published_at)}</Subtle>
     <Summary>{post.summary}</Summary>
-    <div
-      style={contentStyle()}
+    <Content
       dangerouslySetInnerHTML={{__html: render(
         post.content
       )}}>
-    </div>
-  </div>
+    </Content>
+  </Wrapper>
 );
 
 export default Post;

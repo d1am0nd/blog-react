@@ -4,31 +4,32 @@ import {
   withRouter,
   RouteComponentProps,
 } from 'react-router-dom';
-import {transition, color2, color3} from '../misc/styles';
+import styled from 'styled-components';
+import {transition, color1, color2, color3} from '../misc/styles';
 
-const ulStyle = () => ({
-  'fontSize': '20px',
-  'listStyleType': 'none',
-  'marginTop': 0,
-  'marginBottom': '10px',
-  'padding': 0,
-});
+const Ul = styled.ul`
+  font-size: 20px;
+  list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding: 0;
+`;
 
-const liStyle = (selected = false) => ({
-  ...transition,
-  'fontSize': '20px',
-  'marginRight': '20px',
-  'display': 'inline-block',
-  'borderBottom': `1px solid ${selected ? color2 : color3}`,
-  ':hover': {
-    'borderBottom': `1px solid black`,
-  },
-});
+const Li = styled.li`
+  transition: ${transition};
+  font-size: 20px;
+  margin-right: 20px;
+  display: inline-block;
+  border-bottom: 1px solid ${({selected}: {selected: boolean}) => selected ? color2 : color3};
+  &:hover {
+    border-bottom: 1px solid ${color1};
+  }
+`;
 
-const linkStyle = () => ({
-  'color': color2,
-  'textDecoration': 'none',
-});
+const NavLink = styled(Link)`
+  color: ${color2};
+  text-decoration: none;
+`;
 
 interface ITab {
   url: string;
@@ -53,17 +54,15 @@ const tabs: Array<ITab> = [
 const Nav: React.FunctionComponent<RouteComponentProps> = ({
   location,
 }) => (
-  <ul style={ulStyle()}>
+  <Ul>
     {tabs.map(({url, name}) => (
-      <li
-        key={url}
-        style={liStyle(location.pathname === url)}>
-        <Link to={url} style={linkStyle()}>
+      <Li key={url} selected={location.pathname === url}>
+        <NavLink to={url}>
           {name}
-        </Link>
-      </li>
+        </NavLink>
+      </Li>
     ))}
-  </ul>
+  </Ul>
 );
 
 export default withRouter(Nav);

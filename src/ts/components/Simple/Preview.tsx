@@ -1,55 +1,58 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
 import {IPost} from '../../api/posts';
 import {
   color1,
   color2,
-  wrapperStyle as ws,
+  color3,
+  transition,
 } from '../../misc/styles';
 import {prettyDate} from '../../misc/misc';
 import H2 from '../Simple/H2';
 import Subtle from '../Simple/Subtle';
 import Summary from '../Simple/Summary';
 
-const wrapperStyle = () => ({
-  ...ws,
-  ':hover': {
-    'borderBottom': `1px solid ${color1}`,
-  },
-});
+const Wrapper = styled.div`
+  transition: ${transition};
+  margin-bottom: 15px;
+  border-bottom: 1px solid ${color3};
+  &:hover {
+    border-bottom: 1px solid ${color1};
+  }
+`;
 
-const linkStyle = () => ({
-  'color': 'black',
-  'textDecoration': 'none',
-});
+const StyledLink = styled(Link)`
+  color: {$color1};
+  text-decoration: none;
+`;
 
-const moreStyle = () => ({
-  'fontSize': '20px',
-  'color': color2,
-  'transition': '0.1s',
-  'textDecoration': 'none',
-});
+const StyledMore = styled.span`
+  font-size: 20px;
+  color: ${color2};
+  transition: 0.1s;
+  text-decoration: none;
+`;
 
 interface IProps {
   post: IPost;
 };
 
-const Preview: React.FunctionComponent<IProps> = ({
+const Preview: React.FC<IProps> = ({
   post,
 }) => (
-  <Link
-    to={`/posts/${post.slug}`}
-    style={linkStyle()}>
-    <div style={wrapperStyle()}>
+  <StyledLink
+    to={`/posts/${post.slug}`} >
+    <Wrapper>
       <H2>{post.title}</H2>
       <Subtle>
         Published by Dev Kordes on&nbsp;
         {prettyDate(post.published_at)}
       </Subtle>
       <Summary>{post.summary}</Summary>
-      <span style={moreStyle()}>More</span>
-    </div>
-  </Link>
+      <StyledMore>More</StyledMore>
+    </Wrapper>
+  </StyledLink>
 );
 
 export default Preview;

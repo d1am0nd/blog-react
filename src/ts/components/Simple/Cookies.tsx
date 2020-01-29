@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import {
   baseWidth,
   transition,
@@ -6,46 +7,43 @@ import {
   lightBackground,
 } from '../../misc/styles';
 
-const fixedWrapper = (show: boolean) => ({
-  ...transition,
-  ...lightBackground,
-  'opacity': show ? 1 : 0,
-  'position': 'fixed' as 'fixed',
-  'paddingTop': '5px',
-  'paddingBottom': '5px',
-  'bottom': 0,
-  'left': 0,
-  'width': '100%',
-});
+const FixedWrapper = styled.div`
+  transition: ${transition};
+  background-color: ${lightBackground};
+  opacity: ${({show}: {show: boolean}) => show ? 1 : 0};
+  position: fixed;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+`;
 
-const relativeWrapper = () => ({
-  ...baseWidth,
-  'position': 'relative' as 'relative',
-  'margin': 'auto',
-});
+const RelativeWrapper = styled.div`
+  width: ${baseWidth};
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+`;
 
-const left = () => ({
-  'float': 'left' as 'left',
-});
+const Left = styled.div`
+  float: left;
+`;
 
-const right = () => ({
-  'float': 'right' as 'right',
-});
-
-const button = () => ({
-  ...darkBackground,
-  'border': 'none',
-  'borderRadius': '2px',
-  'paddingTop': '5px',
-  'paddingBottom': '5px',
-  'paddingRight': '10px',
-  'paddingLeft': '10px',
-  'color': 'white',
-  'cursor': 'pointer',
-  ':focus': {
-    'border': 'none',
-  },
-});
+const Right = styled.div`
+  float: right;
+`;
+const DismissButton = styled.button`
+  background-color: ${darkBackground};
+  border: none;
+  border-radius: 2px;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  &:focus {
+    border: none;
+  }
+`;
 
 interface IProps {
   display: boolean;
@@ -56,24 +54,23 @@ const Cookies: React.FunctionComponent<IProps> = ({
   display,
   handleDismiss,
 }) => (
-  <div style={fixedWrapper(display)}>
-    <div style={relativeWrapper()}>
-      <div style={left()}>
+  <FixedWrapper show={display}>
+    <RelativeWrapper>
+      <Left>
         This website uses &nbsp;
         <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage">
           Google Analytics
         </a>
         &nbsp; cookies. Beware.
-      </div>
-      <div style={right()}>
-        <button
-          onClick={() => handleDismiss()}
-          style={button()}>
+      </Left>
+      <Right>
+        <DismissButton
+          onClick={() => handleDismiss()}>
           Dismiss
-        </button>
-      </div>
-    </div>
-  </div>
+        </DismissButton>
+      </Right>
+    </RelativeWrapper>
+  </FixedWrapper>
 );
 
 export default Cookies;

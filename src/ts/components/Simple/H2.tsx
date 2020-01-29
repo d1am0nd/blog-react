@@ -1,15 +1,9 @@
-import * as React from 'react';
+import styled from 'styled-components';
 
-const style = () => ({
-  'marginBottom': '5px',
-  'marginTop': 0,
-  'fontWeight': 300,
-});
-
-const H2: React.FunctionComponent = ({
-  children,
-}) => (
-  <h2 style={style()}>{children}</h2>
-);
+const H2 = styled.h2`
+  margin-bottom: 5px;
+  margin-top: 0;
+  font-weight: 300;
+`;
 
 export default H2;

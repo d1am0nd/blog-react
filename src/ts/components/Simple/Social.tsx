@@ -1,31 +1,32 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import {transition} from '../../misc/styles';
 
-const titleStyle = () => ({
-  'fontSize': '22px',
-  'marginTop': 0,
-  'marginBottom': '5px',
-  'padding': 0,
-});
+const StyledTitle = styled.div`
+  font-size: 22px;
+  margin-top: 0;
+  margin-bottom: 5px;
+  padding: 0;
+`;
 
-const ulStyle = () => ({
-  'fontSize': '20px',
-  'listStyleType': 'none',
-  'marginTop': 0,
-  'marginBottom': '20px',
-  'padding': 0,
-});
+const Ul = styled.ul`
+  font-size: 20px;
+  list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding: 0;
+`;
 
-const liStyle = () => ({
-  ...transition,
-  'fontSize': '20px',
-  'marginRight': '20px',
-  'display': 'inline-block',
-});
+const Li = styled.li`
+  transition: ${transition};
+  font-size: 20px;
+  margin-right: 20px;
+  display: inline-block;
+`;
 
-const linkStyle = () => ({
-  'textDecoration': 'none',
-});
+const StyledLink = styled.a`
+  text-decoration: none;
+`;
 
 interface ILink {
   name: string;
@@ -36,26 +37,25 @@ interface IProps {
   links: Array<ILink>;
 };
 
-const Social: React.FunctionComponent<IProps> = ({
+const Social: React.FC<IProps> = ({
   links,
 }) => (
   <>
-    <div style={titleStyle()}>
+    <StyledTitle>
       Public profiles
-    </div>
-    <ul style={ulStyle()}>
+    </StyledTitle>
+    <Ul>
       {links.map(({name, url}, i) => (
-        <li key={i} style={liStyle()}>
-          <a
-            style={linkStyle()}
+        <Li key={i}>
+          <StyledLink
             target="_blank"
             rel="noopener noreferrer"
             href={url}>
             {name}
-          </a>
-        </li>
+          </StyledLink>
+        </Li>
       ))}
-    </ul>
+    </Ul>
   </>
 );
 

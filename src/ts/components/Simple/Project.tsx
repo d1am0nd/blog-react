@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import H2 from './H2';
 import Summary from './Summary';
 import {IProject} from '../../api/projects';
@@ -8,45 +9,48 @@ import {
   color3,
 } from '../../misc/styles';
 
-const wrapperStyle = () => ({
-  ...transition,
-  'width': '100%',
-  'marginBottom': '15px',
-  'borderBottom': `1px solid ${color3}`,
-  ':hover': {
-    'borderBottom': `1px solid ${color1}`,
-  },
-});
+const Wrapper = styled.div`
+  transition: ${transition};
+  width: 100%;
+  margin-bottom: 15px;
+  border-bottom: 1px solid ${color3};
+  &:hover {
+    border-bottom: 1px solid ${color1};
+  }
+`;
 
-const linkStyle = () => ({
-  'color': 'black',
-  'textDecoration': 'none',
-});
+const StyledLink = styled.a`
+  color: ${color1};
+  text-decoration: none;
+`;
 
-const fullWidth = () => ({
-  'width': '100%',
-});
+const FullWidth = styled.div`
+  width: 100%;
+`;
+
+const FullWidthImg = styled.img`
+  width: 100%;
+`;
 
 interface IProps {
   project: IProject;
 };
 
-const Project: React.FunctionComponent<IProps> = ({
+const Project: React.FC<IProps> = ({
   project,
 }) => (
-  <div style={wrapperStyle()}>
-    <a
+  <Wrapper>
+    <StyledLink
       target="_blank"
       rel="noopener noreferrer"
-      href={project.url}
-      style={linkStyle()}>
+      href={project.url}>
       <H2>{project.title}</H2>
-      <div style={fullWidth()}>
-        <img style={fullWidth()} src={project.img_src}/>
-      </div>
+      <FullWidth>
+        <FullWidthImg src={project.img_src}/>
+      </FullWidth>
       <Summary>{project.description}</Summary>
-    </a>
-  </div>
+    </StyledLink>
+  </Wrapper>
 );
 
 export default Project;

@@ -1,19 +1,11 @@
-import * as React from 'react';
+import styled from 'styled-components';
 import {color2} from '../../misc/styles';
 
-const subStyle = () => ({
-  fontSize: '18px',
-  marginTop: 0,
-  marginBottom: '5px',
-  color: color2,
-});
-
-const Subtle: React.FunctionComponent = ({
-  children,
-}) => (
-  <div style={subStyle()}>
-    {children}
-  </div>
-);
+const Subtle = styled.div`
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: ${color2};
+`;
 
 export default Subtle;

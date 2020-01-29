@@ -1,15 +1,7 @@
-import * as React from 'react';
+import styled from 'styled-components';
 
-const pStyle = () => ({
-  'fontSize': '16px',
-});
-
-const P: React.FunctionComponent = ({
-  children,
-}) => (
-  <p style={pStyle()}>
-    {children}
-  </p>
-);
+const P = styled.p`
+  font-size: 16px;
+`;
 
 export default P;

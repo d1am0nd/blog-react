@@ -1,9 +1,10 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
-const codeStyle = () => ({
-  'overflow': 'auto',
-  'display': 'block',
-});
+const StyledCode = styled.code`
+  overflow: auto;
+  display: block;
+`; 
 
 interface IProps {
   children: string;
@@ -16,13 +17,12 @@ const Code: React.FunctionComponent<IProps> = ({
 }) => (
   <pre>
     {renderHtml
-      ? <code
-        style={codeStyle()}
+      ? <StyledCode
         dangerouslySetInnerHTML={{__html: children}} />
-      : <code
-        style={codeStyle()}>
+      : <StyledCode>
         {children}
-      </code>}
+        </StyledCode>
+    }
   </pre>
 );
 
