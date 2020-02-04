@@ -1,3 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /posts/public
+Disallow: /posts/dist
+Disallow: /posts/using-laravel-model-factories-with-belongsto-relationship
 Sitemap: https://kordes.dev/sitemap.xml
