@@ -14,7 +14,6 @@ const Wrapper = styled.div`
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  font-family: Roboto;
   font-weight: 300;
   line-height: 1.4;
   padding-bottom: ${({cookiesDismissed}: {cookiesDismissed: boolean}) => cookiesDismissed ? '0px' : '30px'};
