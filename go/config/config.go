@@ -11,23 +11,23 @@ var Jwt JwtConf
 var Env EnvConf
 
 type MysqlConf struct {
-	Username  string `json: username`
-	Password  string `json: password`
-	Hostname  string `json: hostname`
-	Port      int    `json: port`
-	Name      string `json: name`
-	Parameter string `json: parameter`
+	Username  string `json:"username"`
+	Password  string `json:"password"`
+	Hostname  string `json:"hostname"`
+	Port      int    `json:"port"`
+	Name      string `json:"name"`
+	Parameter string `json:"parameter"`
 }
 
 type JwtConf struct {
-	Secret string `json: secret`
-	Issuer string `json: issuer`
+	Secret string `json:"secret"`
+	Issuer string `json:"issuer"`
 }
 
 type EnvConf struct {
-	Env         string `json: "env"`
-	Port        string `json: "port"`
-	AllowOrigin string `json: "allowOrigin"`
+	Env         string `json:"env"`
+	Port        string `json:"port"`
+	AllowOrigin string `json:"allowOrigin"`
 }
 
 func Init() {
@@ -50,7 +50,7 @@ func (c MysqlConf) DSN() string {
 }
 
 func GetMysqlConf() MysqlConf {
-	file, err := os.Open("../config/database.json")
+	file, err := os.Open("./config/database.json")
 	if err != nil {
 		panic(err)
 	}
@@ -72,7 +72,11 @@ func (c JwtConf) SecretToByteArray() []byte {
 }
 
 func GetJwtConf() JwtConf {
-	file, err := os.Open("../config/jwt.json")
+	file, err := os.Open("./config/jwt.json")
+
+	if err != nil {
+		panic(err)
+	}
 
 	decoder := json.NewDecoder(file)
 	configuration := JwtConf{}
@@ -101,7 +105,11 @@ func (c EnvConf) IsProd() bool {
 }
 
 func GetEnvConf() EnvConf {
-	file, err := os.Open("../config/env.json")
+	file, err := os.Open("./config/env.json")
+
+	if err != nil {
+		panic(err)
+	}
 
 	decoder := json.NewDecoder(file)
 	configuration := EnvConf{}
