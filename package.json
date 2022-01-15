@@ -39,7 +39,7 @@
     "express": "^4.16.4",
     "highlight.js": "^9.15.6",
     "laravel-mix": "^4.0.15",
-    "marked": "^0.3.19",
+    "marked": "^4.0.10",
     "mysql": "^2.17.1",
     "r": "0.0.5",
     "radium": "^0.22.1",
