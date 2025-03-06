@@ -5,7 +5,7 @@ interface IAbout {
 };
 
 const about: IAbout = {
-  'summary': '26 year old backend developer, that delves into all sorts of non-backend related things in my spare time. 🇸🇮',
+  'summary': '31 years old backend developer, that delves into all sorts of non-backend related things in my spare time. 🇸🇮',
   'paragraphs': [
     'Recent interests include Flutter and TypeScript',
   ],
