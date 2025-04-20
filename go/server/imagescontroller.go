@@ -91,7 +91,7 @@ func UpdateImage(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 
 	_, _, err = r.FormFile("image")
 	if err == nil {
-		DeleteIfExists("./../public/uploads/" + img.Path)
+		DeleteIfExists("./public/uploads/" + img.Path)
 		imgName, err := saveFileToDir(r, "image")
 		if err == nil {
 			img.Path = imgName
@@ -133,7 +133,7 @@ func DeleteImage(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		return
 	}
 
-	DeleteIfExists("./../public/uploads/" + img.Path)
+	DeleteIfExists("./public/uploads/" + img.Path)
 	database.DeleteUsersImageById(userId, id)
 
 	w.Write([]byte("yeah"))
@@ -153,7 +153,7 @@ func saveFileToDir(r *http.Request, key string) (string, error) {
 	// Prepand number if file already exists
 	i := 0
 	fname := handler.Filename
-	dest := "./../public/uploads/"
+	dest := "./public/uploads/"
 
 	for FileExists(dest + fname) {
 		i = i + 1
