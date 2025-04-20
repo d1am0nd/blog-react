@@ -153,7 +153,7 @@ func saveFileToDir(r *http.Request, key string) (string, error) {
 	// Prepand number if file already exists
 	i := 0
 	fname := handler.Filename
-	dest := "./../public/uploads/"
+	dest := "./public/uploads/"
 
 	for FileExists(dest + fname) {
 		i = i + 1
