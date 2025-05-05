@@ -37,7 +37,7 @@
     "eslint-plugin-html": "^4.0.6",
     "eslint-plugin-react": "^7.12.4",
     "express": "^4.16.4",
-    "highlight.js": "^9.15.6",
+    "highlight.js": "^10.4.1",
     "laravel-mix": "^4.0.15",
     "marked": "^0.3.19",
     "mysql": "^2.17.1",
