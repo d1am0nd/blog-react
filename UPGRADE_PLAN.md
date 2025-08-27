@@ -30,8 +30,8 @@ This plan outlines the step-by-step process to upgrade the very old frontend dep
 
 ## Phase 3: React Upgrade (Staged)
 
-- [ ] Upgrade React and React-DOM to 16.14.x (last 16.x)
-- [ ] Test application functionality
+- [x] Upgrade React and React-DOM to 16.14.x (last 16.x)
+- [x] Test application functionality
 - [ ] Upgrade React to 17.x (transition version)
 - [ ] Update React Router DOM to compatible v6 version
 - [ ] Replace `ReactDOM.render` with `ReactDOM.createRoot` preparation

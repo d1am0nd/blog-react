@@ -19,8 +19,8 @@ const headers = {
 
 const imageFormData = ({image, name}: IImageEdit) => {
   const formData = new FormData();
-  formData.set('image', image);
-  formData.set('name', name);
+  formData.append('image', image);
+  formData.append('name', name);
   return formData;
 };
 
