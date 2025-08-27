@@ -43,13 +43,13 @@ export default defineConfig(({ command, mode }) => {
       } : {
         // Client-side build configuration
         input: {
-          app: resolve(__dirname, 'src/ts/index.tsx'),
-          admin: resolve(__dirname, 'src/admints/index.tsx')
+          main: resolve(__dirname, 'index.html'),
+          admin: resolve(__dirname, 'admin.html')
         },
         output: {
-          dir: 'public/js',
-          entryFileNames: '[name].js',
-          chunkFileNames: '[name]-[hash].js'
+          dir: 'public',
+          entryFileNames: 'js/[name].js',
+          chunkFileNames: 'js/[name]-[hash].js'
         }
       }
     },
@@ -59,8 +59,18 @@ export default defineConfig(({ command, mode }) => {
 
     // Development server configuration
     server: {
-      port: 3000,
-      host: true
+      port: 3001,
+      host: true,
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+        },
+        '/uploads': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+        }
+      }
     },
 
     // Define environment variables
