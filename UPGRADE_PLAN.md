@@ -34,8 +34,8 @@ This plan outlines the step-by-step process to upgrade the very old frontend dep
 - [x] Test application functionality
 - [x] Upgrade React to 17.x (transition version)
 - [x] Update React Router DOM to compatible v6 version
-- [ ] Replace `ReactDOM.render` with `ReactDOM.createRoot` preparation
-- [ ] Upgrade React to 18.3.x (pre-React 19)
+- [x] Replace `ReactDOM.render` with `ReactDOM.createRoot` preparation
+- [x] Upgrade React to 18.3.x (pre-React 19)
 - [ ] Replace `ReactDOM.render` with `createRoot` API
 - [ ] Update `ReactDOM.hydrate` to `hydrateRoot`
 - [ ] Test SSR functionality after hydration changes

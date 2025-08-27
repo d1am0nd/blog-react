@@ -17,7 +17,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const MainTitle: React.FC = ({children}) => (
+const MainTitle: React.FC<React.PropsWithChildren<{}>> = ({children}) => (
   <Container>
     <StyledLink to={'/'}>
       {children}
