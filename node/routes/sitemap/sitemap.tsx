@@ -1,13 +1,13 @@
-import env from '../../../config/env.tsx';
+import env from '../../../config/env';
 import {IPost} from '../../../src/ts/api/posts';
 import * as mysql from 'mysql';
 import * as sm from 'sitemap';
 
 const connection = mysql.createConnection({
-  host     : env.database.hostname,
-  user     : env.database.username,
-  password : env.database.password,
-  database : env.database.name,
+  host     : (env as any).database.hostname,
+  user     : (env as any).database.username,
+  password : (env as any).database.password,
+  database : (env as any).database.name,
 });
 connection.connect();
 

@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import adminRouter from './routes/admin';
 import sitemapRouter from './routes/sitemap';
 import appRouter from './routes/app';

@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import {routes, setsMeta} from '../../../src/ts/misc/routes';
 import {renderHtml} from './html';
 import {matchPath} from 'react-router';
@@ -13,19 +13,20 @@ const renderWithFetch = async (
   req: express.Request,
   res: express.Response
 ) => {
-  const {requests, setMeta} = findRoute(req.url);
+  const route = findRoute(req.url);
+  const {requests, setMeta} = route || {requests: [], setMeta: {}};
 
   const state = (await Promise.all(
-    (requests || []).map(({request}) => request(req.params))
+    (requests || []).map(({request}: any) => request(req.params))
   ))
-    .reduce((carry, {data}, i) => ({
+    .reduce((carry: any, {data}: any, i: number) => ({
       ...carry,
-      [requests[i].paramName]: data,
+      [requests![i].paramName]: data,
     }), {});
 
   const meta = {
-    title: `${setMeta.title(state)} - Dev Kordes`,
-    description: setMeta.description(state),
+    title: `${(setMeta as any).title ? (setMeta as any).title(state) : 'Page'} - Dev Kordes`,
+    description: (setMeta as any).description ? (setMeta as any).description(state) : '',
     url: req.url,
   };
 
