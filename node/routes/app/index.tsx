@@ -41,7 +41,7 @@ router.get('/posts/:slug', renderWithFetch);
 router.get('/about-me', renderWithFetch);
 router.get('/my-projects', renderWithFetch);
 
-router.get('*', (req, res) => {
+router.get('/{*any}', (req, res) => {
   res.status(404).send('404');
 });
 

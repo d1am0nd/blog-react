@@ -30,7 +30,9 @@ export default defineConfig(({ command, mode }) => {
         output: {
           dir: '.',
           entryFileNames: 'server.js',
-          format: 'cjs'
+          format: 'cjs',
+          exports: 'named',
+          interop: 'auto'
         },
         external: [
           ...builtinModules,
@@ -80,7 +82,7 @@ export default defineConfig(({ command, mode }) => {
 
     // SSR specific configuration
     ssr: isServer ? {
-      noExternal: []
+      noExternal: ['styled-components']
     } : undefined,
   };
 });
