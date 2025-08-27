@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {withRouter, RouteComponentProps} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import Title from '../Simple/Title';
 import Project from '../../../ts/components/Simple/Project';
 import ProjectForm from '../Simple/ProjectForm';
@@ -15,21 +15,17 @@ const right = () => ({
   'width': '50%',
 });
 
-interface IParams {
-  id: string;
-};
-
-const Projects: React.FunctionComponent<RouteComponentProps<IParams>> = ({
-  match,
-}) => {
-  const id = parseInt(match.params.id);
+const Projects: React.FunctionComponent = () => {
+  const {id: idParam} = useParams<{id: string}>();
+  const id = idParam ? parseInt(idParam) : 0;
   const [project, setProject] = React.useState<IProjectEdit>();
 
   React.useEffect(() => {
+    if (!id) return;
     findById(id)
       .then(({data}) => setProject(data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [id]);
 
   return !project ? <>loading</> : (
     <>
@@ -52,4 +48,4 @@ const Projects: React.FunctionComponent<RouteComponentProps<IParams>> = ({
   );
 };
 
-export default withRouter(Projects);
+export default Projects;

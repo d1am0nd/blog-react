@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Route} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import styled from 'styled-components';
 import MainTitle from './Simple/MainTitle';
 import Nav from './Nav';
@@ -26,9 +26,11 @@ const Layout: React.FunctionComponent = () => {
         Dev Kordes
       </MainTitle>
       <Nav />
-      {builtComponents.map(({Component, path}) => (
-        <Route key={path} path={path} exact component={Component} />
-      ))}
+      <Routes>
+        {builtComponents.map(({Component, path}) => (
+          <Route key={path} path={path} element={<Component />} />
+        ))}
+      </Routes>
       <Cookies
         display={!alreadyDismissed}
         handleDismiss={dismiss} />

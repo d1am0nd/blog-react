@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {withRouter, RouteComponentProps} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import Title from '../Simple/Title';
 import ImageForm from '../Simple/ImageForm';
 import {
@@ -18,24 +18,19 @@ const rightStyle = () => ({
   'width': '50%',
 });
 
-interface IParams {
-  id: string;
-};
-
-const ImageEdit: React.FunctionComponent<RouteComponentProps<IParams>> = ({
-  match,
-}) => {
-  const {id} = match.params;
+const ImageEdit: React.FunctionComponent = () => {
+  const {id} = useParams<{id: string}>();
   const [image, setImage] = React.useState<IImageEdit>();
 
   React.useEffect(() => {
+    if (!id) return;
     getById(parseInt(id))
       .then(({data}) => setImage({
         imgSrc: data.path,
         name: data.name,
       }))
       .catch((err) => console.log(err));
-  }, []);
+  }, [id]);
 
   return !image ? <>loading</> : (
     <>
@@ -45,6 +40,7 @@ const ImageEdit: React.FunctionComponent<RouteComponentProps<IParams>> = ({
           handleChange={setImage}
           handleSubmit={async (e) => {
             e.preventDefault();
+            if (!id) return;
             await update(parseInt(id), image);
             alert('Updated');
           }}
@@ -58,4 +54,4 @@ const ImageEdit: React.FunctionComponent<RouteComponentProps<IParams>> = ({
   );
 };
 
-export default withRouter(ImageEdit);
+export default ImageEdit;

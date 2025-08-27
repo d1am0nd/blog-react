@@ -1,12 +1,12 @@
 import express from 'express';
 import {routes, setsMeta} from '../../../src/ts/misc/routes';
 import {renderHtml} from './html';
-import {matchPath} from 'react-router';
+import {matchPath} from 'react-router-dom';
 
 const router = express.Router();
 const findRoute = (url: string) => routes.find(({path}) => !!matchPath(
-  url,
-  {path, exact: true}
+  {path, end: true},
+  url
 ));
 
 const renderWithFetch = async (

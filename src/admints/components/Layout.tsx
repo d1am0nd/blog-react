@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Route} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import {baseWidth} from '../misc/styles';
 import Title from './Simple/Title';
 import Home from './Pages/Home';
@@ -26,17 +26,19 @@ const Layout: React.FunctionComponent = () => (
     <Title>Admin</Title>
     {loggedIn() ? user()?.email : ''}
     <Navigation />
-    <Route path='/admin' exact component={Home} />
-    <Route path='/admin/login' exact component={Login} />
-    <Route path='/admin/posts' exact component={Posts} />
-    <Route path='/admin/posts/:slug' exact component={PostEdit} />
-    <Route path='/admin/post/new' exact component={PostCreate} />
-    <Route path='/admin/images' exact component={Images} />
-    <Route path='/admin/image/edit/:id' exact component={ImageEdit} />
-    <Route path='/admin/image/new' exact component={ImageCreate} />
-    <Route path='/admin/projects' exact component={Projects} />
-    <Route path='/admin/projects/:id' exact component={ProjectEdit} />
-    <Route path='/admin/project/new' exact component={ProjectCreate} />
+    <Routes>
+      <Route path='/admin' element={<Home />} />
+      <Route path='/admin/login' element={<Login />} />
+      <Route path='/admin/posts' element={<Posts />} />
+      <Route path='/admin/posts/:slug' element={<PostEdit />} />
+      <Route path='/admin/post/new' element={<PostCreate />} />
+      <Route path='/admin/images' element={<Images />} />
+      <Route path='/admin/image/edit/:id' element={<ImageEdit />} />
+      <Route path='/admin/image/new' element={<ImageCreate />} />
+      <Route path='/admin/projects' element={<Projects />} />
+      <Route path='/admin/projects/:id' element={<ProjectEdit />} />
+      <Route path='/admin/project/new' element={<ProjectCreate />} />
+    </Routes>
   </div>
 );
 

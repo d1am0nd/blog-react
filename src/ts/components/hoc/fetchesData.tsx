@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {withRouter, RouteComponentProps} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {AxiosPromise} from 'axios';
 import {SSRContext} from '../../misc/context';
 import {isFirstLoad} from '../../misc/client';
@@ -19,9 +19,8 @@ const fetchesData = (
 ) => (
   Component: React.ComponentType
 ) => {
-  const FetchesData: React.FunctionComponent<RouteComponentProps> = ({
-    match,
-  }) => {
+  const FetchesData: React.FunctionComponent = () => {
+    const params = useParams();
     const ssrState = React.useContext(SSRContext);
     const firstLoad = isFirstLoad();
 
@@ -34,7 +33,7 @@ const fetchesData = (
       if (firstLoad) return;
 
       Promise
-        .all(requests.map(({request}) => request(match.params)))
+        .all(requests.map(({request}) => request(params)))
         .then((values) => {
           setState({
             loading: false,
@@ -45,12 +44,12 @@ const fetchesData = (
           });
         })
         .catch((err) => console.log(err));
-    }, [match.params]);
+    }, [params]);
 
     return loading ? <div>Loading...</div> : <Component {...props} />;
   };
 
-  return withRouter(FetchesData);
+  return FetchesData;
 };
 
 export default fetchesData;

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {
   Link,
-  withRouter,
-  RouteComponentProps,
+  useLocation,
 } from 'react-router-dom';
 import styled from 'styled-components';
 import {transition, color1, color2, color3} from '../misc/styles';
@@ -51,18 +50,20 @@ const tabs: Array<ITab> = [
   },
 ];
 
-const Nav: React.FunctionComponent<RouteComponentProps> = ({
-  location,
-}) => (
-  <Ul>
-    {tabs.map(({url, name}) => (
-      <Li key={url} selected={location.pathname === url}>
-        <NavLink to={url}>
-          {name}
-        </NavLink>
-      </Li>
-    ))}
-  </Ul>
-);
+const Nav: React.FunctionComponent = () => {
+  const location = useLocation();
 
-export default withRouter(Nav);
+  return (
+    <Ul>
+      {tabs.map(({url, name}) => (
+        <Li key={url} selected={location.pathname === url}>
+          <NavLink to={url}>
+            {name}
+          </NavLink>
+        </Li>
+      ))}
+    </Ul>
+  );
+};
+
+export default Nav;

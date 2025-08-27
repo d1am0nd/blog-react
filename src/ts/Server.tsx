@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StaticRouter, Route} from 'react-router-dom';
+import {StaticRouter} from 'react-router-dom/server';
 import Layout from './components/Layout';
 import {SSRContext} from './misc/context';
 
@@ -13,8 +13,8 @@ const Server: React.FunctionComponent<IProps> = ({
   location,
 }) => (
   <SSRContext.Provider value={context}>
-    <StaticRouter location={location} context={{}}>
-      <Route path='/' component={Layout} />
+    <StaticRouter location={location}>
+      <Layout />
     </StaticRouter>
   </SSRContext.Provider>
 );

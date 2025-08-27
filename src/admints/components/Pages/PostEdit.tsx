@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {withRouter, RouteComponentProps} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import H1 from '../../../ts/components/Simple/H1';
 import Post from '../../../ts/components/Simple/Post';
 import PostForm from '../Simple/PostForm';
@@ -16,20 +16,16 @@ const rightStyle = () => ({
   'width': '50%',
 });
 
-interface IParams {
-  slug: string;
-};
-
-const PostEdit: React.FunctionComponent<RouteComponentProps<IParams>> = ({
-  match,
-}) => {
+const PostEdit: React.FunctionComponent = () => {
+  const {slug} = useParams<{slug: string}>();
   const [post, setPost] = React.useState<IPost>();
 
   React.useEffect(() => {
-    findBySlug(match.params.slug)
+    if (!slug) return;
+    findBySlug(slug)
       .then(({data}) => setPost(data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [slug]);
 
   return !post ? <>loading</> : (
     <>
@@ -56,4 +52,4 @@ const PostEdit: React.FunctionComponent<RouteComponentProps<IParams>> = ({
   );
 };
 
-export default withRouter(PostEdit);
+export default PostEdit;
