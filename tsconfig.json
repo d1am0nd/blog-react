@@ -15,14 +15,14 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "noEmit": false
+        "noEmit": false,
+        "baseUrl": "src/ts",
+        "paths": {
+            "~": ["/*"]
+        }
     },
     "include": [
         "./src/ts/**/*",
         "./src/admints/**/*"
-    ],
-    "baseUrl": "src/ts",
-    "paths": {
-        "~": ["/*"]
-    }
+    ]
 }
