@@ -1,5 +1,5 @@
 import * as React from 'react';
-import marked = require('marked');
+import {marked} from 'marked';
 import styled from 'styled-components';
 import H1 from './H1';
 import Subtle from './Subtle';
@@ -25,7 +25,7 @@ interface IProps {
   post: IPost;
 };
 
-const render = (html: string) => marked(html, {renderer});
+const render = (html: string) => marked.parse(html, {renderer});
 
 const Post: React.FC<IProps> = ({
   post,

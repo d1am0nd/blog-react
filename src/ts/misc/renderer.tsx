@@ -1,11 +1,11 @@
-import {Renderer} from 'marked';
-import * as highlight from 'highlight.js/lib/highlight';
-import * as php from 'highlight.js/lib/languages/php';
-import * as elixir from 'highlight.js/lib/languages/elixir';
-import * as typescript from 'highlight.js/lib/languages/typescript';
-import * as json from 'highlight.js/lib/languages/json';
-import * as xml from 'highlight.js/lib/languages/xml';
-import * as javascript from 'highlight.js/lib/languages/javascript';
+import {marked} from 'marked';
+import hljs from 'highlight.js/lib/core';
+import php from 'highlight.js/lib/languages/php';
+import elixir from 'highlight.js/lib/languages/elixir';
+import typescript from 'highlight.js/lib/languages/typescript';
+import json from 'highlight.js/lib/languages/json';
+import xml from 'highlight.js/lib/languages/xml';
+import javascript from 'highlight.js/lib/languages/javascript';
 
 // Highlight.js by default includes all languages which
 // makes the bundle way too large
@@ -24,12 +24,12 @@ const supportedLanguages: Array<ILanguage> = [
   {lang: 'elixir', aliases: ['elixir']},
 ];
 
-highlight.registerLanguage('php', php);
-highlight.registerLanguage('typescript', typescript);
-highlight.registerLanguage('javascript', javascript);
-highlight.registerLanguage('json', json);
-highlight.registerLanguage('xml', xml);
-highlight.registerLanguage('elixir', elixir);
+hljs.registerLanguage('php', php);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('json', json);
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('elixir', elixir);
 
 // Add _blank to links
 const link = ({options}: any) => (href: string, title?: string, text?: string) => {
@@ -81,7 +81,7 @@ const code = () => (code: string, lang?: string): string => {
 
   // Highlight only if the language is valid.
   const out = validLang ?
-    highlight.highlight(validLang.lang, code).value : code;
+    hljs.highlight(code, {language: validLang.lang}).value : code;
 
   return `
     <pre>
@@ -96,11 +96,10 @@ background-color: rgba(0,0,0,.05);
     border-radius: 3px;
 */
 
-const renderer = new Renderer();
-
-// Add _blank to links
-renderer.link = link(renderer);
-renderer.code = code();
-renderer.image = image();
+const renderer = {
+  link: link({}),
+  code: code(),
+  image: image(),
+};
 
 export default renderer;
