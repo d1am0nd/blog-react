@@ -53,8 +53,8 @@
     "reselect": "^3.0.1",
     "sitemap": "^1.13.0",
     "styled-components": "^5.0.0",
-    "ts-loader": "^5.4.5",
-    "typescript": "^3.9.10",
+    "ts-loader": "^8.4.0",
+    "typescript": "^4.9.5",
     "webpack": "^4.30.0",
     "webpack-node-externals": "^1.7.2",
     "yargs": "^13.2.4"
