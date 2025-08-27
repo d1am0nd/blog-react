@@ -2,7 +2,7 @@ import * as React from 'react';
 import H1 from '../../../ts/components/Simple/H1';
 import Post from '../../../ts/components/Simple/Post';
 import PostForm from '../Simple/PostForm';
-import {create, IPostCreateData} from '../../api/posts';
+import {create, IPostCreateData, IPost} from '../../api/posts';
 import {slugify} from '../../misc/helpers';
 
 const leftStyle = () => ({
@@ -42,9 +42,9 @@ const PostCreate: React.FunctionComponent = () => {
       </div>
       <div style={rightStyle()}>
         <Post post={{
-          id: 1337,
           ...post,
-        }} />
+          id: 1337,
+        } as IPost} />
       </div>
       <div style={{clear: 'both'}} />
     </>

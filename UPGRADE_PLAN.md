@@ -12,15 +12,15 @@ This plan outlines the step-by-step process to upgrade the very old frontend dep
 
 ## Phase 1: Pre-Upgrade Preparation
 
-- [ ] Create backup branch from current state
-- [ ] Document current build commands and verify they work
-- [ ] Run existing tests to establish baseline (if any exist)
-- [ ] Check for any custom webpack configuration or build scripts
+- [x] Create backup branch from current state
+- [x] Document current build commands and verify they work
+- [x] Run existing tests to establish baseline (if any exist)
+- [x] Check for any custom webpack configuration or build scripts
 
 ## Phase 2: TypeScript Upgrade (Incremental)
 
-- [ ] Upgrade TypeScript to 3.9.x (LTS stepping stone)
-- [ ] Fix any TypeScript 3.9 compilation errors
+- [x] Upgrade TypeScript to 3.9.x (LTS stepping stone)
+- [x] Fix any TypeScript 3.9 compilation errors
 - [ ] Update `@types/*` packages to compatible versions
 - [ ] Upgrade TypeScript to 4.9.x (stable before 5.x)
 - [ ] Fix any TypeScript 4.x compilation errors
