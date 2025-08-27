@@ -39,9 +39,9 @@ This plan outlines the step-by-step process to upgrade the very old frontend dep
 - [x] Replace `ReactDOM.render` with `createRoot` API
 - [x] Update `ReactDOM.hydrate` to `hydrateRoot`
 - [x] Test SSR functionality after hydration changes
-- [ ] Upgrade React to latest 19.x
-- [ ] Remove deprecated PropTypes and defaultProps
-- [ ] Update any legacy Context API usage
+- [x] Upgrade React to latest 19.x
+- [x] Remove deprecated PropTypes and defaultProps
+- [x] Update any legacy Context API usage
 
 ## Phase 4: Build Tool Migration (Laravel Mix → Vite)
 
