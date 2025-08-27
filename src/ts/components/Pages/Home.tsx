@@ -25,7 +25,7 @@ const postsRequest: IRequest<undefined, Array<IPost>> = {
   paramName: 'posts',
 };
 
-export const setMeta: IMeta = {
+export const setMeta: IMeta<any> = {
   title: () => 'Personal Website & Blog',
   description: () => 'Dev Kordes, professional web developer,'
     + ' personal website and blog',

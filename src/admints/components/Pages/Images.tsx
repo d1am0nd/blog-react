@@ -25,7 +25,7 @@ const Images: React.FunctionComponent = () => {
           </Link>
           <img src={path} />
           <div onClick={async () => {
-            await deleteById(id);
+            await deleteById(id!);
             setImages(images.filter(
               ({id: currId}) => currId !== id
             ));

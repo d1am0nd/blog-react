@@ -19,14 +19,14 @@ const Post: React.FunctionComponent<IProps> = ({
 );
 
 const postRequest: IRequest<IParams, IPost> = {
-  request: ({slug}) => findBySlug(slug),
+  request: (params?: IParams) => findBySlug(params!.slug!),
   paramName: 'post',
 };
 
-export const setMeta: IMeta<IProps> = {
-  title: ({post}) => post.title,
-  description: ({post}) => post.summary,
-  url: ({post}) => `/posts/${post.slug}`,
+export const setMeta: IMeta<any> = {
+  title: ({post}) => post?.title || '',
+  description: ({post}) => post?.summary || '',
+  url: ({post}) => `/posts/${post?.slug || ''}`,
 };
 
 export const requests = [postRequest];

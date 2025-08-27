@@ -25,7 +25,7 @@ const About: React.FunctionComponent = () => (
   </>
 );
 
-export const setMeta: IMeta = {
+export const setMeta: IMeta<any> = {
   title: () => 'About me',
   description: () => content.summary,
   url: () => '/about-me',

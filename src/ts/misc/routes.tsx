@@ -30,24 +30,24 @@ interface IRoute {
 
 export const routes: Array<IRoute> = [
   {
-    Component: Home,
+    Component: Home as any,
     requests: homeRequests,
     setMeta: homeSetMeta,
     path: '/',
   },
   {
-    Component: About,
+    Component: About as any,
     setMeta: aboutSetMeta,
     path: '/about-me',
   },
   {
-    Component: Post,
+    Component: Post as any,
     requests: postRequests,
     setMeta: postSetMeta,
     path: '/posts/:slug',
   },
   {
-    Component: Projects,
+    Component: Projects as any,
     requests: projectsRequests,
     setMeta: projectsSetMeta,
     path: '/my-projects',

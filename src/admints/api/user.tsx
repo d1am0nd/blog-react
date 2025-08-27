@@ -2,7 +2,7 @@ import {AxiosPromise} from 'axios';
 import {get, post} from './defaults';
 import {IUser} from '../misc/auth';
 
-export {
+export type {
   IUser,
 };
 

@@ -77,7 +77,7 @@ const image = () => (
 const code = () => (code: string, lang?: string): string => {
   // Check whether the given language is valid for highlight.js.
   const validLang = supportedLanguages
-    .find(({aliases}) => aliases.indexOf(lang) !== -1);
+    .find(({aliases}) => aliases.indexOf(lang || '') !== -1);
 
   // Highlight only if the language is valid.
   const out = validLang ?

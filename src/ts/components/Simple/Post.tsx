@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as marked from 'marked';
+import marked = require('marked');
 import styled from 'styled-components';
 import H1 from './H1';
 import Subtle from './Subtle';
@@ -25,10 +25,7 @@ interface IProps {
   post: IPost;
 };
 
-const render = (html: string) => marked(
-  html,
-  {renderer, sanitize: true}
-);
+const render = (html: string) => marked(html, {renderer});
 
 const Post: React.FC<IProps> = ({
   post,
@@ -39,7 +36,7 @@ const Post: React.FC<IProps> = ({
     <Summary>{post.summary}</Summary>
     <Content
       dangerouslySetInnerHTML={{__html: render(
-        post.content
+        post.content || ''
       )}}>
     </Content>
   </Wrapper>

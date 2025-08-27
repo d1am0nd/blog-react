@@ -19,7 +19,7 @@ if ((client.env === 'prod' || client.env === 'production') &&
     ReactGA.pageview(location.pathname);
     document
       .getElementById('link-canonical')
-      .setAttribute('href', `https://kordes.dev${pathname}`);
+      ?.setAttribute('href', `https://kordes.dev${pathname}`);
   });
 }
 

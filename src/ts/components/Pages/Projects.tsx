@@ -25,7 +25,7 @@ const projectsRequest: IRequest<undefined, Array<IProject>> = {
   paramName: 'projects',
 };
 
-export const setMeta: IMeta = {
+export const setMeta: IMeta<any> = {
   title: () => 'Projects',
   description: () => 'Dev Kordes - side projects',
   url: () => '/my-projects',

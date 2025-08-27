@@ -24,7 +24,7 @@ const wrapperStyle = () => ({
 const Layout: React.FunctionComponent = () => (
   <div style={wrapperStyle()}>
     <Title>Admin</Title>
-    {loggedIn() ? user().email : ''}
+    {loggedIn() ? user()?.email : ''}
     <Navigation />
     <Route path='/admin' exact component={Home} />
     <Route path='/admin/login' exact component={Login} />

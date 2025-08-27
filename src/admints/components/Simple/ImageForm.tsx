@@ -27,7 +27,7 @@ const ImageForm: React.FunctionComponent<IProps> = ({
       <File
         label='Image'
         handleChange={({currentTarget}) => {
-          const newImg = currentTarget.files[0];
+          const newImg = currentTarget.files?.[0];
           const reader = new FileReader();
 
           reader.onloadend = ({target}) => {
@@ -38,7 +38,9 @@ const ImageForm: React.FunctionComponent<IProps> = ({
             });
           };
 
-          reader.readAsDataURL(newImg);
+          if (newImg) {
+            reader.readAsDataURL(newImg);
+          }
         }} />
       <Submit>Submit</Submit>
     </form>
