@@ -3,10 +3,19 @@
         "sourceMap": true,
         "noImplicitAny": true,
         "module": "commonjs",
-        "target": "es6",
+        "target": "es2018",
+        "lib": ["dom", "es2018"],
         "jsx": "react",
         "typeRoots": ["src/types", "./node_modules/@types"],
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": false
     },
     "include": [
         "./src/ts/**/*",
@@ -14,6 +23,6 @@
     ],
     "baseUrl": "src/ts",
     "paths": {
-        "~": ["/*"],
+        "~": ["/*"]
     }
 }

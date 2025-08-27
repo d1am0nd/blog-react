@@ -23,9 +23,9 @@ This plan outlines the step-by-step process to upgrade the very old frontend dep
 - [x] Fix any TypeScript 3.9 compilation errors
 - [x] Update `@types/*` packages to compatible versions
 - [x] Upgrade TypeScript to 4.9.x (stable before 5.x)
-- [ ] Fix any TypeScript 4.x compilation errors
-- [ ] Upgrade TypeScript to latest 5.x
-- [ ] Update tsconfig.json for TypeScript 5.x features
+- [x] Fix any TypeScript 4.x compilation errors
+- [x] Upgrade TypeScript to latest 5.x
+- [x] Update tsconfig.json for TypeScript 5.x features
 - [ ] Fix any final TypeScript 5.x compilation errors
 
 ## Phase 3: React Upgrade (Staged)
