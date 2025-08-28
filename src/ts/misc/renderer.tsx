@@ -99,6 +99,7 @@ const renderer = {
   link: link({}),
   code: code(),
   image: image(),
+  paragraph: (text: string) => `<p>${text}</p>`,
 };
 
 export default renderer;
