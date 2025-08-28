@@ -30,7 +30,7 @@ func NewRouter() *httprouter.Router {
 	r.POST("/api/projects/delete/:id", AuthOnly(DeleteProject))
 	r.GET("/json/about.json", AboutJson)
 	r.ServeFiles("/uploads/*filepath", http.Dir("../public/uploads"))
-	r.ServeFiles("/js/*filepath", http.Dir("../public/js"))
+	r.ServeFiles("/js/*filepath", http.Dir("../public/dist/js"))
 
 	if !config.Env.IsProd() {
 		r.GET("/favicon.ico", serveFile("../public/favicon.ico"))

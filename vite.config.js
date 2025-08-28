@@ -49,7 +49,7 @@ export default defineConfig(({ command, mode }) => {
           admin: resolve(__dirname, 'admin.html')
         },
         output: {
-          dir: 'public',
+          dir: 'public/dist',
           entryFileNames: 'js/[name].js',
           chunkFileNames: 'js/[name]-[hash].js'
         }
