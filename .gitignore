@@ -19,6 +19,7 @@
 /public
 /server.js
 /server.js.map
+/server.cjs
 /dist
 
 # Development

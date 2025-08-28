@@ -29,7 +29,7 @@ export default defineConfig(({ command, mode }) => {
         input: resolve(__dirname, 'node/server.tsx'),
         output: {
           dir: '.',
-          entryFileNames: 'server.js',
+          entryFileNames: 'server.cjs',
           format: 'cjs',
           exports: 'named',
           interop: 'auto'
