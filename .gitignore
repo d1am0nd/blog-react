@@ -1,3 +1,4 @@
+# Configuration files
 /config/database.json
 /config/jwt.json
 /config/about.json
@@ -10,10 +11,37 @@
 /config/api.json
 /config/api.tsx
 /config/client.tsx
+
+# Dependencies
 /node_modules
-/public/uploads
-/public/js/app.js
+
+# Build outputs
 /public
 /server.js
 /server.js.map
+/dist
+
+# Development
+.vite
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Go binaries
 /go/main
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
