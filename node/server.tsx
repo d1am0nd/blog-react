@@ -10,6 +10,8 @@ const router = express.Router();
 app.use(express.static('./public'));
 app.use('/admin', adminRouter);
 app.use('/sitemap.xml', sitemapRouter);
+
+
 app.use('/', appRouter);
 
 const port = process.env.PORT || 3002;

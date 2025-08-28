@@ -1,15 +1,8 @@
+<background>
+We have just done a significant upgrade of all frontend dependencies. Dependencies were from 2019 and we upgraded them to the current versions and replaced them where warrented.
+The frotnend consists of 2 parts: SSR and client side. Entry points can be seen in package.json. 
+Client side works. SSR has issues
+</background>
 <task>
-You are tasked to upgrade frontend dependencies - or migrate to different ones when warranted
+We need to fix the SSR rendering. Proceed with SSR_FIX.md plan
 </task>
-<plan>
-Plan is written in UPGRADE_PLAN.md. Checked items are already done. If task is bigger than expected, split into subtasks and write them in the upgrade plan
-</plan>
-<execute>
-Execute the plan in small verifiable chunks. After each step is successfully completed, mark it as done and wait for my confirmation before continuing
-</execute>
-<build-verification>
-Always test compilation after making changes with both commands:
-- NODE_OPTIONS="--openssl-legacy-provider" npm run production (client-side build)
-- NODE_OPTIONS="--openssl-legacy-provider" npm run production-server (SSR build)
-Both builds must succeed before marking a task as complete.
-</build-verification>

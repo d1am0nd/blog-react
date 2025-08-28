@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {StaticRouter} from 'react-router-dom/server';
 import Layout from './components/Layout';
+import ErrorBoundary from './components/ErrorBoundary';
 import {SSRContext} from './misc/context';
 
 interface IProps {
@@ -8,15 +9,22 @@ interface IProps {
   location: string;
 };
 
+// Server-side version of AnalyticsWrapper that just passes through children
+const ServerAnalyticsWrapper: React.FC<{children: React.ReactNode}> = ({children}) => <>{children}</>;
+
 const Server: React.FC<IProps> = ({
   context,
   location,
 }) => (
-  <SSRContext.Provider value={context}>
-    <StaticRouter location={location}>
-      <Layout />
-    </StaticRouter>
-  </SSRContext.Provider>
+  <ErrorBoundary>
+    <SSRContext.Provider value={context}>
+      <StaticRouter location={location}>
+        <ServerAnalyticsWrapper>
+          <Layout />
+        </ServerAnalyticsWrapper>
+      </StaticRouter>
+    </SSRContext.Provider>
+  </ErrorBoundary>
 );
 
 export default Server;

@@ -43,9 +43,9 @@ export default defineConfig(({ command, mode }) => {
           /node_modules/
         ]
       } : {
-        // Client-side build configuration
+        // Client-side build configuration  
         input: {
-          main: resolve(__dirname, 'index.html'),
+          main: resolve(__dirname, 'src/ts/index.tsx'),
           admin: resolve(__dirname, 'admin.html')
         },
         output: {

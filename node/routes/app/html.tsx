@@ -48,7 +48,7 @@ export const renderHtml = (
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
-        <script async src="/js/app.js"></script>
+        <script type="module" async src="/js/main.js"></script>
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css"></noscript>
     </body>
