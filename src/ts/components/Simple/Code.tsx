@@ -11,7 +11,7 @@ interface IProps {
   renderHtml: boolean;
 };
 
-const Code: React.FunctionComponent<IProps> = ({
+const Code: React.FC<IProps> = ({
   children,
   renderHtml,
 }) => (

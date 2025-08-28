@@ -4,7 +4,7 @@ import Row from '../Simple/Row';
 import Title from '../Simple/Title';
 import {getAll, deleteById, IProject} from '../../api/projects';
 
-const Projects: React.FunctionComponent = () => {
+const Projects: React.FC = () => {
   const [projects, setProjects] = React.useState<Array<IProject>>([]);
 
   React.useEffect(() => {

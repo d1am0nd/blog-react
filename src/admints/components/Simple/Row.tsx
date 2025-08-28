@@ -20,7 +20,7 @@ interface IProps {
   text: string;
 };
 
-const Row: React.FunctionComponent<IProps> = ({
+const Row: React.FC<IProps> = ({
   handleDelete,
   editUrl,
   text,

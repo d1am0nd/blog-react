@@ -36,7 +36,7 @@ interface IProps {
   project: IProject;
 };
 
-const Project: React.FC<IProps> = ({
+const Project: React.FC<IProps> = React.memo(({
   project,
 }) => (
   <Wrapper>
@@ -51,6 +51,6 @@ const Project: React.FC<IProps> = ({
       <Summary>{project.description}</Summary>
     </StyledLink>
   </Wrapper>
-);
+));
 
 export default Project;

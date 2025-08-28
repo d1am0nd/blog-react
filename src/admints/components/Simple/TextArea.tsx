@@ -16,7 +16,7 @@ interface IProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   handleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
-const TextArea: React.FunctionComponent<IProps> = ({
+const TextArea: React.FC<IProps> = ({
   label,
   handleChange,
   ...rest

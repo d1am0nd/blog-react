@@ -50,7 +50,7 @@ interface IProps {
   handleDismiss: () => void;
 };
 
-const Cookies: React.FunctionComponent<IProps> = ({
+const Cookies: React.FC<IProps> = ({
   display,
   handleDismiss,
 }) => (

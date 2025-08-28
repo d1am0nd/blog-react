@@ -15,7 +15,7 @@ interface IProps {
   ) => void;
 };
 
-const File: React.FunctionComponent<IProps> = ({
+const File: React.FC<IProps> = ({
   title,
   label,
   handleChange,

@@ -9,7 +9,7 @@ interface IProps {
   posts: Array<IPost>;
 };
 
-const Home: React.FunctionComponent<IProps> = ({
+const Home: React.FC<IProps> = ({
   posts,
 }) => (
   <>

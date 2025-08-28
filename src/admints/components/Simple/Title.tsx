@@ -4,7 +4,7 @@ const style = () => ({
   'fontSize': '28px',
 });
 
-const Title: React.FunctionComponent<React.PropsWithChildren<{}>> = ({
+const Title: React.FC<{children: React.ReactNode}> = ({
   children,
 }) => (
   <div style={style()}>{children}</div>

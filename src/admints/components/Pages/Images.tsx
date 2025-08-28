@@ -3,7 +3,7 @@ import Title from '../Simple/Title';
 import {Link} from 'react-router-dom';
 import {getImages, deleteById, IImage} from '../../api/images';
 
-const Images: React.FunctionComponent = () => {
+const Images: React.FC = () => {
   const [images, setImages] = React.useState<Array<IImage>>([]);
 
   React.useEffect(() => {

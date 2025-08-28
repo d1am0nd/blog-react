@@ -9,7 +9,7 @@ interface IProps {
   projects: Array<IProject>;
 };
 
-const Projects: React.FunctionComponent<IProps> = ({
+const Projects: React.FC<IProps> = ({
   projects,
 }) => (
   <>

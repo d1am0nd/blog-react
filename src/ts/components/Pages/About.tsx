@@ -8,7 +8,7 @@ import content from '../../../../config/aboutts';
 import {IMeta} from '../hoc/setsMeta';
 
 
-const About: React.FunctionComponent = () => (
+const About: React.FC = () => (
   <>
     <H1>About me</H1>
     <Subtle>Dev Kordeš</Subtle>

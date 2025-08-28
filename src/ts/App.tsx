@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {BrowserRouter, useLocation} from 'react-router-dom';
 import Layout from './components/Layout';
+import ErrorBoundary from './components/ErrorBoundary';
 import {SSRContext} from './misc/context';
 import client from '../../config/client';
 
@@ -12,7 +13,7 @@ declare global {
 
 const state = (window as any).__PRELOADED_STATE__;
 
-const AnalyticsWrapper: React.FunctionComponent<{children: React.ReactNode}> = ({children}) => {
+const AnalyticsWrapper: React.FC<{children: React.ReactNode}> = ({children}) => {
   const location = useLocation();
 
   React.useEffect(() => {
@@ -45,8 +46,8 @@ if ((client.env === 'prod' || client.env === 'production') &&
   });
 }
 
-const App: React.FunctionComponent = () => (
-  <>
+const App: React.FC = () => (
+  <ErrorBoundary>
     <SSRContext.Provider value={state}>
       <BrowserRouter>
         <AnalyticsWrapper>
@@ -54,7 +55,7 @@ const App: React.FunctionComponent = () => (
         </AnalyticsWrapper>
       </BrowserRouter>
     </SSRContext.Provider>
-  </>
+  </ErrorBoundary>
 );
 
 export default App;

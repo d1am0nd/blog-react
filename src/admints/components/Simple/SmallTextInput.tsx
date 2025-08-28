@@ -6,7 +6,7 @@ export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   handleChange: InputEvent;
 };
 
-const SmallTextInput: React.FunctionComponent<IProps> = ({
+const SmallTextInput: React.FC<IProps> = ({
   handleChange,
   ...rest
 }) => (

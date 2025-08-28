@@ -15,7 +15,7 @@ const liStyle = () => ({
   'display': 'inline-block',
 });
 
-const Navigation: React.FunctionComponent = () => (
+const Navigation: React.FC = () => (
   <ul style={ulStyle()}>
     <li key={'posts'} style={liStyle()}>
       <Link to={`/admin/posts`}>

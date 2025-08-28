@@ -21,7 +21,7 @@ const wrapperStyle = () => ({
   'margin': 'auto',
 });
 
-const Layout: React.FunctionComponent = () => (
+const Layout: React.FC = () => (
   <div style={wrapperStyle()}>
     <Title>Admin</Title>
     {loggedIn() ? user()?.email : ''}

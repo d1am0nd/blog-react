@@ -19,7 +19,7 @@ const fetchesData = (
 ) => (
   Component: React.ComponentType
 ) => {
-  const FetchesData: React.FunctionComponent = () => {
+  const FetchesData: React.FC = () => {
     const params = useParams();
     const ssrState = React.useContext(SSRContext);
     const firstLoad = isFirstLoad();

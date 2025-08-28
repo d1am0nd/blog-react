@@ -16,7 +16,7 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   handleChange: InputEvent;
 };
 
-const SmallText: React.FunctionComponent<IProps> = ({
+const SmallText: React.FC<IProps> = ({
   title,
   label,
   ...rest

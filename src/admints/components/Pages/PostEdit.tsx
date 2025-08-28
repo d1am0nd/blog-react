@@ -16,7 +16,7 @@ const rightStyle = () => ({
   'width': '50%',
 });
 
-const PostEdit: React.FunctionComponent = () => {
+const PostEdit: React.FC = () => {
   const {slug} = useParams<{slug: string}>();
   const [post, setPost] = React.useState<IPost>();
 

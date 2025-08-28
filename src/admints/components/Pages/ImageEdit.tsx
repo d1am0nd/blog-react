@@ -18,7 +18,7 @@ const rightStyle = () => ({
   'width': '50%',
 });
 
-const ImageEdit: React.FunctionComponent = () => {
+const ImageEdit: React.FC = () => {
   const {id} = useParams<{id: string}>();
   const [image, setImage] = React.useState<IImageEdit>();
 

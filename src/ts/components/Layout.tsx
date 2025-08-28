@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   padding-bottom: ${({cookiesDismissed}: {cookiesDismissed: boolean}) => cookiesDismissed ? '0px' : '30px'};
 `;
 
-const Layout: React.FunctionComponent = () => {
+const Layout: React.FC = () => {
   return (
     <Wrapper cookiesDismissed={alreadyDismissed()}>
       <MainTitle>

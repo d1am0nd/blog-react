@@ -14,7 +14,7 @@ const right = () => ({
   'width': '50%',
 });
 
-const ProjectCreate: React.FunctionComponent = () => {
+const ProjectCreate: React.FC = () => {
   const [project, setProject] = React.useState<IProjectEdit>({
     position: 0,
     title: '',

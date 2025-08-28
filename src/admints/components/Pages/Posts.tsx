@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import Row from '../Simple/Row';
 import {getMine, deletePost, IPost} from '../../api/posts';
 
-const Posts: React.FunctionComponent = () => {
+const Posts: React.FC = () => {
   const [posts, setPosts] = React.useState<Array<IPost>>([]);
 
   React.useEffect(() => {

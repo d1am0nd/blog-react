@@ -10,7 +10,7 @@ interface IProps {
   handleSubmit: (e: React.FormEvent) => void;
 };
 
-const ProjectForm: React.FunctionComponent<IProps> = ({
+const ProjectForm: React.FC<IProps> = ({
   project,
   handleChange,
   handleSubmit,

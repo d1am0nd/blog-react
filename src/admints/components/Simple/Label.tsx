@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Label: React.FunctionComponent<React.PropsWithChildren<{}>> = ({
+const Label: React.FC<{children: React.ReactNode}> = ({
   children,
 }) => (
   <label>{children}</label>

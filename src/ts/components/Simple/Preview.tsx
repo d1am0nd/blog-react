@@ -38,7 +38,7 @@ interface IProps {
   post: IPost;
 };
 
-const Preview: React.FC<IProps> = ({
+const Preview: React.FC<IProps> = React.memo(({
   post,
 }) => (
   <StyledLink
@@ -53,6 +53,6 @@ const Preview: React.FC<IProps> = ({
       <StyledMore>More</StyledMore>
     </Wrapper>
   </StyledLink>
-);
+));
 
 export default Preview;

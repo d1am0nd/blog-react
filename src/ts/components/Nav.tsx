@@ -50,7 +50,7 @@ const tabs: Array<ITab> = [
   },
 ];
 
-const Nav: React.FunctionComponent = () => {
+const Nav: React.FC = () => {
   const location = useLocation();
 
   return (

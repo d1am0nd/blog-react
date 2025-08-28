@@ -13,7 +13,7 @@ const rightStyle = () => ({
   'width': '50%',
 });
 
-const ImageCreate: React.FunctionComponent = () => {
+const ImageCreate: React.FC = () => {
   const [image, setImage] = React.useState<IImageEdit>({
     imgSrc: '',
     name: '',

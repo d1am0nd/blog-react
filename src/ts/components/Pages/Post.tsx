@@ -12,7 +12,7 @@ interface IProps {
   post: IPost;
 };
 
-const Post: React.FunctionComponent<IProps> = ({
+const Post: React.FC<IProps> = ({
   post,
 }) => (
   <PostRender post={post} />

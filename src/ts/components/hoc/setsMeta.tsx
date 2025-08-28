@@ -11,7 +11,7 @@ const setsMeta = ({
 }: IMeta) => (
   Component: React.ComponentType
 ) => {
-  const SetsMeta: React.FunctionComponent<any> = (
+  const SetsMeta: React.FC<any> = (
     props
   ) => {
     if (typeof document !== 'undefined') {

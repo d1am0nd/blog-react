@@ -15,7 +15,7 @@ const right = () => ({
   'width': '50%',
 });
 
-const Projects: React.FunctionComponent = () => {
+const Projects: React.FC = () => {
   const {id: idParam} = useParams<{id: string}>();
   const id = idParam ? parseInt(idParam) : 0;
   const [project, setProject] = React.useState<IProjectEdit>();

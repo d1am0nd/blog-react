@@ -8,7 +8,7 @@ interface IProps {
   location: string;
 };
 
-const Server: React.FunctionComponent<IProps> = ({
+const Server: React.FC<IProps> = ({
   context,
   location,
 }) => (

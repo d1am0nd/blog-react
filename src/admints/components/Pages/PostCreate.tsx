@@ -15,7 +15,7 @@ const rightStyle = () => ({
   'width': '50%',
 });
 
-const PostCreate: React.FunctionComponent = () => {
+const PostCreate: React.FC = () => {
   const [post, setPost] = React.useState<IPostCreateData>({
     title: '',
     slug: '',
