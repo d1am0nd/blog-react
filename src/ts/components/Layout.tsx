@@ -3,9 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import styled from 'styled-components';
 import MainTitle from './Simple/MainTitle';
 import Nav from './Nav';
-import Cookies from './Simple/Cookies';
 import {builtComponents} from '../misc/routes';
-import {alreadyDismissed, dismiss} from '../misc/cookies';
 import {transition, baseWidth} from '../misc/styles';
 
 const Wrapper = styled.div`
@@ -16,12 +14,12 @@ const Wrapper = styled.div`
   margin-right: auto;
   font-weight: 300;
   line-height: 1.4;
-  padding-bottom: ${({cookiesDismissed}: {cookiesDismissed: boolean}) => cookiesDismissed ? '0px' : '30px'};
+  padding-bottom: 0px;
 `;
 
 const Layout: React.FC = () => {
   return (
-    <Wrapper cookiesDismissed={alreadyDismissed()}>
+    <Wrapper>
       <MainTitle>
         Dev Kordes
       </MainTitle>
@@ -31,9 +29,6 @@ const Layout: React.FC = () => {
           <Route key={path} path={path} element={<Component />} />
         ))}
       </Routes>
-      <Cookies
-        display={!alreadyDismissed}
-        handleDismiss={dismiss} />
     </Wrapper>
   );
 };

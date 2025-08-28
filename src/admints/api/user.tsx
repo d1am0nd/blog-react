@@ -12,9 +12,7 @@ export interface ICreds {
 };
 
 export const login = (creds: ICreds): AxiosPromise<IUser> => (
-  post('api/users/login', creds, {
-    withCredentials: true,
-  })
+  post('api/users/login', creds)
 );
 
 export const refresh = () => (
