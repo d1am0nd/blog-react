@@ -3,7 +3,7 @@ export default {
   'port': ':3000',
   'nodePort': '3001',
   'allowOrigin': 'http://localhost:3001',
-  'hostname': 'https://somedomain.com'
+  'hostname': 'https://somedomain.com',
   'database': {
     'username':     'db_username',
     'password':     'db_password',

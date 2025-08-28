@@ -39,7 +39,7 @@ self.addEventListener('activate', event => {
       return Promise.all(cacheNames.map(function(thisCacheName) {
         if (thisCacheName !== cacheName) {
           console.log('ServiceWorker removing cached files from',
-            sthisCacheName);
+            thisCacheName);
           return caches.delete(thisCacheName);
         }
       }));

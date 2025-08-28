@@ -74,14 +74,14 @@ This plan outlines the step-by-step process to upgrade the very old frontend dep
 
 ## Phase 6: ESLint and Code Quality
 
-- [ ] Remove deprecated babel-eslint
-- [ ] Install and configure @typescript-eslint/parser
-- [ ] Update @typescript-eslint/eslint-plugin to latest
-- [ ] Update ESLint to latest version
-- [ ] Configure ESLint for React 19 and TypeScript 5
-- [ ] Add modern ESLint rules for React hooks
-- [ ] Fix any new ESLint violations
-- [ ] Consider adding Prettier for code formatting
+- [x] Remove deprecated babel-eslint
+- [x] Install and configure @typescript-eslint/parser
+- [x] Update @typescript-eslint/eslint-plugin to latest
+- [x] Update ESLint to latest version
+- [x] Configure ESLint for React 19 and TypeScript 5
+- [x] Add modern ESLint rules for React hooks
+- [x] Fix any new ESLint violations
+- [x] Consider adding Prettier for code formatting
 
 ## Phase 7: Modern React Patterns
 
