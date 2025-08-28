@@ -7,7 +7,7 @@ import Summary from './Summary';
 import {IPost} from '../../api/posts';
 import {transition, color3} from '../../misc/styles';
 import {prettyDate} from '../../misc/misc';
-import renderer from '../../misc/renderer';
+import '../../misc/renderer';
 
 const Wrapper = styled.article`
   transition: ${transition};
@@ -25,7 +25,7 @@ interface IProps {
   post: IPost;
 };
 
-const render = (html: string) => marked.parse(html, {renderer});
+const render = (html: string) => marked.parse(html);
 
 const Post: React.FC<IProps> = ({
   post,
