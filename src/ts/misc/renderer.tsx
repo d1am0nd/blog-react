@@ -1,4 +1,3 @@
-import {marked} from 'marked';
 import hljs from 'highlight.js/lib/core';
 import php from 'highlight.js/lib/languages/php';
 import elixir from 'highlight.js/lib/languages/elixir';
@@ -41,7 +40,7 @@ const link = ({options}: any) => (href: string, title?: string, text?: string) =
         .replace(/[^\w:]/g, '')
         .toString()
         .toLowerCase();
-    } catch (e) {
+    } catch (_e) {
       return '';
     }
 

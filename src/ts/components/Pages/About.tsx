@@ -7,11 +7,6 @@ import Social from '../Simple/Social';
 import content from '../../../../config/aboutts';
 import {IMeta} from '../hoc/setsMeta';
 
-interface IAbout {
-  summary: string;
-  paragraphs: Array<string>;
-  social: Array<{name: string, url: string}>;
-};
 
 const About: React.FunctionComponent = () => (
   <>

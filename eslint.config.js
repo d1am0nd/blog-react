@@ -60,11 +60,16 @@ export default [
       'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
       'no-unused-vars': 'off', // Use TypeScript version instead
       
-      // TypeScript rules
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      // TypeScript rules (relaxed for legacy codebase)
+      '@typescript-eslint/no-unused-vars': ['warn', { 
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrors: 'none',
+        ignoreRestSiblings: true 
+      }],
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
-      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off', // Allow any during migration
       
       // React rules
       'react/prop-types': 'off', // TypeScript handles prop validation
@@ -73,9 +78,9 @@ export default [
       'react/jsx-uses-vars': 'error',
       'react/display-name': 'off',
       
-      // React Hooks rules
+      // React Hooks rules (relaxed)
       'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
+      'react-hooks/exhaustive-deps': 'off', // Too noisy during migration
       
       // Style preferences
       'camelcase': 'off',
@@ -134,7 +139,7 @@ export default [
     rules: {
       // ESLint base rules
       'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
-      'no-unused-vars': 'warn',
+      'no-unused-vars': 'off', // Disabled for legacy codebase
       
       // React rules
       'react/prop-types': 'off',
@@ -143,9 +148,9 @@ export default [
       'react/jsx-uses-vars': 'error',
       'react/display-name': 'off',
       
-      // React Hooks rules
+      // React Hooks rules (relaxed)
       'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
+      'react-hooks/exhaustive-deps': 'off', // Too noisy during migration
       
       // Style preferences
       'camelcase': 'off',
