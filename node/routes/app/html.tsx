@@ -2,6 +2,7 @@ import * as React from 'react';
 import {renderToString} from "react-dom/server";
 import {ServerStyleSheet} from 'styled-components'
 import App from '../../../src/ts/Server';
+import client from '../../../config/client';
 
 export const renderHtml = (
   meta: {
@@ -34,6 +35,16 @@ export const renderHtml = (
 
       <meta property='og:type' content='website' />
       <meta name="theme-color" content="#E5E5E5"/>
+      
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=${client.analytics}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${client.analytics}');
+      </script>
+      
       <style>
         code {
           background-color: rgba(0,0,0,.05);
